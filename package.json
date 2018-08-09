@@ -4,11 +4,12 @@
   "private": true,
   "main": "src/index.js",
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "start": "cross-env NODE_PATH=src node scripts/start.js",
+    "build": "cross-env NODE_PATH=src node scripts/build.js",
+    "test": "cross-env NODE_PATH=src node scripts/test.js --env=jsdom"
   },
   "dependencies": {
+    "cross-env": "^5.2.0",
     "dotenv": "^2.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -59,7 +60,7 @@
     "truffle-solidity-loader": "0.0.8",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
-    "webpack-dev-server": "1.16.2",
+    "webpack-dev-server": "^3.1.5",
     "webpack-manifest-plugin": "1.1.0",
     "whatwg-fetch": "1.0.0"
   },

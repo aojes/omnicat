@@ -4,18 +4,14 @@ test
 build
 build_webpack
 
-# .env is shared
-.env.local
-.env.dev*
-.env.test*
-.env.prod*
+# .env is shared & all others ignored
+.env.*
 
-nb-*
-note-*
-idea-*
-.note*
-.idea*
+# backup/pending files
+*~
+~*
 
+.notes
 .vscode/
 
 .DS_Store
