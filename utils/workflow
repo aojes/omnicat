@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# npm install stmux --save 
+# https://www.npmjs.com/package/stmux
+#
+# Open panels for the app's processes
+# Close tab to stop all processes and exit
+# Or stop them individually as normal
+# But closing the tab to stop all works best
+
+# with truffle console
+# (react TL bash BL ganache TR truffle BR)
+npx stmux -M -w always -e ERROR -m beep,system  -- [ [ -t 'react' "npm start" : -t ${PWD##*/} $SHELL ] .. [ -t 'ganache' "ganache-cli -b 3" : -t 'truffle' "echo 'for truffle develop if needed' && $SHELL" ] ]
+# CLOSE THE SHELL TAB TO STOP SERVICES :)
+
+
+######## (needless b/c it's just easier to close the services tab!)
+#
+# GANACHE=$(ps aux | grep -E "[n]ode.*!(npx).*ganache")
+# REACT=$(ps aux | grep -E "[n]ode.*!(npx).*react")
+
+# while [[ $REACT =~ "react" && $GANACHE =~ "ganache" ]]
+# do
+#     # check every 12 seconds
+#     # give services time to start
+#     # check on 12 sec intervals
+#     # keeps react or ganache from appearing
+#     # to be stopped but still running
+#     sleep 12
+#     GANACHE=$(ps aux | grep -E "[n]ode.*!(npx).*ganache")
+#     REACT=$(ps aux | grep -E "[n]ode.*!(npx).*react")
+#     if !([[ $REACT =~ "!(npx).*react" && $GANACHE =~ "!(npx).*ganache" ]]) ; then
+
+#       ps aux | grep -E "[n]ode.*!(npx).*react" | awk '{print $2}' | xargs kill
+#       ps aux | grep -E "[n]ode.*!(npx).*ganache" | awk '{print $2}' | xargs kill
+#       ps aux | grep -E "[n]ode.*(npx).*stmux" | awk '{print $2}' | xargs kill
+#     fi
+# done
