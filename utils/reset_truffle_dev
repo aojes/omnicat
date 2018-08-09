@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Reset the truffle dev params 
-# And modify .env.dev.local 
+# Reset the truffle dev params
+# And modify .env.dev.local
 
 # check ganache-cli is running
 PID=$(ps aux | grep [n]ode.*ganache | awk '{print $2}')
@@ -10,14 +10,14 @@ PID=$(ps aux | grep [n]ode.*ganache | awk '{print $2}')
 [[ ! $PID =~ ^-?[0-9]+$ ]] && echo "ganache not running" && exit
 
 # Compile to be sure of new changes
-truffle compile 
+truffle compile
 
 # migrate from scratch (create file if needed)
-touch .env.local
-truffle migrate --reset --network development > .env.local 
+touch .env.truffle
+truffle migrate --reset --network development > .env.truffle
 
 # get the new address
-NEW_ADDR=$(cat .env.local | grep 'OmniCAT:' | awk '{print $2}')
+NEW_ADDR=$(cat .env.truffle | grep 'OmniCAT:' | awk '{print $2}')
 
 # change out the old address
 # operation clobbers prev file contents via single '>'
