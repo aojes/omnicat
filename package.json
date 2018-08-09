@@ -2,6 +2,17 @@
   "name": "react-box",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "truffle-hdwallet-provider": "0.0.6"
+  },
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
@@ -48,17 +59,6 @@
     "webpack-manifest-plugin": "1.1.0",
     "whatwg-fetch": "1.0.0"
   },
-  "dependencies": {
-    "dotenv": "^2.0.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "truffle-hdwallet-provider": "0.0.6"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
-  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
@@ -71,7 +71,7 @@
       "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
     ],
     "testEnvironment": "node",
-    "testURL": "http://localhost",
+    "testURL": "http://127.0.0.1:7200",
     "transform": {
       "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
