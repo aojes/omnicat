@@ -1,12 +1,27 @@
 node_modules
 test
+
 build
 build_webpack
 
-.env.dev*
+# .env is shared
 .env.local
-.env.test
+.env.dev*
+.env.test*
+.env.prod*
 
 nb-*
 note-*
 idea-*
+.note*
+.idea*
+
+.vscode/
+
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# backup and/or loose files
+*_
