@@ -1,8 +1,10 @@
 node_modules
 test
-
 build
 build_webpack
+
+package-lock.json
+yarn.lock
 
 # .env is shared & all others ignored
 .env.*
