@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# npm install stmux --save
+# https://www.npmjs.com/package/stmux
+#
+# Open panels for the app's processes
+# Close tab to stop all processes and exit
+# Or stop them individually as normal
+# But closing the tab to stop all works best
+
+# with truffle console
+# (react TL bash BL ganache TR truffle BR)
+npx stmux -M -w always -e ERROR -m beep,system  -- [ [ -t 'react' "npm run start" : -t ${PWD##*/} $SHELL ] .. [ -t 'ganache' "ganache-cli && $SHELL" : -t 'truffle' "truffle develop --network development && $SHELL" ] ]
+
+# CLOSE THE SHELL TAB TO STOP SERVICES :)

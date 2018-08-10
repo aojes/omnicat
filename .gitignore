@@ -1,7 +1,6 @@
-node_modules
-test
 build
 build_webpack
+node_modules
 
 package-lock.json
 yarn.lock
@@ -12,6 +11,7 @@ yarn.lock
 # backup/pending files
 *~
 ~*
+*_
 
 .notes
 .vscode/
@@ -20,6 +20,3 @@ yarn.lock
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# backup and/or loose files
-*_
