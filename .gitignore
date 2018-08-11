@@ -14,9 +14,13 @@ yarn.lock
 *_
 
 .notes
-.vscode/
+.vscode
 
 .DS_Store
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# jess dev
+scripts/workflow
+scripts/reset_truffle_dev

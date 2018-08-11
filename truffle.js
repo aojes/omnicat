@@ -7,18 +7,22 @@ env.local = require('dotenv').config({
 const HDWalletProvider = require('truffle-hdwallet-provider')
 module.exports = {
   networks: {
-    localhost: {
-      host: 'localhost',
-      port: 9545,
-      network_id: '*'
-    },
-    hdwallet: {
+    dev: {
       host: 'localhost',
       port: 9545,
       network_id: '*',
       provider: function() {
         return new HDWalletProvider(
-          env.local.TRUF_DEV_MNEMONIC, 'http://127.0.0.1:9545')
+          env.local.TRUFFLE_DEV_MNEMONIC, 'http://127.0.0.1:9545')
+      }
+    },
+    gn: {
+      host: 'localhost',
+      port: 8545,
+      network_id: '*',
+      provider: function() {
+        return new HDWalletProvider(
+          env.local.GANACHE_CLI_MNEMONIC, 'http://127.0.0.1:8545')
       }
     }
   }
