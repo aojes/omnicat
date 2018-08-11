@@ -5,7 +5,8 @@ process.env.PUBLIC_URL = ''
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
 // https://github.com/motdotla/dotenv
-require('dotenv').config({silent: true, path: '.env.test'});
+require('dotenv').config({silent: true});
+process.env.local = require('dotenv').config({path: '.env.local'})
 
 const jest = require('jest');
 

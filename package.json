@@ -75,7 +75,8 @@
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js?(x)",
-      "<rootDir>/(src|coverage)/**/?(*.)(spec|test).js?(x)"
+      "<rootDir>/(src|test_coverage|coverage)/**/?(*.)(spec|test).js?(x)",
+      "<rootDir>/src/coverage/**/?(*.)(spec|test).js?(x)"
     ],
     "testEnvironment": "node",
     "testURL": "http://127.0.0.1:7200",
