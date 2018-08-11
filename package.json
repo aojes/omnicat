@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom --watch",
-    "flow": "bash scripts/workflow"
+    "test": "node scripts/test.js --env=jsdom --watch"
   },
   "dependencies": {
     "dotenv": "^2.0.0",

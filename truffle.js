@@ -15,16 +15,16 @@ module.exports = {
         return new HDWalletProvider(
           env.local.TRUFFLE_DEV_MNEMONIC, 'http://127.0.0.1:9545')
       }
-    },
-    gn: {
-      host: 'localhost',
-      port: 8545,
-      network_id: '*',
-      provider: function() {
-        return new HDWalletProvider(
-          env.local.GANACHE_CLI_MNEMONIC, 'http://127.0.0.1:8545')
-      }
     }
+    // , gn: {
+    //   host: 'localhost',
+    //   port: 8545,
+    //   network_id: '*',
+    //   provider: function() {
+    //     return new HDWalletProvider(
+    //       env.local.GANACHE_CLI_MNEMONIC, 'http://127.0.0.1:8545')
+    //   }
+    // }
   }
 }
 
