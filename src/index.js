@@ -1,18 +1,28 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import ReactDOM from 'react-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Dass42 from './Dass42'
+import IronLevels from './IronLevels'
+import Home from './Home'
+import NotFound from './NotFound'
 import './index.css'
 import registerServiceWorker from './utils/registerServiceWorker'
 // import App from './App'
 // import App from './App'
 import App from './App'
 
-render(
-  (
+ReactDOM.render((
+  <div className="app-root">
+    <App />
     <BrowserRouter>
-      <App />
+      <Switch>
+        <Route exact path='/' component={Home}/>
+        <Route exact path='/dass' component={Dass42}/>
+        <Route exact path='/iron' component={IronLevels}/>
+        <Route path='*' component={NotFound}/>
+      </Switch>
     </BrowserRouter>
-  ), document.getElementById('root')
-)
+  </div>
+), document.getElementById('root'))
 
 registerServiceWorker()
