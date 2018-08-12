@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
 
@@ -7,8 +8,10 @@ import './css/open-sans.css'
 import './css/pure-min.css'
 import './css/App.css'
 
-import Header from './components/Header'
-import Main from './components/Main'
+import Dass42 from './components/Dass42'
+import IronLevels from './components/IronLevels'
+import Home from './components/Home'
+import NotFound from './components/NotFound'
 
 class App extends Component {
   constructor(props) {
@@ -72,10 +75,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App-component">
-        <Header />
-        <Main />
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/dass' component={Dass42}/>
+          <Route exact path='/iron' component={IronLevels}/>
+          <Route path='*' component={NotFound}/>
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
