@@ -2,6 +2,7 @@
   "name": "OmniCAT",
   "version": "0.1.0",
   "license": "MIT",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "gitlab.com:crockett.jesse/omnicat.git"
