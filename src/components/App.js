@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import SimpleStorageContract from './../../build/contracts/SimpleStorage.json'
 import getWeb3 from '../utils/getWeb3'
-import Router from './Router'
 import '../css/oswald.css'
 import '../css/open-sans.css'
 import '../css/pure-min.css'
 import '../css/App.css'
+import Header from './Header'
+import Main from './Main'
 
 class App extends Component {
   constructor(props) {
@@ -70,7 +71,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Router />
+        <Header />
+        <Main />
       </div>
     )
   }
