@@ -7,6 +7,7 @@ import '../css/pure-min.css'
 import '../css/App.css'
 import Header from './Header'
 import Main from './Main'
+import Footer from './Footer'
 
 class App extends Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class App extends Component {
       <div>
         <Header />
         <Main />
+        <Footer />
       </div>
     )
   }
