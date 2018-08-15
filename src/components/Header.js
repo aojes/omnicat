@@ -11,7 +11,7 @@ const Header = () => (
         <div className="pure-menu">
           <ul className="pure-menu-list">
             <li className="pure-menu-item"><NavLink to='/' className="pure-menu-link">Home</NavLink></li>
-            <li className="pure-menu-heading">CATS</li>
+            <li className="pure-menu-heading nav-heading"><strong>CATs</strong></li>
               <ul className="pure-menu-list">
                 <li className="pure-menu-item"><NavLink to='/physical-fitness' className="pure-menu-link">Physical Fitness</NavLink></li>
                 <li className="pure-menu-item"><NavLink to='/biochemistry' className="pure-menu-link">Biochemistry</NavLink></li>
