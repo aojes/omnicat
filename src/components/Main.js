@@ -19,12 +19,6 @@ class Main extends Component {
   render() {
     return (
       <main className="pure-u pure-u-md-3-4">
-        <div className="pure-u pure-u-1">
-          <code style={{"white-space": "pre-wrap", "overflow": "scroll", "width": "600px", "height": "100%"}}>
-          { JSON.stringify({...this.props}, null, 2) }
-          </code>
-          <br/>
-        </div>
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/dass' component={Dass42}/>
@@ -41,6 +35,12 @@ class Main extends Component {
           <Route path='*' component={NotFound}/>
         </Switch>
         <hr/>
+        <div className="pure-u pure-u-1">
+          <code style={{"white-space": "pre-wrap", "overflow": "scroll", "width": "600px", "height": "100%"}}>
+            { JSON.stringify({...this.props}, null, 2) }
+          </code>
+          <br/>
+        </div>
       </main>
     )
   }
