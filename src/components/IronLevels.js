@@ -3,7 +3,7 @@ import React from 'react'
 // import { contract } from "utils/ethereumSetup"
 // import { Switch, Route } from 'react-router-dom'
 const IronLevels = () => (
-  <div>
+  <div className="pure-u-1">
     <h2>This is the IronLevels page</h2>
 
   </div>

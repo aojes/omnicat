@@ -1,7 +1,7 @@
 import React from 'react'
-
+// import App from './App'
 const Home = () => (
-  <div>
+  <div className="pure-u-1">
     <h2>Welcome to the homepage</h2>
   </div>
 )
