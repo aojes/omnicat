@@ -6,16 +6,8 @@ contract OmniCAT {
         uint8[42] dass42; // these two seem out of place from their own contract
         uint16[4] ironLevels;
     }
-    uint simpleValue;
     // or address => Contribution[]
     mapping (address => Contribution) contributors;
-
-    function setSimpleValue(uint8 _val) public {
-      simpleValue = _val;
-    }
-    function getSimpleValue() public view returns (uint) {
-      return simpleValue;
-    }
 
     function compareStrings(bytes32 a, bytes32 b) internal pure returns (bool) {
         return keccak256(bytes32ToBytes(a)) == keccak256(bytes32ToBytes(b));

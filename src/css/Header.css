@@ -1,6 +1,8 @@
 header {
+  position: relative;
+  top: -1.4em;
   background-color: #2f87bf;
-  width: 20em;
+  width: 18em;
   border-radius: 25px;
 }
   header nav {
@@ -15,17 +17,29 @@ header {
       color: #222 !important;
     }
     header nav li a {
+      color: inherit;
       font-size: 16pt;
       font-weight: inherit;
       color: #444 !important;
     }
-      header nav li a:hover {
+      /* header nav li a.pure-menu-link:first {
+        color: #ccc !important;
+        font-size: 18pt !important;
+        font-weight: inherit;
+      } */
+      header nav li a.not(.active):visited {
+        color: #222;
+        font-size: 16pt;
+        font-weight: inherit;
+      }
+
+      header nav li a:hover, .pure-menu-link:hover, header nav li a.pure-menu-link.active {
         color: #2f87bf !important;
         font-weight: bolder;
-      }
-      header nav .pure-menu-link:hover {
         border-radius: 25px;
       }
-  header .nav-heading {
+
+  header ul li.nav-heading {
     letter-spacing: 3px;
+    font-variant: normal !important;
   }

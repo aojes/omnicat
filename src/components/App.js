@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 // import SimpleStorageContract from './../../build/contracts/SimpleStorage.json'
+import MigrationsContract from './../../build/contracts/Migrations.json'
 import OmniCatContract from './../../build/contracts/OmniCAT.json'
 import IronLevelsContract from './../../build/contracts/IronLevels.json'
 import Dass42Contract from './../../build/contracts/Dass42.json'
@@ -14,10 +15,11 @@ import './../css/App.css'
 
 // ?? SET STATE CONTRACTS HERE FOR NOW
 let omniCat = {
-      self:   { def: null, inst: null },
-      iron:   { def: null, inst: null },
-      dass42: { def: null, inst: null }
-    }
+        self: { def: null, inst: null },
+        iron: { def: null, inst: null },
+      dass42: { def: null, inst: null },
+  migrations: { def: null, inst: null }
+}
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +29,7 @@ class App extends Component {
       omniCat: null,
       dass42: null,
       iron: null,
+      migrations: null,
       web3: null
     }
   }
@@ -65,6 +68,9 @@ class App extends Component {
     omniCat.iron.def = contract(IronLevelsContract)
     omniCat.iron.def.setProvider(this.state.web3.currentProvider)
 
+    omniCat.migrations.def = contract(MigrationsContract)
+    omniCat.migrations.def.setProvider(this.state.web3.currentProvider)
+
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
       omniCat.self.def.deployed().then((instance) => {
@@ -88,14 +94,22 @@ class App extends Component {
         // Update state with the result.
         return this.setState({ iron: omniCat.iron.inst.address })
       })
+
+      omniCat.migrations.def.deployed().then((instance) => {
+        omniCat.migrations.inst = instance
+      }).then((result) => {
+        // Update state with the result.
+        return this.setState({ migrations: omniCat.migrations.inst.address })
+      })
     })
   }
 
   render() {
+    var appState = { ...this.state }
     return (
       <div className="container pure-g">
         <Header />
-        <Main props={ omniCat } />
+        <Main props={ {appState, omniCat} } />
         <Footer />
       </div>
     )

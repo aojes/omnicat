@@ -36,7 +36,7 @@ class Main extends Component {
         </Switch>
         <hr/>
         <div className="pure-u pure-u-1">
-          <code style={{"white-space": "pre-wrap", "overflow": "scroll", "width": "600px", "height": "900px"}}>
+          <code>
             { JSON.stringify(this.props, null, 2) }
           </code>
           <br/>

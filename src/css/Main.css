@@ -5,6 +5,13 @@ main {
   text-align: left;
 }
 
+main code {
+  font-weight: lighter;
+  white-space: pre-wrap;
+  overflow: scroll;
+  width: 640px;
+  height: 720px
+}
 /* @media screen and (min-width: 80em) {
   main { width: 52em; }
 }
