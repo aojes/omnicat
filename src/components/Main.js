@@ -20,7 +20,9 @@ class Main extends Component {
     return (
       <main className="pure-u pure-u-md-3-4">
         <div className="pure-u pure-u-1">
-          ( this.props: { JSON.stringify({...this.props}) } )
+          <code style={{"white-space": "pre-wrap", "overflow": "scroll", "width": "600px", "height": "100%"}}>
+          { JSON.stringify({...this.props}, null, 2) }
+          </code>
           <br/>
         </div>
         <Switch>
