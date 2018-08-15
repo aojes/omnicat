@@ -3,8 +3,7 @@ import Web3 from 'web3'
 let getWeb3 = new Promise(function(resolve, reject) {
   // Wait for loading completion to avoid race conditions with web3 injection timing.
   window.addEventListener('load', function() {
-    var results
-    var web3 = window.web3
+    var results, web3 = window.web3
 
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
@@ -29,7 +28,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
         web3: web3
       }
 
-      console.log('No web3 instance injected, using Local web3.');
+      console.log("No web3 instance injected, using localhost:9545's web3.");
 
       resolve(results)
     }

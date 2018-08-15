@@ -3,7 +3,6 @@ pragma solidity ^0.4.24;
 import "./OmniCAT.sol";
 
 contract IronLevels is OmniCAT {
-
     mapping (bytes32 => uint8) optimal;
     mapping (bytes32 => uint8[2][2]) normal;
     mapping (bytes32 => uint16[2][2]) suboptimal;
@@ -13,9 +12,9 @@ contract IronLevels is OmniCAT {
         normal["SerumIron"] = [[15, 19], [21, 25]];
         suboptimal["SerumIron"] = [[10, 14], [26, 33]];
 
-        optimal["TransferrinIbc"] = 60;
-        normal["TransferrinIbc"] = [[55, 59], [61, 65]];
-        suboptimal["TransferrinIbc"] = [[45, 54], [66, 70]];
+        optimal["TransferrinIBC"] = 60;
+        normal["TransferrinIBC"] = [[55, 59], [61, 65]];
+        suboptimal["TransferrinIBC"] = [[45, 54], [66, 70]];
 
         optimal["TransferrinSaturation"] = 40;
         normal["TransferrinSaturation"] = [[35, 39], [41, 45]];
@@ -28,10 +27,10 @@ contract IronLevels is OmniCAT {
 
     function setValues(address _contributor, uint16 _si, uint16 _tibc, uint16 _ts, uint16 _sfa) public payable {
         contributors[_contributor].ironLevels[0] = _si;   // SerumIron
-        contributors[_contributor].ironLevels[1] = _tibc; // TransferrinIbc
+        contributors[_contributor].ironLevels[1] = _tibc; // TransferrinIBC
         contributors[_contributor].ironLevels[2] = _ts;   // TransferrinSaturation
         contributors[_contributor].ironLevels[3] = _sfa;  // SerumFerritinAssay
-        contributors[_contributor].stored["ironLevels"] = true;
+        contributors[_contributor].hasContributionStored["IronLevels"] = true;
     }
 
     // Note: use returned _submittedValue and _optimalValue
@@ -53,20 +52,20 @@ contract IronLevels is OmniCAT {
             } else if (_value > suboptimal["SerumIron"][1][0]) {
                 _report = "Abnormal Higher SerumIron Level";
             }
-        } else if (compareStrings(_name, "TransferrinIbc")) {
-            if (_value == optimal["TransferrinIbc"]) {
+        } else if (compareStrings(_name, "TransferrinIBC")) {
+            if (_value == optimal["TransferrinIBC"]) {
                 _report = "Optimal TransferrinIBC Level";
-            } else if (_value >= normal["TransferrinIbc"][0][0] && _value <= normal["TransferrinIbc"][0][1]) {
+            } else if (_value >= normal["TransferrinIBC"][0][0] && _value <= normal["TransferrinIBC"][0][1]) {
                 _report = "Normal Lower TransferrinIBC Level";
-            } else if (_value >= normal["TransferrinIbc"][1][0] && _value <= normal["TransferrinIbc"][1][1]) {
+            } else if (_value >= normal["TransferrinIBC"][1][0] && _value <= normal["TransferrinIBC"][1][1]) {
                 _report = "Normal Higher TransferrinIBC Level";
-            } else if (_value >= suboptimal["TransferrinIbc"][0][0] && _value <= suboptimal["TransferrinIbc"][0][1]) {
+            } else if (_value >= suboptimal["TransferrinIBC"][0][0] && _value <= suboptimal["TransferrinIBC"][0][1]) {
                 _report = "Suboptimal Lower TransferrinIBC Level";
-            } else if (_value >= suboptimal["TransferrinIbc"][1][0] && _value <= suboptimal["TransferrinIbc"][1][1]) {
+            } else if (_value >= suboptimal["TransferrinIBC"][1][0] && _value <= suboptimal["TransferrinIBC"][1][1]) {
                 _report = "Suboptimal Higher TransferrinIBC Level";
-            } else if (_value < suboptimal["TransferrinIbc"][0][0]) {
+            } else if (_value < suboptimal["TransferrinIBC"][0][0]) {
                 _report = "Abnormal Lower TransferrinIBC Level";
-            } else if (_value > suboptimal["TransferrinIbc"][1][0]) {
+            } else if (_value > suboptimal["TransferrinIBC"][1][0]) {
                 _report = "Abnormal Higher TransferrinIBC Level";
             }
         } else if (compareStrings(_name, "TransferrinSaturation")) {
@@ -102,7 +101,7 @@ contract IronLevels is OmniCAT {
                 _report = "Abnormal Higher SerumFerritinAssay Level";
             }
         } else {
-            _report = "Please check name is one of SerumIron, TransferrinIbc, TransferrinSaturation, or SerumFerritinAssay";
+            _report = "Please check name is one of SerumIron, TransferrinIBC, TransferrinSaturation, or SerumFerritinAssay";
         }
         return (_report, _value, int8(getOptimalValues(_name)));
     }
@@ -110,8 +109,8 @@ contract IronLevels is OmniCAT {
     function getOptimalValues(bytes32 _name) public view returns (uint8) {
         if (compareStrings(_name, "SerumIron")) {
             return optimal["SerumIron"];
-        } else if (compareStrings(_name, "TransferrinIbc")) {
-            return optimal["TransferrinIbc"];
+        } else if (compareStrings(_name, "TransferrinIBC")) {
+            return optimal["TransferrinIBC"];
         } else if (compareStrings(_name, "TransferrinSaturation")) {
             return optimal["TransferrinSaturation"];
         } else if (compareStrings(_name, "SerumFerritinAssay")) {
@@ -122,8 +121,8 @@ contract IronLevels is OmniCAT {
     function getNormalValues(bytes32 _name) public view returns (uint8[2][2]) {
         if (compareStrings(_name, "SerumIron")) {
             return normal["SerumIron"];
-        } else if (compareStrings(_name, "TransferrinIbc")) {
-            return normal["TransferrinIbc"];
+        } else if (compareStrings(_name, "TransferrinIBC")) {
+            return normal["TransferrinIBC"];
         } else if (compareStrings(_name, "TransferrinSaturation")) {
             return normal["TransferrinSaturation"];
         } else if (compareStrings(_name, "SerumFerritinAssay")) {
@@ -134,8 +133,8 @@ contract IronLevels is OmniCAT {
     function getSuboptimalValues(bytes32 _name) public view returns (uint16[2][2]) {
         if (compareStrings(_name, "SerumIron")) {
             return suboptimal["SerumIron"];
-        } else if (compareStrings(_name, "TransferrinIbc")) {
-            return suboptimal["TransferrinIbc"];
+        } else if (compareStrings(_name, "TransferrinIBC")) {
+            return suboptimal["TransferrinIBC"];
         } else if (compareStrings(_name, "TransferrinSaturation")) {
             return suboptimal["TransferrinSaturation"];
         } else if (compareStrings(_name, "SerumFerritinAssay")) {

@@ -14,11 +14,11 @@ import './../css/pure-min.css'
 import './../css/App.css'
 
 // ?? SET STATE CONTRACTS HERE FOR NOW
-let omniCat = {
-        self: { def: null, inst: null },
-        iron: { def: null, inst: null },
-      dass42: { def: null, inst: null },
-  migrations: { def: null, inst: null }
+let keys =    { web3: null,
+        omni: { addr: null, def: null, inst: null },
+        iron: { addr: null, def: null, inst: null },
+        dass: { addr: null, def: null, inst: null },
+        migs: { addr: null, def: null, inst: null }
 }
 
 class App extends Component {
@@ -26,10 +26,10 @@ class App extends Component {
     super(props)
 
     this.state = {
-      omniCat: null,
-      dass42: null,
+      omni: null,
+      dass: null,
       iron: null,
-      migrations: null,
+      migs: null,
       web3: null
     }
   }
@@ -42,6 +42,7 @@ class App extends Component {
       this.setState({
         web3: results.web3
       })
+      keys.web3 = this.state.web3
       // Instantiate contract once web3 provided.
       this.instantiateContracts()
     })
@@ -59,57 +60,60 @@ class App extends Component {
      */
     const contract = require('truffle-contract')
 
-    omniCat.self.def = contract(OmniCatContract)
-    omniCat.self.def.setProvider(this.state.web3.currentProvider)
+    keys.omni.def = contract(OmniCatContract)
+    keys.omni.def.setProvider(keys.web3.currentProvider)
 
-    omniCat.dass42.def = contract(Dass42Contract)
-    omniCat.dass42.def.setProvider(this.state.web3.currentProvider)
+    keys.dass.def = contract(Dass42Contract)
+    keys.dass.def.setProvider(keys.web3.currentProvider)
 
-    omniCat.iron.def = contract(IronLevelsContract)
-    omniCat.iron.def.setProvider(this.state.web3.currentProvider)
+    keys.iron.def = contract(IronLevelsContract)
+    keys.iron.def.setProvider(keys.web3.currentProvider)
 
-    omniCat.migrations.def = contract(MigrationsContract)
-    omniCat.migrations.def.setProvider(this.state.web3.currentProvider)
+    keys.migs.def = contract(MigrationsContract)
+    keys.migs.def.setProvider(keys.web3.currentProvider)
 
     // Get accounts.
-    this.state.web3.eth.getAccounts((error, accounts) => {
-      omniCat.self.def.deployed().then((instance) => {
-        omniCat.self.inst = instance
+    keys.web3.eth.getAccounts((error, accounts) => {
+      keys.omni.def.deployed().then((instance) => {
+        keys.omni.inst = instance
         // Stores a given value, 5 by default.
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ omniCat: omniCat.self.inst.address })
+        keys.omni.addr = keys.omni.inst.address
+        return this.setState({ omni: keys.omni.inst.address })
       })
 
-      omniCat.dass42.def.deployed().then((instance) => {
-        omniCat.dass42.inst = instance
+      keys.dass.def.deployed().then((instance) => {
+        keys.dass.inst = instance
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ dass42: omniCat.dass42.inst.address })
+        keys.dass.addr = keys.dass.inst.address
+        return this.setState({ dass: keys.dass.inst.address })
       })
 
-      omniCat.iron.def.deployed().then((instance) => {
-        omniCat.iron.inst = instance
+      keys.iron.def.deployed().then((instance) => {
+        keys.iron.inst = instance
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ iron: omniCat.iron.inst.address })
+        keys.iron.addr = keys.iron.inst.address
+        return this.setState({ iron: keys.iron.inst.address })
       })
 
-      omniCat.migrations.def.deployed().then((instance) => {
-        omniCat.migrations.inst = instance
+      keys.migs.def.deployed().then((instance) => {
+        keys.migs.inst = instance
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ migrations: omniCat.migrations.inst.address })
+        keys.migs.addr = keys.migs.inst.address
+        return this.setState({ migs: keys.migs.inst.address })
       })
     })
   }
 
   render() {
-    var appState = { ...this.state }
     return (
-      <div className="container pure-g">
+      <div className="pure-g">
         <Header />
-        <Main props={ {appState, omniCat} } />
+        <Main props={ keys } />
         <Footer />
       </div>
     )

@@ -3,19 +3,18 @@ pragma solidity ^0.4.24;
 import "./OmniCAT.sol";
 
 contract Dass42 is OmniCAT {
-
     function setScores(address _contributor, uint8[42] _values) public payable {
         uint8 i = 0;
         while(i < 42) {
             contributors[_contributor].dass42[i] = _values[i++];
         }
-        contributors[_contributor].stored["dass42"] = true;
+        contributors[_contributor].hasContributionStored["Dass42"] = true;
     }
 
     // get submitted scores for a contributor
     // and then compute/display results in the client
     function getScores(address _contributor) public payable returns (uint8 _d, uint8 _a, uint8 _s) {
-        require(contributors[_contributor].stored["dass42"], "no scores have been saved");
+        require(contributors[_contributor].hasContributionStored["Dass42"], "no scores have been saved");
         _d = getDepressionScores(_contributor);
         _a = getAnxietyScores(_contributor);
         _s = getStressScores(_contributor);
@@ -24,7 +23,6 @@ contract Dass42 is OmniCAT {
 
     function getDepressionScores(address _contributor) internal view returns (uint8 _d) {
         // Depression statements # 3, 5, 10, 13, 16, 17, 21, 24, 26, 31, 34, 37, 38, 42
-
         _d = contributors[_contributor].dass42[2];
         _d += contributors[_contributor].dass42[4];
         _d += contributors[_contributor].dass42[9];

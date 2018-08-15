@@ -1,8 +1,10 @@
 pragma solidity ^0.4.24;
 
-contract OmniCAT {
+import "./../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+
+contract OmniCAT is Ownable {
     struct Contribution {
-        mapping (bytes32 => bool) stored; // stored["dass42"] = true
+        mapping (bytes32 => bool) hasContributionStored; // stored["Dass42"] = true, etc.
         uint8[42] dass42; // these two seem out of place from their own contract
         uint16[4] ironLevels;
     }
