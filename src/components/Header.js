@@ -2,29 +2,35 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Header = () => (
-  <header>
-    <nav>
-      <ul>
-        <li><NavLink to='/' className="nav-link">Home</NavLink></li>
-        <li>CATS</li>
-          <ul>
-            <li><NavLink to='/physical-fitness' className="nav-link">Physical Fitness</NavLink></li>
-            <li><NavLink to='/biochemistry' className="nav-link">Biochemistry</NavLink></li>
-            <ul>
-              <li><NavLink to='/iron' className="nav-link">Iron Optimiser</NavLink></li>
-            </ul>
-            <li><NavLink to='/brain-health' className="nav-link">Brain Health</NavLink></li>
-            <ul>
-              <li><NavLink to='/dass' className="nav-link">DASS42</NavLink></li>
-            </ul>
-            <li><NavLink to='/hormones' className="nav-link">Hormones</NavLink></li>
-            <li><NavLink to='/wellness' className="nav-link">Wellness</NavLink></li>
-            <li><NavLink to='/aesthetics' className="nav-link">Aesthetics</NavLink></li>
-            <li><NavLink to='/risk-and-prevention' className="nav-link">Rish and Prevention</NavLink></li>
+  <header className="pure-g">
+    <nav id="nav" className="pure-u-1-3">
+      {/*<a href="#" className="nav-menu-button">Menu</a>*/}
+      <div className="nav-inner">
+        {/*<button className="primary-button pure-button">Compose</button>*/}
+        <div className="pure-menu">
+          <ul className="pure-menu-list">
+            <li className="pure-menu-item"><NavLink to='/' className="pure-menu-link">Home</NavLink></li>
+            <li className="pure-menu-heading">CATS</li>
+              <ul className="pure-menu-list">
+                <li className="pure-menu-item"><NavLink to='/physical-fitness' className="pure-menu-link">Physical Fitness</NavLink></li>
+                <li className="pure-menu-item"><NavLink to='/biochemistry' className="pure-menu-link">Biochemistry</NavLink></li>
+                <ul className="pure-menu-list">
+                  <li className="pure-menu-item"><NavLink to='/iron' className="pure-menu-link">Iron Optimiser</NavLink></li>
+                </ul>
+                <li className="pure-menu-item"><NavLink to='/brain-health' className="pure-menu-link">Brain Health</NavLink></li>
+                <ul className="pure-menu-list">
+                  <li className="pure-menu-item"><NavLink to='/dass' className="pure-menu-link">DASS42</NavLink></li>
+                </ul>
+                <li className="pure-menu-item"><NavLink to='/hormones' className="pure-menu-link">Hormones</NavLink></li>
+                <li className="pure-menu-item"><NavLink to='/wellness' className="pure-menu-link">Wellness</NavLink></li>
+                <li className="pure-menu-item"><NavLink to='/aesthetics' className="pure-menu-link">Aesthetics</NavLink></li>
+                <li className="pure-menu-item"><NavLink to='/risk-and-prevention' className="pure-menu-link">Risk and Prevention</NavLink></li>
+              </ul>
+            <li className="pure-menu-item"><NavLink to='/about' className="pure-menu-link">About omniCAT</NavLink></li>
+            <li className="pure-menu-item"><NavLink to='/crowdsale' className="pure-menu-link">Crowdsale</NavLink></li>
           </ul>
-        <li><NavLink to='/about' className="nav-link">About omniCAT</NavLink></li>
-        <li><NavLink to='/crowdsale' className="nav-link">Crowdsale</NavLink></li>
-      </ul>
+        </div>
+      </div>
     </nav>
   </header>
 )

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import SimpleStorageContract from './../../build/contracts/SimpleStorage.json'
-import getWeb3 from '../utils/getWeb3'
+import getWeb3 from './../utils/getWeb3'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import '../css/oswald.css'
-import '../css/open-sans.css'
-import '../css/pure-min.css'
-import '../css/App.css'
+import './../css/oswald.css'
+import './../css/open-sans.css'
+import './../css/pure-min.css'
+import './../css/App.css'
 
 class App extends Component {
   constructor(props) {
@@ -70,7 +70,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div id="layout" className="content pure-g">
         <Header />
         <Main />
         <Footer />
