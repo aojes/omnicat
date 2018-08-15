@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import './../css/Header.css'
 
 const Header = () => (
-  <header className="pure-g">
-    <nav id="nav" className="pure-u-1-3">
+  <header className="pure-u pure-u-md-1-4">
+    <nav>
       {/*<a href="#" className="nav-menu-button">Menu</a>*/}
       <div className="nav-inner">
         {/*<button className="primary-button pure-button">Compose</button>*/}

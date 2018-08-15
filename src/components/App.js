@@ -70,7 +70,7 @@ class App extends Component {
 
   render() {
     return (
-      <div id="layout" className="content pure-g">
+      <div className="container pure-g">
         <Header />
         <Main />
         <Footer />
