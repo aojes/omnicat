@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import SimpleStorageContract from './../../build/contracts/SimpleStorage.json'
 import MigrationsContract from './../../build/contracts/Migrations.json'
+import OwnableContract from './../../build/contracts/Ownable.json'
 import OmniCatContract from './../../build/contracts/OmniCAT.json'
 import IronLevelsContract from './../../build/contracts/IronLevels.json'
 import Dass42Contract from './../../build/contracts/Dass42.json'
@@ -13,13 +14,16 @@ import './../css/open-sans.css'
 import './../css/pure-min.css'
 import './../css/App.css'
 
-// ?? SET STATE CONTRACTS HERE FOR NOW
-let keys =    { web3: null,
-        omni: { addr: null, def: null, inst: null },
-        iron: { addr: null, def: null, inst: null },
-        dass: { addr: null, def: null, inst: null },
-        migs: { addr: null, def: null, inst: null }
-}
+// SET STATE CONTRACTS HERE FOR NOW
+
+let keys = { owner: null,
+           ownable: { addr: null, def: null, inst: null },
+              omni: { addr: null, def: null, inst: null },
+              iron: { addr: null, def: null, inst: null },
+              dass: { addr: null, def: null, inst: null },
+              migs: { addr: null, def: null, inst: null },
+              web3: null
+            }
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +34,8 @@ class App extends Component {
       dass: null,
       iron: null,
       migs: null,
+      owner: null,
+      ownable: null,
       web3: null
     }
   }
@@ -60,6 +66,9 @@ class App extends Component {
      */
     const contract = require('truffle-contract')
 
+    keys.ownable.def = contract(OwnableContract)
+    keys.ownable.def.setProvider(keys.web3.currentProvider)
+
     keys.omni.def = contract(OmniCatContract)
     keys.omni.def.setProvider(keys.web3.currentProvider)
 
@@ -74,46 +83,55 @@ class App extends Component {
 
     // Get accounts.
     keys.web3.eth.getAccounts((error, accounts) => {
+      keys.owner = accounts[0]
+      keys.ownable.def.deployed().then( (instance) => {
+        keys.ownable.inst = instance
+        keys.ownable.addr = keys.ownable.inst.address
+      }).then((result) => {
+        return this.setState({ omni: keys.ownable.inst.address })
+      })
+
       keys.omni.def.deployed().then((instance) => {
         keys.omni.inst = instance
-        // Stores a given value, 5 by default.
-      }).then((result) => {
-        // Update state with the result.
         keys.omni.addr = keys.omni.inst.address
+      }).then((result) => {
         return this.setState({ omni: keys.omni.inst.address })
       })
 
       keys.dass.def.deployed().then((instance) => {
         keys.dass.inst = instance
-      }).then((result) => {
-        // Update state with the result.
         keys.dass.addr = keys.dass.inst.address
+      }).then((result) => {
         return this.setState({ dass: keys.dass.inst.address })
       })
 
       keys.iron.def.deployed().then((instance) => {
         keys.iron.inst = instance
-      }).then((result) => {
-        // Update state with the result.
         keys.iron.addr = keys.iron.inst.address
+      }).then((result) => {
         return this.setState({ iron: keys.iron.inst.address })
       })
 
       keys.migs.def.deployed().then((instance) => {
         keys.migs.inst = instance
-      }).then((result) => {
-        // Update state with the result.
         keys.migs.addr = keys.migs.inst.address
+      }).then((result) => {
         return this.setState({ migs: keys.migs.inst.address })
       })
     })
   }
 
   render() {
+    delete keys.ownable.def
+    delete keys.migs.def
+    delete keys.omni.def
+    delete keys.iron.def
+    delete keys.dass.def
+    delete keys.we3
     return (
       <div className="pure-g">
         <Header />
-        <Main props={ keys } />
+        <Main props={ keys  } />
         <Footer />
       </div>
     )

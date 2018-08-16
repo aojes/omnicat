@@ -1,8 +1,11 @@
 pragma solidity ^0.4.24;
 
 import "./../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
-
+// after PoC-- SafeMath
 contract OmniCAT is Ownable {
+    // constructor() public payable {
+    //   owner = msg.sender;
+    // }
     struct Contribution {
         mapping (bytes32 => bool) hasContributionStored; // stored["Dass42"] = true, etc.
         uint8[42] dass42; // these two seem out of place from their own contract

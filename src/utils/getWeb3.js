@@ -23,11 +23,13 @@ let getWeb3 = new Promise(function(resolve, reject) {
       var provider = null;
 
       // Ganache GUI
-      provider = new Web3.providers.HttpProvider("http://127.0.0.1:7545/m/44'/60'/0'/0/1")
+      // provider = new Web3.providers.HttpProvider("http://127.0.0.1:7545/m/44'/60'/0'/0/1")
+
       // Ganache CLI
-      provider = provider ? provider : new Web3.providers.HttpProvider("http://127.0.0.1:8545/m/44'/60'/0'/0/1")
+      // provider = provider ? provider : new Web3.providers.HttpProvider("http://127.0.0.1:8545/m/44'/60'/0'/0/1")
+
       // Truffle
-      provider = provider ? provider : new Web3.providers.HttpProvider("http://127.0.0.1:9545")
+      provider = new Web3.providers.HttpProvider("http://127.0.0.1:9545")
 
       web3 = new Web3(provider)
 
