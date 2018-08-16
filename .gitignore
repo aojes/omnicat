@@ -2,16 +2,15 @@ build
 build_webpack
 node_modules
 
-package-lock.json
-yarn.lock
-
-# .env is shared & all others ignored
+# only one .env is required
 .env.*
 
 # backup/pending files
 *~
 ~*
 *_
+note-
+nb-
 
 .notes
 .vscode
