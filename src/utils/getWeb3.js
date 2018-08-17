@@ -20,18 +20,20 @@ let getWeb3 = new Promise(function(resolve, reject) {
       // Fallback to localhost if no web3 injection. We've configured this to
       // use the development console's port by default.
       var provider = null;
-      // if (process.env.GANACHE_APP)
 
-      // Ganache GUI
-      // provider = new Web3.providers.HttpProvider("http://127.0.0.1:7545/m/44'/60'/0'/0/1")
-
-      // Ganache CLI
-      // provider = provider ? provider : new Web3.providers.HttpProvider("http://127.0.0.1:8545/m/44'/60'/0'/0/1")
-
+      // NOTE from jess-- i don't know enough yet about the following options
+      // if (process.env.GANACHE_APP) {
+      //   provider = new Web3.providers.HttpProvider("http://127.0.0.1:7545/m/44'/60'/0'/0/1")
+      //
+      // } else if (process.env.GANACHE_CLI) {
+      //   provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545/m/44'/60'/0'/0/1")
+      //
+      // } else {
       // Truffle
-      provider = new Web3.providers.HttpProvider("http://127.0.0.1:9545")
+        provider = new Web3.providers.HttpProvider("http://127.0.0.1:7545")
+        web3 = new Web3(provider)
+      // }
 
-      web3 = new Web3(provider)
 
       results = {
         web3: web3

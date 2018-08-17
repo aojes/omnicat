@@ -11,8 +11,8 @@ module.exports = {
         return new HDWalletProvider(
           env.TRUFFLE_DEV_MNEMONIC, 'http://127.0.0.1:9545/')
       }
-    },
-    gcli: { // tab1: ganache-cli  & tab2: truffle console --network gcli
+    }
+    ,gcli: { // tab1: ganache-cli  & tab2: truffle console --network gcli
       host: 'localhost',
       port: 8545,
       network_id: '*',
@@ -20,14 +20,14 @@ module.exports = {
         return new HDWalletProvider(
           env.GCLI_MNEMONIC, 'http://127.0.0.1:8545/') // m/44\'/60\'/0\'/0/1'
       }
-    },
-    ganache: { // run Ganache app and 'truffle console --network ganache'
+    }
+    ,ganache: { // run Ganache app and 'truffle console --network ganache'
       host: 'localhost',
       port: 7545,
       network_id: '5777',
       provider: function() {
         return new HDWalletProvider(
-          env.GANACHE_APP_MNEMONIC, "http://127.0.0.1:7545/") //m/44'/60'/0'/0/1") 
+          env.GANACHE_APP_MNEMONIC, "http://127.0.0.1:7545/") //m/44'/60'/0'/0/1")
       }
     }
   }

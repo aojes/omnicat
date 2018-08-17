@@ -35,7 +35,7 @@ contract IronLevels is OmniCAT {
 
     // Note: use returned _submittedValue and _optimalValue
     // on the client side to find percent from optimal
-    function checkValue(bytes32 _name, uint16 _value) public view returns (string _report, uint16 _submittedValue, int8 _optimalValue) {
+    function checkValue(bytes32 _name, uint16 _value) public view returns (string _report, uint16 _submittedValue, uint8 _optimalValue) {
         if (compareStrings(_name, "SerumIron")) {
             if (_value == optimal["SerumIron"]) {
                 _report = "Optimal SerumIron Level";
@@ -103,7 +103,7 @@ contract IronLevels is OmniCAT {
         } else {
             _report = "Please check name is one of SerumIron, TransferrinIBC, TransferrinSaturation, or SerumFerritinAssay";
         }
-        return (_report, _value, int8(getOptimalValues(_name)));
+        return (_report, _value, getOptimalValues(_name));
     }
 
     function getOptimalValues(bytes32 _name) public view returns (uint8) {
