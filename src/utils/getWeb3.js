@@ -44,26 +44,3 @@ let getWeb3 = new Promise(function(resolve, reject) {
   })
 })
 export default getWeb3
-// NOTE https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
-
-// let getWeb3 = new Promise(function(resolve, reject) {
-//   window.addEventListener('load', () => {
-//       // If web3 is not injected (modern browsers)...
-//       if (typeof _web3 === 'undefined') {
-//           // Listen for provider injection
-//           window.addEventListener('message', ({ data }) => {
-//               if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
-//                   // Use injected provider, start dapp...
-//                   web3 = new Web3(ethereum);
-//               }
-//           });
-//           // Request provider
-//           window.postMessage({ type: 'ETHEREUM_PROVIDER_REQUEST' }, '*');
-//       }
-//       // If web3 is injected (legacy browsers)...
-//       else {
-//           // Use injected provider, start dapp
-//           web3 = new Web3(web3.currentProvider);
-//       }
-//   });
-// })
