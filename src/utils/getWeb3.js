@@ -4,7 +4,6 @@ let getWeb3 = new Promise(function(resolve, reject) {
   // Wait for loading completion to avoid race conditions with web3 injection timing.
   window.addEventListener('load', function() {
     var results, web3 = window.web3
-
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
       // Use Mist/MetaMask's provider.
@@ -21,6 +20,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
       // Fallback to localhost if no web3 injection. We've configured this to
       // use the development console's port by default.
       var provider = null;
+      // if (process.env.GANACHE_APP)
 
       // Ganache GUI
       // provider = new Web3.providers.HttpProvider("http://127.0.0.1:7545/m/44'/60'/0'/0/1")
@@ -43,5 +43,27 @@ let getWeb3 = new Promise(function(resolve, reject) {
     }
   })
 })
-
 export default getWeb3
+// NOTE https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
+
+// let getWeb3 = new Promise(function(resolve, reject) {
+//   window.addEventListener('load', () => {
+//       // If web3 is not injected (modern browsers)...
+//       if (typeof _web3 === 'undefined') {
+//           // Listen for provider injection
+//           window.addEventListener('message', ({ data }) => {
+//               if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
+//                   // Use injected provider, start dapp...
+//                   web3 = new Web3(ethereum);
+//               }
+//           });
+//           // Request provider
+//           window.postMessage({ type: 'ETHEREUM_PROVIDER_REQUEST' }, '*');
+//       }
+//       // If web3 is injected (legacy browsers)...
+//       else {
+//           // Use injected provider, start dapp
+//           web3 = new Web3(web3.currentProvider);
+//       }
+//   });
+// })

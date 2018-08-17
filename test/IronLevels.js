@@ -7,8 +7,7 @@ const json = require('./../build/contracts/IronLevels.json');
 // const _interface = json['abi'];
 // const bytecode = json['bytecode'];
 
-let accounts, ironlevels, owner, ironlevelsInstance;
-
+let accounts, ironlevels, owner, ironlevelsInstance
 beforeEach(async () => {
 
   accounts = await web3.eth.getAccounts((error, accounts) => {
@@ -20,23 +19,32 @@ beforeEach(async () => {
   ironlevels.setProvider(web3.currentProvider)
   ironlevels.deployed().then((instance) => {
       ironlevelsInstance = instance
-      // keys.owner = keys.omni.inst.owner.call()
     }).then((result) => {
-      // Update state with the result.
       ironlevelsInstance.send({ from: owner, gas: '1000000' });
     })
 });
 
-describe('OmniCAT', () => {
+describe('IronLevels', () => {
 
   it('deploys a contract', async () => {
 
     const ironlevelsOwner = ironlevels.owner
 
     assert.equal(owner, ironlevelsOwner,
-      "The manager/owner is the one who launches the smart contract.")
+      "The owner is the one who launches the smart contract.")
   });
 
   // Continue from this line from now on...
+  it('spec. . .', async () => {
+    return true
+  })
+
+  it('spec. . .', async () => {
+    return true
+  })
+
+  it('spec. . .', async () => {
+    return true
+  })
 
 });
