@@ -1,11 +1,11 @@
 import React from 'react'
-import './../css/Footer.css'
+import './../css/Footer.sass'
 
 const Footer = () => (
-  <footer className="pure-u pure-u-1 pure-u-md-4-4">
-    <div className="pure-u-1">
-      <p>Footer content</p>
-    </div>
+  <footer>
+    <p>Footer content</p>
+    <p>Footer content</p>
+    <p>Footer content</p>
   </footer>
 )
 export default Footer

@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import registerServiceWorker from './utils/registerServiceWorker'
 import App from './components/App'
-
-const appRootElement = document.getElementById('root')
+// import './css/grids-responsive-min.css'
+// import './css/pure.css'
+import './index.sass'
 ReactDOM.render((
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  ), appRootElement )
+  ), document.getElementById('root') )
 
 registerServiceWorker()

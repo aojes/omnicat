@@ -75,7 +75,7 @@ scripts/workflow
 *~
 ~*
 *_
-note-
-nb-
+note-*
+nb-*
 .notes
 .vscode

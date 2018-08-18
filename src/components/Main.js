@@ -13,12 +13,12 @@ import PhysicalFitness from './PhysicalFitness'
 import RiskAndPrevention from './RiskAndPrevention'
 import Wellness from './Wellness'
 import NotFound from './NotFound'
-import './../css/Main.css'
+import './../css/Main.sass'
 
 class Main extends Component {
   render() {
     return (
-      <main className="pure-u pure-u-md-3-4">
+      <main>
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/dass' component={Dass42}/>
@@ -35,15 +35,16 @@ class Main extends Component {
           <Route path='*' component={NotFound}/>
         </Switch>
         <hr/>
-        <div className="pure-u pure-u-1">
-          <code>
-            { JSON.stringify(this.props, null, 2) }
-          </code>
-          <br/>
-        </div>
+        <section>MAIN</section>
       </main>
     )
   }
 }
 
 export default Main
+// <div className="">
+//   <code>
+//     { JSON.stringify(this.props, null, 2) }
+//   </code>
+//   <br/>
+// </div>

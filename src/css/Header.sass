@@ -1,0 +1,56 @@
+@import "vars"
+
+header
+  background: $pink
+  border-radius: 25px
+  nav
+    background: $white
+    border-radius: 25px
+    margin: 1em
+    ul, ul > ul
+      li
+        color: $black !important
+        a
+          color: $black !important
+          &:hover, .pure-menu-link:hover
+            color: $blue !important
+            border-radius: 25px
+          &:not(.active):visited
+            color: $black !important
+        a.pure-menu-link.active
+          color: $white !important
+          background: $purple !important
+          border-radius: 25px
+      li.nav-heading
+        letter-spacing: 3px
+    ul > ul li
+      padding-left: 2em
+
+// HOLD HILITE ON BOTH HOME AND SEGMENT
+// @import "vars"
+//
+// header
+//   background: $pink
+//   border-radius: 25px
+//   nav
+//     background: $white
+//     border-radius: 25px
+//     margin: 1em
+//     ul, ul > ul
+//       li
+//         color: $black !important
+//         a
+//           color: $black !important
+//           &:hover, .pure-menu-link:hover
+//             color: $blue !important
+//             border-radius: 25px
+//           &:not(.active):visited
+//             color: $black !important
+//         a.pure-menu-link.active
+//           color: $white !important
+//           background: $purple !important
+//           border-radius: 25px
+//       li.nav-heading
+//         letter-spacing: 3px
+//     ul > ul li
+//       padding-left: 2em

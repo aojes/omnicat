@@ -9,10 +9,7 @@ import getWeb3 from './../utils/getWeb3'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import './../css/oswald.css'
-import './../css/open-sans.css'
-import './../css/pure-min.css'
-import './../css/App.css'
+import './../css/App.sass'
 
 // SET STATE CONTRACTS HERE FOR NOW
 
@@ -122,17 +119,23 @@ class App extends Component {
   }
 
   render() {
-    delete keys.ownable.def
-    delete keys.migs.def
-    delete keys.omni.def
-    delete keys.iron.def
-    delete keys.dass.def
-    delete keys.we3
+    // delete keys.ownable.def
+    // delete keys.migs.def
+    // delete keys.omni.def
+    // delete keys.iron.def
+    // delete keys.dass.def
+    // delete keys.we3
     return (
-      <div className="pure-g">
-        <Header />
-        <Main props={ keys  } />
-        <Footer />
+      <div id="app-index" className="pure-g">
+        <div id="header" className="pure-u-1 pure-u-md-7-24">
+          <Header/>
+        </div>
+        <div id="main" className="pure-u-1 pure-u-md-17-24">
+          <Main props={ keys  }/>
+        </div>
+        <div id="footer" className="pure-u-1">
+          <Footer/>
+        </div>
       </div>
     )
   }
