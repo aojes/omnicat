@@ -29,10 +29,10 @@ let getWeb3 = new Promise(function(resolve, reject) {
       //   provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545/m/44'/60'/0'/0/1")
       //
       // } else {
-      // Truffle
+      // Truffle (with Ganache.app running)
+      // }
         provider = new Web3.providers.HttpProvider("http://127.0.0.1:7545")
         web3 = new Web3(provider)
-      // }
 
 
       results = {
