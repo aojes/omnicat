@@ -10,7 +10,7 @@ const Header = () => (
         {/*<button className="primary-button pure-button">Compose</button>*/}
         <div className="pure-menu">
           <ul className="pure-menu-list">
-            <li className="pure-menu-item"><NavLink to='/' className="pure-menu-link">Home</NavLink></li>
+            <li id="home-link" className="pure-menu-item"><NavLink to='/' className="home-link pure-menu-link">Home</NavLink></li>
             <li className="pure-menu-heading nav-heading">CATs</li>
               <ul className="pure-menu-list">
                 <li className="pure-menu-item"><NavLink to='/physical-fitness' className="pure-menu-link">Physical Fitness</NavLink></li>
