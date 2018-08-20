@@ -19,23 +19,23 @@ class Main extends Component {
   render() {
     return (
       <main>
-        <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/dass' component={Dass42}/>
-          <Route exact path='/iron' component={IronLevels}/>
-          <Route exact path='/aesthetics' component={Aesthetics}/>
-          <Route exact path='/about' component={About}/>
-          <Route exact path='/biochemistry' component={Biochemistry}/>
-          <Route exact path='/brain-health' component={BrainHealth}/>
-          <Route exact path='/crowdsale' component={Crowdsale}/>
-          <Route exact path='/hormones' component={Hormones}/>
-          <Route exact path='/physical-fitness' component={PhysicalFitness}/>
-          <Route exact path='/risk-and-prevention' component={RiskAndPrevention}/>
-          <Route exact path='/wellness' component={Wellness}/>
-          <Route path='*' component={NotFound}/>
-        </Switch>
-        <hr/>
-        <section>MAIN</section>
+        <section>
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/dass' component={Dass42}/>
+            <Route exact path='/iron' component={IronLevels}/>
+            <Route exact path='/aesthetics' component={Aesthetics}/>
+            <Route exact path='/about' component={About}/>
+            <Route exact path='/biochemistry' component={Biochemistry}/>
+            <Route exact path='/brain-health' component={BrainHealth}/>
+            <Route exact path='/crowdsale' component={Crowdsale}/>
+            <Route exact path='/hormones' component={Hormones}/>
+            <Route exact path='/physical-fitness' component={PhysicalFitness}/>
+            <Route exact path='/risk-and-prevention' component={RiskAndPrevention}/>
+            <Route exact path='/wellness' component={Wellness}/>
+            <Route path='*' component={NotFound}/>
+          </Switch>
+        </section>
       </main>
     )
   }
