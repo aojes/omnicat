@@ -1,33 +1,60 @@
 import React, { Component } from 'react'
 import './../css/Dass42.sass'
-// <button className="btn btn-default" type="submit">Save</button>
-// <button type="submit">See Results</button>
 
 class Dass42 extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super()
     this.state = {
-      selections: [],
+      selections: {},
       statements: "I found myself getting upset by quite trivial things+I was aware of dryness of my mouth+I couldn't seem to experience any positive feeling at all+I experienced breathing difficulty (eg, excessively rapid breathing, breathlessness in the absence of physical exertion)+I just couldn't seem to get going+I tended to over-react to situations+I had a feeling of shakiness (eg, legs going to give way)+I found it difficult to relax+I found myself in situations that made me so anxious I was most relieved when they ended+I felt that I had nothing to look forward to+I found myself getting upset rather easily+I felt that I was using a lot of nervous energy+I felt sad and depressed+I found myself getting impatient when I was delayed in any way (eg, lifts, traffic lights, being kept waiting)+I had a feeling of faintness+I felt that I had lost interest in just about everything+I felt I wasn't worth much as a person+I felt that I was rather touchy+I perspired noticeably (eg, hands sweaty) in the absence of high temperatures or physical exertion+I felt scared without any good reason+I felt that life wasn't worthwhile+I found it hard to wind down+I had difficulty in swallowing+I couldn't seem to get any enjoyment out of the things I did+I was aware of the action of my heart in the absence of physical exertion (eg, sense of heart rate increase, heart missing a beat)+I felt down-hearted and blue+I found that I was very irritable+I felt I was close to panic+I found it hard to calm down after something upset me+I feared that I would be \"thrown\" by some trivial but unfamiliar task+I was unable to become enthusiastic about anything+I found it difficult to tolerate interruptions to what I was doing+I was in a state of nervous tension+I felt I was pretty worthless+I was intolerant of anything that kept me from getting on with what I was doing+I felt terrified+I could see nothing in the future to be hopeful about+I felt that life was meaningless+I found myself getting agitated+I was worried about situations in which I might panic and make a fool of myself+I experienced trembling (eg, in the hands)+I found it difficult to work up the initiative to do things"
           .split('+')
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.validate     = this.validate.bind(this)
   }
 
+  // handleChange(event, props) {
+  //   const [id, value] = event.target.value.split('-')
+  //   this.setState((prevState, props) => ({
+  //     selections: {
+  //       ...this.state.selections,
+  //       [id]: parseInt(value, 10)
+  //     }
+  //   }), () => console.info(props) )
+  // }
   handleChange(event) {
     const [id, value] = event.target.value.split('-')
     this.setState({
       selections: {
           ...this.state.selections,
-          [id]: parseInt(value, 10),
+          [id]: parseInt(value, 10)
       }
     })
+    // console.info(this.state.selections)
+    console.info(this.state.selections)
+  }
+
+  validate(event) {
+    if (this.state.selections.length !== 42) {
+      return false
+    }
+    for(let i = 0, valid = false; i < this.state.selections.length; i++) {
+      valid = ( this.state.selections[i] === 0 || this.state.selections[i] === 1 ||
+                    this.state.selections[i] === 2 || this.state.selections[i] === 3 )
+      if (!valid) {
+        return false
+      }
+    }
   }
 
   handleSubmit(event) {
     event.preventDefault()
-    alert("Hello")
+    if (this.validate()) {
+      alert("Valid")
+    } else {
+      alert("not yet")
+    }
   }
 
   // getStatement() {
@@ -51,7 +78,8 @@ class Dass42 extends Component {
               (statement, index) => (
                 <div key={`radio-group-${index}`} className="pure-g">
                   <div className="pure-u-1 pure-u-md-21-24 pure-control-group dass-keys">
-                    <h4>{index+1}. &nbsp; &nbsp; {statement}</h4>
+                    <h4 className="form-control">{index+1}. &nbsp; &nbsp; {statement}</h4>
+                    <span className="invalid-feedback"></span>
                     <div className="pure-u-5-24">
                       <label className="pure-radio">
                         <input type="radio" value={`${index}-0`} key={`${index}-0`}
