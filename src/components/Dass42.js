@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+// import axios from 'axios'
+
 import './../css/Dass42.sass'
 
 class Dass42 extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      selections: {},
+      selections: [],
       statements: "I found myself getting upset by quite trivial things+I was aware of dryness of my mouth+I couldn't seem to experience any positive feeling at all+I experienced breathing difficulty (eg, excessively rapid breathing, breathlessness in the absence of physical exertion)+I just couldn't seem to get going+I tended to over-react to situations+I had a feeling of shakiness (eg, legs going to give way)+I found it difficult to relax+I found myself in situations that made me so anxious I was most relieved when they ended+I felt that I had nothing to look forward to+I found myself getting upset rather easily+I felt that I was using a lot of nervous energy+I felt sad and depressed+I found myself getting impatient when I was delayed in any way (eg, lifts, traffic lights, being kept waiting)+I had a feeling of faintness+I felt that I had lost interest in just about everything+I felt I wasn't worth much as a person+I felt that I was rather touchy+I perspired noticeably (eg, hands sweaty) in the absence of high temperatures or physical exertion+I felt scared without any good reason+I felt that life wasn't worthwhile+I found it hard to wind down+I had difficulty in swallowing+I couldn't seem to get any enjoyment out of the things I did+I was aware of the action of my heart in the absence of physical exertion (eg, sense of heart rate increase, heart missing a beat)+I felt down-hearted and blue+I found that I was very irritable+I felt I was close to panic+I found it hard to calm down after something upset me+I feared that I would be \"thrown\" by some trivial but unfamiliar task+I was unable to become enthusiastic about anything+I found it difficult to tolerate interruptions to what I was doing+I was in a state of nervous tension+I felt I was pretty worthless+I was intolerant of anything that kept me from getting on with what I was doing+I felt terrified+I could see nothing in the future to be hopeful about+I felt that life was meaningless+I found myself getting agitated+I was worried about situations in which I might panic and make a fool of myself+I experienced trembling (eg, in the hands)+I found it difficult to work up the initiative to do things"
           .split('+')
     }
@@ -14,16 +16,26 @@ class Dass42 extends Component {
     this.validate     = this.validate.bind(this)
   }
 
-  // handleChange(event, props) {
+  // handleChange = async event => {
+  //   event.preventDefault()
+  //
+  //   // Promise is resolved and value is inside of the response const.
+  //    await axios.get(`http://jsonplaceholder.typicode.com/users/`)
+  //     .then(res => {
+  //         console.log("itworked")
+  //     }).catch(rej => { console.error('itdidnt') })
+  //
   //   const [id, value] = event.target.value.split('-')
-  //   this.setState((prevState, props) => ({
+  //   this.setState({
   //     selections: {
-  //       ...this.state.selections,
-  //       [id]: parseInt(value, 10)
-  //     }
-  //   }), () => console.info(props) )
+  //         ...this.state.selections,
+  //         [id]: parseInt(value, 10)
+  //       }
+  //   })
+  //   console.log(...this.state.selectios)
   // }
   handleChange(event) {
+    // event.preventDefault()
     const [id, value] = event.target.value.split('-')
     this.setState({
       selections: {
@@ -31,8 +43,7 @@ class Dass42 extends Component {
           [id]: parseInt(value, 10)
       }
     })
-    // console.info(this.state.selections)
-    console.info(this.state.selections)
+    console.log(JSON.stringify(this.state.selections))
   }
 
   validate(event) {
