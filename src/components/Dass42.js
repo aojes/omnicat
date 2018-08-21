@@ -66,7 +66,7 @@ class Dass42 extends Component {
   // 3 Applied to me very much, or most of the time
   render() {
     return (
-      <div className="omni-form pure-form">
+      <div className="dass omni-form pure-form">
         <h2>Dass42</h2>
         <hr />
         <h3>
@@ -81,35 +81,35 @@ class Dass42 extends Component {
                     <h4 className="form-control">{index+1}. &nbsp; &nbsp; {statement}</h4>
                     <span className="invalid-feedback"></span>
                     <div className="pure-u-5-24">
-                      <label className="pure-radio">
-                        <input type="radio" value={`${index}-0`} key={`${index}-0`}
+
+                        <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
                           checked={this.state.selections[index] === 0 }
                           onChange={this.handleChange} />
-                        0
+                      <label htmlFor={`${index}-0`} className="pure-radio">  0
                       </label>
                     </div>
                     <div className="pure-u-5-24">
-                      <label className="pure-radio">
-                        <input type="radio" value={`${index}-1`} key={`${index}-1`}
+
+                        <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
                           checked={this.state.selections[index] === 1}
                           onChange={this.handleChange } />
-                        1
+                      <label htmlFor={`${index}-1`} className="pure-radio">  1
                       </label>
                     </div>
                     <div className="pure-u-5-24">
-                      <label className="pure-radio">
-                        <input type="radio" value={`${index}-2`} key={`${index}-2`}
+
+                        <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
                           checked={this.state.selections[index] === 2 }
                           onChange={this.handleChange } />
-                        2
+                      <label htmlFor={`${index}-2`} className="pure-radio">  2
                       </label>
                     </div>
                     <div className="pure-u-5-24">
-                      <label className="pure-radio">
-                        <input type="radio" value={`${index}-3`} key={`${index}-3`}
+
+                        <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
                           checked={this.state.selections[index] === 3 }
                           onChange={this.handleChange } />
-                        3
+                      <label htmlFor={`${index}-3`} className="pure-radio">  3
                       </label>
                     </div>
                   </div>
