@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
 
 import './../css/Dass42.sass'
 
@@ -16,26 +15,7 @@ class Dass42 extends Component {
     this.validate     = this.validate.bind(this)
   }
 
-  // handleChange = async event => {
-  //   event.preventDefault()
-  //
-  //   // Promise is resolved and value is inside of the response const.
-  //    await axios.get(`http://jsonplaceholder.typicode.com/users/`)
-  //     .then(res => {
-  //         console.log("itworked")
-  //     }).catch(rej => { console.error('itdidnt') })
-  //
-  //   const [id, value] = event.target.value.split('-')
-  //   this.setState({
-  //     selections: {
-  //         ...this.state.selections,
-  //         [id]: parseInt(value, 10)
-  //       }
-  //   })
-  //   console.log(...this.state.selectios)
-  // }
   handleChange(event) {
-    // event.preventDefault()
     const [id, value] = event.target.value.split('-')
     this.setState({
       selections: {
@@ -47,30 +27,32 @@ class Dass42 extends Component {
   }
 
   validate(event) {
-    if (this.state.selections.length !== 42) {
+    if (Object.keys(this.state.selections).length !== 42) {
+      console.log('nopp enuf keys')
       return false
     }
-    for(let i = 0, valid = false; i < this.state.selections.length; i++) {
+    for(let i = 0, valid = false; i < Object.keys(this.state.selections).length; i++) {
       valid = ( this.state.selections[i] === 0 || this.state.selections[i] === 1 ||
                     this.state.selections[i] === 2 || this.state.selections[i] === 3 )
       if (!valid) {
+        console.log('nopp values')
         return false
       }
     }
+    return true
   }
 
   handleSubmit(event) {
     event.preventDefault()
     if (this.validate()) {
-      alert("Valid")
+      alert("Valid!")
+      return true
     } else {
       alert("not yet")
+      return false
     }
   }
 
-  // getStatement() {
-  //   this.state.statements.map((str, index) => {})
-  // }
   // 0 Did not apply to me at all
   // 1 Applied to me to some degree, or some of the time
   // 2 Applied to me to a considerable degree, or a good part of time
@@ -81,7 +63,9 @@ class Dass42 extends Component {
         <h2>Dass42</h2>
         <hr />
         <h3>
-          Please read each statement and select a number 0, 1, 2 or 3 which indicates how much the statement applied to you <b>over the past week</b>. There are no right or wrong answers. Do not spend too much time on any statement.
+          Please read each statement and select a number 0, 1, 2 or 3 which indicates
+          how much the statement applied to you <b>over the past week</b>.
+          There are no right or wrong answers. Do not spend too much time on any statement.
         </h3>
         <form onSubmit={this.handleSubmit}>
           {
@@ -90,38 +74,29 @@ class Dass42 extends Component {
                 <div key={`radio-group-${index}`} className="pure-g">
                   <div className="pure-u-1 pure-u-md-21-24 pure-control-group dass-keys">
                     <h4 className="form-control">{index+1}. &nbsp; &nbsp; {statement}</h4>
-                    <span className="invalid-feedback"></span>
                     <div className="pure-u-5-24">
-
-                        <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
-                          checked={this.state.selections[index] === 0 }
-                          onChange={this.handleChange} />
-                      <label htmlFor={`${index}-0`} className="pure-radio">  0
-                      </label>
+                      <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
+                        checked={this.state.selections[index] === 0 }
+                        onChange={this.handleChange} />
+                      <label htmlFor={`${index}-0`} className="pure-radio">  0 </label>
                     </div>
                     <div className="pure-u-5-24">
-
-                        <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
-                          checked={this.state.selections[index] === 1}
-                          onChange={this.handleChange } />
-                      <label htmlFor={`${index}-1`} className="pure-radio">  1
-                      </label>
+                      <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
+                        checked={this.state.selections[index] === 1}
+                        onChange={this.handleChange } />
+                      <label htmlFor={`${index}-1`} className="pure-radio">  1 </label>
                     </div>
                     <div className="pure-u-5-24">
-
-                        <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
-                          checked={this.state.selections[index] === 2 }
-                          onChange={this.handleChange } />
-                      <label htmlFor={`${index}-2`} className="pure-radio">  2
-                      </label>
+                      <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
+                        checked={this.state.selections[index] === 2 }
+                        onChange={this.handleChange } />
+                      <label htmlFor={`${index}-2`} className="pure-radio">  2 </label>
                     </div>
                     <div className="pure-u-5-24">
-
-                        <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
-                          checked={this.state.selections[index] === 3 }
-                          onChange={this.handleChange } />
-                      <label htmlFor={`${index}-3`} className="pure-radio">  3
-                      </label>
+                      <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
+                        checked={this.state.selections[index] === 3 }
+                        onChange={this.handleChange } />
+                      <label htmlFor={`${index}-3`} className="pure-radio">  3 </label>
                     </div>
                   </div>
                 </div>
