@@ -59,7 +59,7 @@ class Dass42 extends Component {
   // 3 Applied to me very much, or most of the time
   render() {
     return (
-      <div className="dass omni-form pure-form">
+      <div className="dass">
         <h2>Dass42</h2>
         <hr />
         <h3>
@@ -67,13 +67,13 @@ class Dass42 extends Component {
           how much the statement applied to you <b>over the past week</b>.
           There are no right or wrong answers. Do not spend too much time on any statement.
         </h3>
-        <form onSubmit={this.handleSubmit}>
+        <form className="pure-form" onSubmit={this.handleSubmit}>
           {
             this.state.statements.map(
               (statement, index) => (
                 <div key={`radio-group-${index}`} className="pure-g">
                   <div className="pure-u-1 pure-u-md-21-24 pure-control-group dass-keys">
-                    <h4 className="form-control">{index+1}. &nbsp; &nbsp; {statement}</h4>
+                    <h4 className="form-control">{index+1}. &nbsp; {statement}</h4>
                     <div className="pure-u-5-24">
                       <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
                         checked={this.state.selections[index] === 0 }

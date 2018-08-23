@@ -1,4 +1,5 @@
 import React from 'react'
+import './../css/IronLevels.sass'
 // import { contract } from "utils/ethereumSetup"
 
 export default class IronOptimiser extends React.Component {
@@ -39,25 +40,29 @@ export default class IronOptimiser extends React.Component {
 
   render() {
     return (
-      <div className="pure-form">
+      <div className="iron">
         <h2>Iron Optimiser</h2>
         <hr />
         <h3> Please provide values for the following instances </h3>
-        <form onSubmit={this.handleSubmit}>
+        <form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit}>
 
-          <input type="number" min="0" max="999" id="serumIron" onChange={this.handleChange} />
-          <label htmlFor="serumIron"> Serum Iron </label>
+          <label htmlFor="serumIron"> Serum Iron
+            <input type="number" min="0" max="999" id="serumIron" onChange={this.handleChange} />
+          </label>
 
-          <input type="number" min="0" max="999" id="transferrinIBC" onChange={this.handleChange} />
-          <label htmlFor="transferrinIBC"> TransferrinIBC </label>
+          <label htmlFor="transferrinIBC"> TransferrinIBC
+            <input type="number" min="0" max="999" id="transferrinIBC" onChange={this.handleChange} />
+          </label>
 
-          <input type="number" min="0" max="999" id="transferrinSaturation" onChange={this.handleChange} />
-          <label htmlFor="transferrinSaturation"> Transferrin Saturation </label>
+          <label htmlFor="transferrinSaturation"> Transferrin Saturation
+            <input type="number" min="0" max="999" id="transferrinSaturation" onChange={this.handleChange} />
+          </label>
 
-          <input type="number" min="0" max="999" id="serumFerritinAssay" onChange={this.handleChange} />
-          <label htmlFor="serumFerritinAssay"> Serum Ferritin Assay </label>
+          <label htmlFor="serumFerritinAssay"> Serum Ferritin Assay
+            <input type="number" min="0" max="999" id="serumFerritinAssay" onChange={this.handleChange} />
+          </label>
 
-          <button type="submit">See Results</button>
+          <button type="submit" className="pure-button pure-button-primary">See Results</button>
         </form>
       </div>
     )
