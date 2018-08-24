@@ -40,7 +40,7 @@ export default class Wellness extends React.Component {
           <p>You may note that some questions are repeated throughout the questionnaire. We would appreciate it if you can answer <b>all</b> questions, as this will ensure the most accurate interpretation of your results. You may however leave a question blank if you are unsure of the answer.</p>
         </div>
       <fieldset>
-        <legend>Questionaire</legend>
+        <legend>Questionnaire</legend>
         <form className="pure-g pure-form wellness-form" onSubmit={this.handleSubmit}>
           <div className="pure-control-group pure-u-md-2-5">
             <label className="pure-control"> Label 1

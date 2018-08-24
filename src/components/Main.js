@@ -22,7 +22,7 @@ class Main extends Component {
         <section>
           <Switch>
             <Route exact path='/' component={Home}/>
-            <Route exact path='/dass' component={Dass42}/>
+            <Route exact path='/dass42' component={Dass42}/>
             <Route exact path='/iron' component={IronLevels}/>
             <Route exact path='/aesthetics' component={Aesthetics}/>
             <Route exact path='/about' component={About}/>

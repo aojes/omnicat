@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import SimpleStorageContract from './../../build/contracts/SimpleStorage.json'
 import MigrationsContract from './../../build/contracts/Migrations.json'
 import OwnableContract from './../../build/contracts/Ownable.json'
 import OmniCatContract from './../../build/contracts/OmniCAT.json'
 import IronLevelsContract from './../../build/contracts/IronLevels.json'
 import Dass42Contract from './../../build/contracts/Dass42.json'
-import getWeb3 from './../utils/getWeb3'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import './../css/App.sass'
+import getWeb3 from './../utils/getWeb3'
+
 let { log, error, info, warn, dir } = console
 // SET STATE CONTRACTS HERE FOR NOW
 
@@ -22,7 +22,7 @@ let keys = { owner: null,
               web3: null
             }
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props)
 
