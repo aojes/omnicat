@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import './../css/Dass42.sass'
-
+let { log, error, info, warn, dir } = console
 class Dass42 extends Component {
   constructor(props) {
     super(props)
@@ -23,19 +23,19 @@ class Dass42 extends Component {
           [id]: parseInt(value, 10)
       }
     })
-    console.log(JSON.stringify(this.state.selections))
+    log(JSON.stringify(this.state.selections))
   }
 
-  validate(event) {
+  validate() {
     if (Object.keys(this.state.selections).length !== 42) {
-      console.log('nopp enuf keys')
+      log('nopp enuf keys')
       return false
     }
     for(let i = 0, valid = false; i < Object.keys(this.state.selections).length; i++) {
       valid = ( this.state.selections[i] === 0 || this.state.selections[i] === 1 ||
                     this.state.selections[i] === 2 || this.state.selections[i] === 3 )
       if (!valid) {
-        console.log('nopp values')
+        log('nopp values')
         return false
       }
     }

@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'development';
-
+let { log, error, info, warn, dir } = console
 // Load environment variables from .env file. Suppress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
@@ -62,7 +62,7 @@ function setupCompiler(host, port, protocol) {
     if (isInteractive) {
       clearConsole();
     }
-    console.log('Compiling...');
+    log('Compiling...');
   });
 
   var isFirstCompile = true;
@@ -82,62 +82,62 @@ function setupCompiler(host, port, protocol) {
     var showInstructions = isSuccessful && (isInteractive || isFirstCompile);
 
     if (isSuccessful) {
-      console.log(chalk.green('Compiled successfully!'));
+      log(chalk.green('Compiled successfully!'));
     }
 
     if (showInstructions) {
-      console.log();
-      console.log('The app is running at:');
-      console.log();
-      console.log('  ' + chalk.cyan(protocol + '://' + host + ':' + port + '/'));
-      console.log();
-      console.log('Note that the development build is not optimized.');
-      console.log('To create a production build, use ' + chalk.cyan(cli + ' run build') + '.');
-      console.log();
+      log();
+      log('The app is running at:');
+      log();
+      log('  ' + chalk.cyan(protocol + '://' + host + ':' + port + '/'));
+      log();
+      log('Note that the development build is not optimized.');
+      log('To create a production build, use ' + chalk.cyan(cli + ' run build') + '.');
+      log();
       isFirstCompile = false;
     }
 
     // If errors exist, only show errors.
     if (messages.errors.length) {
-      console.log(chalk.red('Failed to compile.'));
-      console.log();
+      log(chalk.red('Failed to compile.'));
+      log();
       messages.errors.forEach(message => {
-        console.log(message);
-        console.log();
+        log(message);
+        log();
       });
       return;
     }
 
     // Show warnings if no errors were found.
     if (messages.warnings.length) {
-      console.log(chalk.yellow('Compiled with warnings.'));
-      console.log();
+      log(chalk.yellow('Compiled with warnings.'));
+      log();
       messages.warnings.forEach(message => {
-        console.log(message);
-        console.log();
+        log(message);
+        log();
       });
       // Teach some ESLint tricks.
-      console.log('You may use special comments to disable some warnings.');
-      console.log('Use ' + chalk.yellow('// eslint-disable-next-line') + ' to ignore the next line.');
-      console.log('Use ' + chalk.yellow('/* eslint-disable */') + ' to ignore all warnings in a file.');
+      log('You may use special comments to disable some warnings.');
+      log('Use ' + chalk.yellow('// eslint-disable-next-line') + ' to ignore the next line.');
+      log('Use ' + chalk.yellow('/* eslint-disable */') + ' to ignore all warnings in a file.');
     }
   });
 }
 
 // We need to provide a custom onError function for httpProxyMiddleware.
-// It allows us to log custom error messages on the console.
+// It allows us to log custom error messages on the
 function onProxyError(proxy) {
   return function(err, req, res){
     var host = req.headers && req.headers.host;
-    console.log(
+    log(
       chalk.red('Proxy error:') + ' Could not proxy request ' + chalk.cyan(req.url) +
       ' from ' + chalk.cyan(host) + ' to ' + chalk.cyan(proxy) + '.'
     );
-    console.log(
+    log(
       'See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (' +
       chalk.cyan(err.code) + ').'
     );
-    console.log();
+    log();
 
     // And immediately send the proper error response to the client.
     // Otherwise, the request will eventually timeout with ERR_EMPTY_RESPONSE on the client side.
@@ -171,9 +171,9 @@ function addMiddleware(devServer) {
   }));
   if (proxy) {
     if (typeof proxy !== 'string') {
-      console.log(chalk.red('When specified, "proxy" in package.json must be a string.'));
-      console.log(chalk.red('Instead, the type of "proxy" was "' + typeof proxy + '".'));
-      console.log(chalk.red('Either remove "proxy" from package.json, or make it a string.'));
+      log(chalk.red('When specified, "proxy" in package.json must be a string.'));
+      log(chalk.red('Instead, the type of "proxy" was "' + typeof proxy + '".'));
+      log(chalk.red('Either remove "proxy" from package.json, or make it a string.'));
       process.exit(1);
     }
 
@@ -266,14 +266,14 @@ function runDevServer(host, port, protocol) {
   // Launch WebpackDevServer.
   devServer.listen(port, (err, result) => {
     if (err) {
-      return console.log(err);
+      return log(err);
     }
 
     if (isInteractive) {
       clearConsole();
     }
-    console.log(chalk.cyan('Starting the development server...'));
-    console.log();
+    log(chalk.cyan('Starting the development server...'));
+    log();
 
     if (isInteractive) {
       openBrowser(protocol + '://' + host + ':' + port + '/');
@@ -310,6 +310,6 @@ detect(DEFAULT_PORT).then(port => {
       }
     });
   } else {
-    console.log(chalk.red('Something is already running on port ' + DEFAULT_PORT + '.'));
+    log(chalk.red('Something is already running on port ' + DEFAULT_PORT + '.'));
   }
 });

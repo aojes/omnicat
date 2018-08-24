@@ -10,7 +10,7 @@ import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 import './../css/App.sass'
-
+let { log, error, info, warn, dir } = console
 // SET STATE CONTRACTS HERE FOR NOW
 
 let keys = { owner: null,
@@ -50,7 +50,7 @@ class App extends Component {
       this.instantiateContracts()
     })
     .catch(() => {
-      console.log('Error finding web3.')
+      log('Error finding web3.')
     })
   }
 
@@ -84,35 +84,35 @@ class App extends Component {
       keys.ownable.def.deployed().then( (instance) => {
         keys.ownable.inst = instance
         keys.ownable.addr = keys.ownable.inst.address
-      }).then((result) => {
+      }).then((_result) => {
         return this.setState({ omni: keys.ownable.inst.address })
       })
 
       keys.omni.def.deployed().then((instance) => {
         keys.omni.inst = instance
         keys.omni.addr = keys.omni.inst.address
-      }).then((result) => {
+      }).then((_result) => {
         return this.setState({ omni: keys.omni.inst.address })
       })
 
       keys.dass.def.deployed().then((instance) => {
         keys.dass.inst = instance
         keys.dass.addr = keys.dass.inst.address
-      }).then((result) => {
+      }).then((_result) => {
         return this.setState({ dass: keys.dass.inst.address })
       })
 
       keys.iron.def.deployed().then((instance) => {
         keys.iron.inst = instance
         keys.iron.addr = keys.iron.inst.address
-      }).then((result) => {
+      }).then((_result) => {
         return this.setState({ iron: keys.iron.inst.address })
       })
 
       keys.migs.def.deployed().then((instance) => {
         keys.migs.inst = instance
         keys.migs.addr = keys.migs.inst.address
-      }).then((result) => {
+      }).then((_result) => {
         return this.setState({ migs: keys.migs.inst.address })
       })
     })

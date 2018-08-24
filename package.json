@@ -116,6 +116,18 @@
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "indent": 0,
+      "no-unused-vars": [
+        1,
+        {
+          "vars": "all",
+          "args": "after-used",
+          "argsIgnorePattern": "^_|^next$",
+          "varsIgnorePattern": "^log$|^err|^info$|^warn$|^dir$|^React$"
+        }
+      ]
+    }
   }
 }

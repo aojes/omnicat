@@ -1,7 +1,7 @@
 import React from 'react'
 import './../css/IronLevels.sass'
 // import { contract } from "utils/ethereumSetup"
-
+let { log, error, info, warn, dir } = console
 export default class IronOptimiser extends React.Component {
   constructor(props) {
     super(props)
@@ -16,8 +16,8 @@ export default class IronOptimiser extends React.Component {
     this.validate = this.validate.bind(this)
   }
 
-  validate(event) {
-    console.log(Object.keys(this.state), Object.values(this.state))
+  validate() {
+    log(Object.keys(this.state), Object.values(this.state))
     return ! Object.values(this.state)
                .map((val) => typeof(val) === 'number').includes(false)
   }
@@ -29,10 +29,10 @@ export default class IronOptimiser extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.validate()) {
-      console.log('valid')
+      log('valid')
       return true
     } else {
-      console.log('nopp')
+      log('nopp')
       return false
     }
   }
