@@ -1,6 +1,6 @@
 # OmniCAT
 
-## At Home AI Guided Biometrics Optimization
+## At Home Ai Guided Biometrics Optimization
 
 ## Overview
 

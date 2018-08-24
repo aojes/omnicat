@@ -5,7 +5,7 @@ export default class About extends React.Component {
     return (
       <div className="about">
         <h1>About OmniCAT</h1>
-        <h2>At Home AI Guided Biometrics Optimization</h2>
+        <h2>At Home Ai Guided Biometrics Optimization</h2>
         <hr />
         <h3>Overview</h3>
 
