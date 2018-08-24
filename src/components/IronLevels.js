@@ -9,17 +9,17 @@ export default class IronOptimiser extends React.Component {
       serumIron: null,
       transferrinIBC: null,
       transferrinSaturation: null,
-      SerumFerritinAssay: null
+      serumFerritinAssay: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.validate = this.validate.bind(this)
   }
 
-  validate() {
-    return Object.keys(this.state).map(
-      (el) => typeof(this.state[el]) !== 'number'
-    ).includes(true)
+  validate(event) {
+    console.log(Object.keys(this.state), Object.values(this.state))
+    return ! Object.values(this.state)
+               .map((val) => typeof(val) === 'number').includes(false)
   }
 
   handleChange(event) {
@@ -28,7 +28,6 @@ export default class IronOptimiser extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log(...this.state)
     if (this.validate()) {
       console.log('valid')
       return true
