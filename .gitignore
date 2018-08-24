@@ -2,6 +2,7 @@ build/
 build_webpack/
 node_modules/
 jspm_packages/
+.misc/
 
 # Logs
 logs
