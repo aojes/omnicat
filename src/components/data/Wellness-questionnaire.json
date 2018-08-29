@@ -1,32 +1,32 @@
 {
-   "headings": [
-      "SECTION 1: GASTROINTESTINAL",
-      "SECTION 2: ENDOCRINE",
-      "SECTION 3: IMMUNE",
-      "SECTION 4: CARDIOVASCULAR",
-      "SECTION 5: GLUCOSE TOLERANCE",
-      "SECTION 6: GENITOURINARY SYSTEM AND REPRODUCTIVE HORMONES",
-      "SECTION 7: MUSCULOSKELETAL",
-      "SECTION 8: BRAIN AND NERVOUS SYSTEM",
-      "SECTION 9: RESPIRATORY SYSTEM",
-      "SECTION 10: HAIR, SKIN AND NAILS",
-      "SECTION 11: DETOXIFICATION (capacity)",
-      "SECTION 12: GENERAL HEALTH HISTORY"
-    ],
-   "subheadings": [
-      ["Section 1.1 Stomach: Hypoacidity", "Section 1.2 Stomach: Hyperacidity", "Section 1.3 Small Intestine/Pancreas", "Section 1.4 Colon", "Section 1.5 Liver/Gall Bladder/Pancreas"],
-      ["Section 2.1 Symptoms of underactive thyroid", "Section 2.2 Symptoms of overactive thyroid", "Section 2.3 Stress, fatigue and adrenals"],
-      ["Section 3.1 Low immunity", "Section 3.2 Allergy"],
-      ["Section 4.1 Healthy red blood cell maintenance", "Section 4.2 Healthy blood pressure maintenance", "Section 4.3 Heart", "Section 4.4 Circulatory system"],
-      ["Section 5.1 Symptoms of hypoglycaemia", "Section 5.2 Symptoms of hyperglycaemia"],
-      ["Section 6.1 Kidney/Bladder", "Section 6.2 Prostate/Male hormone balance", "Section 6.3 Symptoms of PMS", "Section 6.4 Menstrual irregularities", "Section 6.5 Symptoms of menopause", "Section 6.6 Other female sexual and hormonal problems"],
-      ["Section 7.1 Bone", "Section 7.2 Muscle", "Section 7.3 Connective tissue"],
-      ["Section 8.1 Neurological", "Section 8.2 Stress history", "Section 8.3 Symptoms of insomnia", "Section 8.4 Normal, healthy learning and concentration"],
-      [],
-      [],
-      [],
-      ["Section 12.1 Patient health history", "Section 12.2 Weight management", "Section 12.3 High risk symptoms", "Section 12.4"]
-    ],
+  "headings": [
+    "SECTION 1: GASTROINTESTINAL",
+    "SECTION 2: ENDOCRINE",
+    "SECTION 3: IMMUNE",
+    "SECTION 4: CARDIOVASCULAR",
+    "SECTION 5: GLUCOSE TOLERANCE",
+    "SECTION 6: GENITOURINARY SYSTEM AND REPRODUCTIVE HORMONES",
+    "SECTION 7: MUSCULOSKELETAL",
+    "SECTION 8: BRAIN AND NERVOUS SYSTEM",
+    "SECTION 9: RESPIRATORY SYSTEM",
+    "SECTION 10: HAIR, SKIN AND NAILS",
+    "SECTION 11: DETOXIFICATION (capacity)",
+    "SECTION 12: GENERAL HEALTH HISTORY"
+  ],
+  "subheadings": [
+    ["Section 1.1 Stomach: Hypoacidity", "Section 1.2 Stomach: Hyperacidity", "Section 1.3 Small Intestine/Pancreas", "Section 1.4 Colon", "Section 1.5 Liver/Gall Bladder/Pancreas"],
+    ["Section 2.1 Symptoms of underactive thyroid", "Section 2.2 Symptoms of overactive thyroid", "Section 2.3 Stress, fatigue and adrenals"],
+    ["Section 3.1 Low immunity", "Section 3.2 Allergy"],
+    ["Section 4.1 Healthy red blood cell maintenance", "Section 4.2 Healthy blood pressure maintenance", "Section 4.3 Heart", "Section 4.4 Circulatory system"],
+    ["Section 5.1 Symptoms of hypoglycaemia", "Section 5.2 Symptoms of hyperglycaemia"],
+    ["Section 6.1 Kidney/Bladder", "Section 6.2 Prostate/Male hormone balance", "Section 6.3 Symptoms of PMS", "Section 6.4 Menstrual irregularities", "Section 6.5 Symptoms of menopause", "Section 6.6 Other female sexual and hormonal problems"],
+    ["Section 7.1 Bone", "Section 7.2 Muscle", "Section 7.3 Connective tissue"],
+    ["Section 8.1 Neurological", "Section 8.2 Stress history", "Section 8.3 Symptoms of insomnia", "Section 8.4 Normal, healthy learning and concentration"],
+    [],
+    [],
+    [],
+    ["Section 12.1 Patient health history", "Section 12.2 Weight management", "Section 12.3 High risk symptoms", "Section 12.4"]
+  ],
   "notices": {
     "headings": {
       "11": "As far as you are aware, do you have a sensitivity or allergy to..."
@@ -49,66 +49,66 @@
     ]
   },
   "statements": {
-      "1": [
-             ["1. Indigestion", "2. Excessive belching, burping", "3. Bloating or fullness commencing during or shortly after a meal", "4. Sensation of food sitting in stomach for a prolonged period after a meal", "5. Bad breath", "6. Loss of appetite, or nausea", "7. History of anaemia"],
-             ["1. Stomach pain, burning or aching, 1-4 hours after eating", "2. Feeling hungry just an hour or two after eating", "3. Indigestion or heartburn from spicy or fatty food, citrus, alcohol, or caffeine", "4. Stomach discomfort or pain in response to strong emotions, thoughts, or smell of food", "5. Heartburn aggravated by lying down or bending forward", "6. Antacids, carbonated beverages, milk, cream or food relieve the above symptoms", "7. Constipation", "8. Difficulty or pain when swallowing", "9. Black tarry stools", "10. Vomiting blood or vomitus has appearance of coffee-grounds"],
-             ["1. Indigestion, bloating and fullness for several hours after eating", "2. Abdominal cramps or aches", "3. Nausea and/or vomiting", "4. Excessive passage of gas", "5. Diarrhoea (loose, watery or frequent bowel movements)", "6. Constipation (requiring straining, or a hard, dry or small stool)", "7. Alternating constipation and diarrhoea", "8. Undigested food in stools", "9. Stools greasy, smelly or stick to toilet bowl", "10. Black tarry stools", "11. Certain foods worsen abdominal symptoms", "12. Dry flaky skin and dry brittle hair", "13. Difficulty gaining weight"],
-             ["1. Lower abdominal pain, cramping and/or spasms", "2. Lower abdominal pain relieved by passing gas or stool", "3. Excessive gas and bloating", "4. Certain foods or stress aggravate lower abdominal pain", "5. Diarrhoea (loose, watery or frequent bowel movements)", "6. Constipation (requiring straining, or a hard, dry or small stool)", "7. Alternating diarrhoea and constipation", "8. Sensation of incomplete emptying of bowel", "9. Extremely narrow stools", "10. Mucus or pus in stool", "11. Red blood with bowel movement", "12. Rectal pain or cramps", "13. Anal itching"],
-             ["1. Upper abdominal pain, or pain under ribs", "2. Bloating or feeling of fullness after eating", "3. Excessive belching or gas", "4. Fatty foods cause indigestion or nausea", "5. Loss of appetite", "6. Nausea and/or vomiting", "7. Unexplained itchy skin", "8. Yellowish discolouration of skin or eyes, or dark coloured urine", "9. Pale clay-coloured stools", "10. Fatigue, malaise or weakness", "11. Fluid retention, oedema", "12. Easy bruising, or bleeding (e.g. of gums)", "13. Loss or thinning of body hair", "14. Red skin, particularly on palms", "15. Dry, flaky skin, or dry hair"]
-            ],
-     "2": [
-            ["1. Fatigue, sluggishness", "2. Feeling cold, or intolerance to cold", "3. Swelling or tightness in front of neck", "4. Constipation (requiring straining, or a hard, dry or small stool)", "5. Dry skin and hair", "6. Puffy face, hands or feet", "7. Gaining of weight, or decreased appetite", "8. Low mood", "9. Difficulty concentrating, poor memory", "10. Low libido", "11. Infertility", "12. Heavier or more frequent menstrual periods"],
-            ["1. Fatigue, notable weakness in limbs", "2. Feeling hot, or intolerance to heat, sweaty", "3. Swelling or tightness in front of neck", "4. Diarrhoea (loose, watery or frequent bowel movements)", "5. Weight loss, possibly with increased appetite", "6. Palpitations", "7. Nervousness, irritability, restlessness", "8. Tremor", "9. Insomnia", "10. Visual disturbance, problems with eyes, or development of staring gaze", "11. Poor libido", "12. Light, infrequent or absent menstrual periods"],
-            ["1. Feeling stressed, nervous, or tense, or unable to relax", "2. Feeling irritable or oversensitive", "3. Feeling overwhelmed, unable to cope", "4. Low mood, mood swings", "5. Difficulty concentrating or thinking clearly, memory problems", "6. Need coffee, tea, tobacco, sugar or chocolate as pick me ups", "7. Fatigued, tire easily", "8. Find it hard to get up and going in the morning", "9. Difficulty staying awake during day", "10. Insomnia", "11. Palpitations or chest pain", "12. Nausea, dizziness", "13. Change in appetite"]
-          ],
-     "3": [
-            ["1. Frequent colds or flu", "2. Frequent infections in other locations (e.g. bladder, skin)", "3. Diarrhoea", "4. Ears continuously drain", "5. Nasal congestion or discharge", "6. Sore throat", "7. Cough with mucus", "8. Cold sores", "9. Inflamed or bleeding gums, or swollen, red lips or tongue", "10. Wounds heal slowly", "11. Excessive loss of hair", "12. Neck, armpit or groin swelling"],
-            ["1. Migraine or non-migraine headache", "2. Sensitivity to light (skin or eyes)", "3. Dark circles under eyes", "4. Swollen eyes, lips, face, or other body parts", "5. Localised or general itching – eyes, ears, throat, nose, skin", "6. Rashes or eczema", "7. Clear watery discharge from nose or eyes", "8. Sneezing, coughing or wheezing", "9. Irritability, fatigue", "10. Certain foods worsen symptoms, or cause palpitations"]
-          ],
-     "4": [
-            ["1. Excessive fatigue", "2. Prolonged recovery after exercise", "3. Low exercise tolerance, shortness of breath with exertion", "4. Dizziness, spots before eyes, or ringing in ears", "5. Difficulty concentrating, poor memory", "6. Yellowing of eyes or skin", "7. Pale eyelids, lips, gums, nails", "8. Red sore tongue", "9. Sores in corner of mouth", "10. Easy bruising or bleeding"],
-            ["1. Headaches", "2. Nosebleeds", "3. Redness in face", "4. Ringing in ears or blurred vision", "5. History of high blood pressure"],
-            ["1. Palpitations", "2. Dizziness", "3. Pain or heaviness in central chest", "4. Heartburn, pain or heavy crushing sensation that moves to neck, jaw, left shoulder or arm", "5. Pallor or sweating with chest discomfort or with unusual indigestion", "6. Fatigue easily, poor exercise tolerance", "7. Shortness of breath with exertion", "8. Shortness of breath lying flat in bed, or sudden shortness of breath in the middle of the night", "9. Wheezing or dry cough", "10. Veins on neck are prominent", "11. Swelling in feet, ankles or legs", "12. History of high blood cholesterol"],
-            ["1. Poor circulation in extremities: coldness, or numbness, tingling or pricking sensations in hands or feet, discolouration in fingers or toes", "2. Ulcers on feet or legs", "3. Muscle pain in calves or thighs with walking", "4. Difficulty concentrating, poor memory", "5. Faints, or falls with unknown cause", "6. Brief periods of difficulty speaking, swallowing, or understanding speech or written word", "7. Brief periods of loss of whole or part of vision, double vision, impaired coordination, or areas of numbness"]
-          ],
-     "5": [
-            ["1. Fatigue and weakness, or feeling shaky", "2. Mild headache", "3. Sweating or palpitations", "4. Feeling light-headed or faint", "5. Difficulty concentrating, poor memory, confusion", "6. Agitation, irritability"],
-            ["1. Excessive, frequent urination", "2. Increased thirst and appetite", "3. Blurred vision, failing eyesight", "4. Fatigue, drowsiness", "5. Profuse sweating", "6. Dizziness when standing from sitting position", "7. Unintentional weight loss, or excessive weight gain", "8. Recurrent or persistent infections (e.g. bladder, skin)", "9. Ulcers or sores on legs or feet", "10. Slow wound healing", "11. Diagnosis of diabetes"]
-          ],
-     "6": [
-            ["1. Fluid retention throughout body", "2. Lower back pain", "3. Excessive urination", "4. Excessive urination during night", "5. Burning with urination", "6. Frequent urination", "7. Urgency of urination", "8. Bloody, cloudy or darkened urine, or strong-smelling urine", "9. Incontinence", "10. Infrequent urination", "11. Grey cast to skin", "12. Severe one-sided lower back or groin pain associated with restlessness", "13. History of kidney stones"],
-            ["1. Difficulty starting urine flow, or poor flow of urine", "2. Sense of bladder fullness, incomplete emptying, or needing to strain with small amounts of urine passed", "3. Dripping after urination", "4. Ejaculation causes pain", "5. Blood in semen", "6. Low libido", "7. Difficulty attaining or maintaining an erection", "8. Premature ejaculation", "9. Low energy level or stamina", "10. Infertility, low sperm count or poor motility", "11. Inflammation of penis, or unusual discharge from penis", "12. Genital or groin rash, irritation, itchiness or infection", "13. Painful testicle(s)", "14. Testicles uneven in size, texture or hardness", "15. Both testicles appear smaller", "16. Loss or thinning of body or facial hair, or slow hair growth", "17. Development of breasts or nipple tenderness"],
-            ["1. Insomnia", "2. Abdominal bloating", "3. Breast tenderness, swelling or lumps", "4. Feeling depressed, teary, or sensitive", "5. Feeling anxious, irritable, or easily angered", "6. Diarrhoea or constipation", "7. Headaches or migraines", "8. Food cravings or binge eating", "9. Back pain", "10. Fluid retention or weight gain", "11. Clumsiness", "12. Feeling aggressive, or feeling suicidal"],
-            ["1. Irregular intervals between periods", "2. Long period cycles, greater than 32 days", "3. Short period cycles, less than 24 days", "4. Vaginal bleeding between periods", "5. Painful periods – lower abdomen or back", "6. Pain with periods is worsening", "7. Painful intercourse during menstruation", "8. Pelvic and/or rectal pressure around menstruation", "9. Constipation or diarrhoea with menstruation", "10. Nausea and/or vomiting with menstruation", "11. Light blood flow", "12. Heavy blood flow, or flooding", "13. Passage of large or profuse blood clots", "14. Prolonged duration of bleeding", "15. Number of days _____________", "16. Absence of menstrual flow for more than 5 months"],
-            ["1. Irregular menstrual cycle and/or changes in menstrual flow (heavier or lighter)", "2. Dry skin, hair or vagina", "3. Low libido", "4. Mood swings, irritability, depression, nervousness, anxiety", "5. Hot flushes", "6. Night sweats", "7. Headaches or dizziness", "8. Painful intercourse", "9. Insomnia", "10. Difficulty concentrating, poor memory, or confusion", "11. Thinning of armpit and pubic hair, or increased hair growth on upper lip", "12. Breasts reducing in size and starting to sag"],
-            ["1. Vaginal dryness or pain", "2. Painful intercourse", "3. Milk production (not nursing), or engorged breasts", "4. Low libido", "5. Excessive libido", "6. Acne and/or oily skin", "7. Excess facial hair", "8. Breasts shrinking", "9. Thinning body hair", "10. Infertility", "11. Miscarriage", "12. Vaginal discharge: excessive, smelly, or coloured", "13. Burning or itching of external genitalia", "14. Vaginal bleeding after intercourse, or between periods", "15. Lower abdominal or back pain", "16. Breast lumps, or a change in breast size or shape", "17. Nipple discharge, or change in appearance of nipple", "18. Swelling under armpit"]
-          ],
-     "7": [
-            ["1. Generalised bone tenderness or achiness", "2. Localised bone pain", "3. Bone deformity or swelling", "4. Shins hurt during or after exercise", "5. Low back or hip pain", "6. Walking difficulties, or a limp", "7. Hearing loss, headaches, ringing in ears", "8. Diagnosis of osteoporosis", "9. Abnormal spinal curvature", "10. Recent loss of height", "11. Bowed legs", "12. Stooped posture or hump at base of neck", "13. Unexplained bone fracture"],
-            ["1. Muscle aches and pains", "2. Muscle stiffness, tension", "3. Specific body points are tender to touch", "4. Headaches", "5. Fatigue", "6. Difficulty sleeping", "7. Muscle cramps or spasms", "8. Muscles twitch or tremble", "9. Restless legs", "10. Upper or lower back pain", "11. Muscle weakness", "12. Muscle loss and wasting"],
-            ["1. Tender, red, swollen, and stiff joints", "2. Dry mouth, dry, painful eyes", "3. Creaking (noisy) joints", "4. Limp", "5. Shooting, aching, tingling pain down back of leg", "6. Joint pain involves more than one joint", "7. Limited range of motion", "8. Difficulty standing up from seated position", "9. Impaired mobility or function", "10. Difficulty chewing or opening mouth", "11. Numbness, prickling, tingling sensation in neck, shoulders or arms", "12. Injure, strain, sprain easily", "13. Red, painless skin lumps on elbows, knees, toes", "14. Knobbly joints", "15. Muscle wasting"]
-          ],
-     "8": [
-            ["1. Headache", "2. Light-headedness, fainting", "3. Ringing or buzzing in ears", "4. Trembling hands", "5. Weakness", "6. Numbness, pins and needles, or tingling in limbs", "7. Unsteady on feet", "8. Easily fatigued", "9. Poor hand coordination", "10. Convulsions, seizures or funny turns", "11. Difficulty concentrating, confused, poor memory", "12. Clumsy", "13. Drooping eyelid(s)", "14. Impaired hearing, eyesight, sense of touch, smell or taste", "15. Slow or slurred speech", "16. Incontinence"],
-            ["1. Divorce", "2. Separation from partner", "3. Marriage", "4. Death of close family member or friend", "5. Loss of work, retirement or starting a new job", "6. Bankruptcy, or a major change in finances", "7. Moving house", "8. Major personal injury or illness", "9. Violations of the law"],
-            ["1. Have an overactive mind, or worry excessively", "2. Live or work in a stressful environment", "3. Suffer from constant pain or discomfort", "4. Eat chocolate or drink caffeine in the evenings", "5. Have difficulty falling asleep or staying asleep", "6. Eat after 8pm"],
-            ["1. Find if difficult to keep still or are fidgety", "2. Have a short attention span", "3. Find it difficult to relax", "4. Experience mental confusion or sluggishness", "5. Have or had learning difficulties", "6. Have food allergies"]
-          ],
-     "9": [
-            ["1. Shortness of breath, increased effort to breathe", "2. Wheezing", "3. Shallow breathing", "4. Cough, dry or moist", "5. Thick yellow, greenish or brown sputum", "6. Blood in sputum", "7. Frothy sputum", "8. Noisy rattling sounds when breathing", "9. Pain in chest", "10. Bad breath or sputum smells offensive", "11. Loud snoring", "12. Colds always \"go to the chest\"", "13. Bluish nails or lips"]
-          ],
-     "10": [
-            ["1. Acne", "2. Psoriasis", "3. Eczema/dermatitis", "4. Warts", "5. Tinea", "6. Dandruff", "7. Rashes", "8. Areas of increased pigmentation", "9. Areas of decreased pigmentation", "10. Unusual or changing moles", "11. Areas of unexplained redness", "12. Undiagnosed skin lumps/bumps", "13. Discoloured nails", "14. Pitted nails", "15. Weak/brittle nails", "16. Thickened nails"]
-          ],
-     "11": [
-             ["1. The preservatives sodium benzoate or potassium benzoate", "2. Tyramine (red wine, cheese, bananas, chocolate)", "3. Caffeine", "4. Chemicals such as fragrances, exhaust fumes, cigarette smoke or other strong odours", "5. Even small amounts of alcohol", "6. Do you have a history of exposure to chemicals such as herbicides, insecticides, pesticides or organic solvents?", "7. Alcohol", "8. Coffee or other caffeinated drinks", "9. Smoking (number per day)?", "10. Type ___________________________", "11. If not currently smoking, have you quit smoking in the last year?", "12. Recreational drugs?", "13. Type ___________________________", "14. What is your blood type? ___________________________________"]
-            ],
-     "12": [
-             ["1. Frequency of exercise (days per week)", "2. Vegetarian or vegan", "3. Age >50 years", "4. Planning to have a baby in the next 3-6 months", "5. Pregnant or breastfeeding"],
-             ["1. Do you diet often?", "2. Are you unhappy with your weight?"],
-             ["1. Unexplained weight loss", "2. Night sweats", "3. Fevers", "4. Lumps, e.g. breast, armpit, skin", "5. Reduced appetite", "6. Severe fatigue"],
-             ["1. Asthma medications/inhalers", "2. Anti-diabetics/insulin", "3. Steroids e.g. cortisone", "4. Anti-inflammatories/aspirin", "5. Paracetamol", "6. High blood pressure", "7. Heart", "8. Thyroid", "9. Antihistamines", "10. Antiulcer medications, antacids", "11. Antibiotics/antifungals", "12. Antidepressants", "13. Antipsychotics", "14. Relaxants/sleeping tablets", "15. Hormones/oral contraceptives", "16. Chemotherapy", "17. Any other medications?", "18. Type ___________________________"]
-           ]
+    "1": [
+      ["1. Indigestion", "2. Excessive belching, burping", "3. Bloating or fullness commencing during or shortly after a meal", "4. Sensation of food sitting in stomach for a prolonged period after a meal", "5. Bad breath", "6. Loss of appetite, or nausea", "7. History of anaemia"],
+      ["1. Stomach pain, burning or aching, 1-4 hours after eating", "2. Feeling hungry just an hour or two after eating", "3. Indigestion or heartburn from spicy or fatty food, citrus, alcohol, or caffeine", "4. Stomach discomfort or pain in response to strong emotions, thoughts, or smell of food", "5. Heartburn aggravated by lying down or bending forward", "6. Antacids, carbonated beverages, milk, cream or food relieve the above symptoms", "7. Constipation", "8. Difficulty or pain when swallowing", "9. Black tarry stools", "10. Vomiting blood or vomitus has appearance of coffee-grounds"],
+      ["1. Indigestion, bloating and fullness for several hours after eating", "2. Abdominal cramps or aches", "3. Nausea and/or vomiting", "4. Excessive passage of gas", "5. Diarrhoea (loose, watery or frequent bowel movements)", "6. Constipation (requiring straining, or a hard, dry or small stool)", "7. Alternating constipation and diarrhoea", "8. Undigested food in stools", "9. Stools greasy, smelly or stick to toilet bowl", "10. Black tarry stools", "11. Certain foods worsen abdominal symptoms", "12. Dry flaky skin and dry brittle hair", "13. Difficulty gaining weight"],
+      ["1. Lower abdominal pain, cramping and/or spasms", "2. Lower abdominal pain relieved by passing gas or stool", "3. Excessive gas and bloating", "4. Certain foods or stress aggravate lower abdominal pain", "5. Diarrhoea (loose, watery or frequent bowel movements)", "6. Constipation (requiring straining, or a hard, dry or small stool)", "7. Alternating diarrhoea and constipation", "8. Sensation of incomplete emptying of bowel", "9. Extremely narrow stools", "10. Mucus or pus in stool", "11. Red blood with bowel movement", "12. Rectal pain or cramps", "13. Anal itching"],
+      ["1. Upper abdominal pain, or pain under ribs", "2. Bloating or feeling of fullness after eating", "3. Excessive belching or gas", "4. Fatty foods cause indigestion or nausea", "5. Loss of appetite", "6. Nausea and/or vomiting", "7. Unexplained itchy skin", "8. Yellowish discolouration of skin or eyes, or dark coloured urine", "9. Pale clay-coloured stools", "10. Fatigue, malaise or weakness", "11. Fluid retention, oedema", "12. Easy bruising, or bleeding (e.g. of gums)", "13. Loss or thinning of body hair", "14. Red skin, particularly on palms", "15. Dry, flaky skin, or dry hair"]
+    ],
+    "2": [
+      ["1. Fatigue, sluggishness", "2. Feeling cold, or intolerance to cold", "3. Swelling or tightness in front of neck", "4. Constipation (requiring straining, or a hard, dry or small stool)", "5. Dry skin and hair", "6. Puffy face, hands or feet", "7. Gaining of weight, or decreased appetite", "8. Low mood", "9. Difficulty concentrating, poor memory", "10. Low libido", "11. Infertility", "12. Heavier or more frequent menstrual periods"],
+      ["1. Fatigue, notable weakness in limbs", "2. Feeling hot, or intolerance to heat, sweaty", "3. Swelling or tightness in front of neck", "4. Diarrhoea (loose, watery or frequent bowel movements)", "5. Weight loss, possibly with increased appetite", "6. Palpitations", "7. Nervousness, irritability, restlessness", "8. Tremor", "9. Insomnia", "10. Visual disturbance, problems with eyes, or development of staring gaze", "11. Poor libido", "12. Light, infrequent or absent menstrual periods"],
+      ["1. Feeling stressed, nervous, or tense, or unable to relax", "2. Feeling irritable or oversensitive", "3. Feeling overwhelmed, unable to cope", "4. Low mood, mood swings", "5. Difficulty concentrating or thinking clearly, memory problems", "6. Need coffee, tea, tobacco, sugar or chocolate as pick me ups", "7. Fatigued, tire easily", "8. Find it hard to get up and going in the morning", "9. Difficulty staying awake during day", "10. Insomnia", "11. Palpitations or chest pain", "12. Nausea, dizziness", "13. Change in appetite"]
+    ],
+    "3": [
+      ["1. Frequent colds or flu", "2. Frequent infections in other locations (e.g. bladder, skin)", "3. Diarrhoea", "4. Ears continuously drain", "5. Nasal congestion or discharge", "6. Sore throat", "7. Cough with mucus", "8. Cold sores", "9. Inflamed or bleeding gums, or swollen, red lips or tongue", "10. Wounds heal slowly", "11. Excessive loss of hair", "12. Neck, armpit or groin swelling"],
+      ["1. Migraine or non-migraine headache", "2. Sensitivity to light (skin or eyes)", "3. Dark circles under eyes", "4. Swollen eyes, lips, face, or other body parts", "5. Localised or general itching – eyes, ears, throat, nose, skin", "6. Rashes or eczema", "7. Clear watery discharge from nose or eyes", "8. Sneezing, coughing or wheezing", "9. Irritability, fatigue", "10. Certain foods worsen symptoms, or cause palpitations"]
+    ],
+    "4": [
+      ["1. Excessive fatigue", "2. Prolonged recovery after exercise", "3. Low exercise tolerance, shortness of breath with exertion", "4. Dizziness, spots before eyes, or ringing in ears", "5. Difficulty concentrating, poor memory", "6. Yellowing of eyes or skin", "7. Pale eyelids, lips, gums, nails", "8. Red sore tongue", "9. Sores in corner of mouth", "10. Easy bruising or bleeding"],
+      ["1. Headaches", "2. Nosebleeds", "3. Redness in face", "4. Ringing in ears or blurred vision", "5. History of high blood pressure"],
+      ["1. Palpitations", "2. Dizziness", "3. Pain or heaviness in central chest", "4. Heartburn, pain or heavy crushing sensation that moves to neck, jaw, left shoulder or arm", "5. Pallor or sweating with chest discomfort or with unusual indigestion", "6. Fatigue easily, poor exercise tolerance", "7. Shortness of breath with exertion", "8. Shortness of breath lying flat in bed, or sudden shortness of breath in the middle of the night", "9. Wheezing or dry cough", "10. Veins on neck are prominent", "11. Swelling in feet, ankles or legs", "12. History of high blood cholesterol"],
+      ["1. Poor circulation in extremities: coldness, or numbness, tingling or pricking sensations in hands or feet, discolouration in fingers or toes", "2. Ulcers on feet or legs", "3. Muscle pain in calves or thighs with walking", "4. Difficulty concentrating, poor memory", "5. Faints, or falls with unknown cause", "6. Brief periods of difficulty speaking, swallowing, or understanding speech or written word", "7. Brief periods of loss of whole or part of vision, double vision, impaired coordination, or areas of numbness"]
+    ],
+    "5": [
+      ["1. Fatigue and weakness, or feeling shaky", "2. Mild headache", "3. Sweating or palpitations", "4. Feeling light-headed or faint", "5. Difficulty concentrating, poor memory, confusion", "6. Agitation, irritability"],
+      ["1. Excessive, frequent urination", "2. Increased thirst and appetite", "3. Blurred vision, failing eyesight", "4. Fatigue, drowsiness", "5. Profuse sweating", "6. Dizziness when standing from sitting position", "7. Unintentional weight loss, or excessive weight gain", "8. Recurrent or persistent infections (e.g. bladder, skin)", "9. Ulcers or sores on legs or feet", "10. Slow wound healing", "11. Diagnosis of diabetes"]
+    ],
+    "6": [
+      ["1. Fluid retention throughout body", "2. Lower back pain", "3. Excessive urination", "4. Excessive urination during night", "5. Burning with urination", "6. Frequent urination", "7. Urgency of urination", "8. Bloody, cloudy or darkened urine, or strong-smelling urine", "9. Incontinence", "10. Infrequent urination", "11. Grey cast to skin", "12. Severe one-sided lower back or groin pain associated with restlessness", "13. History of kidney stones"],
+      ["1. Difficulty starting urine flow, or poor flow of urine", "2. Sense of bladder fullness, incomplete emptying, or needing to strain with small amounts of urine passed", "3. Dripping after urination", "4. Ejaculation causes pain", "5. Blood in semen", "6. Low libido", "7. Difficulty attaining or maintaining an erection", "8. Premature ejaculation", "9. Low energy level or stamina", "10. Infertility, low sperm count or poor motility", "11. Inflammation of penis, or unusual discharge from penis", "12. Genital or groin rash, irritation, itchiness or infection", "13. Painful testicle(s)", "14. Testicles uneven in size, texture or hardness", "15. Both testicles appear smaller", "16. Loss or thinning of body or facial hair, or slow hair growth", "17. Development of breasts or nipple tenderness"],
+      ["1. Insomnia", "2. Abdominal bloating", "3. Breast tenderness, swelling or lumps", "4. Feeling depressed, teary, or sensitive", "5. Feeling anxious, irritable, or easily angered", "6. Diarrhoea or constipation", "7. Headaches or migraines", "8. Food cravings or binge eating", "9. Back pain", "10. Fluid retention or weight gain", "11. Clumsiness", "12. Feeling aggressive, or feeling suicidal"],
+      ["1. Irregular intervals between periods", "2. Long period cycles, greater than 32 days", "3. Short period cycles, less than 24 days", "4. Vaginal bleeding between periods", "5. Painful periods – lower abdomen or back", "6. Pain with periods is worsening", "7. Painful intercourse during menstruation", "8. Pelvic and/or rectal pressure around menstruation", "9. Constipation or diarrhoea with menstruation", "10. Nausea and/or vomiting with menstruation", "11. Light blood flow", "12. Heavy blood flow, or flooding", "13. Passage of large or profuse blood clots", "14. Prolonged duration of bleeding", "15. Number of days _____________", "16. Absence of menstrual flow for more than 5 months"],
+      ["1. Irregular menstrual cycle and/or changes in menstrual flow (heavier or lighter)", "2. Dry skin, hair or vagina", "3. Low libido", "4. Mood swings, irritability, depression, nervousness, anxiety", "5. Hot flushes", "6. Night sweats", "7. Headaches or dizziness", "8. Painful intercourse", "9. Insomnia", "10. Difficulty concentrating, poor memory, or confusion", "11. Thinning of armpit and pubic hair, or increased hair growth on upper lip", "12. Breasts reducing in size and starting to sag"],
+      ["1. Vaginal dryness or pain", "2. Painful intercourse", "3. Milk production (not nursing), or engorged breasts", "4. Low libido", "5. Excessive libido", "6. Acne and/or oily skin", "7. Excess facial hair", "8. Breasts shrinking", "9. Thinning body hair", "10. Infertility", "11. Miscarriage", "12. Vaginal discharge: excessive, smelly, or coloured", "13. Burning or itching of external genitalia", "14. Vaginal bleeding after intercourse, or between periods", "15. Lower abdominal or back pain", "16. Breast lumps, or a change in breast size or shape", "17. Nipple discharge, or change in appearance of nipple", "18. Swelling under armpit"]
+    ],
+    "7": [
+      ["1. Generalised bone tenderness or achiness", "2. Localised bone pain", "3. Bone deformity or swelling", "4. Shins hurt during or after exercise", "5. Low back or hip pain", "6. Walking difficulties, or a limp", "7. Hearing loss, headaches, ringing in ears", "8. Diagnosis of osteoporosis", "9. Abnormal spinal curvature", "10. Recent loss of height", "11. Bowed legs", "12. Stooped posture or hump at base of neck", "13. Unexplained bone fracture"],
+      ["1. Muscle aches and pains", "2. Muscle stiffness, tension", "3. Specific body points are tender to touch", "4. Headaches", "5. Fatigue", "6. Difficulty sleeping", "7. Muscle cramps or spasms", "8. Muscles twitch or tremble", "9. Restless legs", "10. Upper or lower back pain", "11. Muscle weakness", "12. Muscle loss and wasting"],
+      ["1. Tender, red, swollen, and stiff joints", "2. Dry mouth, dry, painful eyes", "3. Creaking (noisy) joints", "4. Limp", "5. Shooting, aching, tingling pain down back of leg", "6. Joint pain involves more than one joint", "7. Limited range of motion", "8. Difficulty standing up from seated position", "9. Impaired mobility or function", "10. Difficulty chewing or opening mouth", "11. Numbness, prickling, tingling sensation in neck, shoulders or arms", "12. Injure, strain, sprain easily", "13. Red, painless skin lumps on elbows, knees, toes", "14. Knobbly joints", "15. Muscle wasting"]
+    ],
+    "8": [
+      ["1. Headache", "2. Light-headedness, fainting", "3. Ringing or buzzing in ears", "4. Trembling hands", "5. Weakness", "6. Numbness, pins and needles, or tingling in limbs", "7. Unsteady on feet", "8. Easily fatigued", "9. Poor hand coordination", "10. Convulsions, seizures or funny turns", "11. Difficulty concentrating, confused, poor memory", "12. Clumsy", "13. Drooping eyelid(s)", "14. Impaired hearing, eyesight, sense of touch, smell or taste", "15. Slow or slurred speech", "16. Incontinence"],
+      ["1. Divorce", "2. Separation from partner", "3. Marriage", "4. Death of close family member or friend", "5. Loss of work, retirement or starting a new job", "6. Bankruptcy, or a major change in finances", "7. Moving house", "8. Major personal injury or illness", "9. Violations of the law"],
+      ["1. Have an overactive mind, or worry excessively", "2. Live or work in a stressful environment", "3. Suffer from constant pain or discomfort", "4. Eat chocolate or drink caffeine in the evenings", "5. Have difficulty falling asleep or staying asleep", "6. Eat after 8pm"],
+      ["1. Find if difficult to keep still or are fidgety", "2. Have a short attention span", "3. Find it difficult to relax", "4. Experience mental confusion or sluggishness", "5. Have or had learning difficulties", "6. Have food allergies"]
+    ],
+    "9": [
+      ["1. Shortness of breath, increased effort to breathe", "2. Wheezing", "3. Shallow breathing", "4. Cough, dry or moist", "5. Thick yellow, greenish or brown sputum", "6. Blood in sputum", "7. Frothy sputum", "8. Noisy rattling sounds when breathing", "9. Pain in chest", "10. Bad breath or sputum smells offensive", "11. Loud snoring", "12. Colds always \"go to the chest\"", "13. Bluish nails or lips"]
+    ],
+    "10": [
+      ["1. Acne", "2. Psoriasis", "3. Eczema/dermatitis", "4. Warts", "5. Tinea", "6. Dandruff", "7. Rashes", "8. Areas of increased pigmentation", "9. Areas of decreased pigmentation", "10. Unusual or changing moles", "11. Areas of unexplained redness", "12. Undiagnosed skin lumps/bumps", "13. Discoloured nails", "14. Pitted nails", "15. Weak/brittle nails", "16. Thickened nails"]
+    ],
+    "11": [
+      ["1. The preservatives sodium benzoate or potassium benzoate", "2. Tyramine (red wine, cheese, bananas, chocolate)", "3. Caffeine", "4. Chemicals such as fragrances, exhaust fumes, cigarette smoke or other strong odours", "5. Even small amounts of alcohol", "6. Do you have a history of exposure to chemicals such as herbicides, insecticides, pesticides or organic solvents?", "7. Alcohol", "8. Coffee or other caffeinated drinks", "9. Smoking (number per day)?", "10. Type ___________________________", "11. If not currently smoking, have you quit smoking in the last year?", "12. Recreational drugs?", "13. Type ___________________________", "14. What is your blood type? ___________________________________"]
+    ],
+    "12": [
+      ["1. Frequency of exercise (days per week)", "2. Vegetarian or vegan", "3. Age >50 years", "4. Planning to have a baby in the next 3-6 months", "5. Pregnant or breastfeeding"],
+      ["1. Do you diet often?", "2. Are you unhappy with your weight?"],
+      ["1. Unexplained weight loss", "2. Night sweats", "3. Fevers", "4. Lumps, e.g. breast, armpit, skin", "5. Reduced appetite", "6. Severe fatigue"],
+      ["1. Asthma medications/inhalers", "2. Anti-diabetics/insulin", "3. Steroids e.g. cortisone", "4. Anti-inflammatories/aspirin", "5. Paracetamol", "6. High blood pressure", "7. Heart", "8. Thyroid", "9. Antihistamines", "10. Antiulcer medications, antacids", "11. Antibiotics/antifungals", "12. Antidepressants", "13. Antipsychotics", "14. Relaxants/sleeping tablets", "15. Hormones/oral contraceptives", "16. Chemotherapy", "17. Any other medications?", "18. Type ___________________________"]
+    ]
   },
   "questions": [
     "List the nutritional or herbal supplements you are currently taking",
