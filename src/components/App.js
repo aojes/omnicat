@@ -79,43 +79,44 @@ class App extends React.Component {
     keys.migs.def.setProvider(keys.web3.currentProvider)
 
     // Get accounts.
-    keys.web3.eth.getAccounts((error, accounts) => {
-      keys.owner = accounts[0]
-      keys.ownable.def.deployed().then( (instance) => {
-        keys.ownable.inst = instance
-        keys.ownable.addr = keys.ownable.inst.address
-      }).then((_result) => {
-        return this.setState({ omni: keys.ownable.inst.address })
-      })
-
-      keys.omni.def.deployed().then((instance) => {
-        keys.omni.inst = instance
-        keys.omni.addr = keys.omni.inst.address
-      }).then((_result) => {
-        return this.setState({ omni: keys.omni.inst.address })
-      })
-
-      keys.dass.def.deployed().then((instance) => {
-        keys.dass.inst = instance
-        keys.dass.addr = keys.dass.inst.address
-      }).then((_result) => {
-        return this.setState({ dass: keys.dass.inst.address })
-      })
-
-      keys.iron.def.deployed().then((instance) => {
-        keys.iron.inst = instance
-        keys.iron.addr = keys.iron.inst.address
-      }).then((_result) => {
-        return this.setState({ iron: keys.iron.inst.address })
-      })
-
-      keys.migs.def.deployed().then((instance) => {
-        keys.migs.inst = instance
-        keys.migs.addr = keys.migs.inst.address
-      }).then((_result) => {
-        return this.setState({ migs: keys.migs.inst.address })
-      })
-    })
+    // keys.web3.eth.getAccounts((error, accounts) => {
+    //   keys.owner = accounts[0]
+    //
+    //   keys.ownable.def.deployed().then( (instance) => {
+    //     keys.ownable.inst = instance
+    //     keys.ownable.addr = keys.ownable.inst.address
+    //   }).then((_result) => {
+    //     return this.setState({ omni: keys.ownable.inst.address })
+    //   })
+    //
+    //   keys.omni.def.deployed().then((instance) => {
+    //     keys.omni.inst = instance
+    //     keys.omni.addr = keys.omni.inst.address
+    //   }).then((_result) => {
+    //     return this.setState({ omni: keys.omni.inst.address })
+    //   })
+    //
+    //   keys.dass.def.deployed().then((instance) => {
+    //     keys.dass.inst = instance
+    //     keys.dass.addr = keys.dass.inst.address
+    //   }).then((_result) => {
+    //     return this.setState({ dass: keys.dass.inst.address })
+    //   })
+    //
+    //   keys.iron.def.deployed().then((instance) => {
+    //     keys.iron.inst = instance
+    //     keys.iron.addr = keys.iron.inst.address
+    //   }).then((_result) => {
+    //     return this.setState({ iron: keys.iron.inst.address })
+    //   })
+    //
+    //   keys.migs.def.deployed().then((instance) => {
+    //     keys.migs.inst = instance
+    //     keys.migs.addr = keys.migs.inst.address
+    //   }).then((_result) => {
+    //     return this.setState({ migs: keys.migs.inst.address })
+    //   })
+    // })
   }
 
   render() {

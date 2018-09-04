@@ -6,11 +6,12 @@ module.exports = {
     dev: {
       host: 'localhost',
       port: 9545,
-      network_id: '*',
-      provider: function() {
-        return new HDWalletProvider(
-          env.TRUFFLE_DEV_MNEMONIC, 'http://127.0.0.1:9545/')
-      }
+      network_id: '*'
+      // ,
+      // provider: function() {
+      //   return new HDWalletProvider(
+      //     env.TRUFFLE_DEV_MNEMONIC, 'http://127.0.0.1:9545/')
+      // }
     }
     ,gcli: { // tab1: ganache-cli  & tab2: truffle console --network gcli
       host: 'localhost',
