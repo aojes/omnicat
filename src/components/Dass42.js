@@ -7,11 +7,13 @@ class Dass42 extends Component {
     super(props)
     this.state = {
       selections: [],
-      statements: data
+      statements: data,
+      results: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.validate     = this.validate.bind(this)
+    this.tallyResults = this.tallyResults.bind(this)
   }
 
   handleChange(event) {
@@ -44,12 +46,33 @@ class Dass42 extends Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.validate()) {
-      alert("Valid!")
+      log('valid')
+      this.tallyResults()
       return true
     } else {
-      alert("not yet")
+      alert("please answer all 42 questions")
       return false
     }
+  }
+
+  tallyResults() {
+    let response = this.state.selections, d = 0, a = 0, s = 0
+    // Depression # 3, 5, 10, 13, 16, 17, 21, 24, 26, 31, 34, 37, 38, 42
+    d = response[2] + response[4] + response[9] + response[12] +
+        response[15] + response[16] + response[20] + response[23] +
+        response[25] + response[30] + response[36] + response[37] +
+        response[41]
+    // Anxiety # 2, 4, 7, 9, 15, 19, 20, 23, 25, 28, 30, 36, 40, 41
+    a = response[1] + response[3] + response[6] + response[8] + response[14] +
+        response[18] + response[19] + response[22] + response[24] + response[27] +
+        response[29] + response[35] + response[39] + response[40]
+    // Stress # 1, 6, 8, 11, 12, 14, 18, 22, 27, 29, 32, 33, 35, 39
+    s = response[0] + response[5] + response[7] + response[10] + response[11] +
+        response[13] + response[17] + response[21] + response[26] + response[28] +
+        response[31] + response[32] + response[34] + response[38]
+    this.setState({
+      results: {depression: d, anxiety: a, stress: s}
+    })
   }
 
   // 0 Did not apply to me at all
@@ -106,6 +129,16 @@ class Dass42 extends Component {
             See Results
           </button>
         </form>
+        { this.state.results &&
+          <div className="results">
+            <span id="scores">
+              <span id="depression">{this.state.results.depression}</span>
+              <span id="anxiety">{this.state.results.anxiety}</span>
+              <span id="stress">{this.state.results.stress}</span>
+            </span>
+            <img alt="dass score table" src="dass-score-table.png" />
+          </div>
+        }
       </div>
     )
   }
