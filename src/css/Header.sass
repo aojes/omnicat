@@ -1,13 +1,9 @@
 @import "vars"
 
 header
-  font-variant: small-caps !important
-  letter-spacing: 1px !important
-  font-weight: 300 !important
-  font-size: 12pt !important
-  background: $pink !important
-  border-radius: 25px !important
-  margin: 1em 2em !important
+  background: $pink
+  border-radius: 25px
+  margin: 1em 2em
   &:first-child
     padding: 1em
   nav
@@ -16,36 +12,14 @@ header
     ul.menu-order-1
       margin: 0
     ul.menu-order-2
-      margin: 0 1em 0 0
+      margin: 0 1em
     ul.menu-order-3
-      margin: 0 1.4em 0
-    li#home-link a.home-link
-      color: $white !important
+      margin: 0 1.6em
+    ul li a
       font-variant: small-caps !important
       letter-spacing: 1px !important
-      font-weight: 300 !important
-      font-size: 12pt !important
-      background: $blue !important
-      border-radius: 25px !important
-    ul li a, ul > ul li a
-      font-variant: small-caps !important
-      letter-spacing: 1px !important
-      font-weight: 300 !important
       font-size: 12pt !important
       border-radius: 25px !important
-      &:hover, .pure-menu-link:hover
-        color: $blue !important
-      &:not(.active):visited
-        color: $black !important
-    ul li, ul > ul li
-      a.pure-menu-link
-        font-variant: small-caps !important
-        letter-spacing: 1px !important
-        font-weight: 300 !important
-        font-size: 12pt !important
-        &.home-link.active
-          border-radius: 25px
-          background: $purple !important
-        &.active
-          color: $white !important
-          background: $blue !important
+      &.active, &:hover
+        color: $white
+        background: $blue !important
