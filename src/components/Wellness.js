@@ -32,7 +32,7 @@ export default class Wellness extends React.Component {
   }
 // pure-form-[aligned, stacked] pure-group pure-control pure-control-group span.pure-form-message-inline
   render() {
-
+    const {headings, subheadings, statements} = this.state.data
     return (
       <div className="wellness">
         <h2>Wellness &amp; Health Appraisal</h2>
@@ -43,26 +43,44 @@ export default class Wellness extends React.Component {
           <p>You may note that some questions are repeated throughout the questionnaire. We would appreciate it if you can answer <b>all</b> questions, as this will ensure the most accurate interpretation of your results. You may however leave a question blank if you are unsure of the answer.</p>
         </div>
         <fieldset>
-          <legend>questionnaire</legend>
-          { this.state.data.headings.map( (heading, i) =>
-                <h3 key={i}>{heading}</h3> &&
-                  ((this.state.data.subheadings[i].length === 0 &&
-                    this.state.data.statements[i].map((statement, _j) =>
-                      <p key={i+_j}>{statement}</p>)) ||
-                    (this.state.data.subheadings[i].map((subheading, j) =>
-                      <h4 key={i + j}>{subheading}</h4> &&
-                      this.state.data.statements[i][j].map((statement, k) =>
-                        <p key={i+j+k}>{statement}</p>))
-                    )
-                  )
-              )
-            }
+          <legend>Questionnaire</legend>
+          { headings.map( (heading, i) =>
+                [ <h3 key={i}>{heading}</h3>,
+                  subheadings[i].length === 0 ?
+                    statements[i][0].map( (statement, j) =>
+                      <p key={j}>{statement}</p>,
+                    ) :
+                  subheadings[i].map( (subheading, j) => (
+                    [<h4 key={j}>{subheading}</h4>,
+                    statements[i][j].map( (statement, k) =>
+                      <p key={k} style={{color: 'green'}}>{statement}</p> )
+                    ]
+                  ))
+                ])
+          }
         </fieldset>
-
       </div>
     )
   }
 }
+
+
+// <fieldset>
+// <legend>questionnaire</legend>
+// { this.state.data.headings.map( (heading, i) =>
+//     <h3 key={i}>{heading}</h3> &&
+//       ((this.state.data.subheadings[i].length === 0 &&
+//         this.state.data.statements[i].map((statement, _j) =>
+//           <p key={i+_j}>{statement}</p>)) ||
+//         (this.state.data.subheadings[i].map((subheading, j) =>
+//           <h4 key={i + j}>{subheading}</h4> &&
+//           this.state.data.statements[i][j].map((statement, k) =>
+//             <p key={i+j+k}>{statement}</p>))
+//         )
+//       )
+//     )
+//   }
+// </fieldset>
 
 // <fieldset>
 //   <legend>Questionnaire</legend>
