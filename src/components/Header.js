@@ -37,6 +37,7 @@ const Header = () => (
               </ul>
             </li>
             <li className="pure-menu-item"><NavLink to='/about' className="pure-menu-link">About OmniCAT</NavLink></li>
+            <li className="pure-menu-item"><NavLink to='/products' className="pure-menu-link">Products</NavLink></li>
             <li className="pure-menu-item"><NavLink to='/crowdsale' className="pure-menu-link">Crowdsale</NavLink></li>
           </ul>
         </div>

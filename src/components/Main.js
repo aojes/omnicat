@@ -12,6 +12,7 @@ import Hormones from './Hormones'
 import PhysicalFitness from './PhysicalFitness'
 import RiskAndPrevention from './RiskAndPrevention'
 import Wellness from './Wellness'
+import Products from './Products'
 import NotFound from './NotFound'
 import './../css/Main.sass'
 
@@ -33,6 +34,7 @@ class Main extends Component {
             <Route exact path='/physical-fitness' component={PhysicalFitness}/>
             <Route exact path='/risk-and-prevention' component={RiskAndPrevention}/>
             <Route exact path='/wellness' component={Wellness}/>
+            <Route exact path='/products' component={Products}/>
             <Route path='*' component={NotFound}/>
           </Switch>
         </section>
