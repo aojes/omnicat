@@ -14,12 +14,11 @@ export default class Wellness extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.validate = this.validate.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    // this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(event) {
-    log('Event!')
-    let [id, checked] = event.target.value.split('-')
+  handleChange(e) {
+    let [id, checked] = e.target.value.split('-')
+    log(JSON.stringify(this.state.response))
     this.setState({
       response: {
         ...this.state.response,
@@ -59,74 +58,15 @@ export default class Wellness extends React.Component {
                 [ <h3 key={i}>{heading}</h3>,
                   i === 10 && <span className="notice-heading">{notices.headings[10]}</span>,
                   subheadings[i].length === 0 ?
-                    statements[i][0].map( (statement, j) =>
-                    <div id={"statement" + statementID}>
-                      <p>{statement}</p>
-                      <div className="pure-control-group">
-                        <input type="radio"
-                          value={`${statementID}-0`} name={`${statementID}-0`} id={`${statementID}-0`}
-                          checked={this.state.response[statementID] === 0}
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor={`${statementID}-0`}><span>0</span>&nbsp;</label>
-                        <input type="radio"
-                          value={`${statementID}-1`} name={`${statementID}-1`} id={`${statementID}-1`}
-                          checked={this.state.response[statementID] === 1}
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor={`${statementID}-1`}><span>1</span>&nbsp;</label>
-                        <input type="radio"
-                          value={`${statementID}-2`} name={`${statementID}-2`} id={`${statementID}-2`}
-                          checked={this.state.response[statementID] === 2}
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor={`${statementID}-2`}><span>2</span>&nbsp;</label>
-                        <input
-                          type="radio"
-                          value={`${statementID}-3`} name={`${statementID}-3`} id={`${statementID}-3`}
-                          checked={this.state.response[statementID] === 3}
-                          onChange={this.handleChange}
-                        />
-                        <label htmlFor={`${statementID++}-3`}><span>3</span>&nbsp;</label>
-                      </div>
-                    </div>
+                    statements[i][0].map( (statement) =>
+                      <Statement text={statement} id={++statementID} super={this} changer={this.handleChange} />
                     ) :
                   subheadings[i].map( (subheading, j) => (
                     [<h4 key={j}>{subheading}</h4>,
                       notices.subheadings[`${i+1}.${j+1}`] && <span className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
-                    statements[i][j].map( (statement, k) => (
-                      <div id={"statement" + statementID}>
-                        <p>{statement}</p>
-                        <div className="pure-control-group">
-                          <input type="radio"
-                            value={`${statementID}-0`} name={`${statementID}-0`} id={`${statementID}-0`}
-                            checked={this.state.response[statementID] === 0}
-                            onChange={this.handleChange}
-                          />
-                          <label htmlFor={`${statementID}-0`}><span>0</span>&nbsp;</label>
-                          <input type="radio"
-                            value={`${statementID}-1`} name={`${statementID}-1`} id={`${statementID}-1`}
-                            checked={this.state.response[statementID] === 1}
-                            onChange={this.handleChange}
-                          />
-                          <label htmlFor={`${statementID}-1`}><span>1</span>&nbsp;</label>
-                          <input type="radio"
-                            value={`${statementID}-2`} name={`${statementID}-2`} id={`${statementID}-2`}
-                            checked={this.state.response[statementID] === 2}
-                            onChange={this.handleChange}
-                          />
-                          <label htmlFor={`${statementID}-2`}><span>2</span>&nbsp;</label>
-                          <input
-                            type="radio"
-                            value={`${statementID}-3`} name={`${statementID}-3`} id={`${statementID}-3`}
-                            checked={this.state.response[statementID] === 3}
-                            onChange={this.handleChange}
-                          />
-                          <label htmlFor={`${statementID++}-3`}><span>3</span>&nbsp;</label>
-                        </div>
-                      </div>
-                        )
-                      )
+                    statements[i][j].map( (statement) =>
+                      <Statement text={statement} id={++statementID} super={this} changer={this.handleChange} />
+                    )
                     ]
                   ))
                 ])
@@ -140,6 +80,73 @@ export default class Wellness extends React.Component {
     )
   }
 }
+
+const Statement = props => {
+  const handleChange = e => {
+    props.changer(e)
+  }
+  return(
+    <div id={props.id}>
+      <p>{props.text}</p>
+      <div className="pure-control-group">
+        <RadioButton name={`${props.id}-0`} radioChange={handleChange} checked={props.super.state.response[props.id]} index={0} />
+        <RadioButton name={`${props.id}-1`} radioChange={handleChange} checked={props.super.state.response[props.id]} index={1} />
+        <RadioButton name={`${props.id}-2`} radioChange={handleChange} checked={props.super.state.response[props.id]} index={2} />
+        <RadioButton name={`${props.id}-3`} radioChange={handleChange} checked={props.super.state.response[props.id]} index={3} />
+      </div>
+    </div>
+  )
+}
+
+const RadioButton = props => {
+  const handleChange = e => {
+    props.radioChange(e)
+  }
+  return(
+    <div style={{display: 'inline-block'}}>
+      <input type="radio" value={props.name} name={props.name} id={props.name}
+        checked={props.checked === props.index}
+        onChange={handleChange}
+      />
+      <label htmlFor={props.name}><span>{props.index}</span>&nbsp;</label>
+    </div>
+  )
+}
+
+// const Statement = props => {
+//   return(
+//     <div id={"statement" + statementID}>
+//       <p>{statement}</p>
+//       <div className="pure-control-group">
+//         <input type="radio"
+//           value={`${statementID}-0`} name={`${statementID}-0`} id={`${statementID}-0`}
+//           checked={this.state.response[statementID] === 0}
+//           onChange={this.handleChange}
+//         />
+//         <label htmlFor={`${statementID}-0`}><span>0</span>&nbsp;</label>
+//         <input type="radio"
+//           value={`${statementID}-1`} name={`${statementID}-1`} id={`${statementID}-1`}
+//           checked={this.state.response[statementID] === 1}
+//           onChange={this.handleChange}
+//         />
+//         <label htmlFor={`${statementID}-1`}><span>1</span>&nbsp;</label>
+//         <input type="radio"
+//           value={`${statementID}-2`} name={`${statementID}-2`} id={`${statementID}-2`}
+//           checked={this.state.response[statementID] === 2}
+//           onChange={this.handleChange}
+//         />
+//         <label htmlFor={`${statementID}-2`}><span>2</span>&nbsp;</label>
+//         <input
+//           type="radio"
+//           value={`${statementID}-3`} name={`${statementID}-3`} id={`${statementID}-3`}
+//           checked={this.state.response[statementID] === 3}
+//           onChange={this.handleChange}
+//         />
+//         <label htmlFor={`${statementID++}-3`}><span>3</span>&nbsp;</label>
+//       </div>
+//     </div>
+//   )
+// }
 
 //
 // const Statement = props => {
