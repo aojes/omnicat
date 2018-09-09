@@ -68,26 +68,26 @@ export default class Wellness extends React.Component {
                           checked={this.state.response[statementID] === 0}
                           onChange={this.handleChange}
                         />
-                        <label htmlFor={`${statementID}-0`}>0</label>
+                        <label htmlFor={`${statementID}-0`}><span>0</span>&nbsp;</label>
                         <input type="radio"
                           value={`${statementID}-1`} name={`${statementID}-1`} id={`${statementID}-1`}
                           checked={this.state.response[statementID] === 1}
                           onChange={this.handleChange}
                         />
-                        <label htmlFor={`${statementID}-1`}>1</label>
+                        <label htmlFor={`${statementID}-1`}><span>1</span>&nbsp;</label>
                         <input type="radio"
                           value={`${statementID}-2`} name={`${statementID}-2`} id={`${statementID}-2`}
                           checked={this.state.response[statementID] === 2}
                           onChange={this.handleChange}
                         />
-                        <label htmlFor={`${statementID}-2`}>2</label>
+                        <label htmlFor={`${statementID}-2`}><span>2</span>&nbsp;</label>
                         <input
                           type="radio"
                           value={`${statementID}-3`} name={`${statementID}-3`} id={`${statementID}-3`}
                           checked={this.state.response[statementID] === 3}
                           onChange={this.handleChange}
                         />
-                        <label htmlFor={`${statementID++}-3`}>3</label>
+                        <label htmlFor={`${statementID++}-3`}><span>3</span>&nbsp;</label>
                       </div>
                     </div>
                     ) :
@@ -103,26 +103,26 @@ export default class Wellness extends React.Component {
                             checked={this.state.response[statementID] === 0}
                             onChange={this.handleChange}
                           />
-                          <label htmlFor={`${statementID}-0`}>0</label>
+                          <label htmlFor={`${statementID}-0`}><span>0</span>&nbsp;</label>
                           <input type="radio"
                             value={`${statementID}-1`} name={`${statementID}-1`} id={`${statementID}-1`}
                             checked={this.state.response[statementID] === 1}
                             onChange={this.handleChange}
                           />
-                          <label htmlFor={`${statementID}-1`}>1</label>
+                          <label htmlFor={`${statementID}-1`}><span>1</span>&nbsp;</label>
                           <input type="radio"
                             value={`${statementID}-2`} name={`${statementID}-2`} id={`${statementID}-2`}
                             checked={this.state.response[statementID] === 2}
                             onChange={this.handleChange}
                           />
-                          <label htmlFor={`${statementID}-2`}>2</label>
+                          <label htmlFor={`${statementID}-2`}><span>2</span>&nbsp;</label>
                           <input
                             type="radio"
                             value={`${statementID}-3`} name={`${statementID}-3`} id={`${statementID}-3`}
                             checked={this.state.response[statementID] === 3}
                             onChange={this.handleChange}
                           />
-                          <label htmlFor={`${statementID++}-3`}>3</label>
+                          <label htmlFor={`${statementID++}-3`}><span>3</span>&nbsp;</label>
                         </div>
                       </div>
                         )

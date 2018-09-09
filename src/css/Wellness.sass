@@ -17,18 +17,19 @@ main .wellness
     label
       position: relative
       display: inline-block
-      padding: 0 0 0 2em
-      height: 1.5em
-      line-height: 1.5
+      padding: 0 0 0 3em
+      height: 2.5em
+      line-height: 2.5
       cursor: pointer
 
       span
         position: absolute
         top: 3px
-        margin-left: -1.4em
-        margin-right: 1.4em
-        color: $gray - 50%
+        margin-left: -1.9em
+        margin-right: 2.2em
+        color: $gray - 72%
         font-weight: bold
+        z-index: 1
 
     label::before,
     label::after
@@ -36,8 +37,8 @@ main .wellness
       top: 0
       left: 0
       display: block
-      width: 1.5em
-      height: 1.5em
+      width: 2.5em
+      height: 2.5em
 
     label::before
       content: " "
@@ -48,7 +49,7 @@ main .wellness
     input[type="checkbox"] + label::after
       content: "\2714"
       color: #2c3e50
-      line-height: 1.5
+      line-height: 2.5
       text-align: center
 
     /* Radio */
@@ -59,8 +60,8 @@ main .wellness
       content: " "
       top: .25em
       left: .25em
-      width: 1em
-      height: 1em
+      width: 2em
+      height: 2em
       background: #fff
       border: .2em solid #2c3e50
       border-radius: 50%
