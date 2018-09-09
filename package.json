@@ -123,7 +123,7 @@
           "vars": "all",
           "args": "after-used",
           "argsIgnorePattern": "^_|^next$",
-          "varsIgnorePattern": "^log$|^err|^info$|^warn$|^dir$|^React$"
+          "varsIgnorePattern": "^_|^log$|^err|^info$|^warn$|^dir$|^React$"
         }
       ]
     }

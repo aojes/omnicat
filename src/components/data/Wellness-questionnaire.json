@@ -28,9 +28,9 @@
     ["Section 12.1 Patient health history", "Section 12.2 Weight management", "Section 12.3 High risk symptoms", "Section 12.4"]
   ],
   "notices": {
-    "headings": {
-      "11": "As far as you are aware, do you have a sensitivity or allergy to..."
-    },
+    "headings": [
+      [], [], [], [], [], [], [], [], [], [], ["As far as you are aware, do you have a sensitivity or allergy to..."]
+    ],
     "subheadings": {
       "5.1": "When you miss a meal, do you feel...",
       "6.2": "(Men only to answer this section)",
@@ -43,10 +43,12 @@
       "8.4": "Do you...",
       "12.4": "Which of the following types of medications have you taken in the last 6 months?"
     },
-    "statements": [
-      ["11", null, "7", "(number of drinks per week)"],
-      ["11", null, "8", "(number per day)"]
-    ]
+    "statements": {
+      "11": {
+        "7": "(number of drinks per week)",
+        "8": "(number per day)"
+      }
+    }
   },
   "statements": [
     [
