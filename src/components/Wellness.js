@@ -10,14 +10,22 @@ export default class Wellness extends React.Component {
       data: questionnaire,
       response: []
     }
+    // const statements = 407
     this.handleSubmit = this.handleSubmit.bind(this)
     this.validate = this.validate.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    // this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
-    event.preventDefault()
-    this.setState({a: true})
+    log('Event!')
+    let [id, checked] = event.target.value.split('-')
+    this.setState({
+      response: {
+        ...this.state.response,
+        [id]: parseInt(checked, 10)
+      }
+    })
   }
 
   handleSubmit(event) {
@@ -34,6 +42,7 @@ export default class Wellness extends React.Component {
   render() {
     // eslint-disable-next-line
     const {headings, subheadings, statements, notices, questions} = this.state.data
+    let statementID = 0
     return (
       <div className="wellness">
         <h2>Wellness &amp; Health Appraisal</h2>
@@ -51,13 +60,71 @@ export default class Wellness extends React.Component {
                   i === 10 && <span className="notice-heading">{notices.headings[10]}</span>,
                   subheadings[i].length === 0 ?
                     statements[i][0].map( (statement, j) =>
-                      <Statement key={j} text={statement} />,
+                    <div id={"statement" + statementID}>
+                      <p>{statement}</p>
+                      <div className="pure-control-group">
+                        <input type="radio"
+                          value={`${statementID}-0`} name={`${statementID}-0`} id={`${statementID}-0`}
+                          checked={this.state.response[statementID] === 0}
+                          onChange={this.handleChange}
+                        />
+                        <label htmlFor={`${statementID}-0`}>0</label>
+                        <input type="radio"
+                          value={`${statementID}-1`} name={`${statementID}-1`} id={`${statementID}-1`}
+                          checked={this.state.response[statementID] === 1}
+                          onChange={this.handleChange}
+                        />
+                        <label htmlFor={`${statementID}-1`}>1</label>
+                        <input type="radio"
+                          value={`${statementID}-2`} name={`${statementID}-2`} id={`${statementID}-2`}
+                          checked={this.state.response[statementID] === 2}
+                          onChange={this.handleChange}
+                        />
+                        <label htmlFor={`${statementID}-2`}>2</label>
+                        <input
+                          type="radio"
+                          value={`${statementID}-3`} name={`${statementID}-3`} id={`${statementID}-3`}
+                          checked={this.state.response[statementID] === 3}
+                          onChange={this.handleChange}
+                        />
+                        <label htmlFor={`${statementID++}-3`}>3</label>
+                      </div>
+                    </div>
                     ) :
                   subheadings[i].map( (subheading, j) => (
                     [<h4 key={j}>{subheading}</h4>,
                       notices.subheadings[`${i+1}.${j+1}`] && <span className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
                     statements[i][j].map( (statement, k) => (
-                          <Statement key={k} text={statement} />
+                      <div id={"statement" + statementID}>
+                        <p>{statement}</p>
+                        <div className="pure-control-group">
+                          <input type="radio"
+                            value={`${statementID}-0`} name={`${statementID}-0`} id={`${statementID}-0`}
+                            checked={this.state.response[statementID] === 0}
+                            onChange={this.handleChange}
+                          />
+                          <label htmlFor={`${statementID}-0`}>0</label>
+                          <input type="radio"
+                            value={`${statementID}-1`} name={`${statementID}-1`} id={`${statementID}-1`}
+                            checked={this.state.response[statementID] === 1}
+                            onChange={this.handleChange}
+                          />
+                          <label htmlFor={`${statementID}-1`}>1</label>
+                          <input type="radio"
+                            value={`${statementID}-2`} name={`${statementID}-2`} id={`${statementID}-2`}
+                            checked={this.state.response[statementID] === 2}
+                            onChange={this.handleChange}
+                          />
+                          <label htmlFor={`${statementID}-2`}>2</label>
+                          <input
+                            type="radio"
+                            value={`${statementID}-3`} name={`${statementID}-3`} id={`${statementID}-3`}
+                            checked={this.state.response[statementID] === 3}
+                            onChange={this.handleChange}
+                          />
+                          <label htmlFor={`${statementID++}-3`}>3</label>
+                        </div>
+                      </div>
                         )
                       )
                     ]
@@ -74,77 +141,66 @@ export default class Wellness extends React.Component {
   }
 }
 
-class Heading extends React.Component {
-  render() {
-    return(true)
-  }
-}
+//
+// const Statement = props => {
+//   const handleRadioGroupChange = (id, checked) => {
+//     console.log("In Statement: Called by RadioGroup:", id, checked);
+//     props.onRadioClick(id, checked);
+//   };
+//
+//   return (
+//     <div id={"statement" + props.id}>
+//       <p>{props.text}</p>
+//       // <RadioGroup
+//       //   id={props.id}
+//       //   checkedRadio={props.currentChecked}
+//       //   onRadioChange={handleRadioGroupChange}
+//       // />
+//     </div>
+//   );
+// };
 
-class SubHeading extends React.Component {
-  render() {
-    return(true)
-  }
-}
-
-class Statement extends React.Component {
-  render() {
-    return(
-      <div key={this.props.key}>
-        <p>{ this.props.text }</p>
-        <RadioGroup />
-      </div>
-    )
-  }
-
-}
-
-class StatementNotice extends React.Component {
-  // FIXME
-  render() {
-    const yup = this.props.heading === 10 && (this.props.statement === 6 || this.props.statement === 7)
-    return (yup)
-    // if (yup) {
-    //   const text = this.props.notices.statements[`11-${this.props.k+1}`]
-    //   const notice = <div><span style={{color: "green"}}>{text}</span></div>
-    // }
-    // return( notice )
-  }
-
-}
-
-class RadioGroup extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange() {
-    return true
-  }
-
-  render() {
-    return(
-      <span className="component-radio-group">
-        <input type="radio"
-          checked={false}
-          onChange={this.handleChange} />
-        <label><span>0</span>&nbsp;</label>
-        <input type="radio"
-          checked={false}
-          onChange={this.handleChange} />
-        <label><span>1</span>&nbsp;</label>
-        <input type="radio"
-          checked={false}
-          onChange={this.handleChange} />
-        <label><span>2</span>&nbsp;</label>
-        <input type="radio"
-          checked={false}
-          onChange={this.handleChange} />
-        <label><span>3</span>&nbsp;</label>
-      </span>
-    )
-  }
-}
+// const RadioGroup = props => {
+//   const handleChange = e => {
+//     let [id, currentChecked] = e.target.value.split('-')
+//     id = parseInt(id, 10)
+//     currentChecked = parseInt(currentChecked, 10)
+//     console.log(
+//       "Going to call parent's method and will give the value:",
+//       id, currentChecked
+//     );
+//     props.onRadioChange(id, currentChecked);
+//   };
+//   return (
+//     <div id={`group-${props.id}`}>
+//       <input
+//         type="radio"
+//         value={`${props.id}-0`}
+//         checked={props.checkedRadio === 0}
+//         onChange={handleChange}
+//       />
+//       <label>0</label>
+//       <input
+//         type="radio"
+//         value={`${props.id}-1`}
+//         checked={props.checkedRadio === 1}
+//         onChange={handleChange}
+//       />
+//       <label>1</label>
+//       <input
+//         type="radio"
+//         value={`${props.id}-2`}
+//         checked={props.checkedRadio === 2}
+//         onChange={handleChange}
+//       />
+//       <label>2</label>
+//       <input
+//         type="radio"
+//         value={`${props.id}-3`}
+//         checked={props.checkedRadio === 3}
+//         onChange={handleChange}
+//       />
+//       <label>3</label>
+//     </div>
+//   );
+// };
