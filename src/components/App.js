@@ -128,11 +128,13 @@ class App extends React.Component {
     // delete keys.we3
     return (
       <div id="app-index" className="pure-g">
-        <div id="header" className="pure-u-1 pure-u-md-7-24">
-          <Header/>
-        </div>
-        <div id="main" className="pure-u-1 pure-u-md-17-24">
-          <Main props={ keys  }/>
+        <div id="header-and-main">
+          <div id="header" className="pure-u-1 pure-u-md-7-24">
+            <Header/>
+          </div>
+          <div id="main" className="pure-u-1 pure-u-md-17-24">
+            <Main props={ keys  }/>
+          </div>
         </div>
         <div id="footer" className="pure-u-1">
           <Footer/>

@@ -18,5 +18,13 @@ main
   h3
     padding: 1em
 
-.form-control:valid ~ .invalid-feedback
-  display: none
+@media screen and (min-width: 1160px)
+  #header-and-main::before
+    position: fixed
+    z-index: -1
+    left: 0
+    bottom: 0
+    content: ' '
+    width: 300px
+    min-height: 300px
+    background: $white url('/navcat.png') no-repeat

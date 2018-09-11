@@ -37,7 +37,7 @@ export default class Wellness extends React.Component {
   validate() {
     return true
   }
-// pure-form-[aligned, stacked] pure-group pure-control pure-control-group span.pure-form-message-inline
+  // pure-form-[aligned, stacked] pure-group pure-control pure-control-group span.pure-form-message-inline
   render() {
     // eslint-disable-next-line
     const {headings, subheadings, statements, notices, questions} = this.state.data
@@ -55,21 +55,21 @@ export default class Wellness extends React.Component {
           <legend>Questionnaire</legend>
           <form className="pure-form" onSubmit={this.handleSubmit}>
           { headings.map( (heading, i) => (
-                [ <h3 key={i}>{heading}</h3>,
-                  i === 10 && <span className="notice-heading">{notices.headings[10]}</span>,
-                  subheadings[i].length === 0 ?
-                    statements[i][0].map( (statement) =>
-                      <Statement text={statement} id={++statementID} super={this} changer={this.handleChange} />
-                    ) :
-                  subheadings[i].map( (subheading, j) => (
-                    [<h4 key={j}>{subheading}</h4>,
-                      notices.subheadings[`${i+1}.${j+1}`] && <span className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
-                    statements[i][j].map( (statement) =>
-                      <Statement text={statement} id={++statementID} super={this} changer={this.handleChange} />
-                    )
-                    ]
-                  ))
-                ])
+            [ <h3 key={i}>{heading}</h3>,
+              i === 10 && <span className="notice-heading">{notices.headings[10]}</span>,
+              subheadings[i].length === 0 ?
+                statements[10][0].map( (statement) =>
+                  <Statement text={statement} id={statementID++} super={this} />
+                ) :
+              subheadings[i].map( (subheading, j) => (
+                [<h4 key={j}>{subheading}</h4>,
+                  notices.subheadings[`${i+1}.${j+1}`] && <span className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
+                statements[i][j].map( (statement) =>
+                  <Statement text={statement} id={statementID++} super={this} />
+                )
+                ]
+              ))
+            ])
           )}
           <button type="submit" className="pure-button pure-button-primary">
             See Results
@@ -82,17 +82,14 @@ export default class Wellness extends React.Component {
 }
 
 const Statement = props => {
-  const handleChange = e => {
-    props.changer(e)
-  }
   return(
     <div id={props.id}>
       <p>{props.text}</p>
       <div className="pure-control-group">
-        <RadioButton name={`${props.id}-0`} radioChange={handleChange} checked={props.super.state.response[props.id]} index={0} />
-        <RadioButton name={`${props.id}-1`} radioChange={handleChange} checked={props.super.state.response[props.id]} index={1} />
-        <RadioButton name={`${props.id}-2`} radioChange={handleChange} checked={props.super.state.response[props.id]} index={2} />
-        <RadioButton name={`${props.id}-3`} radioChange={handleChange} checked={props.super.state.response[props.id]} index={3} />
+        <RadioButton name={`${props.id}-0`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={0} />
+        <RadioButton name={`${props.id}-1`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={1} />
+        <RadioButton name={`${props.id}-2`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={2} />
+        <RadioButton name={`${props.id}-3`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={3} />
       </div>
     </div>
   )
