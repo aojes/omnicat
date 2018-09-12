@@ -7,39 +7,42 @@ h3#leading-statement
   margin: 0.5em
 
 main .dass
-  @import "checkbox-radio-form"
-
-  .form-row
-    margin-bottom: 1em
-    padding-bottom: 1em
-    border-radius: 8px
-    border: 2px solid $blue
-    &:nth-child(even)
-      border: 2px solid $purple
-      background-color: $white - 10%
-    h4
-      color: $purple - 50%
-      padding-left: 3em
-    .radio-item
-      input, label
-        margin-left: 4em
-
-.dass .results
-  span#scores
+  form
+    padding: 0.5em 1em
     position: relative
-    display: block
-    width: 100%
-    span
-      position: absolute
-      top: 14px
-      font-weight: bold
-      font-size: 125%
-      color: $purple
-    span#depression
-      left: 250px
-    span#anxiety
-      left: 432px
-    span#stress
-      left: 600px
-  img
-    border: 3px solid $purple
+    @import "checkbox-radio-inputs"
+
+    .form-row
+      margin-bottom: 1em
+      padding-bottom: 1em
+      border-radius: 8px
+      border: 2px solid $blue
+      &:nth-child(even)
+        border: 2px solid $purple
+        background-color: $white - 10%
+      h4
+        color: $purple - 50%
+        padding-left: 3em
+      .radio-item
+        input, label
+          margin-left: 4em
+
+  .dass .results
+    span#scores
+      position: relative
+      display: block
+      width: 100%
+      span
+        position: absolute
+        top: 14px
+        font-weight: bold
+        font-size: 125%
+        color: $purple
+      span#depression
+        left: 250px
+      span#anxiety
+        left: 432px
+      span#stress
+        left: 600px
+    img
+      border: 3px solid $purple
