@@ -11,9 +11,7 @@ const Header = () => (
         <div className="pure-menu">
           <ul className="pure-menu-list menu-order-1">
             <li id="home-link" className="pure-menu-item">
-              <NavLink to='/' className="home-link pure-menu-link">
-                OmniCAT
-              </NavLink>
+              <NavLink to='/' className="home-link pure-menu-link">Home</NavLink>
             </li>
             <li>
               <ul className="pure-menu-list menu-order-2">
