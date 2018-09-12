@@ -84,41 +84,41 @@ class Dass42 extends Component {
       <div className="dass">
         <h2>Dass42</h2>
         <hr />
-        <h3>
+        <h3 id="leading-statement">
           Please read each statement and select a number 0, 1, 2 or 3 which indicates
           how much the statement applied to you <b>over the past week</b>.
           There are no right or wrong answers. Do not spend too much time on any statement.
         </h3>
-        <form className="pure-form" onSubmit={this.handleSubmit}>
+        <form className="pure-form dass" onSubmit={this.handleSubmit}>
           {
             this.state.statements.map(
               (statement, index) => (
-                <div key={`radio-group-${index}`} className="pure-g">
+                <div key={`radio-group-${index}`} className="pure-g form-row">
                   <div className="pure-u-1 pure-u-md-21-24 pure-control-group dass-keys">
                     <h4 className="form-control">{index+1}. &nbsp; {statement}</h4>
-                    <div className="pure-u-5-24">
+                    <div className="pure-u-5-24 radio-item">
                       <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
                         checked={this.state.selections[index] === 0 }
                         onChange={this.handleChange} />
-                      <label htmlFor={`${index}-0`} className="pure-radio">  0 </label>
+                        <label htmlFor={`${index}-0`} className="pure-radio"><span>0</span>&nbsp;</label>
                     </div>
-                    <div className="pure-u-5-24">
+                    <div className="pure-u-5-24 radio-item">
                       <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
                         checked={this.state.selections[index] === 1}
                         onChange={this.handleChange } />
-                      <label htmlFor={`${index}-1`} className="pure-radio">  1 </label>
+                      <label htmlFor={`${index}-1`} className="pure-radio"><span>1</span>&nbsp;</label>
                     </div>
-                    <div className="pure-u-5-24">
+                    <div className="pure-u-5-24 radio-item">
                       <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
                         checked={this.state.selections[index] === 2 }
                         onChange={this.handleChange } />
-                      <label htmlFor={`${index}-2`} className="pure-radio">  2 </label>
+                      <label htmlFor={`${index}-2`} className="pure-radio"><span>2</span>&nbsp;</label>
                     </div>
-                    <div className="pure-u-5-24">
+                    <div className="pure-u-5-24 radio-item">
                       <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
                         checked={this.state.selections[index] === 3 }
                         onChange={this.handleChange } />
-                      <label htmlFor={`${index}-3`} className="pure-radio">  3 </label>
+                      <label htmlFor={`${index}-3`} className="pure-radio"><span>3</span>&nbsp;</label>
                     </div>
                   </div>
                 </div>
