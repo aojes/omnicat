@@ -1,7 +1,7 @@
 import React from 'react'
 import './../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
-let { log, error, warn, info } = console
+const { log, error } = console
 
 export default class Wellness extends React.Component {
   constructor() {
@@ -17,12 +17,12 @@ export default class Wellness extends React.Component {
   }
 
   handleChange(e) {
-    let [id, checked] = e.target.value.split('-')
-    log(JSON.stringify(this.state.response))
+    const [ id, checked ] = e.target.value.split( '-' )
+    // log(JSON.stringify(this.state.response))
     this.setState({
       response: {
         ...this.state.response,
-        [id]: parseInt(checked, 10)
+        [ id ] : parseInt(checked, 10)
       }
     })
   }
@@ -54,26 +54,24 @@ export default class Wellness extends React.Component {
         <fieldset>
           <legend>Questionnaire</legend>
           <form className="pure-form" onSubmit={this.handleSubmit}>
-          { headings.map( (heading, i) => (
-            [ <h3 key={i}>{heading}</h3>,
-              i === 10 && <span className="notice-heading">{notices.headings[10]}</span>,
-              subheadings[i].length === 0 ?
-                statements[10][0].map( (statement) =>
-                  <Statement text={statement} id={statementID++} super={this} />
-                ) :
-              subheadings[i].map( (subheading, j) => (
-                [<h4 key={j}>{subheading}</h4>,
-                  notices.subheadings[`${i+1}.${j+1}`] && <span className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
-                statements[i][j].map( (statement) =>
-                  <Statement text={statement} id={statementID++} super={this} />
-                )
-                ]
-              ))
-            ])
-          )}
-          <button type="submit" className="pure-button pure-button-primary">
-            See Results
-          </button>
+            { headings.map( (heading, i) => (
+              [ <h3 key={i}>{heading}</h3>,
+                i === 10 && <span className="notice-heading">{notices.headings[10]}</span>,
+                subheadings[i].length === 0 ?
+                  statements[10][0].map( (statement) =>
+                    <Statement text={statement} id={statementID++} super={this} />
+                  ) :
+                subheadings[i].map( (subheading, j) => (
+                  [ <h4 key={j}>{subheading}</h4>,
+                    notices.subheadings[`${i+1}.${j+1}`] && <span className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
+                  statements[i][j].map( (statement) =>
+                    <Statement text={statement} id={statementID++} super={this} />
+                  )
+                  ]
+                ))
+              ])
+            )}
+            <button type="submit" className="pure-button pure-button-primary">See Results</button>
           </form>
         </fieldset>
       </div>
@@ -83,7 +81,7 @@ export default class Wellness extends React.Component {
 
 const Statement = props => {
   return(
-    <div id={props.id}>
+    <div id={props.id} className={`wellness-statement ${props.id % 2 === 0 ? 'left' : 'right'}`}>
       <p>{props.text}</p>
       <div className="pure-control-group">
         <RadioButton name={`${props.id}-0`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={0} />

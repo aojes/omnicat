@@ -4,8 +4,9 @@ header
   background: $pink
   border-radius: 25px
   margin: 1em 2em
+  // make the header bg the pink nav border
   &:first-child
-    padding: 0.72em
+    padding: 0.54em
   nav
     background-color: $white
     border-radius: 25px
@@ -19,6 +20,7 @@ header
     ul.menu-order-3
       margin: 0 1.6em
 
+    // make the 3rd level links pink when the parent link is hovered
     ul.menu-order-2 li:hover + li ul.menu-order-3 li a:not(.active)
       background: $pink !important
       border-radius: 25px !important

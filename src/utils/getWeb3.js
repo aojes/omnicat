@@ -1,6 +1,6 @@
 import Web3 from 'web3'
-let { log, error, info, warn, dir } = console
-let getWeb3 = new Promise(function(resolve, _reject) {
+const { log, error, info, warn } = console
+const getWeb3 = new Promise(function(resolve, _reject) {
   // Wait for loading completion to avoid race conditions with web3 injection timing.
   window.addEventListener('load', function() {
     var results, web3 = window.web3
@@ -31,7 +31,7 @@ let getWeb3 = new Promise(function(resolve, _reject) {
       // } else {
       // Truffle (with Ganache.app running)
       // }
-        provider = new Web3.providers.HttpProvider("http://127.0.0.1:9545")
+        provider = new Web3.providers.HttpProvider('http://127.0.0.1:9545')
         web3 = new Web3(provider)
 
 

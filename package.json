@@ -116,14 +116,24 @@
   "eslintConfig": {
     "extends": "react-app",
     "rules": {
-      "indent": 0,
+      "quotes": [
+        1,
+        "single",
+        "avoid-escape"
+      ],
+      "prefer-const": 1,
+      "react/jsx-indent": [
+        1,
+        2
+      ],
+      "no-return-assign": 1,
       "no-unused-vars": [
         1,
         {
           "vars": "all",
           "args": "after-used",
           "argsIgnorePattern": "^_|^next$",
-          "varsIgnorePattern": "^_|^log$|^err|^info$|^warn$|^dir$|^React$"
+          "varsIgnorePattern": "^_|^log$|^err|^info$|^warn$$"
         }
       ]
     }

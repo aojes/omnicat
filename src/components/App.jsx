@@ -1,26 +1,26 @@
 import React from 'react'
 // import SimpleStorageContract from './../../build/contracts/SimpleStorage.json'
-import MigrationsContract from './../../build/contracts/Migrations.json'
-import OwnableContract from './../../build/contracts/Ownable.json'
-import OmniCatContract from './../../build/contracts/OmniCAT.json'
-import IronLevelsContract from './../../build/contracts/IronLevels.json'
-import Dass42Contract from './../../build/contracts/Dass42.json'
+// import MigrationsContract from './../../build/contracts/Migrations.json'
+// import OwnableContract from './../../build/contracts/Ownable.json'
+// import OmniCatContract from './../../build/contracts/OmniCAT.json'
+// import IronLevelsContract from './../../build/contracts/IronLevels.json'
+// import Dass42Contract from './../../build/contracts/Dass42.json'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 import getWeb3 from './../utils/getWeb3'
 
-let { log, error, info, warn, dir } = console
+const { log, error, info, warn } = console
 // SET STATE CONTRACTS HERE FOR NOW
 
-let keys = { owner: null,
-           ownable: { addr: null, def: null, inst: null },
-              omni: { addr: null, def: null, inst: null },
-              iron: { addr: null, def: null, inst: null },
-              dass: { addr: null, def: null, inst: null },
-              migs: { addr: null, def: null, inst: null },
-              web3: null
-            }
+// let keys = { owner: null,
+//            ownable: { addr: null, def: null, inst: null },
+//               omni: { addr: null, def: null, inst: null },
+//               iron: { addr: null, def: null, inst: null },
+//               dass: { addr: null, def: null, inst: null },
+//               migs: { addr: null, def: null, inst: null },
+//               web3: null
+//             }
 
 class App extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class App extends React.Component {
       this.setState({
         web3: results.web3
       })
-      keys.web3 = this.state.web3
+      // keys.web3 = this.state.web3
       // Instantiate contract once web3 provided.
       this.instantiateContracts()
     })
@@ -61,22 +61,23 @@ class App extends React.Component {
      * Normally these functions would be called in the context of a
      * state management library, but for convenience I've placed them here.
      */
-    const contract = require('truffle-contract')
 
-    keys.ownable.def = contract(OwnableContract)
-    keys.ownable.def.setProvider(keys.web3.currentProvider)
+    //const contract = require('truffle-contract')
 
-    keys.omni.def = contract(OmniCatContract)
-    keys.omni.def.setProvider(keys.web3.currentProvider)
-
-    keys.dass.def = contract(Dass42Contract)
-    keys.dass.def.setProvider(keys.web3.currentProvider)
-
-    keys.iron.def = contract(IronLevelsContract)
-    keys.iron.def.setProvider(keys.web3.currentProvider)
-
-    keys.migs.def = contract(MigrationsContract)
-    keys.migs.def.setProvider(keys.web3.currentProvider)
+    // keys.ownable.def = contract(OwnableContract)
+    // keys.ownable.def.setProvider(keys.web3.currentProvider)
+    //
+    // keys.omni.def = contract(OmniCatContract)
+    // keys.omni.def.setProvider(keys.web3.currentProvider)
+    //
+    // keys.dass.def = contract(Dass42Contract)
+    // keys.dass.def.setProvider(keys.web3.currentProvider)
+    //
+    // keys.iron.def = contract(IronLevelsContract)
+    // keys.iron.def.setProvider(keys.web3.currentProvider)
+    //
+    // keys.migs.def = contract(MigrationsContract)
+    // keys.migs.def.setProvider(keys.web3.currentProvider)
 
     // Get accounts.
     // keys.web3.eth.getAccounts((error, accounts) => {
@@ -132,7 +133,7 @@ class App extends React.Component {
           <Header/>
         </div>
         <div id="main" className="pure-u-1 pure-u-md-17-24">
-          <Main props={ keys  }/>
+          <Main/>
         </div>
         <div id="footer" className="pure-u-1">
           <Footer/>

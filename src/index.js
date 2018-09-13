@@ -7,8 +7,8 @@ import App from './components/App'
 import './index.sass'
 
 ReactDOM.render((
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
   ), document.getElementById('root') )
 registerServiceWorker()
