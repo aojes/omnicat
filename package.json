@@ -3,118 +3,57 @@
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "gitlab.com:crockett.jesse/omnicat.git"
   },
-  "main": "src/index.js",
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom --watch"
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
   },
   "dependencies": {
-    "dotenv": "^2.0.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-router-dom": "^4.3.1"
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-router-dom": "^4.3.1",
+    "truffle-contract": "^4.0.0-next.0",
+    "web3": "^1.0.0-beta.36"
   },
   "devDependencies": {
-    "autoprefixer": "6.5.1",
-    "babel-core": "6.17.0",
-    "babel-eslint": "7.1.1",
-    "babel-jest": "17.0.2",
-    "babel-loader": "6.2.7",
-    "babel-preset-react-app": "^2.0.1",
-    "case-sensitive-paths-webpack-plugin": "1.1.4",
-    "chalk": "1.1.3",
-    "connect-history-api-fallback": "1.3.0",
-    "cross-spawn": "4.0.2",
-    "css-loader": "0.26.0",
-    "debug": "^3.1.0",
-    "detect-port": "1.0.1",
-    "eslint": "3.8.1",
-    "eslint-config-react": "^1.1.7",
-    "eslint-config-react-app": "^0.5.0",
-    "eslint-loader": "1.6.0",
-    "eslint-plugin-flowtype": "2.21.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "2.2.3",
-    "eslint-plugin-react": "6.4.1",
-    "extract-text-webpack-plugin": "1.0.1",
-    "file-loader": "0.9.0",
-    "filesize": "3.3.0",
-    "fs-extra": "0.30.0",
-    "ganache-cli": "^6.1.8",
-    "growl": "^1.10.2",
-    "gzip-size": "3.0.0",
-    "html-webpack-plugin": "2.24.0",
-    "http-proxy-middleware": "0.17.2",
-    "jest": "19.0.1",
-    "json": "^9.0.6",
-    "json-loader": "0.5.4",
-    "minimatch": "^3.0.2",
-    "mocha": "^5.2.0",
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "ajv": "^6.5.3",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.0-beta.6",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.5.0",
+    "eslint-plugin-react": "^7.11.1",
+    "html-webpack-plugin": "^4.0.0-alpha.2",
     "node-sass": "^4.9.3",
-    "object-assign": "4.1.0",
     "openzeppelin-solidity": "^1.12.0",
-    "path-exists": "2.1.0",
-    "postcss-loader": "1.0.0",
-    "promise": "7.1.1",
-    "react-dev-utils": "^0.4.2",
-    "recursive-readdir": "2.1.0",
     "sass-loader": "^7.1.0",
-    "strip-ansi": "3.0.1",
-    "style-loader": "0.13.1",
-    "truffle": "^4.1.13",
-    "truffle-contract": "^1.1.8",
-    "truffle-hdwallet-provider": "0.0.6",
-    "truffle-solidity-loader": "0.0.8",
-    "url-loader": "^1.0.1",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-manifest-plugin": "^1.1.0",
-    "whatwg-fetch": "^1.0.0"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.js?(x)",
-      "<rootDir>/coverage/**/?(*.)(spec|test).js?(x)"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://127.0.0.1:7200",
-    "transform": {
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "json",
-      "web.jsx",
-      "jsx"
-    ]
+    "style-loader": "^0.23.0",
+    "webpack": "^4.18.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
   },
   "babel": {
     "presets": [
-      "react-app"
+      "@babel/preset-env",
+      "@babel/preset-react"
     ]
   },
   "eslintConfig": {
-    "extends": "react-app",
+    "parser": "babel-eslint",
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "env": {
+      "browser": true,
+      "node": true
+    },
     "rules": {
       "quotes": [
         1,
@@ -127,13 +66,14 @@
         2
       ],
       "no-return-assign": 1,
+      "no-console": 0,
       "no-unused-vars": [
         1,
         {
           "vars": "all",
           "args": "after-used",
           "argsIgnorePattern": "^_|^next$",
-          "varsIgnorePattern": "^_|^log$|^err|^info$|^warn$$"
+          "varsIgnorePattern": "^_|^log$|^err|^info$|^warn$"
         }
       ]
     }
