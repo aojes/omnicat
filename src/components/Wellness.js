@@ -56,15 +56,15 @@ class Wellness extends React.Component {
           <legend>Questionnaire</legend>
           <form className="pure-form" onSubmit={this.handleSubmit}>
             { headings.map( (heading, i) => (
-              [ <h3 key={i}>{heading}</h3>,
-                i === 10 && <span className="notice-heading">{notices.headings[10]}</span>,
+              [ <h3 key={`heading-${i}`}>{heading}</h3>,
+                i === 10 && <span key={`notice-heading-${i}`} className="notice-heading">{notices.headings[10]}</span>,
                 subheadings[i].length === 0 ?
                   statements[10][0].map( (statement) =>
                     <Statement key={statementID} text={statement} id={statementID++} super={this} />
                   ) :
                 subheadings[i].map( (subheading, j) => (
-                  [ <h4 key={j}>{subheading}</h4>,
-                    notices.subheadings[`${i+1}.${j+1}`] && <span className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
+                  [ <h4 key={`subheading-${i}-${j}`}>{subheading}</h4>,
+                    notices.subheadings[`${i+1}.${j+1}`] && <span key={`notice-subheading-${i}-${j}`} className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
                   statements[i][j].map( (statement) =>
                     <Statement key={statementID} text={statement} id={statementID++} super={this} />
                   )]

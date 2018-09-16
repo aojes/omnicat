@@ -84,7 +84,8 @@
           "argsIgnorePattern": "^_|^next$",
           "varsIgnorePattern": "^_|^log$|^err|^info$|^warn$"
         }
-      ]
+      ],
+      "react/prop-types": 0
     }
   }
 }
