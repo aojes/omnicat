@@ -1,7 +1,8 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import '../css/Footer.sass'
 const { log, error, info, warn } = console
-export default class Footer extends React.Component {
+class Footer extends React.Component {
   render() {
     return (
       <footer>
@@ -9,3 +10,4 @@ export default class Footer extends React.Component {
     )
   }
 }
+export default hot(module)(Footer)

@@ -1,8 +1,9 @@
 
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import omniscopeConceptImg from './../images/omniscope-concept.png'
 
-export default class Products extends React.Component {
+class Products extends React.Component {
   render() {
     return(
       <div>
@@ -14,3 +15,5 @@ export default class Products extends React.Component {
     )
   }
 }
+
+export default hot(module)(Products)

@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { hot } from 'react-hot-loader'
 
 const Aesthetics = () => (
   <div>
@@ -7,4 +8,4 @@ const Aesthetics = () => (
   </div>
 )
 
-export default Aesthetics
+export default hot(module)(Aesthetics)

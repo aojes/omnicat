@@ -1,9 +1,10 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import './../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
 const { log, error } = console
 
-export default class Wellness extends React.Component {
+class Wellness extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -107,6 +108,7 @@ const RadioButton = props => {
   )
 }
 
+export default hot(module)(Wellness)
 // const Statement = props => {
 //   return(
 //     <div id={"statement" + statementID}>

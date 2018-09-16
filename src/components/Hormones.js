@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { hot } from 'react-hot-loader'
 
 const Hormones = () => (
 
@@ -7,4 +8,4 @@ const Hormones = () => (
 
 )
 
-export default Hormones
+export default hot(module)(Hormones)

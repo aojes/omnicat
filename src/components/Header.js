@@ -1,4 +1,5 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import { NavLink } from 'react-router-dom'
 import './../css/Header.sass'
 
@@ -45,7 +46,7 @@ const Header = () => (
   </header>
 )
 
-export default Header
+export default hot(module)(Header)
 // Home
 // CATs
 //   Physical Fitness
