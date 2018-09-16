@@ -11,24 +11,20 @@ module.exports = {
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
+        use: ['babel-loader']
       },
       {
         test: /\.(sass|css)$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'sass-loader'
-          }
-        ]
-      }
+        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [ 'file-loader' ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [ 'file-loader' ]
+      }      
     ]
   },
   plugins: [htmlWebpackPlugin]

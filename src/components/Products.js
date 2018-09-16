@@ -1,5 +1,6 @@
 
 import React from 'react'
+import omniscopeConceptImg from './../images/omniscope-concept.png'
 
 export default class Products extends React.Component {
   render() {
@@ -8,7 +9,7 @@ export default class Products extends React.Component {
         <h2>Products</h2>
         <hr />
         <h3>OmniScope Concept</h3>
-        <img alt="omniscope concept illustration" width="100%" src="omniscope-concept.png" />
+        <img alt="omniscope concept illustration" width="100%" src={omniscopeConceptImg} />
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import data from './data/Dass42-statements.json'
 import './../css/Dass42.sass'
+import dassResultsImg from './../images/dass-score-table.png'
 const { log, error, info, warn } = console
 class Dass42 extends Component {
   constructor(props) {
@@ -137,7 +138,7 @@ class Dass42 extends Component {
               <span id="anxiety">{this.state.results.anxiety}</span>
               <span id="stress">{this.state.results.stress}</span>
             </span>
-            <img alt="dass score table" src="dass-score-table.png" />
+            <img alt="dass score table" src={dassResultsImg} />
           </div>
         }
       </div>

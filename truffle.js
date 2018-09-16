@@ -1,7 +1,8 @@
 // const HDWalletProvider = require('truffle-hdwallet-provider')
 module.exports = {
-  networks: { // truffle develop --network dev
-    // use this until farther along
+  // truffle develop --network dev
+  // use this until farther along
+  networks: {
     dev: {
       host: 'localhost',
       port: 9545,
@@ -12,6 +13,8 @@ module.exports = {
       //     env.TRUFFLE_DEV_MNEMONIC, 'http://127.0.0.1:9545/')
       // }
     }
+  }
+}
     // ,gcli: { // tab1: ganache-cli  & tab2: truffle console --network gcli
     //   host: 'localhost',
     //   port: 8545,
@@ -30,8 +33,8 @@ module.exports = {
     //       env.GANACHE_APP_MNEMONIC, "http://127.0.0.1:7545/m/44'/60'/0'/0/1")
     //   }
     // }
-  }
-}
+//   }
+// }
 /***
 
 rinkeby: {

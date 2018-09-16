@@ -59,15 +59,14 @@ export default class Wellness extends React.Component {
                 i === 10 && <span className="notice-heading">{notices.headings[10]}</span>,
                 subheadings[i].length === 0 ?
                   statements[10][0].map( (statement) =>
-                    <Statement text={statement} id={statementID++} super={this} />
+                    <Statement key={statementID} text={statement} id={statementID++} super={this} />
                   ) :
                 subheadings[i].map( (subheading, j) => (
                   [ <h4 key={j}>{subheading}</h4>,
                     notices.subheadings[`${i+1}.${j+1}`] && <span className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
                   statements[i][j].map( (statement) =>
-                    <Statement text={statement} id={statementID++} super={this} />
-                  )
-                  ]
+                    <Statement key={statementID} text={statement} id={statementID++} super={this} />
+                  )]
                 ))
               ])
             )}
