@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 import { Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import Dass42 from './Dass42'
@@ -44,7 +44,7 @@ class Main extends Component {
   }
 }
 
-export default hot(module)(Main)
+export default Main
 // <div className="">
 //   <code>
 //     { JSON.stringify(this.props, null, 2) }

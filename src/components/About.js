@@ -1,5 +1,5 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 
 class About extends React.Component {
   render() {
@@ -71,4 +71,4 @@ class About extends React.Component {
     )
   }
 }
-export default hot(module)(About)
+export default About

@@ -15,10 +15,11 @@ module.exports = {
     app: './src/index.js'
   },
   // devtool: 'inline-source-map',
-  devtool: 'eval',
+  // devtool: 'eval',
   devServer: {
-    contentBase: './dist',
-    hot: true
+    // contentBase: './dist',
+    hot: true,
+    historyApiFallback: true
   },
   module: {
     rules: [

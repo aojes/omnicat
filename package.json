@@ -9,7 +9,7 @@
     "url": "gitlab.com:crockett.jesse/omnicat.git"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --port 3000 --hot",
+    "start": "webpack-dev-server --mode development --open --port 3000",
     "build": "webpack --mode production",
     "server": "node server.js"
   },
@@ -45,9 +45,6 @@
     "webpack-dev-server": "^3.1.8"
   },
   "babel": {
-    "plugins": [
-      "react-hot-loader/babel"
-    ],
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 
 const PhysicalFitness = () => (
 
@@ -8,4 +8,4 @@ const PhysicalFitness = () => (
 
 )
 
-export default hot(module)(PhysicalFitness)
+export default PhysicalFitness

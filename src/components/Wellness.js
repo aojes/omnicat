@@ -1,15 +1,16 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 import './../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
 const { log, error } = console
-
 class Wellness extends React.Component {
   constructor() {
     super()
     this.state = {
       data: questionnaire,
-      response: []
+      response: [],
+      focus: 0,
+      complete: []
     }
     // const statements = 407
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -18,14 +19,15 @@ class Wellness extends React.Component {
   }
 
   handleChange(e) {
-    const [ id, checked ] = e.target.value.split( '-' )
-    // log(JSON.stringify(this.state.response))
+    const [ heading, subheading , statement, checked ] = e.target.value.split( '-' )
+
     this.setState({
       response: {
         ...this.state.response,
-        [ id ] : parseInt(checked, 10)
+        [ `${heading}-${subheading}-${statement}` ] : parseInt(checked, 10)
       }
     })
+    log(JSON.stringify(this.state.response))
   }
 
   handleSubmit(event) {
@@ -42,7 +44,6 @@ class Wellness extends React.Component {
   render() {
     // eslint-disable-next-line
     const {headings, subheadings, statements, notices, questions} = this.state.data
-    let statementID = 0
     return (
       <div className="wellness">
         <h2>Wellness &amp; Health Appraisal</h2>
@@ -54,49 +55,81 @@ class Wellness extends React.Component {
         </div>
         <fieldset>
           <legend>Questionnaire</legend>
-          <form className="pure-form" onSubmit={this.handleSubmit}>
-            { headings.map( (heading, i) => (
-              [ <h3 key={`heading-${i}`}>{heading}</h3>,
-                i === 10 && <span key={`notice-heading-${i}`} className="notice-heading">{notices.headings[10]}</span>,
-                subheadings[i].length === 0 ?
-                  statements[10][0].map( (statement) =>
-                    <Statement key={statementID} text={statement} id={statementID++} super={this} />
-                  ) :
-                subheadings[i].map( (subheading, j) => (
-                  [ <h4 key={`subheading-${i}-${j}`}>{subheading}</h4>,
-                    notices.subheadings[`${i+1}.${j+1}`] && <span key={`notice-subheading-${i}-${j}`} className="notice-subheading">{notices.subheadings[`${i+1}.${j+1}`]}</span>,
-                  statements[i][j].map( (statement) =>
-                    <Statement key={statementID} text={statement} id={statementID++} super={this} />
-                  )]
-                ))
-              ])
-            )}
-            <button type="submit" className="pure-button pure-button-primary">See Results</button>
-          </form>
+          { headings.map((heading, i) => (
+            <Form
+              key={i}
+              index={i}
+              super={this}
+              data={this.state.data}
+              submit={this.handleSubmit}
+              text={heading}
+            />
+            ))
+          }
         </fieldset>
       </div>
     )
   }
 }
 
+
+const Form = props => {
+  const handleSubmit = e => props.super.handleSubmit(e)
+  const handleChange = e => props.super.handleChange(e)
+  const focus = props.super.state.focus === props.index
+  const complete = props.super.state.complete.includes(props.index)
+  if (!focus || complete)
+    return ''
+  else if (focus && !complete) return(
+    <form className="pure-form" id={`heading-${props.index}`} onSubmit={handleSubmit}>
+      <h3>{props.text}</h3>
+      {props.index === 10 && <span className="notice-heading">{props.data.notices.headings[10]}</span>}
+      {props.index === 10 &&
+          props.data.statements[10][0].map( (statement, i) =>
+            <Statement key={`10-0-${i}`} id={`10-0-${i}`} text={statement} radioChange={handleChange} super={props.super} />
+        )
+      }
+      { props.index !== 10 &&
+        props.data.subheadings[props.index].map( (subheading, i) => {
+          return [<Subheading key={`sh-${i}`} text={subheading} />,
+            <SubheadingNotice key={`shn-${i}`} data={props.data.notices.subheadings[`${props.index+1}.${i+1}`]} />,
+            [props.data.statements[props.index][i].map( (statement, j) => (
+              <Statement key={`${props.index}-${i}-${j}`} id={`${props.index}-${i}-${j}`} text={statement} radioChange={handleChange} super={props.super} />
+            ))]
+          ]
+      })}
+      <button type="submit" className="pure-button pure-button-primary">See Results</button>
+    </form>
+  )
+}
+
+const Subheading = props => (
+  <h4>{props.text}</h4>
+)
+
+const SubheadingNotice = props => (
+  props.data ? <span className="notice-subheading">{props.data}</span> : ''
+)
+
 const Statement = props => {
+  const id = props.id
+  const checked = props.super.state.response[id]
+  const handleChange = (e) => props.radioChange(e)
   return(
-    <div id={props.id} className={`wellness-statement ${props.id % 2 === 0 ? 'left' : 'right'}`}>
+    <div className="wellness-statement">
       <p>{props.text}</p>
       <div className="pure-control-group">
-        <RadioButton name={`${props.id}-0`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={0} />
-        <RadioButton name={`${props.id}-1`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={1} />
-        <RadioButton name={`${props.id}-2`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={2} />
-        <RadioButton name={`${props.id}-3`} radioChange={props.super.handleChange} checked={props.super.state.response[props.id]} index={3} />
+        <RadioButton name={`${id}-0`} radioChange={handleChange} checked={checked} index={0} />
+        <RadioButton name={`${id}-1`} radioChange={handleChange} checked={checked} index={1} />
+        <RadioButton name={`${id}-2`} radioChange={handleChange} checked={checked} index={2} />
+        <RadioButton name={`${id}-3`} radioChange={handleChange} checked={checked} index={3} />
       </div>
     </div>
   )
 }
 
 const RadioButton = props => {
-  const handleChange = e => {
-    props.radioChange(e)
-  }
+  const handleChange = e => props.radioChange(e)
   return(
     <div style={{display: 'inline-block'}}>
       <input type="radio" value={props.name} name={props.name} id={props.name}
@@ -108,7 +141,7 @@ const RadioButton = props => {
   )
 }
 
-export default hot(module)(Wellness)
+export default Wellness
 // const Statement = props => {
 //   return(
 //     <div id={"statement" + statementID}>

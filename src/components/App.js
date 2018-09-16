@@ -1,5 +1,5 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 // import SimpleStorageContract from "./contracts/SimpleStorage.json";
 // import getWeb3 from './utils/getWeb3';
 // import truffleContract from 'truffle-contract';
@@ -68,4 +68,4 @@ class App extends React.Component {
   }
 }
 
-export default hot(module)(App)
+export default App

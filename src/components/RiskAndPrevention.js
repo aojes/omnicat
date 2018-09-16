@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 
 const RiskAndPrevention = () => (
 
@@ -8,4 +8,4 @@ const RiskAndPrevention = () => (
 
 )
 
-export default hot(module)(RiskAndPrevention)
+export default RiskAndPrevention

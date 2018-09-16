@@ -1,5 +1,5 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 import './../css/IronLevels.sass'
 // import { contract } from "utils/ethereumSetup"
 const { log, error, info, warn } = console
@@ -110,4 +110,4 @@ class IronOptimiser extends React.Component {
     )
   }
 }
-export default hot(module)(IronOptimiser)
+export default IronOptimiser

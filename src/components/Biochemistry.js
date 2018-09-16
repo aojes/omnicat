@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 
 const Biochemistry = () => (
 
@@ -8,4 +8,4 @@ const Biochemistry = () => (
 
 )
 
-export default hot(module)(Biochemistry)
+export default Biochemistry

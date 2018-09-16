@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { hot } from 'react-hot-loader'
+//import { hot } from 'react-hot-loader'
 import data from './data/Dass42-statements.json'
 import './../css/Dass42.sass'
 import dassResultsImg from './../images/dass-score-table.png'
@@ -147,4 +147,4 @@ class Dass42 extends Component {
   }
 }
 
-export default hot(module)(Dass42)
+export default Dass42
