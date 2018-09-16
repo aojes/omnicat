@@ -1,11 +1,24 @@
+const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const path = require('path');
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: './public/index.html',
   filename: './index.html'
 });
+const cleanWebpackPlugin = new CleanWebpackPlugin(['dist']);
+const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
 
 module.exports = {
+  entry: {
+    app: './src/index.js'
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
   module: {
     rules: [
       {
@@ -24,8 +37,13 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [ 'file-loader' ]
-      }      
+      }
     ]
   },
-  plugins: [htmlWebpackPlugin]
+  plugins: [htmlWebpackPlugin, cleanWebpackPlugin, hotModuleReplacementPlugin],
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  }
 };
