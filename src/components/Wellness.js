@@ -9,9 +9,9 @@ class Wellness extends React.Component {
     this.state = {
       data: questionnaire,
       response: [],
-      focus: 0,
+      focus: 0, // ([0-9]+|Q)
       focusStatements: 0,
-      complete: []
+      complete: [] // ...([0-9]+|Q)
     }
     // const statements = 407
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -43,10 +43,6 @@ class Wellness extends React.Component {
     const form = document.getElementById('form-heading-'+this.state.focus)
     const count = parseInt(element.dataset.sum)
     log(element, count, typeof count, form)
-    // log(Object.keys(form))
-    // const complete = count === this.state.response.map((el, i) => (
-    //
-    // ))
   }
 
   validate() {
@@ -76,7 +72,14 @@ class Wellness extends React.Component {
               submit={this.handleSubmit}
               text={heading}
             />
-            ))
+          ))
+          }
+          { <QuestionsForm
+              data={questions}
+              handleSubmit={this.handleSubmit}
+              handleBlur={this.handleBlur}
+              focus={this.state.focus}
+            />
           }
         </fieldset>
       </div>
@@ -84,12 +87,33 @@ class Wellness extends React.Component {
   }
 }
 
+const QuestionsForm = props => {
+  const handleSubmit = (e) => props.handleSubmit(e)
+  const handleBlur = (e) => props.handleBlur(e)
+  if (!props.focus)
+    return false
+  else if (props.focus === 'Q') return(
+    <fieldset>
+      <legend>More Info.</legend>
+      <form className="pure-form" onSubmit={handleSubmit} onBlur={handleBlur}>
+        {props.data.map((question, i) => (
+          <p  className="wellness-question" key={i}>
+            <span className="question">{question}</span>
+            <textarea className="pure-u-2-5" id={`questions-${i}`} />
+          </p>
+          ))
+        }
+        <button type="submit" className="pure-button pure-button-primary">Submit</button>
+      </form>
+    </fieldset>
+  )
+}
 
 const Form = props => {
   const handleSubmit = e => props.super.handleSubmit(e)
   const handleChange = e => props.super.handleChange(e)
   const handleBlur = e => props.super.handleBlur(e)
-  const focus = true || props.super.state.focus === props.index
+  const focus = props.super.state.focus === props.index
   const complete = props.super.state.complete.includes(props.index)
   let count = 0
   if (!focus || complete)
@@ -97,29 +121,28 @@ const Form = props => {
   else if (focus && !complete) return(
     <form className="pure-form" id={`form-heading-${props.index}`} onSubmit={handleSubmit}>
       <h3>{props.text}</h3>
-      {props.index === 10 && <span className="notice-heading">{props.data.notices.headings[10]}</span>}
-      {props.index === 10 &&
-          props.data.statements[10][0].map( (statement, i) =>
+      {props.index === 10 ?
+        [<span key={10} className="notice-heading">{props.data.notices.headings[10]}</span>,
+          props.data.statements[10][0].map( (statement, i) => (
             <Statement key={`10-0-${i}`} blur={handleBlur} count={count++} id={`10-0-${i}`} text={statement} radioChange={handleChange} super={props.super} />
-        )
-      }
-      { props.index !== 10 &&
-        props.data.subheadings[props.index].map( (subheading, i) => {
-          return [<Subheading key={`sh-${i}`} text={subheading} />,
+        ))]
+      : props.data.subheadings[props.index].map( (subheading, i) =>
+          [<Subheading key={`sh-${i}`} text={subheading} />,
             <SubheadingNotice key={`shn-${i}`} data={props.data.notices.subheadings[`${props.index+1}.${i+1}`]} />,
             [props.data.statements[props.index][i].map( (statement, j) => (
-              <Statement key={`${props.index}-${i}-${j}`} blur={handleBlur} count={count} id={`${props.index}-${i}-${j}`} text={statement} radioChange={handleChange} super={props.super} />
+              <Statement key={`${props.index}-${i}-${j}`} blur={handleBlur} count={count++} id={`${props.index}-${i}-${j}`} text={statement} radioChange={handleChange} super={props.super} />
             ))]
           ]
-      })}
-      <input type="hidden" id={`heading-${props.index}`} data-sum={0} data-count={count++} />
+        )
+      }
+      <input type="hidden" id={`heading-${props.index}`} sum={0} count={count - 1} />
       <button type="submit" className="pure-button pure-button-primary">See Results</button>
     </form>
   )
 }
 
 const Subheading = props => (
-  <h4>{props.text}</h4>
+  props.text.length > 0 ? <h4>{props.text}</h4> : ''
 )
 
 const SubheadingNotice = props => (

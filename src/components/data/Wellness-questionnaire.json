@@ -22,9 +22,9 @@
     ["Section 6.1 Kidney/Bladder", "Section 6.2 Prostate/Male hormone balance", "Section 6.3 Symptoms of PMS", "Section 6.4 Menstrual irregularities", "Section 6.5 Symptoms of menopause", "Section 6.6 Other female sexual and hormonal problems"],
     ["Section 7.1 Bone", "Section 7.2 Muscle", "Section 7.3 Connective tissue"],
     ["Section 8.1 Neurological", "Section 8.2 Stress history", "Section 8.3 Symptoms of insomnia", "Section 8.4 Normal, healthy learning and concentration"],
-    [],
-    [],
-    [],
+    [""],
+    [""],
+    [""],
     ["Section 12.1 Patient health history", "Section 12.2 Weight management", "Section 12.3 High risk symptoms", "Section 12.4"]
   ],
   "notices": {

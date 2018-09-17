@@ -4,7 +4,7 @@ main .wellness
   padding-right: 3em
   background: $white
   form
-    padding: 0.5em 1em
+    padding: 0.5em 1em 2em
     position: relative
     @import "checkbox-radio-inputs"
     .wellness-statement
@@ -12,3 +12,12 @@ main .wellness
       padding: 1em
       .radio-group
         display: inline
+    input[type="text"]
+      display: block
+    p.wellness-question
+      span.question
+        padding: 1em 0
+        display: block
+      textarea
+        border: 2px solid $purple
+        border-radius: 8px
