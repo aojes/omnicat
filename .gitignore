@@ -10,12 +10,14 @@ node_modules
 *~
 ~*
 *_
+
+.notes
 note-*
 nb-*
+n-*
+
 *.tgz
 *.zip
 *.log
-
-.notes
 .vscode
 .misc

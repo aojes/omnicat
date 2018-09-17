@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount...')
+    //console.log('componentDidMount...')
     // try {
     //   // Get network provider and web3 instance.
     //   const web3 = getWeb3();

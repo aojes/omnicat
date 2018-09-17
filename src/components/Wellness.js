@@ -2,7 +2,7 @@ import React from 'react'
 //import { hot } from 'react-hot-loader'
 import './../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
-const { log, error } = console
+const { log, error, info } = console
 class Wellness extends React.Component {
   constructor() {
     super()
@@ -10,31 +10,43 @@ class Wellness extends React.Component {
       data: questionnaire,
       response: [],
       focus: 0,
+      focusStatements: 0,
       complete: []
     }
     // const statements = 407
     this.handleSubmit = this.handleSubmit.bind(this)
     this.validate = this.validate.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
+  }
+
+  handleBlur(e) {
+    log(e.target.value)
   }
 
   handleChange(e) {
-    const [ heading, subheading , statement, checked ] = e.target.value.split( '-' )
-
+    info(e.target)
+    const [ heading, subheading, statement, checked ] = e.target.value.split( '-' )
     this.setState({
       response: {
         ...this.state.response,
-        [ `${heading}-${subheading}-${statement}` ] : parseInt(checked, 10)
+        [ `${heading}-${subheading}-${statement}` ] : parseInt(checked)
       }
     })
     log(JSON.stringify(this.state.response))
+    // log(JSON.stringify(this.state.newResponse))
   }
 
-  handleSubmit(event) {
-    event.preventDefault()
-    return this.validate() ?
-      log('valid') && true :
-      error('nopp') && false
+  handleSubmit(e) {
+    e.preventDefault()
+    const element = document.getElementById('heading-'+this.state.focus)
+    const form = document.getElementById('form-heading-'+this.state.focus)
+    const count = parseInt(element.dataset.sum)
+    log(element, count, typeof count, form)
+    // log(Object.keys(form))
+    // const complete = count === this.state.response.map((el, i) => (
+    //
+    // ))
   }
 
   validate() {
@@ -76,17 +88,19 @@ class Wellness extends React.Component {
 const Form = props => {
   const handleSubmit = e => props.super.handleSubmit(e)
   const handleChange = e => props.super.handleChange(e)
-  const focus = props.super.state.focus === props.index
+  const handleBlur = e => props.super.handleBlur(e)
+  const focus = true || props.super.state.focus === props.index
   const complete = props.super.state.complete.includes(props.index)
+  let count = 0
   if (!focus || complete)
     return ''
   else if (focus && !complete) return(
-    <form className="pure-form" id={`heading-${props.index}`} onSubmit={handleSubmit}>
+    <form className="pure-form" id={`form-heading-${props.index}`} onSubmit={handleSubmit}>
       <h3>{props.text}</h3>
       {props.index === 10 && <span className="notice-heading">{props.data.notices.headings[10]}</span>}
       {props.index === 10 &&
           props.data.statements[10][0].map( (statement, i) =>
-            <Statement key={`10-0-${i}`} id={`10-0-${i}`} text={statement} radioChange={handleChange} super={props.super} />
+            <Statement key={`10-0-${i}`} blur={handleBlur} count={count++} id={`10-0-${i}`} text={statement} radioChange={handleChange} super={props.super} />
         )
       }
       { props.index !== 10 &&
@@ -94,10 +108,11 @@ const Form = props => {
           return [<Subheading key={`sh-${i}`} text={subheading} />,
             <SubheadingNotice key={`shn-${i}`} data={props.data.notices.subheadings[`${props.index+1}.${i+1}`]} />,
             [props.data.statements[props.index][i].map( (statement, j) => (
-              <Statement key={`${props.index}-${i}-${j}`} id={`${props.index}-${i}-${j}`} text={statement} radioChange={handleChange} super={props.super} />
+              <Statement key={`${props.index}-${i}-${j}`} blur={handleBlur} count={count} id={`${props.index}-${i}-${j}`} text={statement} radioChange={handleChange} super={props.super} />
             ))]
           ]
       })}
+      <input type="hidden" id={`heading-${props.index}`} data-sum={0} data-count={count++} />
       <button type="submit" className="pure-button pure-button-primary">See Results</button>
     </form>
   )
@@ -112,27 +127,42 @@ const SubheadingNotice = props => (
 )
 
 const Statement = props => {
+  // NOTE Add text type not just radio
   const id = props.id
   const checked = props.super.state.response[id]
   const handleChange = (e) => props.radioChange(e)
-  return(
-    <div className="wellness-statement">
-      <p>{props.text}</p>
-      <div className="pure-control-group">
-        <RadioButton name={`${id}-0`} radioChange={handleChange} checked={checked} index={0} />
-        <RadioButton name={`${id}-1`} radioChange={handleChange} checked={checked} index={1} />
-        <RadioButton name={`${id}-2`} radioChange={handleChange} checked={checked} index={2} />
-        <RadioButton name={`${id}-3`} radioChange={handleChange} checked={checked} index={3} />
+  const handleBlur = (e) => props.blur(e)
+  const textInput = props.text.includes('_')
+  if (textInput) {
+    return (
+      <div className='wellness-statement'>
+        <p>
+          {props.text.split('_')[0]}
+          <input name={`${id}-text`} type="text" onBlur={handleBlur} />
+        </p>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return(
+      <div className='wellness-statement'>
+        <p>{props.text}</p>
+        <div className="pure-control-group">
+          <RadioButton name={`${id}-0`} radioChange={handleChange} checked={checked} index={0} />
+          <RadioButton name={`${id}-1`} radioChange={handleChange} checked={checked} index={1} />
+          <RadioButton name={`${id}-2`} radioChange={handleChange} checked={checked} index={2} />
+          <RadioButton name={`${id}-3`} radioChange={handleChange} checked={checked} index={3} />
+        </div>
+      </div>
+    )
+  }
 }
 
 const RadioButton = props => {
   const handleChange = e => props.radioChange(e)
   return(
-    <div style={{display: 'inline-block'}}>
-      <input type="radio" value={props.name} name={props.name} id={props.name}
+    <div className="radio-group">
+      <input type="radio"
+        value={props.name} name={props.name} id={props.name}
         checked={props.checked === props.index}
         onChange={handleChange}
       />
