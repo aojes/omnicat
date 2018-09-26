@@ -16,7 +16,6 @@
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-hot-loader": "^4.3.11",
     "react-router-dom": "^4.3.1",
     "truffle-contract": "^4.0.0-next.0",
     "web3": "^1.0.0-beta.36"
@@ -90,6 +89,7 @@
     "migrations/*.js"
   ],
   "optionalDependencies": {
-    "object-inspect": "^1.6.0"
+    "object-inspect": "^1.6.0",
+    "react-hot-loader": "^4.3.11"
   }
 }
