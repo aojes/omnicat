@@ -86,6 +86,9 @@
       "react/prop-types": 0
     }
   },
+  "eslintIgnore": [
+    "migrations/*.js"
+  ],
   "optionalDependencies": {
     "object-inspect": "^1.6.0"
   }
