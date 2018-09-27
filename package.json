@@ -11,7 +11,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open --port 3000",
     "build": "webpack --mode production",
-    "server": "node server.js"
+    "server": "node server.js",
+    "lines": "npx sloc --format cli-table --format-option head --keys total,source,comment,todo --exclude 'node_modules|build|svg$|xml$' ./"
   },
   "dependencies": {
     "react": "^16.5.2",
@@ -90,6 +91,7 @@
   ],
   "optionalDependencies": {
     "object-inspect": "^1.6.0",
-    "react-hot-loader": "^4.3.11"
+    "react-hot-loader": "^4.3.11",
+    "sloc": "^0.2.0"
   }
 }
