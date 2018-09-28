@@ -7,11 +7,10 @@
 // const _interface = json['abi'];
 // const bytecode = json['bytecode'];
 
-var Ownable = artifacts.require("Ownable")
+// var Ownable = artifacts.require("Ownable")
 var OmniCAT = artifacts.require("OmniCAT")
 
-var accounts, omnicat, owner;
-
+let owner, omnicat;
 contract('OmniCAT', async (accounts) => {
   it('deploys a contract', async () => {
     let inst = await OmniCAT.deployed()
