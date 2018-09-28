@@ -9,7 +9,7 @@
     "url": "gitlab.com:crockett.jesse/omnicat.git"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --port 3000",
+    "start": "webpack-dev-server --mode development --port 3000",
     "build": "webpack --mode production",
     "server": "node server.js",
     "lines": "npx sloc --format cli-table --format-option head --keys total,source,comment,todo --exclude 'node_modules|build|svg$|xml$' ./"
