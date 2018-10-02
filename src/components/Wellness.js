@@ -155,12 +155,14 @@ const Statement = props => {
   const checked = props.super.state.response[id]
   const handleChange = (e) => props.radioChange(e)
   const handleBlur = (e) => props.blur(e)
-  const textInput = props.text.includes('_')
+
+  // TODO checkbox input (as section 12.4)
+  const textInput = props.text.includes('[input_text]')
   if (textInput) {
     return (
       <div className='wellness-statement'>
         <p>
-          {props.text.split('_')[0]}
+          {props.text.split('[input_text]')[0]}
           <input name={`${id}-text`} type="text" onBlur={handleBlur} />
         </p>
       </div>
