@@ -166,39 +166,34 @@ const SubheadingNotice = props => (
 
 const Statement = props => {
   // NOTE Add text type not just radio
-  const inputs = props.inputTypeStr.split(' ')[1] // "1 bold ny3", "12 ny6"
+  const inputs = props.inputTypeStr // "1 bold ny3", "12 ny6"
   const id = props.id
   const checked = props.super.state.response[id]
   const handleChange = (e) => props.radioChange(e)
   const handleBlur = (e) => props.blur(e)
 
   // TODO checkbox input (as section 12.4)
-  let textIn, radioIn2, radioIn4, first, second, third, fourth, yesValue, bolden
-  if (inputs) {
-    textIn   = inputs.includes('text')
+  let first, second, third, fourth, yesValue
 
-    radioIn4 = inputs.match(/([0-9]{3}a)|([0-9]{4})/)
-    if (radioIn4) {radioIn4 = radioIn4[0] }
-
-    radioIn2 = inputs[0].match(/ny\d+/g)
-    if (radioIn2) { radioIn2 = radioIn2[0]  }
-
-    bolden   = inputs.includes('bold')
-  }
+  const bolden   = inputs.includes('bold')
+  const textIn   = inputs.includes('text')
+  const radioIn2 = inputs.match(/ny\d{1,2}/)
+  const radioIn4 = inputs.match(/[0-9]{3}a|[0-9]{4}/)
 
   if (radioIn4) {
-    first  = parseInt(radioIn4.slice(0, 1), 16)
-    second = parseInt(radioIn4.slice(1, 2), 16)
-    third  = parseInt(radioIn4.slice(2, 3), 16)
-    fourth = parseInt(radioIn4.slice(3, 4), 16)
+    first  = parseInt(radioIn4[0].slice(0, 1), 16)
+    second = parseInt(radioIn4[0].slice(1, 2), 16)
+    third  = parseInt(radioIn4[0].slice(2, 3), 16)
+    fourth = parseInt(radioIn4[0].slice(3, 4), 16)
   } else if (radioIn2) {
-    yesValue = parseInt(radioIn2.split('ny')[1], 10)
+    yesValue = parseInt(radioIn2[0].split('ny')[1], 10)
+  } else if (textIn) {
+    log('textIn')
   }
   if (textIn) {
     return (
       <div className='wellness-statement'>
-        <p>
-          {props.text}
+        <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span>
           <input name={`${id}-text`} type="text" onBlur={handleBlur} />
         </p>
       </div>
@@ -206,7 +201,7 @@ const Statement = props => {
   } else if (radioIn4) {
     return(
       <div className='wellness-statement'>
-        <p>{props.text}</p>
+        <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div className="pure-control-group">
           <RadioButton name={`${id}-${first}`} radioChange={handleChange} checked={checked} index={first} />
           <RadioButton name={`${id}-${second}`} radioChange={handleChange} checked={checked} index={second} />
@@ -218,7 +213,7 @@ const Statement = props => {
   } else if (radioIn2) {
     return(// TODO
       <div className='wellness-statement'>
-        <p>{props.text}</p>
+        <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div className="pure-control-group">
           <RadioButton name={`${id}-0`} radioChange={handleChange} checked={checked} index={0} />
           <RadioButton name={`${id}-${yesValue}`} radioChange={handleChange} checked={checked} index={yesValue} />
