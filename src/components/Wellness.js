@@ -13,6 +13,7 @@ class Wellness extends React.Component {
       focusStatements: 0,
       complete: [] // ...([0-9]+|Q)
     }
+    log(this.state.data.inputTypes.length)
     // const statements = 407
     this.handleSubmit = this.handleSubmit.bind(this)
     this.validate = this.validate.bind(this)
@@ -51,7 +52,7 @@ class Wellness extends React.Component {
   // pure-form-[aligned, stacked] pure-group pure-control pure-control-group span.pure-form-message-inline
   render() {
     // eslint-disable-next-line
-    const {headings, subheadings, statements, notices, questions} = this.state.data
+    const {headings, subheadings, statements, inputTypes, notices, questions} = this.state.data
     return (
       <div className="wellness">
         <h2>Wellness &amp; Health Appraisal</h2>
@@ -124,13 +125,27 @@ const Form = props => {
       {props.index === 10 ?
         [<span key={10} className="notice-heading">{props.data.notices.headings[10]}</span>,
           props.data.statements[10][0].map( (statement, i) => (
-            <Statement key={`10-0-${i}`} blur={handleBlur} count={count++} id={`10-0-${i}`} text={statement} radioChange={handleChange} super={props.super} />
+            <Statement  inputTypeStr={props.data.inputTypes[10][i]}
+                        key={`10-0-${i}`}
+                        blur={handleBlur}
+                        count={count++}
+                        id={`10-0-${i}`}
+                        text={statement}
+                        radioChange={handleChange}
+                        super={props.super} />
         ))]
       : props.data.subheadings[props.index].map( (subheading, i) =>
           [<Subheading key={`sh-${i}`} text={subheading} />,
             <SubheadingNotice key={`shn-${i}`} data={props.data.notices.subheadings[`${props.index+1}.${i+1}`]} />,
             [props.data.statements[props.index][i].map( (statement, j) => (
-              <Statement key={`${props.index}-${i}-${j}`} blur={handleBlur} count={count++} id={`${props.index}-${i}-${j}`} text={statement} radioChange={handleChange} super={props.super} />
+              <Statement  inputTypeStr={props.data.inputTypes[props.index][i][j]}
+                          key={`${props.index}-${i}-${j}`}
+                          blur={handleBlur}
+                          count={count++}
+                          id={`${props.index}-${i}-${j}`}
+                          text={statement}
+                          radioChange={handleChange}
+                          super={props.super} />
             ))]
           ]
         )
@@ -151,35 +166,71 @@ const SubheadingNotice = props => (
 
 const Statement = props => {
   // NOTE Add text type not just radio
+  const inputs = props.inputTypeStr.split(' ')[1] // "1 bold ny3", "12 ny6"
   const id = props.id
   const checked = props.super.state.response[id]
   const handleChange = (e) => props.radioChange(e)
   const handleBlur = (e) => props.blur(e)
 
   // TODO checkbox input (as section 12.4)
-  const textInput = props.text.includes('[input_text]')
-  if (textInput) {
+  let textIn, radioIn2, radioIn4, first, second, third, fourth, yesValue, bolden
+  if (inputs) {
+    textIn   = inputs.includes('text')
+
+    radioIn4 = inputs.match(/([0-9]{3}a)|([0-9]{4})/)
+    if (radioIn4) {radioIn4 = radioIn4[0] }
+
+    radioIn2 = inputs[0].match(/ny\d+/g)
+    if (radioIn2) { radioIn2 = radioIn2[0]  }
+
+    bolden   = inputs.includes('bold')
+  }
+
+  if (radioIn4) {
+    first  = parseInt(radioIn4.slice(0, 1), 16)
+    second = parseInt(radioIn4.slice(1, 2), 16)
+    third  = parseInt(radioIn4.slice(2, 3), 16)
+    fourth = parseInt(radioIn4.slice(3, 4), 16)
+  } else if (radioIn2) {
+    yesValue = parseInt(radioIn2.split('ny')[1], 10)
+  }
+  if (textIn) {
     return (
       <div className='wellness-statement'>
         <p>
-          {props.text.split('[input_text]')[0]}
+          {props.text}
           <input name={`${id}-text`} type="text" onBlur={handleBlur} />
         </p>
       </div>
     )
-  } else {
+  } else if (radioIn4) {
     return(
       <div className='wellness-statement'>
         <p>{props.text}</p>
         <div className="pure-control-group">
-          <RadioButton name={`${id}-0`} radioChange={handleChange} checked={checked} index={0} />
-          <RadioButton name={`${id}-1`} radioChange={handleChange} checked={checked} index={1} />
-          <RadioButton name={`${id}-2`} radioChange={handleChange} checked={checked} index={2} />
-          <RadioButton name={`${id}-3`} radioChange={handleChange} checked={checked} index={3} />
+          <RadioButton name={`${id}-${first}`} radioChange={handleChange} checked={checked} index={first} />
+          <RadioButton name={`${id}-${second}`} radioChange={handleChange} checked={checked} index={second} />
+          <RadioButton name={`${id}-${third}`} radioChange={handleChange} checked={checked} index={third} />
+          <RadioButton name={`${id}-${fourth}`} radioChange={handleChange} checked={checked} index={fourth} />
         </div>
       </div>
     )
+  } else if (radioIn2) {
+    return(// TODO
+      <div className='wellness-statement'>
+        <p>{props.text}</p>
+        <div className="pure-control-group">
+          <RadioButton name={`${id}-0`} radioChange={handleChange} checked={checked} index={0} />
+          <RadioButton name={`${id}-${yesValue}`} radioChange={handleChange} checked={checked} index={yesValue} />
+        </div>
+      </div>
+    )
+  } else {
+    return(
+      <div className='wellness-statement'><h3>Inputs: {inputs}</h3></div>
+    )
   }
+
 }
 
 const RadioButton = props => {
