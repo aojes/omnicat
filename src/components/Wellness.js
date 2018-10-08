@@ -13,7 +13,6 @@ class Wellness extends React.Component {
       focusStatements: 0,
       complete: [] // ...([0-9]+|Q)
     }
-    log(this.state.data.inputTypes.length)
     // const statements = 407
     this.handleSubmit = this.handleSubmit.bind(this)
     this.validate = this.validate.bind(this)
@@ -177,19 +176,19 @@ const Statement = props => {
 
   const bolden   = inputs.includes('bold')
   const textIn   = inputs.includes('text')
-  const radioIn2 = inputs.match(/ny\d{1,2}/)
-  const radioIn4 = inputs.match(/[0-9]{3}a|[0-9]{4}/)
+  const radioIn2 = inputs.match(/ny\d{1,2}?/)
+  const radioIn4 = inputs.match(/[0-9]{3}a|[0-9]{4}\+?/)
 
   if (radioIn4) {
+    // TODO change label for 0123+ (1, 2, 3, 4) values display above radios
     first  = parseInt(radioIn4[0].slice(0, 1), 16)
     second = parseInt(radioIn4[0].slice(1, 2), 16)
     third  = parseInt(radioIn4[0].slice(2, 3), 16)
     fourth = parseInt(radioIn4[0].slice(3, 4), 16)
   } else if (radioIn2) {
-    yesValue = parseInt(radioIn2[0].split('ny')[1], 10)
-  } else if (textIn) {
-    log('textIn')
+    yesValue = radioIn2[0] === 'ny' ? 3 : parseInt(radioIn2[0].split('ny')[1], 10)
   }
+
   if (textIn) {
     return (
       <div className='wellness-statement'>
@@ -219,10 +218,6 @@ const Statement = props => {
           <RadioButton name={`${id}-${yesValue}`} radioChange={handleChange} checked={checked} index={yesValue} />
         </div>
       </div>
-    )
-  } else {
-    return(
-      <div className='wellness-statement'><h3>Inputs: {inputs}</h3></div>
     )
   }
 
