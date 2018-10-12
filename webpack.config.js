@@ -26,7 +26,7 @@ module.exports = {
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'haml-jsx-loader']
+        use: ['babel-loader']
       },
       {
         test: /\.(sass|css)$/,
