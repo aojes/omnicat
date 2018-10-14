@@ -21,3 +21,4 @@ n-*
 *.log
 .vscode
 .misc
+.DS_Store
