@@ -10,6 +10,7 @@ class Wellness extends React.Component {
       data: questionnaire,
       response: [],
       focus: 0, // ([0-9]+|Q)
+      sectionTally: [],
       focusStatements: 0,
       complete: [] // ...([0-9]+|Q)
     }
@@ -39,14 +40,28 @@ class Wellness extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    const element = document.getElementById('heading-'+this.state.focus)
-    const form = document.getElementById('form-heading-'+this.state.focus)
-    const count = parseInt(element.dataset.sum)
-    log(element, count, typeof count, form)
+    const sectionFocus = this.state.focus,
+      element = document.getElementById('section-statement-count-' + sectionFocus),
+      sectionStatementCount = parseInt(element.value),
+      vals  = Object.values(this.state.response),
+      thisSectionTally = vals.reduce((a, b) => a + b)
+    log('statements:', sectionStatementCount, ' tally:', thisSectionTally)
+
+    if (this.validate(sectionStatementCount, vals.length)) {
+      this.setState({
+        sectionTally: this.state.sectionTally.push(thisSectionTally),
+        focus: sectionFocus + 1
+      })
+      alert('Your tally for the section is ' + thisSectionTally)
+      return true
+    } else {
+      alert('Please answer all questions')
+      return false
+    }
   }
 
-  validate() {
-    return true
+  validate(a, b) {
+    return a === b
   }
   // pure-form-[aligned, stacked] pure-group pure-control pure-control-group span.pure-form-message-inline
   render() {
@@ -149,7 +164,7 @@ const Form = props => {
           ]
         )
       }
-      <input type="hidden" id={`heading-${props.index}`} sum={0} count={count - 1} />
+      <input type="hidden" id={`section-statement-count-${props.index}`} value={count} />
       <button type="submit" className="pure-button pure-button-primary">See Results</button>
     </form>
   )
