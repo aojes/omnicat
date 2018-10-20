@@ -9,7 +9,7 @@ class Wellness extends React.Component {
     this.state = {
       data: questionnaire,
       response: [],
-      focus: 0, // ([0-9]+|Q)
+      focus: 11, // ([0-9]+|Q)
       sectionTally: [],
       focusStatements: 0,
       complete: [] // ...([0-9]+|Q)
@@ -105,23 +105,25 @@ class Wellness extends React.Component {
 const QuestionsForm = props => {
   const handleSubmit = (e) => props.handleSubmit(e)
   const handleBlur = (e) => props.handleBlur(e)
-  if (!props.focus)
-    return false
-  else if (props.focus === 'Q') return(
-    <fieldset>
-      <legend>More Info.</legend>
-      <form className="pure-form" onSubmit={handleSubmit} onBlur={handleBlur}>
-        {props.data.map((question, i) => (
-          <p  className="wellness-question" key={i}>
-            <span className="question">{question}</span>
-            <textarea className="pure-u-2-5" id={`questions-${i}`} />
-          </p>
-          ))
-        }
-        <button type="submit" className="pure-button pure-button-primary">Submit</button>
-      </form>
-    </fieldset>
-  )
+  if (props.focus === 'Q') {
+    return(
+      <fieldset>
+        <legend>More Info.</legend>
+        <form className="pure-form" onSubmit={handleSubmit} onBlur={handleBlur}>
+          {props.data.map((question, i) => (
+            <p  className="wellness-question" key={i}>
+              <span className="question">{question}</span>
+              <textarea className="pure-u-2-5" id={`questions-${i}`} />
+            </p>
+            ))
+          }
+          <button type="submit" className="pure-button pure-button-primary">Submit</button>
+        </form>
+      </fieldset>
+    )
+  } else {
+    return null
+  }
 }
 
 const Form = props => {
@@ -132,7 +134,7 @@ const Form = props => {
   const complete = props.super.state.complete.includes(props.index)
   let count = 0
   if (!focus || complete)
-    return ''
+    return null
   else if (focus && !complete) return(
     <form className="pure-form" id={`form-heading-${props.index}`} onSubmit={handleSubmit}>
       <h3>{props.text}</h3>
@@ -187,21 +189,24 @@ const Statement = props => {
   const handleBlur = (e) => props.blur(e)
 
   // TODO checkbox input (as section 12.4)
-  let first, second, third, fourth, yesValue
+  let first, second, third, fourth, yesValue, extraKeys,
+    key1, key2, key3, key4
 
   const bolden   = inputs.includes('bold')
   const textIn   = inputs.includes('text')
-  const radioIn2 = inputs.match(/ny\d{1,2}?/)
+  const radioIn2 = inputs.match(/ny(\d{1,2})?/)
   const radioIn4 = inputs.match(/[0-9]{3}a|[0-9]{4}\+?/)
-
   if (radioIn4) {
     // TODO change label for 0123+ (1, 2, 3, 4) values display above radios
     first  = parseInt(radioIn4[0].slice(0, 1), 16)
     second = parseInt(radioIn4[0].slice(1, 2), 16)
     third  = parseInt(radioIn4[0].slice(2, 3), 16)
     fourth = parseInt(radioIn4[0].slice(3, 4), 16)
+    if (radioIn4.input.includes('+')) {
+      [key1, key2, key3, key4] = radioIn4.input.split('+ ')[1].split(', ')
+    }
   } else if (radioIn2) {
-    yesValue = radioIn2[0] === 'ny' ? 3 : parseInt(radioIn2[0].split('ny')[1], 10)
+    yesValue = radioIn2[0] === 'ny' ? 3 : parseInt(radioIn2[0].split('ny')[1], 16)
   }
 
   if (textIn) {
@@ -217,10 +222,10 @@ const Statement = props => {
       <div className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div className="pure-control-group">
-          <RadioButton name={`${id}-${first}`} radioChange={handleChange} checked={checked} index={first} />
-          <RadioButton name={`${id}-${second}`} radioChange={handleChange} checked={checked} index={second} />
-          <RadioButton name={`${id}-${third}`} radioChange={handleChange} checked={checked} index={third} />
-          <RadioButton name={`${id}-${fourth}`} radioChange={handleChange} checked={checked} index={fourth} />
+          <RadioButton name={`${id}-${first}`} extraKey={key1} radioChange={handleChange} checked={checked} index={first} />
+          <RadioButton name={`${id}-${second}`} extraKey={key2} radioChange={handleChange} checked={checked} index={second} />
+          <RadioButton name={`${id}-${third}`} extraKey={key3} radioChange={handleChange} checked={checked} index={third} />
+          <RadioButton name={`${id}-${fourth}`} extraKey={key4} radioChange={handleChange} checked={checked} index={fourth} />
         </div>
       </div>
     )
@@ -229,28 +234,46 @@ const Statement = props => {
       <div className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div className="pure-control-group">
-          <RadioButton name={`${id}-0`} radioChange={handleChange} checked={checked} index={0} />
-          <RadioButton name={`${id}-${yesValue}`} radioChange={handleChange} checked={checked} index={yesValue} />
+          <RadioButton name={`${id}-0`} extraKey={false} radioChange={handleChange} checked={checked} index={0} />
+          <RadioButton name={`${id}-${yesValue}`} extraKey={false} radioChange={handleChange} checked={checked} index={yesValue} />
         </div>
       </div>
     )
+  } else {
+    log('r2', radioIn2, ' r4', radioIn4, ' text', textIn, ' \ninputs', inputs)
+    return null
   }
 
 }
 
 const RadioButton = props => {
   const handleChange = e => props.radioChange(e)
+  // const keyWidth = props.extraKey ? props.extraKey.length : props.index.toString().length
   return(
     <div className="radio-group">
+
       <input type="radio"
         value={props.name} name={props.name} id={props.name}
         checked={props.checked === props.index}
         onChange={handleChange}
       />
-      <label htmlFor={props.name}><span>{props.index}</span>&nbsp;</label>
+      <label htmlFor={props.name}>
+        <span>{props.extraKey || props.index}</span>
+      </label>
     </div>
   )
 }
+
+// const ExtraKey = props => {
+//   if (typeof props.text !== 'undefined') {log(props.text)}
+//   if (typeof props.text === 'string') {
+//     return(
+//       <span style={{position: 'relative', top: '-30px', left: '-30px', float: 'left', clear: 'both'}}>{props.text}</span>
+//     )
+//   } else {
+//     return null
+//   }
+// }
 
 export default Wellness
 // const Statement = props => {
