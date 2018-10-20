@@ -9,32 +9,44 @@ class Wellness extends React.Component {
     this.state = {
       data: questionnaire,
       response: [],
-      focus: 11, // ([0-9]+|Q)
+      sectionResponse: [],
+      focus: 0, // ([0-9]+|Q)
       sectionTally: [],
-      focusStatements: 0,
       complete: [] // ...([0-9]+|Q)
     }
     // const statements = 407
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.validate = this.validate.bind(this)
+    this.validateText = this.validateText.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
+    this.handleQSubmit = this.handleQSubmit.bind(this)
+    this.handleQBlur = this.handleQBlur.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleBlur(e) {
-    log(e.target.value)
+    const [ heading, subheading, statement ] = e.target.name.split('-'),
+    textValue = e.target.value
+    if (this.validateText(textValue)) {
+      this.setState({
+        sectionResponse: {
+          ...this.state.sectionResponse,
+          [ `${heading}-${subheading}-${statement}` ] : textValue
+        }
+      })
+    }
+    log(JSON.stringify(this.state.sectionResponse))
   }
 
   handleChange(e) {
-    info(e.target)
     const [ heading, subheading, statement, checked ] = e.target.value.split( '-' )
     this.setState({
-      response: {
-        ...this.state.response,
+      sectionResponse: {
+        ...this.state.sectionResponse,
         [ `${heading}-${subheading}-${statement}` ] : parseInt(checked)
       }
     })
-    log(JSON.stringify(this.state.response))
+    log(JSON.stringify(this.state.sectionResponse))
     // log(JSON.stringify(this.state.newResponse))
   }
 
@@ -42,27 +54,66 @@ class Wellness extends React.Component {
     e.preventDefault()
     const sectionFocus = this.state.focus,
       element = document.getElementById('section-statement-count-' + sectionFocus),
-      sectionStatementCount = parseInt(element.value),
-      vals  = Object.values(this.state.response),
-      thisSectionTally = vals.reduce((a, b) => a + b)
-    log('statements:', sectionStatementCount, ' tally:', thisSectionTally)
 
-    if (this.validate(sectionStatementCount, vals.length)) {
+      sectionStatementIndex = parseInt(element.attributes.allinputs.value),
+      textInputCount = parseInt(element.attributes.textinputs.value),
+      valsAry = Object.values(this.state.sectionResponse),
+      currentSectionTally = Object.values(this.state.sectionResponse)
+        .filter(el => typeof el === 'number')
+        .reduce((accum, val) => accum + val)
+    log(' ## statements:', sectionStatementIndex,
+      '\n ## sectionResponses: ', valsAry.length,
+      '\n ## text statements: ', textInputCount,
+      '\n ## tally:', currentSectionTally)
+    log(' ### ',sectionStatementIndex, valsAry.length)
+
+    if (this.validate(sectionStatementIndex, valsAry.length)) {
+      const nextFocus = sectionFocus === 'Q' ? 'results' :
+        sectionFocus < 11 ? sectionFocus + 1 : 'Q'
       this.setState({
-        sectionTally: this.state.sectionTally.push(thisSectionTally),
-        focus: sectionFocus + 1
+        sectionTally: this.state.sectionTally.concat(currentSectionTally),
+        complete: this.state.complete.concat(sectionFocus),
+        focus: nextFocus,
+        response: { ...this.state.response, ...this.state.sectionResponse }
       })
-      alert('Your tally for the section is ' + thisSectionTally)
+      alert('Your tally for the section: ' + currentSectionTally)
       return true
     } else {
-      alert('Please answer all questions')
+      alert('Please respond for each statement')
+      return false
+    }
+  }
+  validateText(str) {
+    return( str && str.length > 0 )
+  }
+  validate(sectionResponseCount, statementCount) {
+    if (sectionResponseCount && statementCount) {
+      return sectionResponseCount === statementCount
+    } else {
       return false
     }
   }
 
-  validate(a, b) {
-    return a === b
+  handleQBlur(e) {
+    info(' ## id ', e.target.id, ' ## ', e.target.value)
+    this.setState({
+      sectionResponse: { ...this.state.sectionResponse, [e.target.id]: e.target.value }
+    })
+    return true
   }
+
+  handleQSubmit(e) {
+    e.preventDefault()
+    this.setState({
+      sectionTally: this.state.sectionTally.concat('Q'),
+      complete: this.state.complete.concat('Q'),
+      focus: 'results',
+      response: { ...this.state.response, ...this.state.sectionResponse }
+    })
+    alert('Thank you for completing this long form.')
+    return true
+  }
+
   // pure-form-[aligned, stacked] pure-group pure-control pure-control-group span.pure-form-message-inline
   render() {
     // eslint-disable-next-line
@@ -91,8 +142,8 @@ class Wellness extends React.Component {
           }
           { <QuestionsForm
               data={questions}
-              handleSubmit={this.handleSubmit}
-              handleBlur={this.handleBlur}
+              handleSubmit={this.handleQSubmit}
+              handleBlur={this.handleQBlur}
               focus={this.state.focus}
             />
           }
@@ -130,9 +181,10 @@ const Form = props => {
   const handleSubmit = e => props.super.handleSubmit(e)
   const handleChange = e => props.super.handleChange(e)
   const handleBlur = e => props.super.handleBlur(e)
+
   const focus = props.super.state.focus === props.index
   const complete = props.super.state.complete.includes(props.index)
-  let count = 0
+  let count = 0, isTextCount = 0, typeStr
   if (!focus || complete)
     return null
   else if (focus && !complete) return(
@@ -140,57 +192,68 @@ const Form = props => {
       <h3>{props.text}</h3>
       {props.index === 10 ?
         [<span key={10} className="notice-heading">{props.data.notices.headings[10]}</span>,
-          props.data.statements[10][0].map( (statement, i) => (
-            <Statement  inputTypeStr={props.data.inputTypes[10][i]}
+          props.data.statements[10][0].map( (statement, i) => {
+            typeStr = props.data.inputTypes[10][i]
+            count += 1
+            if (typeStr.includes('text')) {
+              isTextCount += 1
+            }
+            return( <Statement  inputTypeStr={typeStr}
                         key={`10-0-${i}`}
                         blur={handleBlur}
-                        count={count++}
+                        count={count}
                         id={`10-0-${i}`}
                         text={statement}
                         radioChange={handleChange}
                         super={props.super} />
-        ))]
+                      )
+        })]
       : props.data.subheadings[props.index].map( (subheading, i) =>
           [<Subheading key={`sh-${i}`} text={subheading} />,
             <SubheadingNotice key={`shn-${i}`} data={props.data.notices.subheadings[`${props.index+1}.${i+1}`]} />,
-            [props.data.statements[props.index][i].map( (statement, j) => (
-              <Statement  inputTypeStr={props.data.inputTypes[props.index][i][j]}
+            [props.data.statements[props.index][i].map( (statement, j) => {
+              typeStr = props.data.inputTypes[props.index][i][j]
+              count += 1
+              if (typeStr.includes('text')) {
+                isTextCount += 1
+              }
+              return( <Statement  inputTypeStr={typeStr}
                           key={`${props.index}-${i}-${j}`}
                           blur={handleBlur}
-                          count={count++}
+                          count={count}
                           id={`${props.index}-${i}-${j}`}
                           text={statement}
                           radioChange={handleChange}
                           super={props.super} />
-            ))]
+                        )
+            })]
           ]
         )
       }
-      <input type="hidden" id={`section-statement-count-${props.index}`} value={count} />
+      <input type="hidden" id={`section-statement-count-${props.index}`} textinputs={isTextCount} allinputs={count} />
       <button type="submit" className="pure-button pure-button-primary">See Results</button>
     </form>
   )
 }
 
 const Subheading = props => (
-  props.text.length > 0 ? <h4>{props.text}</h4> : ''
+  props.text.length > 0 ? <h4>{props.text}</h4> : null
 )
 
 const SubheadingNotice = props => (
-  props.data ? <span className="notice-subheading">{props.data}</span> : ''
+  props.data ? <span className="notice-subheading">{props.data}</span> : null
 )
 
 const Statement = props => {
   // NOTE Add text type not just radio
   const inputs = props.inputTypeStr // "1 bold ny3", "12 ny6"
   const id = props.id
-  const checked = props.super.state.response[id]
+  const checked = props.super.state.sectionResponse[id]
   const handleChange = (e) => props.radioChange(e)
   const handleBlur = (e) => props.blur(e)
 
   // TODO checkbox input (as section 12.4)
-  let first, second, third, fourth, yesValue, extraKeys,
-    key1, key2, key3, key4
+  let first, second, third, fourth, yesValue, key1, key2, key3, key4
 
   const bolden   = inputs.includes('bold')
   const textIn   = inputs.includes('text')
@@ -206,14 +269,14 @@ const Statement = props => {
       [key1, key2, key3, key4] = radioIn4.input.split('+ ')[1].split(', ')
     }
   } else if (radioIn2) {
-    yesValue = radioIn2[0] === 'ny' ? 3 : parseInt(radioIn2[0].split('ny')[1], 16)
+    yesValue = radioIn2[0] === 'ny' ? 3 : parseInt(radioIn2[0].split('ny')[1], 10)
   }
 
   if (textIn) {
     return (
       <div className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span>
-          <input name={`${id}-text`} type="text" onBlur={handleBlur} />
+          <input name={`${id}-text`} type="text" onBlur={handleBlur} defaultValue={''} />
         </p>
       </div>
     )
@@ -283,26 +346,26 @@ export default Wellness
 //       <div className="pure-control-group">
 //         <input type="radio"
 //           value={`${statementID}-0`} name={`${statementID}-0`} id={`${statementID}-0`}
-//           checked={this.state.response[statementID] === 0}
+//           checked={this.state.sectionResponse[statementID] === 0}
 //           onChange={this.handleChange}
 //         />
 //         <label htmlFor={`${statementID}-0`}><span>0</span>&nbsp;</label>
 //         <input type="radio"
 //           value={`${statementID}-1`} name={`${statementID}-1`} id={`${statementID}-1`}
-//           checked={this.state.response[statementID] === 1}
+//           checked={this.state.sectionResponse[statementID] === 1}
 //           onChange={this.handleChange}
 //         />
 //         <label htmlFor={`${statementID}-1`}><span>1</span>&nbsp;</label>
 //         <input type="radio"
 //           value={`${statementID}-2`} name={`${statementID}-2`} id={`${statementID}-2`}
-//           checked={this.state.response[statementID] === 2}
+//           checked={this.state.sectionResponse[statementID] === 2}
 //           onChange={this.handleChange}
 //         />
 //         <label htmlFor={`${statementID}-2`}><span>2</span>&nbsp;</label>
 //         <input
 //           type="radio"
 //           value={`${statementID}-3`} name={`${statementID}-3`} id={`${statementID}-3`}
-//           checked={this.state.response[statementID] === 3}
+//           checked={this.state.sectionResponse[statementID] === 3}
 //           onChange={this.handleChange}
 //         />
 //         <label htmlFor={`${statementID++}-3`}><span>3</span>&nbsp;</label>
