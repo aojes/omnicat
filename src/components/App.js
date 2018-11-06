@@ -17,11 +17,13 @@ export default function App() {
       <div id="header" className="pure-u-1 pure-u-md-7-24">
         <Header/>
       </div>
-      <div id="main" className="pure-u-1 pure-u-md-17-24">
-        <Main/>
-      </div>
-      <div id="footer" className="pure-u-1">
-        <Footer/>
+      <div id="after-menu-page-wrap" className="pure-u pure-u-md-17-24">
+        <div id="main" className="pure-u-md-17-24">
+          <Main/>
+        </div>
+        <div id="footer" className="pure-u-1">
+          <Footer/>
+        </div>
       </div>
     </div>
   )
