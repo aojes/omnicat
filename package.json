@@ -32,6 +32,7 @@
     "css-loader": "^1.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-hooks": "0.0.0",
     "express": "^4.16.3",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^4.0.0-beta.2",
@@ -50,44 +51,6 @@
       "@babel/preset-react"
     ]
   },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "rules": {
-      "quotes": [
-        1,
-        "single",
-        "avoid-escape"
-      ],
-      "prefer-const": 1,
-      "react/jsx-indent": [
-        1,
-        2
-      ],
-      "no-return-assign": 1,
-      "no-console": 0,
-      "no-unused-vars": [
-        1,
-        {
-          "vars": "all",
-          "args": "after-used",
-          "argsIgnorePattern": "^_|^next$",
-          "varsIgnorePattern": "^_|^log$|^err|^info$|^warn$"
-        }
-      ],
-      "react/prop-types": 0
-    }
-  },
-  "eslintIgnore": [
-    "migrations/*.js"
-  ],
   "optionalDependencies": {
     "object-inspect": "^1.6.0",
     "react-hot-loader": "^4.3.11",
