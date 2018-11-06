@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 //import { hot } from 'react-hot-loader'
 import { Switch, Route } from 'react-router-dom'
 import Home from './Home'
@@ -17,37 +17,29 @@ import Products from './Products'
 import NotFound from './NotFound'
 import './../css/Main.sass'
 
-class Main extends Component {
-  render() {
-    return (
-      <main>
-        <section>
-          <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/dass42' component={Dass42}/>
-            <Route exact path='/iron' component={IronLevels}/>
-            <Route exact path='/aesthetics' component={Aesthetics}/>
-            <Route exact path='/about' component={About}/>
-            <Route exact path='/biochemistry' component={Biochemistry}/>
-            <Route exact path='/brain-health' component={BrainHealth}/>
-            <Route exact path='/crowdsale' component={Crowdsale}/>
-            <Route exact path='/hormones' component={Hormones}/>
-            <Route exact path='/physical-fitness' component={PhysicalFitness}/>
-            <Route exact path='/risk-and-prevention' component={RiskAndPrevention}/>
-            <Route exact path='/wellness' component={Wellness}/>
-            <Route exact path='/products' component={Products}/>
-            <Route path='*' component={NotFound}/>
-          </Switch>
-        </section>
-      </main>
-    )
-  }
+function Main() {
+  return (
+    <main>
+      <section>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/dass42' component={Dass42}/>
+          <Route exact path='/iron' component={IronLevels}/>
+          <Route exact path='/aesthetics' component={Aesthetics}/>
+          <Route exact path='/about' component={About}/>
+          <Route exact path='/biochemistry' component={Biochemistry}/>
+          <Route exact path='/brain-health' component={BrainHealth}/>
+          <Route exact path='/crowdsale' component={Crowdsale}/>
+          <Route exact path='/hormones' component={Hormones}/>
+          <Route exact path='/physical-fitness' component={PhysicalFitness}/>
+          <Route exact path='/risk-and-prevention' component={RiskAndPrevention}/>
+          <Route exact path='/wellness' component={Wellness}/>
+          <Route exact path='/products' component={Products}/>
+          <Route path='*' component={NotFound}/>
+        </Switch>
+      </section>
+    </main>
+  )
 }
 
 export default Main
-// <div className="">
-//   <code>
-//     { JSON.stringify(this.props, null, 2) }
-//   </code>
-//   <br/>
-// </div>
