@@ -13,11 +13,11 @@ export default function App() {
   // const [accounts, setAccounts] = useState(null)
   // const [contract, setContract] = useState(null)
   return (
-    <div id="app-index" className="pure-g">
+    <div id="index" className="pure-g">
       <div id="header" className="pure-u-1 pure-u-md-7-24">
         <Header/>
       </div>
-      <div id="after-menu-page-wrap" className="pure-u pure-u-md-17-24">
+      <div id="main" className="pure-u pure-u-md-17-24">
         <div id="main" className="pure-u-md-17-24">
           <Main/>
         </div>

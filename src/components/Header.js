@@ -21,12 +21,13 @@ const Header = () => {
   const isMenuOpen = (state) => state.isOpen
 
   // const [] = useState()
+  // {/*<Menu width={ 345 } onStateChange={ isMenuOpen }
+  //   bodyClassName={ 'nav-menu-open' } pageWrapId={ 'after-menu-page-wrap' }
+  //   outerContainerId={ 'app-index' }
+  //   isOpen
+  //   >*/}
   return(
-    <Menu width={ 345 } onStateChange={ isMenuOpen }
-      bodyClassName={ 'nav-menu-open' } pageWrapId={ 'after-menu-page-wrap' }
-      outerContainerId={ 'app-index' }
-      isOpen
-      >
+
       <header>
         <nav>
           {/*<a href="#" className="nav-menu-button">Menu</a>*/}
@@ -67,7 +68,6 @@ const Header = () => {
         </nav>
 
       </header>
-    </Menu>
   )
 }
 export default Header

@@ -15,6 +15,7 @@
     "lines": "npx sloc --format cli-table --format-option head --keys total,source,comment,todo --exclude 'node_modules|build|svg$|xml$' ./"
   },
   "dependencies": {
+    "purecss-sass": "^1.0.0",
     "react": "^16.7.0-alpha.0",
     "react-dom": "^16.7.0-alpha.0",
     "react-router-dom": "^4.3.1",
