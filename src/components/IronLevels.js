@@ -1,41 +1,44 @@
 import React from 'react'
-//import { hot } from 'react-hot-loader'
+import { useState } from 'react'
 import './../css/IronLevels.sass'
-// import { contract } from "utils/ethereumSetup"
 const { log, error, info, warn } = console
-class IronOptimiser extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      serumIron: null,
-      transferrinIBC: null,
-      transferrinSaturation: null,
-      serumFerritinAssay: null,
-      results: null
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.validate = this.validate.bind(this)
-    this.tallyResults = this.tallyResults.bind(this)
-  }
 
-  validate() {
-    log(Object.keys(this.state), Object.values(this.state))
-    return ! [this.state.serumIron, this.state.transferrinIBC,
-                this.state.transferrinSaturation, this.state.serumFerritinAssay]
+const IronOptimiser = () => {
+  const [serumIron, setSerumIron] = useState(null)
+  const [transferrinIBC, setTransferrinIBC] = useState(null)
+  const [transferrinSaturation, setTransferrinSaturation] = useState(null)
+  const [serumFerritinAssay, setSerumFerritinAssay] = useState(null)
+  const [results, setResults] = useState(null)
+
+  const validate = () => {
+    return ! [serumIron, transferrinIBC, transferrinSaturation, serumFerritinAssay]
               .map((val) => typeof(val) === 'number')
               .includes(false)
   }
 
-  handleChange(event) {
-    this.setState({ [event.target.id]: parseInt(event.target.value, 10) })
+  const handleChange = event => {
+    const val = parseInt(event.target.value, 10),
+          name = event.target.name
+    log(name, val)
+    switch(name) {
+      case 'serumIron':
+        return setSerumIron(val)
+      case 'transferrinIBC':
+        return setTransferrinIBC(val)
+      case 'transferrinSaturation':
+        return setTransferrinSaturation(val)
+      case 'serumFerritinAssay':
+        return setSerumFerritinAssay(val)
+      default:
+        return true
+    }
   }
 
-  handleSubmit(event) {
+  const handleSubmit = event => {
     event.preventDefault()
-    if (this.validate()) {
+    if (validate()) {
       log('valid')
-      this.tallyResults()
+      tallyResults()
       return true
     } else {
       alert('Please provide values for all 4')
@@ -43,9 +46,9 @@ class IronOptimiser extends React.Component {
     }
   }
 
-  tallyResults() {
-    const si = this.state.serumIron, ti = this.state.transferrinIBC,
-          ts = this.state.transferrinSaturation, sfa = this.state.serumFerritinAssay
+  const tallyResults = () => {
+    const si = serumIron, ti = transferrinIBC,
+          ts = transferrinSaturation, sfa = serumFerritinAssay
     // NOTE call contract?
     const report_si = (si === 20 ? 'Optimal' :
           si >= 15 && si <= 19 ? 'Normal low' :
@@ -71,43 +74,40 @@ class IronOptimiser extends React.Component {
          sfa >= 20 && sfa <= 129  ? 'Suboptimal low' :
          sfa >= 181 && sfa <= 290 ? 'Suboptimal high' :
          sfa < 20 ? 'Abnormal low' : 'Abnormal high') + ' Serum Ferritin Assay levels'
-    this.setState({
-      results: { si: report_si, ti: report_ti, ts: report_ts, sfa: report_sfa }
-    })
+
+    setResults({ si: report_si, ti: report_ti, ts: report_ts, sfa: report_sfa })
   }
 
-  render() {
-    return (
-      <div className="iron">
-        <h2>Iron Optimiser</h2>
-        <hr />
-        <h3> Please provide values for the following instances </h3>
-        <form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit}>
+  return (
+    <div className="iron">
+      <h2>Iron Optimiser</h2>
+      <hr />
+      <h3> Please provide values for the following instances </h3>
+      <form className="pure-form pure-form-stacked" onSubmit={handleSubmit}>
 
-          { this.state.results && <h4>{this.state.results.si}</h4> }
-          <label htmlFor="serumIron"> Serum Iron
-            <input type="number" min="0" max="999" name="serumIron" onChange={this.handleChange} />
-          </label>
+        { results && <h4>{results.si}</h4> }
+        <label htmlFor="serumIron"> Serum Iron
+          <input type="number" min="0" max="999" name="serumIron" onChange={handleChange} />
+        </label>
 
-          { this.state.results && <h4>{this.state.results.ti}</h4> }
-          <label htmlFor="transferrinIBC"> TransferrinIBC
-            <input type="number" min="0" max="999" name="transferrinIBC" onChange={this.handleChange} />
-          </label>
+        { results && <h4>{results.ti}</h4> }
+        <label htmlFor="transferrinIBC"> TransferrinIBC
+          <input type="number" min="0" max="999" name="transferrinIBC" onChange={handleChange} />
+        </label>
 
-          { this.state.results && <h4>{this.state.results.ts}</h4> }
-          <label htmlFor="transferrinSaturation"> Transferrin Saturation
-            <input type="number" min="0" max="999" name="transferrinSaturation" onChange={this.handleChange} />
-          </label>
+        { results && <h4>{results.ts}</h4> }
+        <label htmlFor="transferrinSaturation"> Transferrin Saturation
+          <input type="number" min="0" max="999" name="transferrinSaturation" onChange={handleChange} />
+        </label>
 
-          { this.state.results && <h4>{this.state.results.sfa}</h4> }
-          <label htmlFor="serumFerritinAssay"> Serum Ferritin Assay
-            <input type="number" min="0" max="999" name="serumFerritinAssay" onChange={this.handleChange} />
-          </label>
+        { results && <h4>{results.sfa}</h4> }
+        <label htmlFor="serumFerritinAssay"> Serum Ferritin Assay
+          <input type="number" min="0" max="999" name="serumFerritinAssay" onChange={handleChange} />
+        </label>
 
-          <button type="submit" className="pure-button pure-button-primary">See Results</button>
-        </form>
-      </div>
-    )
-  }
+        <button type="submit" className="pure-button pure-button-primary">See Results</button>
+      </form>
+    </div>
+  )
 }
 export default IronOptimiser

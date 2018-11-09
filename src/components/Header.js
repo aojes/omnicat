@@ -1,6 +1,6 @@
 import React from 'react'
 // import {useState} from 'react'
-import { slide as Menu } from 'react-burger-menu'
+// import { slide as Menu } from 'react-burger-menu'
 import { NavLink } from 'react-router-dom'
 import './../css/Header.sass'
 const {log} = console
@@ -18,7 +18,7 @@ const {log} = console
 
 
 const Header = () => {
-  const isMenuOpen = (state) => state.isOpen
+  // const isMenuOpen = (state) => state.isOpen
 
   // const [] = useState()
   // {/*<Menu width={ 345 } onStateChange={ isMenuOpen }
@@ -71,16 +71,3 @@ const Header = () => {
   )
 }
 export default Header
-// Home
-// CATs
-//   Physical Fitness
-//   Biochemistry
-//     Iron Optimiser
-//   Brain Health
-//     DASS42 (Depression, Anxiety and Stress Scale)
-//   Hormones
-//   Wellness
-//   Aesthetics
-//   Risk and Prevention
-// About
-// Crowdsale
