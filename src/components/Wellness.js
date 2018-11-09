@@ -1,3 +1,129 @@
+// TODO stub sample Wellness rewritten for useState
+// ... not working with other components (see infra for working solution)
+//
+// const Wellness = () => {
+//   const [data] = useState(questionnaire)
+//   const [response, setResponse] = useState([])
+//   const [sectionResponse, setSectionResponse] = useState([])
+//   const [focus, setFocus] = useState(0)                // up to [0, 1... 11, 'Q', 'results']
+//   const [sectionTally, setSectionTally] = useState([]) // up to [0(tally), 1... 11, 'Q'(object)]
+//   const [complete, setComplete] = useState([])         // [0, 1... 11, 'Q']
+//
+//   const handleBlur = e => {
+//     const [ heading, subheading, statement ] = e.target.name.split('-'),
+//       textValue = e.target.value
+//     if (validateText(textValue)) {
+//       setSectionResponse({
+//         ...sectionResponse,
+//         [ `${heading}-${subheading}-${statement}` ] : textValue
+//       })
+//     }
+//     log(JSON.stringify(sectionResponse))
+//   }
+//
+//   const handleChange = e => {
+//     const [ heading, subheading, statement, checked ] = e.target.value.split( '-' )
+//     setSectionResponse({
+//       ...sectionResponse,
+//       [ `${heading}-${subheading}-${statement}` ] : parseInt(checked)
+//     })
+//     log(JSON.stringify(this.state.sectionResponse))
+//   }
+//
+//   const handleSubmit = e => {
+//     e.preventDefault()
+//     const sectionFocus = focus,
+//       element = document.getElementById('section-statement-count-' + sectionFocus),
+//
+//       sectionStatementIndex = parseInt(element.attributes.allinputs.value),
+//       textInputCount = parseInt(element.attributes.textinputs.value),
+//       valsAry = Object.values(sectionResponse),
+//       currentSectionTally = Object.values(sectionResponse)
+//         .filter(el => typeof el === 'number')
+//         .reduce((accum, val) => accum + val)
+//     log(' ## statements:', sectionStatementIndex,
+//       '\n ## sectionResponses: ', valsAry.length,
+//       '\n ## text statements: ', textInputCount,
+//       '\n ## tally:', currentSectionTally)
+//     log(' ### ',sectionStatementIndex, valsAry.length)
+//
+//     // TODO do not require all questions answered
+//     // currently this checks all section Qs answered
+//     if (validate(sectionStatementIndex, valsAry.length)) {
+//       const nextFocus = sectionFocus === 'Q' ? 'results' :
+//         sectionFocus < 11 ? sectionFocus + 1 : 'Q'
+//
+//       setSectionTally(sectionTally.concat(currentSectionTally))
+//       setComplete(complete.concat(sectionFocus))
+//       setFocus(nextFocus)
+//       setResponse({ response, sectionResponse })
+//       setSectionResponse([])
+//       alert('Your tally for the section: ', currentSectionTally)
+//       return true
+//     } else {
+//       alert('Please respond for each statement')
+//       return false
+//     }
+//   }
+//
+//   const validateText = str => str && str.length > 0
+//
+//   const validate = (sectionResponseCount, statementCount) => {
+//     return sectionResponseCount && statementCount && sectionResponseCount === statementCount
+//   }
+//
+//   const handleQBlur = e => {
+//     info(' ## id', e.target.id, ' ## value', e.target.value)
+//     setSectionResponse({ ...sectionResponse, [e.target.id]: e.target.value })
+//   }
+//
+//   const handleQSubmit = e => {
+//     e.preventDefault()
+//     setSectionTally(sectionTally.concat('Q'))
+//     setComplete(complete.concat('Q'))
+//     setFocus('results')
+//     setResponse({ ...response, ...sectionResponse })
+//     setSectionResponse([])
+//     alert('Thank you for completing this long form.')
+//     return true
+//   }
+//
+//   // eslint-disable-next-line
+//   const {headings, subheadings, statements, inputTypes, notices, questions} = data
+//   return (
+//     <div className="wellness">
+//       <h2>Wellness &amp; Health Appraisal</h2>
+//       <hr/>
+//       <div className="description">
+//         <p>Your answers to this health appraisal questionnaire will assist your practitioner in gaining information about your current symptoms and health concerns. Please answer all questions, in each section.</p>
+//         <p>Circle the number which best describes the frequency or severity of your symptoms over the previous <b>month</b>, or answer the <b>yes</b> or <b>no</b> questions by circling the appropriate letter.</p>
+//         <p>You may note that some questions are repeated throughout the questionnaire. We would appreciate it if you can answer <b>all</b> questions, as this will ensure the most accurate interpretation of your results. You may however leave a question blank if you are unsure of the answer.</p>
+//       </div>
+//       <fieldset>
+//         <legend>Questionnaire</legend>
+//         { headings.map((heading, i) => (
+//           <Form
+//             key={i}
+//             index={i}
+//             super={this}
+//             data={data}
+//             submit={handleSubmit}
+//             text={heading}
+//           />
+//         ))
+//         }
+//         { <QuestionsForm
+//             data={questions}
+//             handleSubmit={handleQSubmit}
+//             handleBlur={handleQBlur}
+//             focus={focus}
+//           />
+//         }
+//       </fieldset>
+//     </div>
+//   )
+// }
+
 import React from 'react'
 //import { hot } from 'react-hot-loader'
 import './../css/Wellness.sass'
