@@ -1,5 +1,4 @@
 import React from 'react'
-//import { hot } from 'react-hot-loader'
 import { Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import Dass42 from './Dass42'

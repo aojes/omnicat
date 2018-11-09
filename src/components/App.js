@@ -14,16 +14,14 @@ export default function App() {
   // const [contract, setContract] = useState(null)
   return (
     <div id="index" className="pure-g">
-      <div id="header" className="pure-u-1 pure-u-md-7-24">
+      <div id="header" className="pure-u-md-1 pure-u-lg-7-24">
         <Header/>
       </div>
-      <div id="main" className="pure-u pure-u-md-17-24">
-        <div id="main" className="pure-u-md-17-24">
-          <Main/>
-        </div>
-        <div id="footer" className="pure-u-1">
-          <Footer/>
-        </div>
+      <div id="main" className="pure-u-md-1 pure-u-lg-17-24">
+        <Main/>
+      </div>
+      <div id="footer" className="pure-u-1">
+        <Footer/>
       </div>
     </div>
   )
