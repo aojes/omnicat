@@ -8,7 +8,7 @@ import Main from './Main'
 import Footer from './Footer'
 const { log, info, error } = console
 
-export default function App() {
+function App() {
   // const [web3, setWeb3] = useState(getWeb3())
   // const [accounts, setAccounts] = useState(null)
   // const [contract, setContract] = useState(null)
@@ -26,6 +26,7 @@ export default function App() {
     </div>
   )
 }
+export default App
 // class App extends React.Component {
 //   constructor() {
 //     super()
