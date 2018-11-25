@@ -8,6 +8,7 @@ class Home extends React.Component {
         <h1>Welcome to OmniCAT</h1>
         <h2> At Home Ai Guided Biometrics Optimization </h2>
         <hr />
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd8R62ecsGXiAUz2Qe6dRixq1yDvCJ3J3cJ0cAIvEJA59Svmw/viewform?embedded=true" width="640" height="687" frameBorder="0" marginHeight="0" marginWidth="0">Loading...</iframe>
       </div>
     )
   }
