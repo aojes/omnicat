@@ -12,13 +12,13 @@ main .dass
     @import "checkbox-radio-inputs"
 
     .form-row
+      border: 2px solid $blue
+      border-radius: 8px
       margin-bottom: 1em
       padding-bottom: 1em
-      border-radius: 8px
-      border: 2px solid $blue
       &:nth-child(even)
-        border: 2px solid $purple
         background-color: $white - 10%
+        border: 2px solid $purple
       h4
         color: $purple - 50%
         padding-left: 3em
@@ -28,15 +28,15 @@ main .dass
 
   .results
     span#scores
-      position: relative
       display: block
+      position: relative
       width: 100%
       span
+        color: $purple
+        font-size: 125%
+        font-weight: bold
         position: absolute
         top: 14px
-        font-weight: bold
-        font-size: 125%
-        color: $purple
       span#depression
         left: 250px
       span#anxiety

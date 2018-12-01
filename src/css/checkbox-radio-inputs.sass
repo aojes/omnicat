@@ -1,43 +1,43 @@
 input[type="checkbox"],
 input[type="radio"]
-  position: absolute
   opacity: 0
+  position: absolute
   z-index: -1
 
 label
-  position: relative
+  cursor: pointer
   display: inline-block
   height: 2.5em
-  padding: 0 0 0 3em
   line-height: 2.5em
-  cursor: pointer
+  padding: 0 0 0 3em
+  position: relative
 
   span
-    position: absolute
-    top: 2px
-    margin-left: -30px
     color: $gray - 72%
     font-weight: bold
+    margin-left: -30px
+    position: absolute
+    top: 2px
     z-index: 1
 
 label::before,
 label::after
+  display: block
+  height: 2.5em
+  left: 0
   position: absolute
   top: 0
-  left: 0
-  display: block
   width: 2.5em
-  height: 2.5em
 
 label::before
-  content: " "
   border: 2px solid #bdc3c7
   border-radius: 20%
+  content: " "
 
 /* Checkbox */
 input[type="checkbox"] + label::after
-  content: "\2714"
   color: #2c3e50
+  content: "\2714"
   line-height: 2.5em
   text-align: center
 
@@ -45,15 +45,15 @@ input[type="checkbox"] + label::after
 input[type="radio"] + label::before
   border-radius: 50%
 
-input[type=radio] + label::after
-  content: " "
-  top: .25em
-  left: .25em
-  width: 2em
-  height: 2em
+input[type="radio"] + label::after
   background: #fff
   border: .2em solid #2c3e50
   border-radius: 50%
+  content: " "
+  height: 2em
+  left: .25em
+  top: .25em
+  width: 2em
 
 /* :checked */
 input[type="checkbox"]:checked + label::before,
@@ -62,17 +62,17 @@ input[type="radio"]:checked + label::before
   border-color: #fff
 
 input[type="checkbox"] + label::after,
-input[type=radio] + label::after
-  -webkit-transform: scale(0)
+input[type="radio"] + label::after
   -ms-transform: scale(0)
   -o-transform: scale(0)
+  -webkit-transform: scale(0)
   transform: scale(0)
 
 input[type="checkbox"]:checked + label::after,
-input[type=radio]:checked + label::after
-  -webkit-transform: scale(1)
+input[type="radio"]:checked + label::after
   -ms-transform: scale(1)
   -o-transform: scale(1)
+  -webkit-transform: scale(1)
   transform: scale(1)
 
 /* Transition */
@@ -80,6 +80,6 @@ label::before,
 label::after,
 label span::before,
 label span::after
-  -webkit-transition: .25s all ease
   -o-transition: .25s all ease
+  -webkit-transition: .25s all ease
   transition: .25s all ease
