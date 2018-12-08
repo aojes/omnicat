@@ -42,17 +42,17 @@ const Header = () => {
                   <li className="pure-menu-item"><NavLink to='/biochemistry' className="pure-menu-link">Biochemistry</NavLink></li>
                   <li>
                     <ul className="pure-menu-list menu-order-3">
-                      <li className="pure-menu-item"><NavLink to='/iron' className="pure-menu-link">Iron Optimiser</NavLink></li>
+                      <li className="pure-menu-item"><NavLink to='/iron' className="pure-menu-link">Iron Optimiser <span className="emoji-red-heart">❤️</span></NavLink></li>
                     </ul>
                   </li>
                   <li className="pure-menu-item"><NavLink to='/brain-health' className="pure-menu-link">Brain Health</NavLink></li>
                   <li>
                     <ul className="pure-menu-list menu-order-3">
-                      <li className="pure-menu-item"><NavLink to='/dass42' className="pure-menu-link">Dass42</NavLink></li>
+                      <li className="pure-menu-item"><NavLink to='/dass42' className="pure-menu-link">Dass42 <span className="emoji-red-heart">❤️</span></NavLink></li>
                     </ul>
                   </li>
                   <li className="pure-menu-item"><NavLink to='/hormones' className="pure-menu-link">Hormones</NavLink></li>
-                  <li className="pure-menu-item"><NavLink to='/wellness' className="pure-menu-link">Wellness</NavLink></li>
+                  <li className="pure-menu-item"><NavLink to='/wellness' className="pure-menu-link">Wellness <span className="emoji-red-heart">❤️</span></NavLink></li>
                   <li className="pure-menu-item"><NavLink to='/aesthetics' className="pure-menu-link">Aesthetics</NavLink></li>
                   <li className="pure-menu-item"><NavLink to='/risk-and-prevention' className="pure-menu-link">Risk &amp; Prevention</NavLink></li>
                 </ul>
