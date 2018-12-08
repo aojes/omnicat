@@ -72,7 +72,7 @@ resolvers:
   max-line-length: 0
   max-file-line-count: 0
   nesting-depth: 1
-  property-sort-order: 1
+  # property-sort-order: 0
   pseudo-element: 1
   quotes: 2
   shorthand-values: 1

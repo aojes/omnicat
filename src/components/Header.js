@@ -1,7 +1,7 @@
 import React from 'react'
 // import {useState} from 'react'
 // import { slide as Menu } from 'react-burger-menu'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import './../css/Header.sass'
 const {log} = console
 // class Header extends React.Component {
@@ -68,3 +68,10 @@ const Header = () => {
   )
 }
 export default Header
+// <li className="pure-menu-item">
+//   <Link to="https://gitlab.com/crockett.jesse/omnicat" className="pure-menu-link">
+//     <img className="simple-icon" id="react" height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg" />
+//     <img className="simple-icon" id="ethereum" height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ethereum.svg" />
+//     <img className="simple-icon" id="gitlab" height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg" />
+//     Project Source
+//   </Link></li>
