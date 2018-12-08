@@ -1,5 +1,5 @@
 files:
-  include: '**/*.s+(a|c)ss'
+  include: '**/*.s+(a|c)ss_disabled_plugin_too_nitty'
   ignore:
     - node_modules/**
 resolvers:
@@ -28,13 +28,13 @@ resolvers:
   no-duplicate-properties: 1
   no-empty-rulesets: 1
   no-extends: 0
-  no-ids: 1
-  no-important: 1
+  no-ids: 0
+  no-important: 0
   no-invalid-hex: 1
   no-mergeable-selectors: 1
   no-misspelled-properties: 1
-  no-qualifying-elements: 1
-  no-trailing-whitespace: 1
+  no-qualifying-elements: 0
+  no-trailing-whitespace: 0
   no-trailing-zero: 1
   no-transition-all: 1
   no-universal-selectors: 0
@@ -47,8 +47,8 @@ resolvers:
   # Nesting
   declarations-before-nesting: 1
   force-attribute-nesting: 1
-  force-element-nesting: 1
-  force-pseudo-nesting: 1
+  force-element-nesting: 0
+  force-pseudo-nesting: 0
 
   # Name Formats
   class-name-format: 1
