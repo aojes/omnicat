@@ -1,1 +1,2 @@
 migrations/*.js
+test/*.js
