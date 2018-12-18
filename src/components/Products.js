@@ -1,6 +1,6 @@
 
 import React from 'react'
-//import { hot } from 'react-hot-loader'
+
 import omniscopeConceptImg from './../images/omniscope-concept.png'
 
 class Products extends React.Component {

@@ -3,7 +3,7 @@
 // (see infra for stub)
 
 import React from 'react'
-//import { hot } from 'react-hot-loader'
+
 import './../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
 const { log, error, info } = console

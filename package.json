@@ -13,8 +13,8 @@
     "build": "webpack --mode production",
     "server": "node server.js",
     "lines": "npx sloc --format cli-table --format-option head --keys total,source,comment,todo --exclude 'node_modules|build|svg$|xml$' ./",
-    "sass-lint": "sass-lint -v",
-    "sass-lint:fix": "sass-lint-auto-fix"
+    "sass-lint": "echo 'placeholder for \"npm run sass-lint -v\"'",
+    "sass-lint:fix": "echo 'placeholder for \"npm run sass-lint-auto-fix\"'"
   },
   "dependencies": {
     "react": "^16.7.0-alpha.2",

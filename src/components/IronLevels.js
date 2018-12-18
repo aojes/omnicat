@@ -49,7 +49,6 @@ const IronOptimiser = () => {
   const tallyResults = () => {
     const si = serumIron, ti = transferrinIBC,
           ts = transferrinSaturation, sfa = serumFerritinAssay
-    // NOTE call contract?
     const report_si = (si === 20 ? 'Optimal' :
           si >= 15 && si <= 19 ? 'Normal low' :
           si >= 21 && si <= 25 ? 'Normal high' :

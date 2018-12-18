@@ -1,6 +1,4 @@
 import React from 'react'
-// import {useState} from 'react'
-// import { hot } from 'react-hot-loader'
 // import getWeb3 from './../utils/getWeb3';
 // import truffleContract from 'truffle-contract';
 import Header from './Header'

@@ -1,36 +1,13 @@
 import React from 'react'
 // import {useState} from 'react'
-// import { slide as Menu } from 'react-burger-menu'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './../css/Header.sass'
 const {log} = console
-// class Header extends React.Component {
-//   isMenuOpen(state) {
-//     log('isMenuOpen: ', state.isOpen)
-//     return state.isOpen
-//   }
-//
-//   render() {
-//     return(
-//       <Menu width={ 345 } onStateChange={ this.isMenuOpen }
-//         bodyClassName={ 'nav-menu-open' } pageWrapId={ 'after-menu-page-wrap' }
-//         outerContainerId={ 'app-index' } isOpen >
-
 const Header = () => {
-  // const isMenuOpen = (state) => state.isOpen
-
-  // const [] = useState()
-  // {/*<Menu width={ 345 } onStateChange={ isMenuOpen }
-  //   bodyClassName={ 'nav-menu-open' } pageWrapId={ 'after-menu-page-wrap' }
-  //   outerContainerId={ 'app-index' }
-  //   isOpen
-  //   >*/}
   return(
     <header>
       <nav>
-        {/*<a href="#" className="nav-menu-button">Menu</a>*/}
         <div className="nav-inner">
-          {/*<button className="primary-button pure-button">Compose</button>*/}
           <div className="pure-menu">
             <ul className="pure-menu-list menu-order-1">
               <li id="home-link" className="pure-menu-item">
