@@ -1,0 +1,86 @@
+input.range
+  display: block
+  -webkit-appearance: none
+  -moz-appearance: none
+  position: relative
+  left: 25%
+  top: 50%
+  width: 320px
+  margin: 24px
+  transform: translate(-50%, -50%)
+
+input[type=range]
+  &::-webkit-slider-runnable-track
+    -webkit-appearance: none
+    background: rgba(59, 173, 227, 1)
+    background: -moz-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(59, 173, 227, 1)), color-stop(25%, rgba(87, 111, 230, 1)), color-stop(51%, rgba(152, 68, 183, 1)), color-stop(100%, rgba(255, 53, 127, 1)))
+    background: -webkit-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    background: -o-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    background: -ms-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    background: linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bade3 ', endColorstr='#ff357f ', GradientType=1 )
+    height: 20px
+  &:focus
+    outline: none
+  &::-moz-range-track
+    -moz-appearance: none
+    background: rgba(59, 173, 227, 1)
+    background: -moz-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(59, 173, 227, 1)), color-stop(25%, rgba(87, 111, 230, 1)), color-stop(51%, rgba(152, 68, 183, 1)), color-stop(100%, rgba(255, 53, 127, 1)))
+    background: -webkit-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    background: -o-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    background: -ms-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    background: linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bade3 ', endColorstr='#ff357f ', GradientType=1 )
+    height: 20px
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    border: 4px solid
+    border-radius: 50%
+    height: 42px
+    width: 42px
+    max-width: 400px
+    position: relative
+    bottom: 11px
+    background-color: $white
+    cursor: -webkit-grab
+    -webkit-transition: border 1000ms ease
+    transition: border 1000ms ease
+  &::-moz-range-thumb
+    -moz-appearance: none
+    border: 4px solid
+    border-radius: 50%
+    height: 42px
+    width: 42px
+    max-width: 400px
+    position: relative
+    bottom: 11px
+    background-color: $white
+    cursor: -moz-grab
+    -moz-transition: border 1000ms ease
+    transition: border 1000ms ease
+
+.range
+  &.blue::-webkit-slider-thumb
+    border-color: rgb(59, 173, 227)
+  &.ltpurple::-webkit-slider-thumb
+    border-color: rgb(87, 111, 230)
+  &.purple::-webkit-slider-thumb
+    border-color: rgb(152, 68, 183)
+  &.pink::-webkit-slider-thumb
+    border-color: rgb(255, 53, 127)
+  &.blue::-moz-range-thumb
+    border-color: rgb(59, 173, 227)
+  &.ltpurple::-moz-range-thumb
+    border-color: rgb(87, 111, 230)
+  &.purple::-moz-range-thumb
+    border-color: rgb(152, 68, 183)
+  &.pink::-moz-range-thumb
+    border-color: rgb(255, 53, 127)
+
+input[type=range]
+  &::-webkit-slider-thumb:active
+    cursor: -webkit-grabbing
+  &::-moz-range-thumb:active
+    cursor: -moz-grabbing
