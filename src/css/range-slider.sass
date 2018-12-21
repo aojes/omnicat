@@ -1,4 +1,4 @@
-input.range
+input[type=range]
   display: block
   -webkit-appearance: none
   -moz-appearance: none
@@ -9,7 +9,6 @@ input.range
   margin: 24px
   transform: translate(-50%, -50%)
 
-input[type=range]
   &::-webkit-slider-runnable-track
     -webkit-appearance: none
     background: rgba(59, 173, 227, 1)
@@ -47,6 +46,7 @@ input[type=range]
     cursor: -webkit-grab
     -webkit-transition: border 1000ms ease
     transition: border 1000ms ease
+
   &::-moz-range-thumb
     -moz-appearance: none
     border: 4px solid
