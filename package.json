@@ -65,7 +65,7 @@
   },
   "husky": {
     "hooks": {
-      "post-commit": "npx git-stats -g"
+      "post-commit": "#npx git-stats -g"
     }
   }
 }
