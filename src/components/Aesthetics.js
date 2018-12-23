@@ -4,7 +4,7 @@ import './../css/Aesthetics.sass'
 import { range } from './util/inputRangeFx'
 
 function Aesthetics() {
-  const [keypairs] = useState({'skin': 100, 'grooming': 50, 'hygiene': 50, 
+  const [keypairs] = useState({'skin': 100, 'grooming': 50, 'hygiene': 50,
     'selfcare': 50, 'selfperception': 50, 'selfconfidence': 50, 'posture': 50, 'antiageing': 50})
 
   useEffect(() => {
@@ -21,6 +21,7 @@ function Aesthetics() {
     e.preventDefault()
     const tally = Object.values(keypairs).reduce((a, b) => a + b, 0)
     console.log(tally, '/900')
+    alert('placeholder for tally of ' + tally + '/900')
   }
 
   return (<div id="aesthetics">
@@ -33,60 +34,59 @@ function Aesthetics() {
         <p>Skin care and health. Prevention and risk education. Hygiene and routine.</p>
         <input type="range" className="range blue" onBlur={handleBlur}
           min={0} max={200} name="skin" />
-        <p>Subject is knowledgeable about skin care and skin cancer prevention. Subject undergoes routine skin check, Subject practices methods of prevention.</p>
+        <p>Knowledgeable about skin care and skin cancer prevention. Undergoes routine skin check, practices methods of prevention.</p>
       </div>
       <div className="row">
         <h3>Grooming</h3>
         <p>Care and health: hair, ears, mouth, nose, lips, face, hands, nails, feet, toes.</p>
         <input type="range" className="range blue"
-            min={0} max={100} name="grooming" onBlur={handleBlur}
-            />
-        <p>Subject is well groomed: hair, nails, ears, face, hands.</p>
+          min={0} max={100} name="grooming" onBlur={handleBlur} />
+        <p>Well groomed: hair, nails, ears, face, hands.</p>
       </div>
       <div className="row">
         <h3>Hygiene</h3>
         <p>Hygiene education and awareness. Routine and other daily practices.</p>
         <input type="range" className="range blue" onBlur={handleBlur}
           min={0} max={100} name="hygiene"  />
-        <p>Subject demonstrates appropriate hygiene practices.</p>
+        <p>Demonstrates appropriate hygiene practices.</p>
       </div>
       <div className="row">
         <h3>Self care</h3>
         <p>Overall maintenance, education, identification. Routine.</p>
         <input type="range" className="range blue" onBlur={handleBlur}
           min={0} max={100} name="selfcare"  />
-        <p>Subject understands that self-care is important and demonstrates routine.</p>
+        <p>Understands that self-care is important and demonstrates routine.</p>
       </div>
       <div className="row">
         <h3>Self perception</h3>
         <p>Self awareness. Identification of positive and negative features.</p>
         <input type="range" className="range blue" onBlur={handleBlur}
           min={0} max={100} name="selfperception"  />
-        <p>Subject is able to perceive themselves realistically. Subject is aware of positive and negative features.</p>
+        <p>Able to perceive oneself realistically. Aware of positive and negative features.</p>
       </div>
       <div className="row">
         <h3>Self confidence</h3>
         <p>Bravery, courage, determintation. Understanding of own ability.</p>
         <input type="range" className="range blue" onBlur={handleBlur}
           min={0} max={100} name="selfconfidence"  />
-        <p>Subject demonstrates confidence in their own ability.</p>
+        <p>Demonstrates confidence in their own ability.</p>
       </div>
       <div className="row">
         <h3>Posture</h3>
         <p>Spinal alignment. Control, strength and balance.</p>
         <input type="range" className="range blue" onBlur={handleBlur}
           min={0} max={100} name="posture"  />
-        <p>Subject has excellent posture.</p>
+        <p>Shows good posture.</p>
       </div>
       <div className="row">
         <h3>Anti-Ageing</h3>
         <p>Education and awareness. Routine and other daily practices.</p>
         <input type="range" className="range blue" onBlur={handleBlur}
           min={0} max={100} name="antiageing"  />
-        <p>Subject is knowledgeable in regard to benefits of anti-ageing practices. Subject practices anti-ageing measures.</p>
+        <p>Knowledgeable in regard to benefits of anti-ageing practices. Practices anti-ageing measures.</p>
       </div>
       <button type="submit" className="pure-button pure-button-primary">
-        See Results (use live tabulation and then commit result)
+        See Results (pending/use live tabulation and then commit result)
       </button>
     </form>
   </div>
