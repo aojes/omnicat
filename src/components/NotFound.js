@@ -1,5 +1,11 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 
+const NotFound = () => (
+  <div className="pure-u">
+    <h2>The resource requested was not found</h2>
+    <hr/>
+  </div>
+)
 
-const NotFound = () => (<h2>This is the 404 page</h2>)
-export default NotFound
+export default hot(module)(NotFound)

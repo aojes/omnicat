@@ -1,29 +1,24 @@
----
 parser: babel-eslint
-extends:
-  - eslint:recommended
-  - plugin:react/recommended
-plugins:
-  - react-hooks
+extends: [eslint:recommended, plugin:react/recommended, airbnb-base]
+plugins: [react, react-hooks]
 env:
   browser: true
   node: true
 rules:
   react-hooks/rules-of-hooks: error
-  quotes:
-    - 1
-    - single
-    - avoid-escape
+  quotes: [1, single, avoid-escape]
   prefer-const: 1
   react/jsx-indent:
     - 1
     - 2
   no-return-assign: 1
   no-console: 0
+  no-alert: 0
+  semi: 0
+  comma-dangle: 0
   no-unused-vars:
     - 1
     - vars: all
       args: after-used
       argsIgnorePattern: "^_|^next$"
-      varsIgnorePattern: "^_|^log$|^err|^info$|^warn$"
   react/prop-types: 0

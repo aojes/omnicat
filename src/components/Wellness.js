@@ -1,10 +1,5 @@
-// TODO stub sample Wellness rewritten for useState
-// ... not working with other components
-// (see infra for stub)
-
 import React from 'react'
-
-import './../css/Wellness.sass'
+import '../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
 const { log, error, info } = console
 class Wellness extends React.Component {
@@ -126,7 +121,7 @@ class Wellness extends React.Component {
     // eslint-disable-next-line
     const {headings, subheadings, statements, inputTypes, notices, questions} = this.state.data
     return (
-      <div className="wellness">
+      <div className="pure-u wellness">
         <h2>Wellness &amp; Health Appraisal</h2>
         <hr/>
         <div className="description">
@@ -330,7 +325,6 @@ const RadioButton = props => {
 }
 
 export default Wellness
-
 
 // const Wellness = () => {
 //   const [data] = useState(questionnaire)

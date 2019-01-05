@@ -1,11 +1,12 @@
 
 import React from 'react'
-
+import { hot } from 'react-hot-loader'
 
 const Biochemistry = () => (
-
-  <h2>Page for Biochemistry</h2>
-
+  <div className="pure-u">
+    <h2>Page for Biochemistry</h2>
+    <hr/>
+  </div>
 )
 
-export default Biochemistry
+export default hot(module)(Biochemistry)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import { Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import Dass42 from './Dass42'
@@ -14,11 +15,11 @@ import RiskAndPrevention from './RiskAndPrevention'
 import Wellness from './Wellness'
 import Products from './Products'
 import NotFound from './NotFound'
-import './../css/Main.sass'
+import '../css/Main.sass'
 
-function Main() {
+function Main(props) {
   return (
-    <main>
+    <main id={props.id} className={props.className}>
       <section>
         <Switch>
           <Route exact path='/' component={Home}/>
@@ -41,4 +42,4 @@ function Main() {
   )
 }
 
-export default Main
+export default hot(module)(Main)

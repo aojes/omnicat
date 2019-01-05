@@ -1,7 +1,6 @@
 // const HDWalletProvider = require('truffle-hdwallet-provider')
 module.exports = {
   // truffle develop --network dev
-  // use this until farther along
   networks: {
     dev: {
       host: 'localhost',

@@ -1,12 +1,15 @@
 import React from 'react'
-
+import { hot } from 'react-hot-loader'
 import '../css/Footer.sass'
-const { log, error, info, warn } = console
-function Footer() {
+
+function Footer(props) {
   return (
-    <footer>
-      <p>footer contents...</p>
+    <footer id={props.id} className={props.className}>
+      <p>footer content</p>
+      <p>...</p>
+      <p>...</p>
     </footer>
   )
 }
-export default Footer
+
+export default hot(module)(Footer)

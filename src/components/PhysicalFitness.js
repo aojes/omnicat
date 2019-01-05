@@ -1,11 +1,12 @@
 
 import React from 'react'
-
+import { hot } from 'react-hot-loader'
 
 const PhysicalFitness = () => (
-
-  <h2>Page for Physcial Fitness</h2>
-
+  <div className="pure-u">
+    <h2>Page for Physcial Fitness</h2>
+    <hr/>
+  </div>
 )
 
-export default PhysicalFitness
+export default hot(module)(PhysicalFitness)

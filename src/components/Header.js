@@ -1,11 +1,11 @@
 import React from 'react'
-// import {useState} from 'react'
+import { hot } from 'react-hot-loader'
 import { NavLink } from 'react-router-dom'
-import './../css/Header.sass'
-const {log} = console
-const Header = () => {
-  return(
-    <header>
+import '../css/Header.sass'
+
+function Header(props) {
+  return (
+    <header id={props.id} className={props.className}>
       <nav>
         <div className="nav-inner">
           <div className="pure-menu">
@@ -44,7 +44,8 @@ const Header = () => {
     </header>
   )
 }
-export default Header
+
+export default hot(module)(Header)
 // <li className="pure-menu-item">
 //   <Link to="https://gitlab.com/crockett.jesse/omnicat" className="pure-menu-link">
 //     <img className="simple-icon" id="react" height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg" />

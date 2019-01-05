@@ -1,16 +1,19 @@
 dist
 build
+dev
 node_modules
 
 .log
 .npm
 .eslintcache
 .node_repl_history
+.cache
 
 *~
 ~*
 *_
 
+.misc
 .notes
 note-*
 nb-*
@@ -19,6 +22,6 @@ n-*
 *.tgz
 *.zip
 *.log
+*.bak
 .vscode
-.misc
 .DS_Store

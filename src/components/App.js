@@ -1,10 +1,10 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 // import getWeb3 from './../utils/getWeb3';
 // import truffleContract from 'truffle-contract';
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-const { log, info, error } = console
 
 function App() {
   // const [web3, setWeb3] = useState(getWeb3())
@@ -12,19 +12,13 @@ function App() {
   // const [contract, setContract] = useState(null)
   return (
     <div id="index" className="pure-g">
-      <div id="header" className="pure-u-md-1 pure-u-lg-7-24">
-        <Header/>
-      </div>
-      <div id="main" className="pure-u-md-1 pure-u-lg-17-24">
-        <Main/>
-      </div>
-      <div id="footer" className="pure-u-1">
-        <Footer/>
-      </div>
+      <Header id={'header'} className={'pure-u-sm-1 pure-u-lg-7-24'} />
+      <Main id={'main'} className={'pure-u-sm-1 pure-u-lg-17-24'} />
+      <Footer id={'footer'} className={'pure-u-1'} />
     </div>
   )
 }
-export default App
+export default hot(module)(App)
 // class App extends React.Component {
 //   constructor() {
 //     super()
@@ -91,4 +85,4 @@ export default App
 //   }
 // }
 //
-// export default App
+// export default hot(module)(App)

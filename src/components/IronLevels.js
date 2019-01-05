@@ -1,4 +1,5 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import { useState } from 'react'
 import './../css/IronLevels.sass'
 const { log, error, info, warn } = console
@@ -78,7 +79,7 @@ const IronOptimiser = () => {
   }
 
   return (
-    <div className="iron">
+    <div className="pure-u iron">
       <h2>Iron Optimiser</h2>
       <hr />
       <h3> Please provide values for the following instances </h3>
@@ -109,4 +110,4 @@ const IronOptimiser = () => {
     </div>
   )
 }
-export default IronOptimiser
+export default hot(module)(IronOptimiser)
