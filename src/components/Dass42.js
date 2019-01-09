@@ -9,7 +9,7 @@ import '../css/Dass42.sass'
 const Dass42 = () => {
   const [selections, setSelections] = useState([])
   const [statements] = useState(data)
-  const [results, setResults] = useState(null)
+  const [results, setResults] = useState(false)
   const [begin, setBegin] = useState(null)
 
   const handleChange = (event) => {
@@ -72,10 +72,6 @@ const Dass42 = () => {
     return false
   }
 
-  // 0 Did not apply to me at all
-  // 1 Applied to me to some degree, or some of the time
-  // 2 Applied to me to a considerable degree, or a good part of time
-  // 3 Applied to me very much, or most of the time
   return (
     <div className="dass">
       <h2>Dass42</h2>
@@ -84,24 +80,40 @@ const Dass42 = () => {
         Please read each statement and select a number 0, 1, 2 or 3 which indicates
         how much the statement applied to you <b>over the past week</b>.
         There are no right or wrong answers. Do not spend too much time on any statement.
-        <CSSTransition in={!begin} timeout={300} classNames="message">
-          {() => begin || <p><button href="#" className="btn btn-primary m-3 message" onClick={() => setBegin(true)}>Begin</button></p>}
-        </CSSTransition>
       </h3>
-      <CSSTransition in={begin} timeout={300} classNames="transition-statements">
-        {() => begin && <Dass42Form handleSubmit={handleSubmit} className="transition-statements" handleChange={handleChange} statements={statements} selections={selections} />
+      <CSSTransition in={!begin} timeout={300} classNames="message">
+        {() => begin
+          || <p className="message">
+            <div className="card m-3 p-3 shadow">
+              <br/>0, if the statement does not apply to me at all, or&mdash;
+              <br/>1, if it applies to me to some degree, or some of the time
+              <br/>2, if it applies to me to a considerable degree, or a good part of time
+              <br/>3, if it applies to me very much, or most of the time
+            </div>
+            <button href="#" className="btn btn-primary ml-4 mt-2" onClick={() => setBegin(true)}>
+              Begin
+            </button>
+          </p>
         }
       </CSSTransition>
-      { results
-        && <div className="results">
-          <span id="scores">
-            <span id="depression">{results.depression}</span>
-            <span id="anxiety">{results.anxiety}</span>
-            <span id="stress">{results.stress}</span>
-          </span>
-          <img alt="dass score table" src={dassResultsImg} />
-        </div>
-      }
+      <CSSTransition in={begin && !results} timeout={300} classNames="transition-statements">
+        {() => (begin && !results
+          && <Dass42Form handleSubmit={handleSubmit} className="transition-statements" handleChange={handleChange} statements={statements} selections={selections} />
+        ) || (!begin && results && <p>&nbsp;</p>)
+        }
+      </CSSTransition>
+      <CSSTransition in={results} timeout={300} classNames="results">
+        {() => !results
+          || <div className="results message mt-5">
+            <span id="scores">
+              <span id="depression">{results.depression}</span>
+              <span id="anxiety">{results.anxiety}</span>
+              <span id="stress">{results.stress}</span>
+            </span>
+            <img alt="dass score table" src={dassResultsImg} />
+          </div>
+        }
+      </CSSTransition>
     </div>
   )
 }
