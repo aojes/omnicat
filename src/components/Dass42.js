@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
+
 import { hot } from 'react-hot-loader'
 import data from './data/Dass42-statements.json'
 import dassResultsImg from '../images/dass-score-table.png'
@@ -8,6 +10,7 @@ const Dass42 = () => {
   const [selections, setSelections] = useState([])
   const [statements] = useState(data)
   const [results, setResults] = useState(null)
+  const [begin, setBegin] = useState(null)
 
   const handleChange = (event) => {
     const [id, value] = event.target.value.split('-')
@@ -77,53 +80,18 @@ const Dass42 = () => {
     <div className="dass">
       <h2>Dass42</h2>
       <hr />
-      <h3 id="leading-statement">
+      <h3 id="leading-statement" className="message">
         Please read each statement and select a number 0, 1, 2 or 3 which indicates
         how much the statement applied to you <b>over the past week</b>.
         There are no right or wrong answers. Do not spend too much time on any statement.
+        <CSSTransition in={!begin} timeout={300} classNames="message">
+          {() => begin || <p><button href="#" className="btn btn-primary m-3 message" onClick={() => setBegin(true)}>Begin</button></p>}
+        </CSSTransition>
       </h3>
-      <form className="dass" onSubmit={handleSubmit}>
-        {
-          statements.map(
-            (statement, index) => (
-              <div key={`radio-group-${index}`} className="form-row form-group">
-                <div className="row dass-keys">
-                  <h4 className="col-12 py-2">{statement}</h4>
-                  <div className="col-3 radio-item">
-                    <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
-                      className="form-control"
-                      checked={selections[index] === 0}
-                      onChange={handleChange} />
-                    <label htmlFor={`${index}-0`} className="pure-radio"><span>0</span>&nbsp;</label>
-                  </div>
-                  <div className="col-3 radio-item">
-                    <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
-                      className="form-control"
-                      checked={selections[index] === 1}
-                      onChange={handleChange} />
-                    <label htmlFor={`${index}-1`} className="pure-radio"><span>1</span>&nbsp;</label>
-                  </div>
-                  <div className="col-3 radio-item">
-                    <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
-                      className="form-control"
-                      checked={selections[index] === 2 }
-                      onChange={handleChange} />
-                    <label htmlFor={`${index}-2`} className="pure-radio"><span>2</span>&nbsp;</label>
-                  </div>
-                  <div className="col-3 radio-item">
-                    <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
-                      className="form-control"
-                      checked={selections[index] === 3}
-                      onChange={handleChange} />
-                    <label htmlFor={`${index}-3`} className="pure-radio"><span>3</span>&nbsp;</label>
-                  </div>
-                </div>
-              </div>
-            )
-          )
+      <CSSTransition in={begin} timeout={300} classNames="transition-statements">
+        {() => begin && <Dass42Form handleSubmit={handleSubmit} className="transition-statements" handleChange={handleChange} statements={statements} selections={selections} />
         }
-        <button type="submit" className="btn btn-primary">See Results</button>
-      </form>
+      </CSSTransition>
       { results
         && <div className="results">
           <span id="scores">
@@ -137,5 +105,50 @@ const Dass42 = () => {
     </div>
   )
 }
+
+const Dass42Form = props => (
+  <form className="dass" onSubmit={props.handleSubmit}>
+    {
+      props.statements.map(
+        (statement, index) => (
+          <div key={`radio-group-${index}`} className="form-row form-group">
+            <div className="row dass-keys">
+              <h4 className="col-12 py-2">{statement}</h4>
+              <div className="col-3 radio-item">
+                <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
+                  className="form-control"
+                  checked={props.selections[index] === 0}
+                  onChange={props.handleChange} />
+                <label htmlFor={`${index}-0`} ><span>0</span>&nbsp;</label>
+              </div>
+              <div className="col-3 radio-item">
+                <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
+                  className="form-control"
+                  checked={props.selections[index] === 1}
+                  onChange={props.handleChange} />
+                <label htmlFor={`${index}-1`} ><span>1</span>&nbsp;</label>
+              </div>
+              <div className="col-3 radio-item">
+                <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
+                  className="form-control"
+                  checked={props.selections[index] === 2 }
+                  onChange={props.handleChange} />
+                <label htmlFor={`${index}-2`} ><span>2</span>&nbsp;</label>
+              </div>
+              <div className="col-3 radio-item">
+                <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
+                  className="form-control"
+                  checked={props.selections[index] === 3}
+                  onChange={props.handleChange} />
+                <label htmlFor={`${index}-3`} ><span>3</span>&nbsp;</label>
+              </div>
+            </div>
+          </div>
+        )
+      )
+    }
+    <button type="submit" className="btn btn-primary">See Results</button>
+  </form>
+)
 
 export default hot(module)(Dass42)

@@ -1,5 +1,55 @@
 @import "vars"
 
+/* you'll need this CSS somewhere (react-transition-group) */
+.fade-enter
+  opacity: 0
+  z-index: 1
+
+.fade-enter.fade-enter-active
+  opacity: 1
+  transition: opacity 250ms ease-in
+
+.message-enter
+  opacity: 0.01
+  transform: scale(0.9) translateY(50%)
+
+.message-enter-active
+  opacity: 1
+  transform: scale(1) translateY(0%)
+  transition: all 500ms ease-out
+
+.message-exit
+  opacity: 1
+  transform: scale(1) translateY(0%)
+
+.message-exit-active
+  opacity: 0.01
+  transform: scale(0.9) translateY(50%)
+  transition: all 500ms ease-out
+
+.transition-statements
+  display: inline-block
+  margin-left: 0.5rem
+  transform: scale(1)
+
+.transition-statements-enter
+  opacity: 0.01
+  transform: translateY(-0%) scale(1)
+
+.transition-statements-enter-active
+  opacity: 1
+  transform: translateY(-0%) scale(1)
+  transition: all 500ms ease-out
+
+.transition-statements-exit
+  opacity: 1
+  transform: scale(1)
+
+.transition-statements-exit-active
+  opacity: 0
+  transform: scale(1)
+  transition: all 500ms ease-in
+
 main .dass
   h3#leading-statement
     font-size: 14pt
