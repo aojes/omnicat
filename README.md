@@ -1,4 +1,4 @@
-# OmniCAT
+# OmniCAT ([omnicat.netlify.com](https://omnicat.netlify.com))
 
 ## At Home Ai Guided Biometrics Optimization
 
@@ -56,7 +56,7 @@ Open Source MIT License
 
 ## Software Stack
 
-Solidity 0.4.24
+Solidity 0.x
 
 ## UX Design
 
