@@ -5,7 +5,7 @@ import { hot } from 'react-hot-loader'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import '../css/App.sass'
+// import '../css/App.sass'
 
 function App() {
   // const [web3, setWeb3] = useState(getWeb3())
