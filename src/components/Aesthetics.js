@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { hot } from 'react-hot-loader'
 import '../css/Aesthetics.sass'
-import { range } from './util/inputRangeFx'
+// import range from './util/inputRangeFx'
 
 const Aesthetics = () => {
   const [keypairs] = useState({
@@ -15,9 +15,18 @@ const Aesthetics = () => {
     antiageing: 50,
   })
 
-  useEffect(() => {
-    Array.from(document.getElementsByClassName('range')).map(r => range(r))
-  })
+  const handleChange = (e) => {
+    // Change slide thumb color on way up
+    if (+e.target.value > +e.target.max * 0.80) {
+      e.target.className = 'range blue'
+    } else if (+e.target.value > +e.target.max * 0.60) {
+      e.target.className = 'range ltpurple'
+    } else if (+e.target.value > +e.target.max * 0.30) {
+      e.target.className = 'range purple'
+    } else if (+e.target.value > 0.00) {
+      e.target.className = 'range pink'
+    }
+  }
 
   // TODO handle focus?
   function handleBlur(e) {
@@ -32,7 +41,7 @@ const Aesthetics = () => {
     alert(`placeholder for tally of ${tally}/900`)
   }
 
-  return (<div className="pure-u" id="aesthetics">
+  return (<div className="" id="aesthetics">
     <h2>Aesthetics </h2>
     <p>Beauty, Self Confidence and Awareness, Hygiene, Self Care</p>
     <hr/>
@@ -40,7 +49,8 @@ const Aesthetics = () => {
       <div className="row">
         <h3>Skin</h3>
         <p>Skin care and health. Prevention and risk education. Hygiene and routine.</p>
-        <input type="range" className="range blue" onBlur={handleBlur}
+        <input type="range" className="range blue"
+          onChange={handleChange} onBlur={handleBlur}
           min={0} max={200} name="skin" />
         <p>Knowledgeable about skin care and skin cancer prevention. Undergoes routine skin
           check, practices methods of prevention.
@@ -50,48 +60,55 @@ const Aesthetics = () => {
         <h3>Grooming</h3>
         <p>Care and health: hair, ears, mouth, nose, lips, face, hands, nails, feet, toes.</p>
         <input type="range" className="range blue"
-          min={0} max={100} name="grooming" onBlur={handleBlur} />
+          min={0} max={100} name="grooming"
+          onChange={handleChange} onBlur={handleBlur} />
         <p>Well groomed: hair, nails, ears, face, hands.</p>
       </div>
       <div className="row">
         <h3>Hygiene</h3>
         <p>Hygiene education and awareness. Routine and other daily practices.</p>
-        <input type="range" className="range blue" onBlur={handleBlur}
+        <input type="range" className="range blue"
+          onChange={handleChange} onBlur={handleBlur}
           min={0} max={100} name="hygiene" />
         <p>Demonstrates appropriate hygiene practices.</p>
       </div>
       <div className="row">
         <h3>Self care</h3>
         <p>Overall maintenance, education, identification. Routine.</p>
-        <input type="range" className="range blue" onBlur={handleBlur}
+        <input type="range" className="range blue"
+          onChange={handleChange} onBlur={handleBlur}
           min={0} max={100} name="selfcare" />
         <p>Understands that self-care is important and demonstrates routine.</p>
       </div>
       <div className="row">
         <h3>Self perception</h3>
         <p>Self awareness. Identification of positive and negative features.</p>
-        <input type="range" className="range blue" onBlur={handleBlur}
+        <input type="range" className="range blue"
+          onChange={handleChange} onBlur={handleBlur}
           min={0} max={100} name="selfperception" />
         <p>Able to perceive oneself realistically. Aware of positive and negative features.</p>
       </div>
       <div className="row">
         <h3>Self confidence</h3>
         <p>Bravery, courage, determintation. Understanding of own ability.</p>
-        <input type="range" className="range blue" onBlur={handleBlur}
+        <input type="range" className="range blue"
+          onChange={handleChange} onBlur={handleBlur}
           min={0} max={100} name="selfconfidence" />
         <p>Demonstrates confidence in their own ability.</p>
       </div>
       <div className="row">
         <h3>Posture</h3>
         <p>Spinal alignment. Control, strength and balance.</p>
-        <input type="range" className="range blue" onBlur={handleBlur}
+        <input type="range" className="range blue"
+          onChange={handleChange} onBlur={handleBlur}
           min={0} max={100} name="posture" />
         <p>Shows good posture.</p>
       </div>
       <div className="row">
         <h3>Anti-Ageing</h3>
         <p>Education and awareness. Routine and other daily practices.</p>
-        <input type="range" className="range blue" onBlur={handleBlur}
+        <input type="range" className="range blue"
+          onChange={handleChange} onBlur={handleBlur}
           min={0} max={100} name="antiageing" />
         <p>Knowledgeable in regard to benefits of anti-ageing practices.
           Practices anti-ageing measures.

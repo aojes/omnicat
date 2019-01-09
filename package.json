@@ -46,8 +46,7 @@
     "eslint-plugin-react-hooks": "0.0.0",
     "openzeppelin-solidity": "^2.1.0",
     "parcel-bundler": "^1.11.0",
-    "prettier": "^1.15.3",
-    "sass-lint": "^1.12.1"
+    "prettier": "^1.15.3"
   },
   "optionalDependencies": {
     "git-stats": "^2.10.11",

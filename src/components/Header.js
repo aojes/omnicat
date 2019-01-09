@@ -3,53 +3,68 @@ import { hot } from 'react-hot-loader'
 import { NavLink } from 'react-router-dom'
 import '../css/Header.sass'
 
-function Header(props) {
-  return (
-    <header id={props.id} className={props.className}>
-      <nav>
-        <div className="nav-inner">
-          <div className="pure-menu">
-            <ul className="pure-menu-list menu-order-1">
-              <li id="home-link" className="pure-menu-item">
-                <NavLink to='/' className="home-link pure-menu-link">Home</NavLink>
-              </li>
-              <li>
-                <ul className="pure-menu-list menu-order-2">
-                  <li className="pure-menu-item"><NavLink to='/physical-fitness' className="pure-menu-link">Physical Fitness</NavLink></li>
-                  <li className="pure-menu-item"><NavLink to='/biochemistry' className="pure-menu-link">Biochemistry</NavLink></li>
-                  <li>
-                    <ul className="pure-menu-list menu-order-3">
-                      <li className="pure-menu-item"><NavLink to='/iron' className="pure-menu-link">Iron Optimiser <span className="emoji-red-heart">❤️</span></NavLink></li>
-                    </ul>
-                  </li>
-                  <li className="pure-menu-item"><NavLink to='/brain-health' className="pure-menu-link">Brain Health</NavLink></li>
-                  <li>
-                    <ul className="pure-menu-list menu-order-3">
-                      <li className="pure-menu-item"><NavLink to='/dass42' className="pure-menu-link">Dass42 <span className="emoji-red-heart">❤️</span></NavLink></li>
-                    </ul>
-                  </li>
-                  <li className="pure-menu-item"><NavLink to='/hormones' className="pure-menu-link">Hormones</NavLink></li>
-                  <li className="pure-menu-item"><NavLink to='/wellness' className="pure-menu-link">Wellness <span className="emoji-red-heart">❤️</span></NavLink></li>
-                  <li className="pure-menu-item"><NavLink to='/aesthetics' className="pure-menu-link">Aesthetics <span className="emoji-red-heart">❤️</span></NavLink></li>
-                  <li className="pure-menu-item"><NavLink to='/risk-and-prevention' className="pure-menu-link">Risk &amp; Prevention</NavLink></li>
-                </ul>
-              </li>
-              <li className="pure-menu-item"><NavLink to='/about' className="pure-menu-link">About OmniCAT</NavLink></li>
-              <li className="pure-menu-item"><NavLink to='/products' className="pure-menu-link">Products</NavLink></li>
-              <li className="pure-menu-item"><NavLink to='/crowdsale' className="pure-menu-link">Crowdsale</NavLink></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-  )
-}
+const Header = props => (
+  <header id={props.id} className={props.className}>
+    <nav>
+      <ul className="nav flex-column menu-order-1">
+        <li id="home-link" className="nav-item">
+          <NavLink to='/' className="home-link nav-link">Home</NavLink>
+        </li>
+        <li>
+          <ul className="nav flex-column menu-order-2">
+            <li className="nav-item">
+              <NavLink to='/physical-fitness' className="nav-link">Physical Fitness</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to='/biochemistry' className="nav-link">Biochemistry</NavLink>
+            </li>
+            <li>
+              <ul className="nav flex-column menu-order-3">
+                <li className="nav-item">
+                  <NavLink to='/iron' className="nav-link">Iron Optimiser
+                    <span className="emoji-red-heart">❤️</span></NavLink>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <NavLink to='/brain-health' className="nav-link">Brain Health</NavLink>
+            </li>
+            <li>
+              <ul className="nav flex-column menu-order-3">
+                <li className="nav-item">
+                  <NavLink to='/dass42' className="nav-link">Dass42
+                    <span className="emoji-red-heart">❤️</span></NavLink>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <NavLink to='/hormones' className="nav-link">Hormones</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to='/wellness' className="nav-link">Wellness
+                <span className="emoji-red-heart">❤️</span></NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to='/aesthetics' className="nav-link">Aesthetics
+                <span className="emoji-red-heart">❤️</span></NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to='/risk-and-prevention' className="nav-link">Risk &amp; Prevention</NavLink>
+            </li>
+          </ul>
+        </li>
+        <li className="nav-item">
+          <NavLink to='/about' className="nav-link">About OmniCAT</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to='/products' className="nav-link">Products</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to='/crowdsale' className="nav-link">Crowdsale</NavLink>
+        </li>
+      </ul>
+    </nav>
+  </header>
+)
 
 export default hot(module)(Header)
-// <li className="pure-menu-item">
-//   <Link to="https://gitlab.com/crockett.jesse/omnicat" className="pure-menu-link">
-//     <img className="simple-icon" id="react" height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg" />
-//     <img className="simple-icon" id="ethereum" height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ethereum.svg" />
-//     <img className="simple-icon" id="gitlab" height="24" width="24" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg" />
-//     Project Source
-//   </Link></li>

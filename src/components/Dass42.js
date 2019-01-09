@@ -74,7 +74,7 @@ const Dass42 = () => {
   // 2 Applied to me to a considerable degree, or a good part of time
   // 3 Applied to me very much, or most of the time
   return (
-    <div className="pure-u dass">
+    <div className="dass">
       <h2>Dass42</h2>
       <hr />
       <h3 id="leading-statement">
@@ -82,33 +82,37 @@ const Dass42 = () => {
         how much the statement applied to you <b>over the past week</b>.
         There are no right or wrong answers. Do not spend too much time on any statement.
       </h3>
-      <form className="pure-u pure-form dass" onSubmit={handleSubmit}>
+      <form className="dass" onSubmit={handleSubmit}>
         {
           statements.map(
             (statement, index) => (
-              <div key={`radio-group-${index}`} className="form-row">
-                <div className="pure-u-sm-1 pure-u-md-21-24 pure-control-group dass-keys">
-                  <h4 className="form-control">{index + 1}. &nbsp; {statement}</h4>
-                  <div className="pure-u-5-24 radio-i + em">
+              <div key={`radio-group-${index}`} className="form-row form-group">
+                <div className="row dass-keys">
+                  <h4 className="col-12 py-2">{statement}</h4>
+                  <div className="col-3 radio-item">
                     <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
+                      className="form-control"
                       checked={selections[index] === 0}
                       onChange={handleChange} />
                     <label htmlFor={`${index}-0`} className="pure-radio"><span>0</span>&nbsp;</label>
                   </div>
-                  <div className="pure-u-5-24 radio-item">
+                  <div className="col-3 radio-item">
                     <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
+                      className="form-control"
                       checked={selections[index] === 1}
                       onChange={handleChange} />
                     <label htmlFor={`${index}-1`} className="pure-radio"><span>1</span>&nbsp;</label>
                   </div>
-                  <div className="pure-u-5-24 radio-item">
+                  <div className="col-3 radio-item">
                     <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
+                      className="form-control"
                       checked={selections[index] === 2 }
                       onChange={handleChange} />
                     <label htmlFor={`${index}-2`} className="pure-radio"><span>2</span>&nbsp;</label>
                   </div>
-                  <div className="pure-u-5-24 radio-item">
+                  <div className="col-3 radio-item">
                     <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
+                      className="form-control"
                       checked={selections[index] === 3}
                       onChange={handleChange} />
                     <label htmlFor={`${index}-3`} className="pure-radio"><span>3</span>&nbsp;</label>
@@ -118,9 +122,7 @@ const Dass42 = () => {
             )
           )
         }
-        <button type="submit" className="pure-button pure-button-primary">
-          See Results
-        </button>
+        <button type="submit" className="btn btn-primary">See Results</button>
       </form>
       { results
         && <div className="results">

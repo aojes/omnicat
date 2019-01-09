@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader'
 
 
 const Hormones = () => (
-  <div className="pure-u">
+  <div className="pure-u fix-main-width">
     <h2>Page for Hormones</h2>
     <hr/>
   </div>

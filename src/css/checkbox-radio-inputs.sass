@@ -7,27 +7,26 @@ input[type="radio"]
 label
   cursor: pointer
   display: inline-block
-  height: 2.5em
-  line-height: 2.5em
-  padding: 0 0 0 3em
+  height: 3rem
+  line-height: 3rem
+  padding: 0rem 0rem 0rem 2.85rem
   position: relative
 
   span
     color: $gray - 72%
     font-weight: bold
-    margin-left: -30px
+    margin-left: -1.685rem
     position: absolute
-    top: 2px
     z-index: 1
 
 label::before,
 label::after
-  display: block
-  height: 2.5em
-  left: 0
   position: absolute
+  display: block
+  height: 3rem
+  left: 0
   top: 0
-  width: 2.5em
+  width: 3rem
 
 label::before
   border: 2px solid #bdc3c7
@@ -38,7 +37,7 @@ label::before
 input[type="checkbox"] + label::after
   color: #2c3e50
   content: "\2714"
-  line-height: 2.5em
+  line-height: 3rem
   text-align: center
 
 /* Radio */
@@ -47,13 +46,13 @@ input[type="radio"] + label::before
 
 input[type="radio"] + label::after
   background: #fff
-  border: .2em solid #2c3e50
+  border: .2rem solid #2c3e50
   border-radius: 50%
   content: " "
-  height: 2em
-  left: .25em
-  top: .25em
-  width: 2em
+  height: 3rem
+  width: 3rem
+  left: 0rem
+  top: 0rem
 
 /* :checked */
 input[type="checkbox"]:checked + label::before,

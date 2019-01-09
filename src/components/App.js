@@ -5,16 +5,25 @@ import { hot } from 'react-hot-loader'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
+import '../css/App.sass'
 
 function App() {
   // const [web3, setWeb3] = useState(getWeb3())
   // const [accounts, setAccounts] = useState(null)
   // const [contract, setContract] = useState(null)
   return (
-    <div id="index" className="pure-g">
-      <Header id={'header'} className={'pure-u-sm-1 pure-u-lg-7-24'} />
-      <Main id={'main'} className={'pure-u-sm-1 pure-u-lg-17-24'} />
-      <Footer id={'footer'} className={'pure-u-1'} />
+    <div className="container">
+      <div className="row">
+        <div className="col-md-4">
+          <Header id={''} className={''} />
+        </div>
+        <div className="col-md-8">
+          <Main id={''} className={''} />
+        </div>
+      </div>
+      <div className="row">
+        <Footer id={''} className={'col-md-12'} />
+      </div>
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
-import '../css/Home.sass'
-
+// import '../css/Home.sass'
 const Home = () => (
   <div className="pure-u">
     <h1>Welcome to OmniCAT</h1>
