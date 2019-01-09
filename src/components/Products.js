@@ -5,7 +5,7 @@ import { hot } from 'react-hot-loader'
 import omniscopeConceptImg from '../images/omniscope-concept.png'
 
 const Products = () => (
-  <div className="pure-u">
+  <div>
     <h2>Products</h2>
     <hr />
     <h3>OmniScope Concept</h3>

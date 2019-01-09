@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { hot } from 'react-hot-loader'
 import '../css/Aesthetics.sass'
 // import range from './util/inputRangeFx'
@@ -41,7 +41,7 @@ const Aesthetics = () => {
     alert(`placeholder for tally of ${tally}/900`)
   }
 
-  return (<div className="" id="aesthetics">
+  return (<div id="aesthetics">
     <h2>Aesthetics </h2>
     <p>Beauty, Self Confidence and Awareness, Hygiene, Self Care</p>
     <hr/>

@@ -3,8 +3,8 @@ import { hot } from 'react-hot-loader'
 import { NavLink } from 'react-router-dom'
 import '../css/Header.sass'
 
-const Header = props => (
-  <header id={props.id} className={props.className}>
+const Header = () => (
+  <header id="header-content">
     <nav>
       <ul className="nav flex-column menu-order-1">
         <li id="home-link" className="nav-item">

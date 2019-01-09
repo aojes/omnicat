@@ -2,7 +2,7 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 
 const About = () => (
-  <div className="pure-u about">
+  <div className="about">
     <h1>About OmniCAT</h1>
     <h2>At Home Ai Guided Biometrics Optimization</h2>
     <hr />

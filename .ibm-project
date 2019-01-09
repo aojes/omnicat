@@ -1,0 +1,11 @@
+{
+  "build-release-ready": false,
+  "build-debug-ready": false,
+  "devops": false,
+  "deploy-image": "",
+  "chart-path": "",
+  "ibm-cluster": "",
+  "motd-access": "Wed, 09 Jan 2019 01:21:16 CST",
+  "app-id": "",
+  "deploy-target": ""
+}

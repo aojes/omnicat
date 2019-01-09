@@ -79,7 +79,7 @@ const IronOptimiser = () => {
   }
 
   return (
-    <div className="pure-u iron">
+    <div className="iron">
       <h2>Iron Optimiser</h2>
       <hr />
       <h3> Please provide values for the following instances </h3>

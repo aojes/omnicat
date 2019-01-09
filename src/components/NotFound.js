@@ -2,7 +2,7 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 
 const NotFound = () => (
-  <div className="pure-u">
+  <div>
     <h2>The resource requested was not found</h2>
     <hr/>
   </div>

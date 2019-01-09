@@ -15,14 +15,16 @@ function App() {
     <div className="container">
       <div className="row">
         <div className="col-md-4">
-          <Header id={''} className={''} />
+          <Header/>
         </div>
         <div className="col-md-8">
-          <Main id={''} className={''} />
+          <Main/>
         </div>
       </div>
       <div className="row">
-        <Footer id={''} className={'col-md-12'} />
+        <div className="col-md-12">
+          <Footer/>
+        </div>
       </div>
     </div>
   )

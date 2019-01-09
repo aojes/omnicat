@@ -3,8 +3,8 @@ import { hot } from 'react-hot-loader'
 
 
 const BrainHealth = () => (
-  <div className="pure-u">
-    <h2>Page for Brain Health</h2>
+  <div>
+    <h2>Brain Health</h2>
     <hr/>
   </div>
 )

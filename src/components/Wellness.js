@@ -121,7 +121,7 @@ class Wellness extends React.Component {
     // eslint-disable-next-line
     const {headings, subheadings, statements, inputTypes, notices, questions} = this.state.data
     return (
-      <div className="pure-u wellness">
+      <div className="wellness">
         <h2>Wellness &amp; Health Appraisal</h2>
         <hr/>
         <div className="description">
