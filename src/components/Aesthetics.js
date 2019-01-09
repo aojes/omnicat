@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { hot } from 'react-hot-loader'
 import '../css/Aesthetics.sass'
-// import range from './util/inputRangeFx'
 
 const Aesthetics = () => {
   const [keypairs] = useState({
