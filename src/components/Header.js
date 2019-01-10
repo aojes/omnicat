@@ -54,7 +54,7 @@ const Header = () => (
           </ul>
         </li>
         <li className="nav-item">
-          <NavLink to='/about' className="nav-link">About OmniCAT</NavLink>
+          <NavLink to='/about' className="nav-link">About</NavLink>
         </li>
         <li className="nav-item">
           <NavLink to='/products' className="nav-link">Products</NavLink>

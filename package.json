@@ -15,7 +15,7 @@
   "license": "MIT",
   "main": "src/index.html",
   "scripts": {
-    "start": "parcel -p 3000 --no-autoinstall watch src/index.html",
+    "start": "parcel -p 3000--no-autoinstall src/index.html",
     "build": "parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
