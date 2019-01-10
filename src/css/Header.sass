@@ -25,12 +25,14 @@ header
 
     ul.menu-order-3
       margin: 0 1.6em
+
     // make the 3rd level links pink when the parent link is hovered
     ul.menu-order-2 li:hover + li ul.menu-order-3 li a:not(.active)
       background: $pink !important
       border-radius: 25px !important
       color: $white !important
       z-index: 1
+
       &:before
         position: absolute
         display: inline
@@ -40,6 +42,7 @@ header
         height: 0
         content: url('../images/noodleArrowDownRightA.png')
         z-index: 2
+
     ul.menu-order-3 li:hover a:before
       position: absolute
       display: inline
@@ -49,6 +52,7 @@ header
       height: 0
       content: url('../images/noodleArrowDownRightA.png')
       z-index: 2
+
     ul.menu-order-3 li:hover a:after
       position: absolute
       display: inline
@@ -58,6 +62,7 @@ header
       right: 100%
       left: -2rem
       font-size: 1.25rem
+      text-shadow: 2px 2px $white
       color: red
       content: '❤️'
 
