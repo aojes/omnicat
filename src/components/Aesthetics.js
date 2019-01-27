@@ -40,7 +40,7 @@ const Aesthetics = () => {
   }
 
   return (<div id="aesthetics">
-    <h2>Aesthetics </h2>
+    <h2>Aesthetics</h2>
     <p>Beauty, Self Confidence and Awareness, Hygiene, Self Care</p>
     <hr/>
     <form className="aesthetics" onSubmit={handleSubmit}>
