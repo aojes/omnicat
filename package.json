@@ -24,8 +24,9 @@
     "react-dom": "16.7.0-alpha.2",
     "react-hot-loader": "^4.6.3",
     "react-router-dom": "^4.3.1",
-    "sass": "^1.15.2",
-    "truffle-contract": "^4.0.0",
+    "react-transition-group": "^2.5.3",
+    "sass": "^1.16.1",
+    "truffle-contract": "^4.0.2",
     "web3": "^1.0.0-beta2"
   },
   "devDependencies": {
@@ -33,9 +34,8 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^9.0.0",
-    "babel-preset-airbnb": "^3.2",
+    "babel-plugin-react": "^1.0.0",
     "eslint": "^5.12.1",
-    "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react-app": "^3.0.6",
     "eslint-plugin-import": "^2.15.0",
     "eslint-plugin-jsx-a11y": "^6.2.0",

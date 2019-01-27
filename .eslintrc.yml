@@ -1,5 +1,5 @@
 parser: babel-eslint
-extends: [eslint:recommended, plugin:react/recommended, airbnb-base]
+extends: [eslint:recommended, plugin:react/recommended]
 plugins: [react, react-hooks]
 env:
   browser: true

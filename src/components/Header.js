@@ -21,8 +21,7 @@ const Header = () => (
             <li>
               <ul className="nav flex-column menu-order-3">
                 <li className="nav-item">
-                  <NavLink to='/iron' className="nav-link">Iron Optimiser
-                    <span className="emoji-red-heart">❤️</span></NavLink>
+                  <NavLink to='/iron' className="nav-link">Iron Optimiser</NavLink>
                 </li>
               </ul>
             </li>

@@ -1,16 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
-import registerServiceWorker from './utils/registerServiceWorker'
+import { BrowserRouter as Router } from 'react-router-dom'
+// WAIT import registerServiceWorker from './utils/registerServiceWorker'
 import App from './components/App'
 import './index.sass'
 
-function renderApp() {
-  render(
-    <BrowserRouter><App/></BrowserRouter>, document.getElementById('root')
-  )
-}
+const renderApp = () => render(<Router><App/></Router>, document.getElementById('root'))
 
 renderApp()
 module.hot.accept(renderApp)
-registerServiceWorker()
+// registerServiceWorker()
