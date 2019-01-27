@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { hot } from 'react-hot-loader'
 import '../css/Aesthetics.sass'
 
 const Aesthetics = () => {
@@ -121,4 +120,4 @@ const Aesthetics = () => {
   )
 }
 
-export default hot(module)(Aesthetics)
+export default Aesthetics

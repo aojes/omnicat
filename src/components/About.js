@@ -1,5 +1,4 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
 
 const About = () => (
   <div className="about">
@@ -110,4 +109,4 @@ const About = () => (
     <h3>Documentation</h3>
   </div>
 )
-export default hot(module)(About)
+export default About

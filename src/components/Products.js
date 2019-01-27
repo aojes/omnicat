@@ -1,7 +1,4 @@
-
 import React from 'react'
-import { hot } from 'react-hot-loader'
-
 import omniscopeConceptImg from '../images/omniscopeConcept.png'
 import noodleArrowDownRightAImg from '../images/noodleArrowDownRightA.png'
 
@@ -14,4 +11,4 @@ const Products = () => (
   </div>
 )
 
-export default hot(module)(Products)
+export default Products

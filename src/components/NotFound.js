@@ -1,5 +1,4 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
 
 const NotFound = () => (
   <div>
@@ -8,4 +7,4 @@ const NotFound = () => (
   </div>
 )
 
-export default hot(module)(NotFound)
+export default NotFound

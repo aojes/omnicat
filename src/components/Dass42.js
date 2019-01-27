@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-
-import { hot } from 'react-hot-loader'
 import data from './data/Dass42-statements.json'
 import dassResultsImg from '../images/dass-score-table.png'
 import '../css/Dass42.sass'
@@ -163,4 +161,4 @@ const Dass42Form = props => (
   </form>
 )
 
-export default hot(module)(Dass42)
+export default Dass42

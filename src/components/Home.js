@@ -1,6 +1,5 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
-// import '../css/Home.sass'
+
 const Home = () => (
   <div>
     <h1>Welcome to OmniCAT</h1>
@@ -12,4 +11,4 @@ const Home = () => (
   </div>
 )
 
-export default hot(module)(Home)
+export default Home

@@ -1,6 +1,4 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
-
 
 const Crowdsale = () => (
   <div>
@@ -9,4 +7,4 @@ const Crowdsale = () => (
   </div>
 )
 
-export default hot(module)(Crowdsale)
+export default Crowdsale

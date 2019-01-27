@@ -1,5 +1,4 @@
 import React from 'react'
-import { hot } from 'react-hot-loader'
 import '../css/Footer.sass'
 
 const Footer = () => (
@@ -10,4 +9,4 @@ const Footer = () => (
   </footer>
 )
 
-export default hot(module)(Footer)
+export default Footer

@@ -1,7 +1,4 @@
-
 import React from 'react'
-import { hot } from 'react-hot-loader'
-
 
 const Hormones = () => (
   <div className="fix-main-width">
@@ -10,4 +7,4 @@ const Hormones = () => (
   </div>
 )
 
-export default hot(module)(Hormones)
+export default Hormones

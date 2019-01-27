@@ -1,6 +1,4 @@
-
 import React from 'react'
-import { hot } from 'react-hot-loader'
 
 const Biochemistry = () => (
   <div>
@@ -9,4 +7,4 @@ const Biochemistry = () => (
   </div>
 )
 
-export default hot(module)(Biochemistry)
+export default Biochemistry

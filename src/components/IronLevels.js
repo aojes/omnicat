@@ -1,8 +1,6 @@
-import React from 'react'
-import { hot } from 'react-hot-loader'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './../css/IronLevels.sass'
-const { log, error, info, warn } = console
+const { log } = console
 
 const IronOptimiser = () => {
   const [serumIron, setSerumIron] = useState(null)
@@ -110,4 +108,4 @@ const IronOptimiser = () => {
     </div>
   )
 }
-export default hot(module)(IronOptimiser)
+export default IronOptimiser
