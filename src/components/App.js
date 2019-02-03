@@ -7,7 +7,7 @@ import Main from './Main'
 import Footer from './Footer'
 
 function App() {
-  // REVIEW truffle react sample
+  // TODO: REVIEW truffle react sample
   return (
     <div className="container">
       <div className="row">
