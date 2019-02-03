@@ -2,8 +2,8 @@ import React from 'react'
 
 const Home = () => (
   <div>
-    <h1>Welcome to OmniCAT</h1>
-    <h2>At Home Ai Guided Biometrics Optimization</h2>
+    <h1 className="slide-in-blurred-top text-focus-in">Welcome to OmniCAT</h1>
+    <h2 className="text-focus-in">At Home Ai Guided Biometrics Optimization</h2>
     <h3>
       <a href="https://github.com/tidelake/omnicat" target="_blank" rel="noopener noreferrer"><img alt="link to source on github" src="https://img.shields.io/badge/open%20source-react%20|%20ethereum-brightgreen.svg?logo=github&logoColor=white" /></a>
     </h3>
