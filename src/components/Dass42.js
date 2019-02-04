@@ -7,7 +7,7 @@ import '../css/Dass42.sass'
 const Dass42 = () => {
   const [selections, setSelections] = useState([])
   const [statements] = useState(data)
-  const [results, setResults] = useState(false)
+  const [results, setResults] = useState(null)
   const [begin, setBegin] = useState(null)
 
   const handleChange = (event) => {
@@ -15,7 +15,6 @@ const Dass42 = () => {
     setSelections({
       ...selections, [id]: parseInt(value, 10),
     })
-    console.log(JSON.stringify(selections))
   }
 
   const validate = () => {
@@ -81,7 +80,7 @@ const Dass42 = () => {
       </h3>
       <CSSTransition in={!begin} timeout={300} classNames="message">
         {() => begin
-          || <p className="message">
+          || <div className="message">
             <div className="card m-3 p-3 shadow">
               <br/>0, if the statement does not apply to me at all, or&mdash;
               <br/>1, if it applies to me to some degree, or some of the time
@@ -91,13 +90,15 @@ const Dass42 = () => {
             <button href="#" className="btn btn-primary ml-4 mt-2" onClick={() => setBegin(true)}>
               Begin
             </button>
-          </p>
+          </div>
         }
       </CSSTransition>
       <CSSTransition in={begin && !results} timeout={300} classNames="transition-statements">
         {() => (begin && !results
-          && <Dass42Form handleSubmit={handleSubmit} className="transition-statements" handleChange={handleChange} statements={statements} selections={selections} />
-        ) || (!begin && results && <p>&nbsp;</p>)
+          && <Dass42Form handleSubmit={handleSubmit}
+              className="transition-statements" handleChange={handleChange}
+              statements={statements} selections={selections} />
+        ) || (!begin && results && <br />)
         }
       </CSSTransition>
       <CSSTransition in={results} timeout={300} classNames="results">
@@ -116,49 +117,67 @@ const Dass42 = () => {
   )
 }
 
-const Dass42Form = props => (
-  <form className="dass" onSubmit={props.handleSubmit}>
-    {
-      props.statements.map(
-        (statement, index) => (
-          <div key={`radio-group-${index}`} className="form-row form-group">
-            <div className="row dass-keys">
-              <h4 className="col-12 py-2">{statement}</h4>
-              <div className="col-3 radio-item">
-                <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
-                  className="form-control"
-                  checked={props.selections[index] === 0}
-                  onChange={props.handleChange} />
-                <label htmlFor={`${index}-0`} ><span>0</span>&nbsp;</label>
-              </div>
-              <div className="col-3 radio-item">
-                <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
-                  className="form-control"
-                  checked={props.selections[index] === 1}
-                  onChange={props.handleChange} />
-                <label htmlFor={`${index}-1`} ><span>1</span>&nbsp;</label>
-              </div>
-              <div className="col-3 radio-item">
-                <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
-                  className="form-control"
-                  checked={props.selections[index] === 2 }
-                  onChange={props.handleChange} />
-                <label htmlFor={`${index}-2`} ><span>2</span>&nbsp;</label>
-              </div>
-              <div className="col-3 radio-item">
-                <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
-                  className="form-control"
-                  checked={props.selections[index] === 3}
-                  onChange={props.handleChange} />
-                <label htmlFor={`${index}-3`} ><span>3</span>&nbsp;</label>
+const Dass42Form = props => {
+  const isVisible = (i = 0) => {
+    const current = Object.values(props.selections).length
+    if(i === current || i === current - 1) {
+      return 'block'
+    }
+    return 'none'
+  }
+
+  const canSubmit = (selections) => {
+    if (Object.keys(selections).length === 42) {
+      return 'block'
+    }
+    return 'none'
+  }
+
+  return(
+    <form className="dass" onSubmit={props.handleSubmit}>
+      {
+        props.statements.map(
+          (statement, index) => (
+            <div style={{display: isVisible(index)}} key={`radio-group-${index}`}
+              className="form-row form-group">
+              <div className="row dass-keys">
+                <h4 className="col-12 m-2">{`${index+1}. ${statement}`}</h4>
+                <div className="col-3 radio-item">
+                  <input type="radio" value={`${index}-0`} key={`${index}-0`} id={`${index}-0`}
+                    className="form-control"
+                    checked={props.selections[index] === 0}
+                    onChange={props.handleChange} />
+                  <label htmlFor={`${index}-0`} ><span>0</span>&nbsp;</label>
+                </div>
+                <div className="col-3 radio-item">
+                  <input type="radio" value={`${index}-1`} key={`${index}-1`} id={`${index}-1`}
+                    className="form-control"
+                    checked={props.selections[index] === 1}
+                    onChange={props.handleChange} />
+                  <label htmlFor={`${index}-1`} ><span>1</span>&nbsp;</label>
+                </div>
+                <div className="col-3 radio-item">
+                  <input type="radio" value={`${index}-2`} key={`${index}-2`} id={`${index}-2`}
+                    className="form-control"
+                    checked={props.selections[index] === 2 }
+                    onChange={props.handleChange} />
+                  <label htmlFor={`${index}-2`} ><span>2</span>&nbsp;</label>
+                </div>
+                <div className="col-3 radio-item">
+                  <input type="radio" value={`${index}-3`} key={`${index}-3`} id={`${index}-3`}
+                    className="form-control"
+                    checked={props.selections[index] === 3}
+                    onChange={props.handleChange} />
+                  <label htmlFor={`${index}-3`} ><span>3</span>&nbsp;</label>
+                </div>
               </div>
             </div>
-          </div>
+          )
         )
-      )
-    }
-    <button type="submit" className="btn btn-primary">See Results</button>
-  </form>
-)
+      }
+      <button style={{display: canSubmit(props.selections)}} type="submit" className="btn btn-primary">See Results</button>
+    </form>
+  )
+}
 
 export default Dass42
