@@ -19,6 +19,7 @@
     "build": "parcel build src/index.html"
   },
   "dependencies": {
+    "animista": "0.0.1",
     "react": "^16.8",
     "react-dom": "^16.8",
     "react-router-dom": "^4.3.1",

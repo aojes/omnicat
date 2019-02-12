@@ -2,7 +2,7 @@ import React from 'react'
 
 const PhysicalFitness = () => (
   <div>
-    <h2>Physcial Fitness</h2>
+    <h1 className="text-focus-in">Physcial Fitness</h1>
     <hr/>
   </div>
 )

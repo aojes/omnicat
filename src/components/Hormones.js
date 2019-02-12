@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hormones = () => (
   <div className="fix-main-width">
-    <h2>Hormones</h2>
+    <h1 className="text-focus-in">Hormones</h1>
     <hr/>
   </div>
 )

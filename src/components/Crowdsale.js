@@ -2,7 +2,7 @@ import React from 'react'
 
 const Crowdsale = () => (
   <div>
-    <h2>the Crowdsale</h2>
+    <h1 className="text-focus-in">the Crowdsale</h1>
     <hr/>
   </div>
 )

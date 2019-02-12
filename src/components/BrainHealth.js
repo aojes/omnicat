@@ -2,7 +2,7 @@ import React from 'react'
 
 const BrainHealth = () => (
   <div>
-    <h2>Brain Health</h2>
+    <h1 className="text-focus-in">Brain Health</h1>
     <hr/>
   </div>
 )

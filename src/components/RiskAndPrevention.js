@@ -2,7 +2,7 @@ import React from 'react'
 
 const RiskAndPrevention = () => (
   <div>
-    <h2>Risk and Prevention</h2>
+    <h1 className="text-focus-in">Risk and Prevention</h1>
     <hr/>
   </div>
 )

@@ -104,7 +104,7 @@ const Wellness = () => {
   const { headings, subheadings, statements, inputTypes, notices, questions } = data
   return (
     <div className="wellness">
-      <h2>Wellness &amp; Health Appraisal</h2>
+      <h1 className="text-focus-in">Wellness &amp; Health Appraisal</h1>
       <hr/>
       <div className="description">
         <p>Your answers to this health appraisal questionnaire will assist your practitioner in gaining information about your current symptoms and health concerns. Please answer all questions, in each section.
@@ -485,7 +485,7 @@ export default Wellness
 //     const {headings, subheadings, statements, inputTypes, notices, questions} = this.state.data
 //     return (
 //       <div className="wellness">
-//         <h2>Wellness &amp; Health Appraisal</h2>
+//         <h1 className="text-focus-in">Wellness &amp; Health Appraisal</h1>
 //         <hr/>
 //         <div className="description">
 //           <p>Your answers to this health appraisal questionnaire will assist your practitioner in gaining information about your current symptoms and health concerns. Please answer all questions, in each section.</p>
