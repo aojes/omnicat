@@ -9,5 +9,5 @@ import './css/animista.scss'
 const renderApp = () => render(<Router><App/></Router>, document.getElementById('root'))
 
 renderApp()
-module.hot.accept(renderApp)
-// registerServiceWorker()
+// NOT PARCEL REQUIREMENT module.hot.accept(renderApp)
+// POSTPONE registerServiceWorker()

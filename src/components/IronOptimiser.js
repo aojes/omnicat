@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import './../css/IronLevels.sass'
-const { log } = console
+import './../css/IronOptimiser.sass'
 
 const IronOptimiser = () => {
   const [serumIron, setSerumIron] = useState(null)
@@ -18,7 +17,7 @@ const IronOptimiser = () => {
   const handleChange = event => {
     const val = parseInt(event.target.value, 10),
           name = event.target.name
-    log(name, val)
+    console.log(name, val)
     switch(name) {
       case 'serumIron':
         return setSerumIron(val)
@@ -36,7 +35,7 @@ const IronOptimiser = () => {
   const handleSubmit = event => {
     event.preventDefault()
     if (validate()) {
-      log('valid')
+      console.log('valid')
       tallyResults()
       return true
     } else {
@@ -77,33 +76,36 @@ const IronOptimiser = () => {
   }
 
   return (
-    <div className="iron">
+    <div className="iron row">
       <h2>Iron Optimiser</h2>
       <hr />
-      <h3> Please provide values for the following instances </h3>
-      <form className="pure-form pure-form-stacked" onSubmit={handleSubmit}>
-
-        { results && <h4>{results.si}</h4> }
-        <label htmlFor="serumIron"> Serum Iron
-          <input type="number" min="0" max="999" name="serumIron" onChange={handleChange} />
-        </label>
-
-        { results && <h4>{results.ti}</h4> }
-        <label htmlFor="transferrinIBC"> TransferrinIBC
-          <input type="number" min="0" max="999" name="transferrinIBC" onChange={handleChange} />
-        </label>
-
-        { results && <h4>{results.ts}</h4> }
-        <label htmlFor="transferrinSaturation"> Transferrin Saturation
-          <input type="number" min="0" max="999" name="transferrinSaturation" onChange={handleChange} />
-        </label>
-
-        { results && <h4>{results.sfa}</h4> }
-        <label htmlFor="serumFerritinAssay"> Serum Ferritin Assay
-          <input type="number" min="0" max="999" name="serumFerritinAssay" onChange={handleChange} />
-        </label>
-
-        <button type="submit" className="pure-button pure-button-primary">See Results</button>
+      <form className="col-sm-12 mt-4" onSubmit={handleSubmit}>
+        <h4> Enter values for the following instances </h4>
+        <div className="card">
+          { results && <div>{results.si}</div> }
+          <label htmlFor="serumIron"> Serum Iron
+            <input type="number" min="0" max="999" name="serumIron" onChange={handleChange} />
+          </label>
+        </div>
+        <div className="card">
+          { results && <div>{results.ti}</div> }
+          <label htmlFor="transferrinIBC"> TransferrinIBC
+            <input type="number" min="0" max="999" name="transferrinIBC" onChange={handleChange} />
+          </label>
+        </div>
+        <div className="card">
+          { results && <div>{results.ts}</div> }
+          <label htmlFor="transferrinSaturation"> Transferrin Saturation
+            <input type="number" min="0" max="999" name="transferrinSaturation" onChange={handleChange} />
+          </label>
+        </div>
+        <div className="card">
+          { results && <div>{results.sfa}</div> }
+          <label htmlFor="serumFerritinAssay"> Serum Ferritin Assay
+            <input type="number" min="0" max="999" name="serumFerritinAssay" onChange={handleChange} />
+          </label>
+        </div>
+        <button type="submit" className="btn btn-primary">See Results</button>
       </form>
     </div>
   )
