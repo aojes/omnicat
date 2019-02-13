@@ -72,7 +72,7 @@ const Dass42 = () => {
   return (
     <div className="dass">
       <h1 className="text-focus-in">Dass42</h1>
-      <hr />
+      <hr id="neatness" />
       <h3 id="leading-statement" className="message">
         Please read each statement and select a number 0, 1, 2 or 3 which indicates
         how much the statement applied to you <b>over the past week</b>.

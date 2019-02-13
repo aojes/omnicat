@@ -4,7 +4,7 @@ const About = () => (
   <div className="about">
     <h1 className="text-focus-in">About OmniCAT</h1>
     <h2 className="text-focus-in">At Home Ai Guided Biometrics Optimization</h2>
-    <hr />
+    <hr id="neatness" />
     <h3>Overview</h3>
 
     <p>OmniCAT is a library of clinical assessment tools and resources intended to empower

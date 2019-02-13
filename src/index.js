@@ -6,6 +6,7 @@ import App from './components/App'
 import './index.sass'
 import './css/animista.scss'
 
+
 const renderApp = () => render(<Router><App/></Router>, document.getElementById('root'))
 
 renderApp()

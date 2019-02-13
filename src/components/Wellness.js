@@ -105,7 +105,7 @@ const Wellness = () => {
   return (
     <div className="wellness">
       <h1 className="text-focus-in">Wellness &amp; Health Appraisal</h1>
-      <hr/>
+      <hr id="neatness" />
       <div className="description">
         <p>Your answers to this health appraisal questionnaire will assist your practitioner in gaining information about your current symptoms and health concerns. Please answer all questions, in each section.
         </p>
@@ -486,7 +486,7 @@ export default Wellness
 //     return (
 //       <div className="wellness">
 //         <h1 className="text-focus-in">Wellness &amp; Health Appraisal</h1>
-//         <hr/>
+//         <hr id="neatness" />
 //         <div className="description">
 //           <p>Your answers to this health appraisal questionnaire will assist your practitioner in gaining information about your current symptoms and health concerns. Please answer all questions, in each section.</p>
 //           <p>Circle the number which best describes the frequency or severity of your symptoms over the previous <b>month</b>, or answer the <b>yes</b> or <b>no</b> questions by circling the appropriate letter.</p>

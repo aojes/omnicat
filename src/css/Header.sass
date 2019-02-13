@@ -4,6 +4,7 @@ header
   background: $pink
   border-radius: 25px
   margin: 1em 2em
+
   // make the header bg the pink nav border
   &:first-child
     padding: 0.54em
@@ -15,7 +16,7 @@ header
 
     li
       position: relative
-      padding-bottom: 0.18em !important
+      padding-bottom: 0.18em
 
     ul.menu-order-1
       margin: 0
@@ -28,10 +29,12 @@ header
 
     // make the 3rd level links pink when the parent link is hovered
     ul.menu-order-2 li:hover + li ul.menu-order-3 li a:not(.active)
-      background: $pink !important
-      border-radius: 25px !important
-      color: $white !important
+      background: $pink
+      border-radius: 25px
+      color: $white
       z-index: 1
+      // li a.shadow-drop-center
+      //   display: none
 
       &:before
         position: absolute
@@ -75,12 +78,12 @@ header
         background: $blue
         color: $white
 
-    img.simple-icon
-      height: 13px
-      width: 13px
-      margin: auto 3px
-
-    span.emoji-red-heart
+    ul li a span.emoji-heart
       color: red
       text-shadow: 1px 1px $white
       margin-left: 2px
+
+    // img.simple-icon
+    //   height: 13px
+    //   width: 13px
+    //   margin: auto 3px

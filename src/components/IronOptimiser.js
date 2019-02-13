@@ -78,7 +78,7 @@ const IronOptimiser = () => {
   return (
     <div className="iron row">
       <h1 className="text-focus-in">Iron Optimiser</h1>
-      <hr />
+      <hr id="neatness" />
       <form className="col-sm-12 mt-4" onSubmit={handleSubmit}>
         <h4> Enter values for the following instances </h4>
         <div className="card">
