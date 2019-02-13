@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import '../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
 
@@ -28,7 +28,7 @@ const Wellness = () => {
   }
 
   const handleChange = (e) => {
-    e.preventDefault()
+
     const [ heading, subheading, statement, checked ] = e.target.value.split( '-' )
     console.log('sectionResp', JSON.stringify(sectionResponse))
     setSectionResponse({
@@ -48,7 +48,7 @@ const Wellness = () => {
   }
 
   const handleQSubmit = (e) => {
-    e.preventDefault()
+
     setSectionTally(sectionTally.concat('Q'))
     setComplete(complete.concat('Q'))
     setSectionInFocus('results')
@@ -121,6 +121,7 @@ const Wellness = () => {
             key={i}
             index={i}
             state={state}
+            handleChange={handleChange}
             fns={{handleSubmit, handleChange, handleBlur}}
             text={heading}
           />
@@ -164,10 +165,14 @@ const QuestionsForm = props => {
 
 const Form = props => {
   const handleSubmit = e => props.fns.handleSubmit(e)
-  const handleChange = e => {
-    e.preventDefault()
-    props.fns.handleChange(e)
-  }
+  const handleChange = e => props.handleChange(e)
+
+  // const handleResponseChange = (e) => {
+  //   () => {
+  //     console.log(e.target.value, 'Checked input')
+  //     handleChange(e)
+  //   }, [e.target]
+  // }
   const handleBlur = e => props.fns.handleBlur(e)
 
   const focus = props.index === props.state.sectionInFocus
@@ -279,8 +284,22 @@ const Statement = props => {
   const inputs = props.inputTypeStr // "1 bold ny3", "12 ny6", "24 0248a", "48 text"
   const id = props.id
   const checked = props.state.sectionResponse[id]
+
+  // const memoizedCallback = useCallback(
+  //   () => {
+  //     console.log('props changed', props)
+  //   },
+  //   [props]
+  // )
+  // const [change, setChange] = useState(false)
+
+  useEffect(() => {
+    console.log(props)
+    //localStorage.setItem('data', JSON.stringify(props.state))
+  }, [props])
+
   const handleChange = (e) => {
-    e.preventDefault()
+
     props.radioChange(e)
   }
   const handleBlur = (e) => props.blur(e)
@@ -317,10 +336,10 @@ const Statement = props => {
       <div style={props.style} className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div className="">
-          <RadioButton name={`${id}-${first}`} extraKey={key1} radioChange={handleChange} checked={checked} index={first} />
-          <RadioButton name={`${id}-${second}`} extraKey={key2} radioChange={handleChange} checked={checked} index={second} />
-          <RadioButton name={`${id}-${third}`} extraKey={key3} radioChange={handleChange} checked={checked} index={third} />
-          <RadioButton name={`${id}-${fourth}`} extraKey={key4} radioChange={handleChange} checked={checked} index={fourth} />
+          <RadioButton name={`${id}-${first}`} extraKey={false} radioChange={handleChange} state={props.state} checked={checked} index={first} />
+          <RadioButton name={`${id}-${second}`} extraKey={false} radioChange={handleChange} state={props.state} checked={checked} index={second} />
+          <RadioButton name={`${id}-${third}`} extraKey={false} radioChange={handleChange} state={props.state} checked={checked} index={third} />
+          <RadioButton name={`${id}-${fourth}`} extraKey={false} radioChange={handleChange} state={props.state} checked={checked} index={fourth} />
         </div>
       </div>
     )
@@ -329,8 +348,8 @@ const Statement = props => {
       <div style={props.style} className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div className="">
-          <RadioButton name={`${id}-0`} extraKey={false} radioChange={handleChange} checked={checked} index={0} />
-          <RadioButton name={`${id}-${yesValue}`} extraKey={false} radioChange={handleChange} checked={checked} index={yesValue} />
+          <RadioButton name={`${id}-0`} extraKey={false} radioChange={handleChange} state={props.state} checked={checked} index={0} />
+          <RadioButton name={`${id}-${yesValue}`} extraKey={false} radioChange={handleChange} state={props.state} checked={checked} index={yesValue} />
         </div>
       </div>
     )
@@ -341,19 +360,14 @@ const Statement = props => {
 }
 
 const RadioButton = props => {
-  // const [change, setChange] = useState(false)
-  //
-  // useEffect(() => {
-  //   setChange(!change)
-  // })
-
+  const [checked, setChecked] = useState(props.checked)
   const handleChange = (e) => props.radioChange(e)
 
   return(
     <div className="radio-group">
       <input type="radio"
         value={props.name} name={props.name} id={props.name}
-        checked={props.checked === props.index}
+        checked={checked}
         onChange={handleChange}
       />
       <label htmlFor={props.name}>
@@ -364,156 +378,3 @@ const RadioButton = props => {
 }
 
 export default Wellness
-
-// class Wwellness extends React.Component {
-//   constructor() {
-//     super()
-//     // const [data] = useState(questionnaire)
-//     this.state = {
-//       data: questionnaire,
-//       response: [],
-//       sectionResponse: [],
-//       sectionInFocus: 0,    // 0, 1... 11, 'Q', 'results'
-//       sectionTally: [], // array up to 13 elements including 'Q' at index[-1]
-//       complete: [], // [0, 1... 11, 'Q']
-//     }
-//     // const statements = 407 + Q?
-//     this.validate = this.validate.bind(this)
-//     this.validateText = this.validateText.bind(this)
-//     this.handleChange = this.handleChange.bind(this)
-//     this.handleBlur = this.handleBlur.bind(this)
-//     this.handleQSubmit = this.handleQSubmit.bind(this)
-//     this.handleQBlur = this.handleQBlur.bind(this)
-//     this.handleSubmit = this.handleSubmit.bind(this)
-//   }
-//
-//   handleBlur(e) {
-//     const [ heading, subheading, statement ] = e.target.name.split('-')
-//     const textValue = e.target.value
-//     if (this.validateText(textValue)) {
-//       this.setState({
-//         sectionResponse: {
-//           ...this.state.sectionResponse,
-//           [ `${heading}-${subheading}-${statement}` ] : textValue
-//         }
-//       })
-//     }
-//     console.log(JSON.stringify('sectionResponse', this.state.sectionResponse))
-//   }
-//
-//   handleChange(e) {
-//     const [ heading, subheading, statement, checked ] = e.target.value.split( '-' )
-//     this.setState({
-//       sectionResponse: {
-//         ...this.state.sectionResponse,
-//         [ `${heading}-${subheading}-${statement}` ] : parseInt(checked)
-//       }
-//     })
-//     console.log('sexnResp', JSON.stringify(this.state.sectionResponse))
-//   }
-//
-//   handleSubmit(e) {
-//     e.preventDefault()
-//     const sectionFocus = this.state.sectionInFocus,
-//       element = document.getElementById('section-statement-count-' + sectionFocus),
-//
-//       sectionStatementIndex = parseInt(element.attributes.allinputs.value),
-//       textInputCount = parseInt(element.attributes.textinputs.value),
-//       valsAry = Object.values(this.state.sectionResponse),
-//       currentSectionTally = Object.values(this.state.sectionResponse)
-//         .filter(el => typeof el === 'number')
-//         .reduce((accum, val) => accum + val)
-//     console.log(' ## statements:', sectionStatementIndex,
-//       '\n ## sectionResponses: ', valsAry.length,
-//       '\n ## text statements: ', textInputCount,
-//       '\n ## tally:', currentSectionTally)
-//     console.log(' ### ',sectionStatementIndex, valsAry.length)
-//
-//     if (this.validate(sectionStatementIndex, valsAry.length)) {
-//       const nextFocus = sectionFocus === 'Q' ? 'results' :
-//         sectionFocus < 11 ? sectionFocus + 1 : 'Q'
-//       this.setState({
-//         sectionTally: this.state.sectionTally.concat(currentSectionTally),
-//         complete: this.state.complete.concat(sectionFocus),
-//         sectionInFocus: nextFocus,
-//         response: { ...this.state.response, ...this.state.sectionResponse },
-//         sectionResponse: []
-//       })
-//       alert('Your tally for the section: ' + currentSectionTally)
-//       return true
-//     } else {
-//       alert('Please respond for each statement')
-//       return false
-//     }
-//   }
-//
-//   validateText(str) {
-//     return( str && str.length > 0 )
-//   }
-//
-//   validate(sectionResponseCount, statementCount) {
-//     if (sectionResponseCount && statementCount) {
-//       return sectionResponseCount === statementCount
-//     } else {
-//       return false
-//     }
-//   }
-//
-//   handleQBlur(e) {
-//     console.info(' ## id ', e.target.id, ' ## value ', e.target.value)
-//     this.setState({
-//       sectionResponse: { ...this.state.sectionResponse, [e.target.id]: e.target.value }
-//     })
-//     return true
-//   }
-//
-//   handleQSubmit(e) {
-//     e.preventDefault()
-//     this.setState({
-//       sectionTally: this.state.sectionTally.concat('Q'),
-//       complete: this.state.complete.concat('Q'),
-//       sectionInFocus: 'results',
-//       response: { ...this.state.response, ...this.state.sectionResponse },
-//       sectionResponse: []
-//     })
-//     alert('Thank you for completing this long form.')
-//     return true
-//   }
-//
-//   render() {
-//     // eslint-disable-next-line
-//     const {headings, subheadings, statements, inputTypes, notices, questions} = this.state.data
-//     return (
-//       <div className="wellness">
-//         <h1 className="text-focus-in">Wellness &amp; Health Appraisal</h1>
-//         <hr id="neatness" />
-//         <div className="description">
-//           <p>Your answers to this health appraisal questionnaire will assist your practitioner in gaining information about your current symptoms and health concerns. Please answer all questions, in each section.</p>
-//           <p>Circle the number which best describes the frequency or severity of your symptoms over the previous <b>month</b>, or answer the <b>yes</b> or <b>no</b> questions by circling the appropriate letter.</p>
-//           <p>You may note that some questions are repeated throughout the questionnaire. We would appreciate it if you can answer <b>all</b> questions, as this will ensure the most accurate interpretation of your results. You may however leave a question blank if you are unsure of the answer.</p>
-//         </div>
-//         <fieldset>
-//           <legend>Questionnaire</legend>
-//           { headings.map((heading, i) => (
-//             <Form
-//               key={i}
-//               index={i}
-//               super={this}
-//               data={this.state.data}
-//               submit={this.handleSubmit}
-//               text={heading}
-//             />
-//           ))
-//           }
-//           { <QuestionsForm
-//               data={questions}
-//               handleSubmit={this.handleQSubmit}
-//               handleBlur={this.handleQBlur}
-//               sectionInFocus={this.state.sectionInFocus}
-//             />
-//           }
-//         </fieldset>
-//       </div>
-//     )
-//   }
-// }
