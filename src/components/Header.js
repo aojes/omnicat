@@ -4,7 +4,7 @@ import '../css/Header.sass'
 
 const Header = () => {
   return(
-    <header id="header-content" className="shadow-drop-center position-fixed">
+    <header id="header-content" className="shadow-drop-center">
       <nav id="movingBorder">
         <ul id="ul-moving-border" className="nav flex-column menu-order-1">
           <li id="home-link" className="nav-item">

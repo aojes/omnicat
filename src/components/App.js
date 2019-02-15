@@ -14,17 +14,17 @@ const App = () => {
   })
   // TODO: REVIEW truffle react sample
   return (
-    <div className="container">
+    <div id="app-set-container" className="container">
       <div className="row">
-        <div className="col-md-12 col-lg-4">
+        <div className="col-4">
           <Header/>
         </div>
-        <div className="col-md-12 col-lg-8">
+        <div className="col-8">
           <Main/>
         </div>
       </div>
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-12">
           <Footer/>
         </div>
       </div>

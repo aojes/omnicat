@@ -42,7 +42,6 @@ const Aesthetics = () => {
   return (
     <div id="aesthetics">
       <h1 className="text-focus-in">Aesthetics</h1>
-      <p>Beauty, Self Confidence and Awareness, Hygiene, Self Care</p>
       <hr id="neatness" />
       <form className="aesthetics" onSubmit={handleSubmit}>
         <div className="row">

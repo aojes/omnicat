@@ -122,9 +122,9 @@ class Wellness extends React.Component {
     const {headings, subheadings, statements, inputTypes, notices, questions} = this.state.data
     return (
       <div className="wellness">
-        <h1>Wellness &amp; Health Appraisal</h1>
+        <h1 className="text-focus-in">Wellness &amp; Health Appraisal</h1>
         <hr id="neatness" />
-        <div className="description">
+        <div className="description text-focus-in">
           <p>Your answers to this health appraisal questionnaire will assist your practitioner in gaining information about your current symptoms and health concerns. Please answer all questions, in each section.</p>
           <p>Circle the number which best describes the frequency or severity of your symptoms over the previous <b>month</b>, or answer the <b>yes</b> or <b>no</b> questions by circling the appropriate letter.</p>
           <p>You may note that some questions are repeated throughout the questionnaire. We would appreciate it if you can answer <b>all</b> questions, as this will ensure the most accurate interpretation of your results. You may however leave a question blank if you are unsure of the answer.</p>
