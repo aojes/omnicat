@@ -16,10 +16,10 @@ function App() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-12 col-lg-4">
           <Header/>
         </div>
-        <div className="col-md-8">
+        <div className="col-md-12 col-lg-8">
           <Main/>
         </div>
       </div>
