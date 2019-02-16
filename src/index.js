@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-// WAIT import registerServiceWorker from './utils/registerServiceWorker'
 import App from './components/App'
+import * as serviceWorker from './utils/serviceWorker'
 import './index.sass'
 import './css/animista.scss'
 
@@ -10,5 +10,8 @@ import './css/animista.scss'
 const renderApp = () => render(<Router><App/></Router>, document.getElementById('root'))
 
 renderApp()
-// NOT PARCEL REQUIREMENT module.hot.accept(renderApp)
-// POSTPONE registerServiceWorker()
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();

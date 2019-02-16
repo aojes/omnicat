@@ -19,19 +19,19 @@
     "build": "parcel build src/index.html"
   },
   "dependencies": {
-    "animista": "0.0.1",
     "react": "^16.8",
     "react-dom": "^16.8",
     "react-router-dom": "^4.3.1",
-    "react-transition-group": "^2.5.3",
-    "sass": "^1.17.0",
     "truffle-contract": "^4.0.4",
-    "web3": "^1.0.0-beta2"
+    "web3": "^1.0.0-beta2",
+    "parcel-bundler": "^1.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "acorn": "^6.1.0",
+    "animista": "0.0.1",
     "babel-eslint": "^10.0.1",
     "babel-plugin-react": "^1.0.0",
     "eslint": "^5.13.0",
@@ -41,11 +41,7 @@
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.0.1",
     "openzeppelin-solidity": "^2.1.2",
-    "parcel-bundler": "^1.11.0"
-  },
-  "optionalDependencies": {
-    "git-stats": "^2.10.11",
-    "husky": "^1.3.1",
-    "source-map-explorer": "^1.6.0"
+    "react-transition-group": "^2.5.3",
+    "sass": "^1.17.0"
   }
 }
