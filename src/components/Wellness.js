@@ -1,4 +1,5 @@
 import React from 'react'
+// import { CSSTransition } from 'react-transition-group'
 import '../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
 
@@ -116,7 +117,6 @@ class Wellness extends React.Component {
     return true
   }
 
-  // pure-form-[aligned, stacked] pure-group pure-control pure-control-group span.pure-form-message-inline
   render() {
     // eslint-disable-next-line
     const {headings, subheadings, statements, inputTypes, notices, questions} = this.state.data
@@ -162,15 +162,15 @@ const QuestionsForm = props => {
     return(
       <fieldset>
         <legend>More Info.</legend>
-        <form className="pure-form" onSubmit={handleSubmit} onBlur={handleBlur}>
+        <form onSubmit={handleSubmit} onBlur={handleBlur}>
           {props.data.map((question, i) => (
             <p  className="wellness-question" key={i}>
               <span className="question">{question}</span>
-              <textarea className="pure-u-2-5" id={`questions-${i}`} />
+              <textarea className="" id={`questions-${i}`} />
             </p>
             ))
           }
-          <button type="submit" className="pure-button pure-button-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </fieldset>
     )
@@ -190,7 +190,8 @@ const Form = props => {
   if (!focus || complete)
     return null
   else if (focus && !complete) return(
-    <form className="pure-form" id={`form-heading-${props.index}`} onSubmit={handleSubmit}>
+    <form id={`form-heading-${props.index}`} onSubmit={handleSubmit}>
+
       <h3>{props.text}</h3>
       {props.index === 10 ?
         [<span key={10} className="notice-heading">{props.data.notices.headings[10]}</span>,
@@ -211,29 +212,29 @@ const Form = props => {
                       )
         })]
       : props.data.subheadings[props.index].map( (subheading, i) =>
-          [<Subheading key={`sh-${i}`} text={subheading} />,
-            <SubheadingNotice key={`shn-${i}`} data={props.data.notices.subheadings[`${props.index+1}.${i+1}`]} />,
-            [props.data.statements[props.index][i].map( (statement, j) => {
-              typeStr = props.data.inputTypes[props.index][i][j]
-              count += 1
-              if (typeStr.includes('text')) {
-                isTextCount += 1
-              }
-              return( <Statement  inputTypeStr={typeStr}
-                          key={`${props.index}-${i}-${j}`}
-                          blur={handleBlur}
-                          count={count}
-                          id={`${props.index}-${i}-${j}`}
-                          text={statement}
-                          radioChange={handleChange}
-                          super={props.super} />
-                        )
-            })]
+        [<Subheading key={`sh-${i}`} text={subheading} />,
+          <SubheadingNotice key={`shn-${i}`} data={props.data.notices.subheadings[`${props.index+1}.${i+1}`]} />,
+          [props.data.statements[props.index][i].map( (statement, j) => {
+            typeStr = props.data.inputTypes[props.index][i][j]
+            count += 1
+            if (typeStr.includes('text')) {
+              isTextCount += 1
+            }
+            return( <Statement  inputTypeStr={typeStr}
+                        key={`${props.index}-${i}-${j}`}
+                        blur={handleBlur}
+                        count={count}
+                        id={`${props.index}-${i}-${j}`}
+                        text={statement}
+                        radioChange={handleChange}
+                        super={props.super} />
+                      )
+          })]
           ]
         )
       }
       <input type="hidden" id={`section-statement-count-${props.index}`} textinputs={isTextCount} allinputs={count} />
-      <button type="submit" className="pure-button pure-button-primary">See Results</button>
+      <button type="submit" className="btn btn-primary">See Results</button>
     </form>
   )
 }
@@ -284,7 +285,7 @@ const Statement = props => {
     return(
       <div className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
-        <div className="pure-control-group">
+        <div className="">
           <RadioButton name={`${id}-${first}`} extraKey={key1} radioChange={handleChange} checked={checked} index={first} />
           <RadioButton name={`${id}-${second}`} extraKey={key2} radioChange={handleChange} checked={checked} index={second} />
           <RadioButton name={`${id}-${third}`} extraKey={key3} radioChange={handleChange} checked={checked} index={third} />
@@ -296,7 +297,7 @@ const Statement = props => {
     return(
       <div className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
-        <div className="pure-control-group">
+        <div className="">
           <RadioButton name={`${id}-0`} extraKey={false} radioChange={handleChange} checked={checked} index={0} />
           <RadioButton name={`${id}-${yesValue}`} extraKey={false} radioChange={handleChange} checked={checked} index={yesValue} />
         </div>

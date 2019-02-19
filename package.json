@@ -6,7 +6,8 @@
   "repository": "https://github.com/tidelake/omnicat",
   "keywords": [
     "healthcare",
-    "blockchain"
+    "blockchain",
+    "ai"
   ],
   "authors": [
     "Jesse Crockett <crockett.jesse@gmail.com>",
@@ -34,12 +35,13 @@
     "animista": "0.0.1",
     "babel-eslint": "^10.0.1",
     "babel-plugin-react": "^1.0.0",
-    "eslint": "^5.13.0",
+    "eslint": "^5.14.1",
     "eslint-plugin-flowtype": "^2.50.3",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.0.1",
+    "husky": "^1.3.1",
     "openzeppelin-solidity": "^2.1.2",
     "react-transition-group": "^2.5.3",
     "sass": "^1.17.0"

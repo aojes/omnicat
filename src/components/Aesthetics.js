@@ -57,6 +57,7 @@ const Aesthetics = () => {
             onBlur={handleBlur}
             min={0}
             max={200}
+            defaultValue={keypairs.skin}
             name="skin"
           />
           <p>
@@ -75,6 +76,7 @@ const Aesthetics = () => {
             className="range blue"
             min={0}
             max={100}
+            defaultValue={keypairs.grooming}
             name="grooming"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -93,6 +95,7 @@ const Aesthetics = () => {
             onBlur={handleBlur}
             min={0}
             max={100}
+            defaultValue={keypairs.hygiene}
             name="hygiene"
           />
           <p>Demonstrates appropriate hygiene practices.</p>
@@ -107,6 +110,7 @@ const Aesthetics = () => {
             onBlur={handleBlur}
             min={0}
             max={100}
+            defaultValue={keypairs.selfcare}
             name="selfcare"
           />
           <p>
@@ -125,6 +129,7 @@ const Aesthetics = () => {
             onBlur={handleBlur}
             min={0}
             max={100}
+            defaultValue={keypairs.selfperception}
             name="selfperception"
           />
           <p>
@@ -142,6 +147,7 @@ const Aesthetics = () => {
             onBlur={handleBlur}
             min={0}
             max={100}
+            defaultValue={keypairs.selfconfidence}
             name="selfconfidence"
           />
           <p>Demonstrates confidence in their own ability.</p>
@@ -156,6 +162,7 @@ const Aesthetics = () => {
             onBlur={handleBlur}
             min={0}
             max={100}
+            defaultValue={keypairs.posture}
             name="posture"
           />
           <p>Shows good posture.</p>
@@ -170,6 +177,7 @@ const Aesthetics = () => {
             onBlur={handleBlur}
             min={0}
             max={100}
+            defaultValue={keypairs.antiageing}
             name="antiageing"
           />
           <p>
@@ -177,7 +185,7 @@ const Aesthetics = () => {
             Practices anti-ageing measures.
           </p>
         </div>
-        <button type="submit" className="pure-button pure-button-primary">
+        <button type="submit" className="btn btn-primary">
           See Results (pending/use live tabulation and then commit result)
         </button>
       </form>

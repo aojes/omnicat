@@ -163,11 +163,11 @@ const QuestionsForm = props => {
           {props.data.map((question, i) => (
             <p  className="wellness-question" key={i}>
               <span className="question">{question}</span>
-              <textarea className="pure-u-2-5" id={`questions-${i}`} />
+              <textarea className="" id={`questions-${i}`} />
             </p>
             ))
           }
-          <button type="submit" className="pure-button pure-button-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </fieldset>
     )
@@ -280,7 +280,7 @@ const Form = props => {
         )
       }
       <input type="hidden" id={`section-statement-count-${props.index}`} textinputs={isTextCount} allinputs={count} />
-      <button type="submit" className="pure-button pure-button-primary">See Results</button>
+      <button type="submit" className="btn btn-primary">See Results</button>
     </form>
   )
 }
