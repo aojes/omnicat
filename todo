@@ -1,3 +1,5 @@
+bump up all wellness fn into wellness
+
 use percent diff on iron module
 
 yt usereducer for all components across files
@@ -11,3 +13,7 @@ harry wolff https://codesandbox.io/s/21vrnxyy3j
 npm react-loadable for dynamic loading
 
 loadable https://github.com/jamiebuilds/react-loadable
+
+gnome extension
+  = make night light only work on app windows
+  = make conky script available as an extension

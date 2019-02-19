@@ -41,7 +41,6 @@ const IronOptimiser = () => {
     if (validate()) {
       console.log('valid')
       tallyResults()
-      console.log(results)
       return true
     } else {
       alert('Please provide values for all 4')
@@ -92,8 +91,8 @@ const IronOptimiser = () => {
     })
   }
   const setColorCodes = (text) => {
-    return text.match('Optimal') ? 'bg-success text-white '
-        : text.match('Normal') ? 'bg-primary text-white '
+    return text.match('Optimal') ? 'bg-primary text-white '
+        : text.match('Normal') ? 'bg-success text-white '
         : text.match('Suboptimal') ? 'bg-warning text-dark '
         : 'bg-danger text-white '
   }
@@ -108,7 +107,8 @@ const IronOptimiser = () => {
             <p className={results.color_si+' d-inline-flex p-2 m-1 bd-highlight'}>
               {results.siPct}% of optimal</p></div> }
           <label htmlFor="serumIron"> Serum Iron
-            <input type="number" min="0" max="999" name="serumIron" onChange={handleChange} />
+            <input type="number" min="0" max="999" name="serumIron"
+              onChange={handleChange} />
           </label>
         </div>
         <div className="card">
