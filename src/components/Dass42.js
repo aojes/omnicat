@@ -134,7 +134,7 @@ const Dass42Form = props => {
   }
 
   return(
-    <form className="dass" onSubmit={props.handleSubmit}>
+    <form className="dass xlensCursor" onSubmit={props.handleSubmit}>
       {
         props.statements.map(
           (statement, index) => (
