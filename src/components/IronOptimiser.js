@@ -5,7 +5,7 @@ import mem from '../utils/localStorageHelper'
 const IronOptimiser = () => {
 
   const initial = mem.getset('ironoptimiser', { scores: null,
-    si: 0, ti: 0, ts: 0, sfa: 0,
+    si: 0, ti: 0, ts: 0, sfa: 0, siMsg: 0, tiMsg: 0, tsMsg: 0, sfaMsg: 0,
     siPct: null, tiPct: null, tsPct: null, sfaPct: null,
     color_si: null, color_ti: null, color_ts: null, color_sfa: null
   })
@@ -91,7 +91,8 @@ const IronOptimiser = () => {
     const sfaColor = setColorCodes(report_sfa)
 
     const allResults = { scores: true,
-      si: report_si, ti: report_ti, ts: report_ts, sfa: report_sfa,
+      si: si, ti: ti, ts: ts, sfa: sfa,
+      siMsg: report_si, tiMsg: report_ti, tsMsg: report_ts, sfaMsg: report_sfa,
       siPct: (100.0 * si / 20.0).toFixed(0),
       tiPct: (100.0 * ti / 60.0).toFixed(0),
       tsPct: (100.0 * ts / 40.0).toFixed(0),
@@ -122,39 +123,35 @@ const IronOptimiser = () => {
       <form className="col-sm-12 mt-4" onSubmit={e => e.preventDefault()}>
         <h4> Enter values for the following instances </h4>
         <div className="card">
-          { results.scores && <div>{results.si}<br />
+          { results.scores && <div>{results.siMsg}<br />
             <p className={results.color_si+' d-inline-flex p-2 m-1 bd-highlight'}>
               {results.siPct}% of optimal</p></div> }
           <label htmlFor="serumIron"> Serum Iron
-            <input type="number" min="0" max="999" name="serumIron"
-              defaultValue={+results.si} onFocus={handleFocus} onChange={handleChange} />
+            <input type="number" min="0" max="999" name="serumIron" defaultValue={results.si} onFocus={handleFocus} onChange={handleChange} />
           </label>
         </div>
         <div className="card">
-          { results.scores && <div>{results.ti}<br />
+          { results.scores && <div>{results.tiMsg}<br />
             <p className={results.color_ti+' d-inline-flex p-2 m-1 bd-highlight'}>
               {results.tiPct}% of optimal</p></div> }
           <label htmlFor="transferrinIBC"> TransferrinIBC
-            <input type="number" min="0" max="999" name="transferrinIBC"
-              defaultValue={+results.ti} onFocus={handleFocus} onChange={handleChange} />
+            <input type="number" min="0" max="999" name="transferrinIBC" defaultValue={results.ti} onFocus={handleFocus} onChange={handleChange} />
           </label>
         </div>
         <div className="card">
-          { results.scores && <div>{results.ts}<br />
+          { results.scores && <div>{results.tsMsg}<br />
             <p className={results.color_ts+' d-inline-flex p-2 m-1 bd-highlight'}>
               {results.tsPct}% of optimal</p></div> }
           <label htmlFor="transferrinSaturation"> Transferrin Saturation
-            <input type="number" min="0" max="999" name="transferrinSaturation"
-              defaultValue={+results.ts} onFocus={handleFocus} onChange={handleChange} />
+            <input type="number" min="0" max="999" name="transferrinSaturation" defaultValue={results.ts} onFocus={handleFocus} onChange={handleChange} />
           </label>
         </div>
         <div className="card">
-          { results.scores && <div>{results.sfa}<br />
+          { results.scores && <div>{results.sfaMsg}<br />
             <p className={results.color_sfa+' d-inline-flex p-2 m-1 bd-highlight'}>
               {results.sfaPct}% of optimal</p></div> }
           <label htmlFor="serumFerritinAssay"> Serum Ferritin Assay
-            <input type="number" min="0" max="999" name="serumFerritinAssay"
-              defaultValue={+results.sfa} onFocus={handleFocus} onChange={handleChange} />
+            <input type="number" min="0" max="999" name="serumFerritinAssay" defaultValue={results.sfa} onFocus={handleFocus} onChange={handleChange} />
           </label>
         </div>
         <button type="submit" onClick={handleSubmit} className="btn btn-primary">See Results</button>
