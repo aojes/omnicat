@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Aesthetics.sass';
+import mem from '../utils/localStorageHelper'
 
 const Aesthetics = () => {
-  const [keypairs] = useState({
+  const initial = mem.getset('aesthetics', {
     skin: 100, // Set the original, median value
     grooming: 50,
     hygiene: 50,
@@ -11,7 +12,9 @@ const Aesthetics = () => {
     selfconfidence: 50,
     posture: 50,
     antiageing: 50
-  });
+  })
+
+  const [keypairs, setKeypairs] = useState(initial)
 
   const handleChange = e => {
     // Change slide thumb color on way up
@@ -24,20 +27,28 @@ const Aesthetics = () => {
     } else if (+e.target.value > 0.0) {
       e.target.className = 'range pink';
     }
-  };
-
-  // TODO handle focus?
-  function handleBlur(e) {
-    keypairs[e.target.name] = +e.target.value;
-    console.log(e.target.name, +e.target.value);
   }
 
-  function handleSubmit(e) {
+  // TODO handle focus?
+  const handleBlur = (e) => {
+    setKeypairs({...keypairs, [e.target.name]: +e.target.value})
+    mem.set('aesthetics', keypairs)
+    // console.log(mem.get('aesthetics'))
+    // console.log(mem.get('aesthetics'))
+    // console.log(e.target.name, +e.target.value);
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const tally = Object.values(keypairs).reduce((a, b) => a + b, 0);
+    mem.set('aesthetics', keypairs)
     console.log(tally, '/900');
     alert(`placeholder for tally of ${tally}/900`);
   }
+
+  useEffect(() => {
+    console.log('hello')
+  })
 
   return (
     <div id="aesthetics">
@@ -190,7 +201,7 @@ const Aesthetics = () => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Aesthetics;
+export default Aesthetics
