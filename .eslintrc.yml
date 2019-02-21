@@ -18,5 +18,5 @@ rules:
     - 1
     - vars: all
       args: after-used
-      argsIgnorePattern: "^_|^next$"
+      # argsIgnorePattern: "^_|^next$"
   react/prop-types: 0

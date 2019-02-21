@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import '../css/Aesthetics.sass';
+import React, { useState, useEffect } from 'react'
+import '../css/Aesthetics.sass'
 import mem from '../utils/localStorageHelper'
 
 const Aesthetics = () => {
@@ -19,13 +19,13 @@ const Aesthetics = () => {
   const handleChange = e => {
     // Change slide thumb color on way up
     if (+e.target.value > +e.target.max * 0.8) {
-      e.target.className = 'range blue';
+      e.target.className = 'range blue'
     } else if (+e.target.value > +e.target.max * 0.6) {
-      e.target.className = 'range ltpurple';
+      e.target.className = 'range ltpurple'
     } else if (+e.target.value > +e.target.max * 0.3) {
-      e.target.className = 'range purple';
+      e.target.className = 'range purple'
     } else if (+e.target.value > 0.0) {
-      e.target.className = 'range pink';
+      e.target.className = 'range pink'
     }
   }
 
@@ -33,17 +33,14 @@ const Aesthetics = () => {
   const handleBlur = (e) => {
     setKeypairs({...keypairs, [e.target.name]: +e.target.value})
     mem.set('aesthetics', keypairs)
-    // console.log(mem.get('aesthetics'))
-    // console.log(mem.get('aesthetics'))
-    // console.log(e.target.name, +e.target.value);
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const tally = Object.values(keypairs).reduce((a, b) => a + b, 0);
+    e.preventDefault()
+    const tally = Object.values(keypairs).reduce((a, b) => a + b, 0)
     mem.set('aesthetics', keypairs)
-    console.log(tally, '/900');
-    alert(`placeholder for tally of ${tally}/900`);
+    console.log(tally, '/900')
+    alert(`placeholder for tally of ${tally}/900`)
   }
 
   useEffect(() => {
