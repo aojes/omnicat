@@ -1,20 +1,26 @@
 import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import data from './data/Dass42-statements.json'
+import mem from '../utils/localStorageHelper'
 import dassResultsImg from '../images/dass-score-table.png'
 import '../css/Dass42.sass'
 
 const Dass42 = () => {
+  const initial = mem.getset('dass42', {
+    scores: false, depression: 0, anxiety: 0, stress: 0
+  })
   const [selections, setSelections] = useState([])
   const [statements] = useState(data)
-  const [results, setResults] = useState(null)
+  const [results, setResults] = useState(initial)
   const [begin, setBegin] = useState(null)
 
-  const handleChange = (event) => {
-    const [id, value] = event.target.value.split('-')
+  const handleChange = e => {
+    const [id, value] = e.target.value.split('-')
+    mem.set('dass42', {...selections, [id]: parseInt(value, 10)})
     setSelections({
       ...selections, [id]: parseInt(value, 10),
     })
+
   }
 
   const validate = () => {
@@ -56,17 +62,37 @@ const Dass42 = () => {
       + response[13] + response[17] + response[21] + response[26] + response[28]
       + response[31] + response[32] + response[34] + response[38]
 
-    setResults({ depression: d, anxiety: a, stress: s })
+    const tabulations = {scores: true, depression: d, anxiety: a, stress: s }
+
+    mem.set('dass42', {...tabulations})
+    setResults({...tabulations})
   }
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  const handleSubmit = e => {
+    e.preventDefault()
     if (validate()) {
-      console.log('valid')
       tallyResults()
       return true
     }
     alert('please answer all 42 questions')
     return false
+  }
+
+  const colorCodeResult = (key, val) => {
+    let clr
+    switch (key) {
+      case 'depression':
+        clr = val < 10 ? 'bg-info' : val < 14 ? 'bg-success' : val > 20 && val < 28 ? 'bg-warning' : 'bg-danger'
+        break
+      case 'anxiety':
+        clr = val < 8 ? 'bg-info' : val < 10 ? 'bg-success' : val < 20 ? 'bg-warning' : 'bg-danger'
+        break
+      case 'stress':
+        clr = val < 15 ? 'bg-info' : val < 18 ? 'bg-success' : val < 26 ? 'bg-warning' : 'bg-danger'
+        break
+      default:
+        return false
+    }
+    return <span id={key} className={clr}>{val}</span>
   }
 
   return (
@@ -93,21 +119,21 @@ const Dass42 = () => {
           </div>
         }
       </CSSTransition>
-      <CSSTransition in={begin && !results} timeout={300} classNames="transition-statements">
-        {() => (begin && !results
+      <CSSTransition in={begin && !results.scores} timeout={300} classNames="transition-statements">
+        {() => (begin && !results.scores
           && <Dass42Form handleSubmit={handleSubmit}
               className="transition-statements" handleChange={handleChange}
               statements={statements} selections={selections} />
-        ) || (!begin && results && <br />)
+        ) || (!begin && results.scores && <br />)
         }
       </CSSTransition>
-      <CSSTransition in={results} timeout={300} classNames="results">
-        {() => !results
+      <CSSTransition in={results.scores} timeout={300} classNames="results">
+        {() => !results.scores
           || <div className="results message mt-5">
             <span id="scores">
-              <span id="depression">{results.depression}</span>
-              <span id="anxiety">{results.anxiety}</span>
-              <span id="stress">{results.stress}</span>
+              {colorCodeResult('depression', results.depression)}
+              {colorCodeResult('anxiety', results.depression)}
+              {colorCodeResult('stress', results.depression)}
             </span>
             <img alt="dass score table" src={dassResultsImg} />
           </div>

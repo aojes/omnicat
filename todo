@@ -1,19 +1,27 @@
-bump up all wellness fn into wellness
++ bump up all wellness side fn into wellness qnd quick-n-dirty
 
-use percent diff on iron module
++ order all sections (subheadings) w/ a simple counter and show them sequentially
++ consider to remove the wellness module if it stays clunky
 
-yt usereducer for all components across files
++ put iron values in the inputs when you have results
 
-get emmet working for html
++ dont rely on submit button...
++ show input feedback
+  - dass (work on results show)
+  - aes (show in progress), iron (getting there)
+  - use percent diff on iron module
 
-slow-import for testing loaders
++ ipfs or Sia
 
-harry wolff https://codesandbox.io/s/21vrnxyy3j
++ crowdsale contract
 
-npm react-loadable for dynamic loading
++ slow-import for testing loaders npm delay
 
-loadable https://github.com/jamiebuilds/react-loadable
 
-gnome extension
-  = make night light only work on app windows
-  = make conky script available as an extension
+
+_______________________
+other
+
++ gnome extension
+  make night light only work on app windows
+  make conky script available as an extension
