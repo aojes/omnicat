@@ -1,6 +1,5 @@
 import React from 'react'
 // import { CSSTransition } from 'react-transition-group'
-import '../css/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
 
 class Wellness extends React.Component {

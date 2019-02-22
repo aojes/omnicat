@@ -1,5 +1,4 @@
 import React from 'react'
-import '../css/Footer.sass'
 
 const Footer = () => (
   <footer id="footer-content">

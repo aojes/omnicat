@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import App from './components/App'
-import * as serviceWorker from './utils/serviceWorker'
-import './index.sass'
-import './css/animista.scss'
+import '/index.sass'
+import '/scss/animista.scss'
+import App from '/components/App'
+import * as serviceWorker from '/utils/serviceWorker'
 
 
 const renderApp = () => render(<Router><App/></Router>, document.getElementById('root'))

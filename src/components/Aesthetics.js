@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import '../css/Aesthetics.sass'
 import mem from '../utils/localStorageHelper'
 
 const Aesthetics = () => {

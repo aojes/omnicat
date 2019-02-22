@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import '../css/Header.sass'
 
 const Header = () => {
   return(

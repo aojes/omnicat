@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react'
-import '../css/Wellness.sass'
+import '../scss/Wellness.sass'
 import questionnaire from './data/Wellness-questionnaire.json'
 
 // const appReducer = (state, action) => {

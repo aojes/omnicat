@@ -1,9 +1,26 @@
-@import 'css/vars'
+@import 'scss/vars.sass'
+
+@import '~bootstrap/scss/bootstrap.scss'
 
 body
-  background: $white
-  color: $black
+  background: $oc-white
+  color: $oc-black
 
 #root
   margin: 0 auto
   max-width: 1400px
+
+.lensCursor
+  cursor: $lens !important
+  input, label, label span
+    cursor: $lens !important
+
+.container#app-set-container
+  min-width: 992px
+
+hr#neatness
+  opacity: 1
+  line-height: 1px
+  height: 0px
+  border: 1px solid
+  border-image-slice: 1 !important

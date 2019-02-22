@@ -20,12 +20,13 @@
     "build": "parcel build src/index.html"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "parcel-bundler": "^1.11.0",
     "react": "^16.8",
     "react-dom": "^16.8",
     "react-router-dom": "^4.3.1",
     "truffle-contract": "^4.0.4",
-    "web3": "^1.0.0-beta2",
-    "parcel-bundler": "^1.11.0"
+    "web3": "^1.0.0-beta2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -42,8 +43,9 @@
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.0.1",
     "husky": "^1.3.1",
+    "node-sass": "^4.11.0",
     "openzeppelin-solidity": "^2.1.2",
     "react-transition-group": "^2.5.3",
-    "sass": "^1.17.0"
+    "sass": "^1.17.1"
   }
 }

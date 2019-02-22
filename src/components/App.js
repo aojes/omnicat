@@ -5,8 +5,8 @@ import React, { useEffect } from 'react'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import '../css/App.sass'
-import neatness from '../utils/neatness'
+import '/scss/App'
+import neatness from '/utils/neatness'
 
 const App = () => {
   useEffect(() => {

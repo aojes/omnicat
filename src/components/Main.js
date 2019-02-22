@@ -14,7 +14,7 @@ import RiskAndPrevention from './RiskAndPrevention'
 import Wellness from './Wellness'
 import Products from './Products'
 import NotFound from './NotFound'
-import '../css/Main.sass'
+
 
 const Main = () => (
   <main id="main-content">

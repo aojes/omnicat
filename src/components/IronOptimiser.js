@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import './../css/IronOptimiser.sass'
 import mem from '../utils/localStorageHelper'
 
 const IronOptimiser = () => {
 
   const initial = mem.getset('ironoptimiser', { scores: null,
-    si: 0, ti: 0, ts: 0, sfa: 0, siMsg: 0, tiMsg: 0, tsMsg: 0, sfaMsg: 0,
+    si: 0, ti: 0, ts: 0, sfa: 0, siMsg: null, tiMsg: null, tsMsg: null, sfaMsg: null,
     siPct: null, tiPct: null, tsPct: null, sfaPct: null,
     color_si: null, color_ti: null, color_ts: null, color_sfa: null
   })
@@ -110,10 +109,10 @@ const IronOptimiser = () => {
   }
 
   const setColorCodes = text => {
-    return text.match('Optimal') ? 'bg-info text-white '
-        : text.match('Normal') ? 'bg-success text-white '
-        : text.match('Suboptimal') ? 'bg-warning text-dark '
-        : 'bg-danger text-white '
+    return text.match('Optimal') ? 'bg-gradient-info text-white '
+        : text.match('Normal') ? 'bg-gradient-success text-white '
+        : text.match('Suboptimal') ? 'bg-gradient-warning text-dark '
+        : 'bg-gradient-danger text-white '
   }
 
   return (

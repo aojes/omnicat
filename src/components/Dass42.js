@@ -3,7 +3,6 @@ import { CSSTransition } from 'react-transition-group'
 import data from './data/Dass42-statements.json'
 import mem from '../utils/localStorageHelper'
 import dassResultsImg from '../images/dass-score-table.png'
-import '../css/Dass42.sass'
 
 const Dass42 = () => {
   const initial = mem.getset('dass42', {

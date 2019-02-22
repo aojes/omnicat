@@ -1,7 +1,7 @@
 @import "vars"
 
 header
-  background: $pink
+  background: $oc-pink
   border-radius: 25px
   margin: 1em 2em
   position: fixed !important
@@ -11,7 +11,7 @@ header
     padding: 0.54em
 
   nav
-    background-color: $white
+    background-color: $oc-white
     border-radius: 25px
     padding: 0.36em
 
@@ -30,9 +30,9 @@ header
 
     // make the 3rd level links pink when the parent link is hovered
     ul.menu-order-2 li:hover + li ul.menu-order-3 li a:not(.active)
-      background: $pink
+      background: $oc-pink
       border-radius: 25px
-      color: $white
+      color: $oc-white
       z-index: 1
       // li a.shadow-drop-center
       //   display: none
@@ -66,7 +66,7 @@ header
       right: 100%
       left: -2.2rem
       font-size: 1rem
-      text-shadow: 1px 2px $white
+      text-shadow: 1px 2px $oc-white
       color: red
       content: '❤️'
 
@@ -76,12 +76,12 @@ header
       font-variant: small-caps
       letter-spacing: 1px
       &.active, &:hover
-        background: $blue
-        color: $white
+        background: $oc-blue
+        color: $oc-white
 
     ul li a span.emoji-heart
       color: red
-      text-shadow: 1px 1px $white
+      text-shadow: 1px 1px $oc-white
       margin-left: 2px
 
     // img.simple-icon
