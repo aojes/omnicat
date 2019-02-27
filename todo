@@ -1,6 +1,8 @@
-+ bump up all wellness side fn into wellness qnd quick-n-dirty
++ https://github.com/Ihatetomatoes/react-router-page-transition-css
 
-+ order all sections (subheadings) w/ a simple counter and show them sequentially
++ local storage, protect against partial form abandon & pre-fill
++ may set button to reset storage
+
 + consider to remove the wellness module if it stays clunky
 
 + put iron values in the inputs when you have results

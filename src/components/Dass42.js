@@ -19,7 +19,6 @@ const Dass42 = () => {
     setSelections({
       ...selections, [id]: parseInt(value, 10),
     })
-
   }
 
   const validate = () => {

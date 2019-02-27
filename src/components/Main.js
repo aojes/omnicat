@@ -15,29 +15,27 @@ import Wellness from './Wellness'
 import Products from './Products'
 import NotFound from './NotFound'
 
-
 const Main = () => (
   <main id="main-content">
     <section>
       <Switch>
-        <Route exact path='/' component={Home}/>
-        <Route exact path='/dass42' component={Dass42}/>
-        <Route exact path='/iron' component={IronLevels}/>
-        <Route exact path='/aesthetics' component={Aesthetics}/>
-        <Route exact path='/about' component={About}/>
-        <Route exact path='/biochemistry' component={Biochemistry}/>
-        <Route exact path='/brain-health' component={BrainHealth}/>
-        <Route exact path='/crowdsale' component={Crowdsale}/>
-        <Route exact path='/hormones' component={Hormones}/>
-        <Route exact path='/physical-fitness' component={PhysicalFitness}/>
-        <Route exact path='/risk-and-prevention' component={RiskAndPrevention}/>
-        <Route exact path='/wellness' component={Wellness}/>
-        <Route exact path='/products' component={Products}/>
-        <Route path='*' component={NotFound}/>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/dass42' component={Dass42} />
+        <Route exact path='/iron' component={IronLevels} />
+        <Route exact path='/aesthetics' component={Aesthetics} />
+        <Route exact path='/about' component={About} />
+        <Route exact path='/biochemistry' component={Biochemistry} />
+        <Route exact path='/brain-health' component={BrainHealth} />
+        <Route exact path='/crowdsale' component={Crowdsale} />
+        <Route exact path='/hormones' component={Hormones} />
+        <Route exact path='/physical-fitness' component={PhysicalFitness} />
+        <Route exact path='/risk-and-prevention' component={RiskAndPrevention} />
+        <Route exact path='/wellness' component={Wellness} />
+        <Route exact path='/products' component={Products} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </section>
   </main>
 )
-
 
 export default Main
