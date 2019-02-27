@@ -62,6 +62,7 @@ const Wellness = () => {
   }
 
   const handleQSubmit = (e) => {
+    e.preventDefault()
     setSectionTally(sectionTally.concat('Q'))
     setComplete(complete.concat('Q'))
     setSectionInFocus('results')
@@ -135,7 +136,8 @@ const Wellness = () => {
             index={i}
             status={status}
             handleChange={handleChange}
-            fns={{handleSubmit, handleBlur}}
+            handleSubmit={handleSubmit}
+            handleBlur={handleBlur}
             text={heading}
           />
         ))
@@ -159,7 +161,7 @@ const QuestionsForm = props => {
     return(
       <fieldset>
         <legend>More Info.</legend>
-        <form className="" onSubmit={handleSubmit} onBlur={handleBlur}>
+        <form onSubmit={handleSubmit} onBlur={handleBlur}>
           {props.data.map((question, i) => (
             <p  className="wellness-question" key={i}>
               <span className="question">{question}</span>
@@ -186,7 +188,7 @@ const Form = props => {
   //     handleChange(e)
   //   }, [e.target]
   // }
-  const handleBlur = e => props.fns.handleBlur(e)
+  const handleBlur = e => props.handleBlur(e)
 
   const focus = props.index === props.status.sectionInFocus
   const complete = props.status.complete.includes(props.index)
@@ -248,11 +250,11 @@ const Form = props => {
             }
             return( <Statement inputTypeStr={typeStr}
                       key={`10-0-${i}`}
-                      blur={handleBlur}
                       count={count}
                       id={`10-0-${i}`}
                       text={statement}
-                      handleChange={handleChange}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       status={props.status} />
                     )
         })]
@@ -267,11 +269,11 @@ const Form = props => {
               }
               return( <Statement inputTypeStr={typeStr}
                         key={`${props.index}-${i}-${j}`}
-                        blur={handleBlur}
                         count={count}
                         id={`${props.index}-${i}-${j}`}
                         text={statement}
-                        handleChange={handleChange}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         status={props.status}
                         style={isVisible(i)} />
                       )
@@ -296,7 +298,7 @@ const SubheadingNotice = props => (
 const Statement = props => {
   const inputs = props.inputTypeStr // "1 bold ny3", "12 ny6", "24 0248a", "48 text"
   const id = props.id
-  const checked = props.status.sectionResponse[id]
+  const [checked] = useState(props.status.sectionResponse[id])
 
   // const useCallback(() => {
   //
@@ -309,11 +311,9 @@ const Statement = props => {
   //   // localStorage.setItem('data', JSON.stringify(props.status))
   // }, [props])
 
-  const handleChange = (e) => {
-    props.handleChange(e)
-  }
+  const handleChange = (e) => props.onChange(e)
 
-  const handleBlur = (e) => props.blur(e)
+  const handleBlur = (e) => props.onBlur(e)
 
   let first, second, third, fourth, yesValue, key1, key2, key3, key4
 
@@ -321,7 +321,7 @@ const Statement = props => {
   const textIn   = inputs.includes('text')
   const radioIn2 = inputs.match(/ny(\d{1,2})?/)
   const radioIn4 = inputs.match(/[0-9]{3}a|[0-9]{4}\+?/)
-
+  console.info(radioIn4)
   if (radioIn4) {
     first  = parseInt(radioIn4[0].slice(0, 1), 16)
     second = parseInt(radioIn4[0].slice(1, 2), 16)
@@ -338,7 +338,7 @@ const Statement = props => {
     return (
       <div style={props.style} className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span>
-          <input name={`${id}-text`} type="text" onBlur={handleBlur} defaultValue={''} />
+          <input name={`${id}-text`} id={id}  type="text" onBlur={handleBlur} />
         </p>
       </div>
     )
@@ -347,10 +347,10 @@ const Statement = props => {
       <div style={props.style} className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div>
-          <RadioButton name={`${id}-${first}`} extraKey={false} status={props.status} checked={checked} index={first} handleChange={handleChange} />
-          <RadioButton name={`${id}-${second}`} extraKey={false} status={props.status} checked={checked} index={second} handleChange={handleChange} />
-          <RadioButton name={`${id}-${third}`} extraKey={false} status={props.status} checked={checked} index={third} handleChange={handleChange} />
-          <RadioButton name={`${id}-${fourth}`} extraKey={false} status={props.status} checked={checked} index={fourth} handleChange={handleChange} />
+          <RadioButton name={'well-radgrp-'+props.count} id={id} radioButtonId={`${id}-${first}`} extraKey={false} checked={checked} index={first} onChange={handleChange} />
+          <RadioButton name={'well-radgrp-'+props.count} id={id} radioButtonId={`${id}-${second}`} extraKey={false} checked={checked} index={second} onChange={handleChange} />
+          <RadioButton name={'well-radgrp-'+props.count} id={id} radioButtonId={`${id}-${third}`} extraKey={false} checked={checked} index={third} onChange={handleChange} />
+          <RadioButton name={'well-radgrp-'+props.count} id={id} radioButtonId={`${id}-${fourth}`} extraKey={false} checked={checked} index={fourth} onChange={handleChange} />
         </div>
       </div>
     )
@@ -359,8 +359,11 @@ const Statement = props => {
       <div style={props.style} className='wellness-statement'>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div className="">
-          <RadioButton name={`${id}-0`} extraKey={false} status={props.status} checked={checked} index={0} handleChange={handleChange} />
-          <RadioButton name={`${id}-${yesValue}`} extraKey={false} status={props.status} checked={checked} index={yesValue} handleChange={handleChange} />
+          <RadioButton name={'well-radgrp-'+props.count} id={id} radioButtonId={`${id}-0`}
+            extraKey={false} checked={checked} index={0} onChange={handleChange} />
+          <RadioButton name={'well-radgrp-'+props.count} id={id}
+            radioButtonId={`${id}-${yesValue}`} extraKey={false} checked={checked} index={yesValue}
+            onChange={handleChange} />
         </div>
       </div>
     )
@@ -371,23 +374,24 @@ const Statement = props => {
 }
 
 const RadioButton = props => {
-  const inputEl = useRef(null)
-  const [checked, setChecked] = useState(props.checked)
+  const [checked, setChecked] = useState(props.checked === props.index)
   const handleChange = (e) => {
-    console.log(inputEl.current.checked)
-    props.handleChange(e)
+    // console.log(inputEl.current.checked)
+    // setChecked(!checked)
+    props.onChange(e)
   }
-
-  useCallback(() => {
-    console.log(props.checked)
-    // inputEl.current.checked = setChecked(props.checked)
-  })
+  // useEffect(() => {
+  // })
+  // useCallback(() => {
+  //   console.log(props.checked)
+  //   // inputEl.current.checked = setChecked(props.checked)
+  // })
 
   return(
     <>
-      <input type="radio" ref={inputEl}
-        value={props.name} name={props.name} id={props.name}
-        checked={checked} onChange={handleChange}
+      <input type="radio"
+        name={props.name} id={props.radioButtonId} radioButtonId={props.radioButtonId}
+        checked={checked} onClick={handleChange}
       />
       <label htmlFor={props.name}>
         <span>{props.extraKey || props.index}</span>

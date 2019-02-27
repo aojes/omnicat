@@ -6,7 +6,6 @@ import '/scss/animista.scss'
 import App from '/components/App'
 import * as serviceWorker from '/utils/serviceWorker'
 
-
 const renderApp = () => render(<Router><App/></Router>, document.getElementById('root'))
 
 renderApp()

@@ -4,6 +4,7 @@ plugins: [react, react-hooks]
 env:
   browser: true
   node: true
+  jest: true
 rules:
   react-hooks/rules-of-hooks: 1
   quotes: [1, single, avoid-escape]
@@ -18,5 +19,5 @@ rules:
     - 1
     - vars: all
       args: after-used
-      # argsIgnorePattern: "^_|^next$"
   react/prop-types: 0
+  react/jsx-filename-extension: 0

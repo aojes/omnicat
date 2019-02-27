@@ -1,6 +1,7 @@
 import React from 'react'
 // import { CSSTransition } from 'react-transition-group'
 import questionnaire from './data/Wellness-questionnaire.json'
+import {CSSTransition} from 'react-transition-group';
 
 class Wellness extends React.Component {
   constructor() {
@@ -11,7 +12,9 @@ class Wellness extends React.Component {
       sectionResponse: [],
       focus: 0,    // 0, 1... 11, 'Q', 'results'
       sectionTally: [], // array up to 13 elements including 'Q' at index[-1]
-      complete: [] // [0, 1... 11, 'Q']
+      complete: [], // [0, 1... 11, 'Q']
+      visibleStatement: 0,
+      statementIndex: 0
     }
     // const statements = 407 + Q?
     this.validate = this.validate.bind(this)
@@ -21,6 +24,11 @@ class Wellness extends React.Component {
     this.handleQSubmit = this.handleQSubmit.bind(this)
     this.handleQBlur = this.handleQBlur.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.incrementStatementIndex = this.incrementStatementIndex.bind(this)
+  }
+
+  incrementStatementIndex() {
+    this.setState({ statementIndex: this.state.statementIndex + 1 })
   }
 
   handleBlur(e) {
@@ -39,12 +47,22 @@ class Wellness extends React.Component {
 
   handleChange(e) {
     const [ heading, subheading, statement, checked ] = e.target.value.split( '-' )
+    const statementId = `${heading}-${subheading}-${statement}`
+    const exists = this.state.sectionResponse[statementId]
+    // const numSectionStatements = this.data.statements[heading].length
+    if (!exists) {
+      const nextVisibleStatement = this.state.visibleStatement + 1
+      this.setState({ visibleStatement: nextVisibleStatement})
+      //this.incrementStatementIndex()
+    }
+
     this.setState({
       sectionResponse: {
         ...this.state.sectionResponse,
-        [ `${heading}-${subheading}-${statement}` ] : parseInt(checked)
+        [ statementId ] : parseInt(checked)
       }
     })
+    // this.setState({visibleSection: `${heading}-${subheading}-${statement - 1}`})
     console.log(JSON.stringify(this.state.sectionResponse))
   }
 
@@ -138,6 +156,7 @@ class Wellness extends React.Component {
               data={this.state.data}
               submit={this.handleSubmit}
               text={heading}
+              inc={this.incrementStatementIndex}
             />
           ))
           }
@@ -146,6 +165,7 @@ class Wellness extends React.Component {
               handleSubmit={this.handleQSubmit}
               handleBlur={this.handleQBlur}
               focus={this.state.focus}
+              inc={this.incrementStatementIndex}
             />
           }
         </fieldset>
@@ -157,6 +177,7 @@ class Wellness extends React.Component {
 const QuestionsForm = props => {
   const handleSubmit = e => props.handleSubmit(e)
   const handleBlur = e => props.handleBlur(e)
+  // const inc = () => props.inc()
   if (props.focus === 'Q') {
     return(
       <fieldset>
@@ -165,7 +186,7 @@ const QuestionsForm = props => {
           {props.data.map((question, i) => (
             <p  className="wellness-question" key={i}>
               <span className="question">{question}</span>
-              <textarea className="" id={`questions-${i}`} />
+              <textarea id={`questions-${i}`} />
             </p>
             ))
           }
@@ -182,15 +203,18 @@ const Form = props => {
   const handleSubmit = e => props.super.handleSubmit(e)
   const handleChange = e => props.super.handleChange(e)
   const handleBlur = e => props.super.handleBlur(e)
-
+  const inc = () => props.inc()
   const focus = props.super.state.focus === props.index
   const complete = props.super.state.complete.includes(props.index)
-  let count = 0, isTextCount = 0, typeStr
+  // const showSection = focus && !complete // && current section not done
+
+
+
+  let count = 0, isTextCount = 0, countAllIndex = 0, typeStr
   if (!focus || complete)
     return null
   else if (focus && !complete) return(
     <form id={`form-heading-${props.index}`} onSubmit={handleSubmit}>
-
       <h3>{props.text}</h3>
       {props.index === 10 ?
         [<span key={10} className="notice-heading">{props.data.notices.headings[10]}</span>,
@@ -204,10 +228,12 @@ const Form = props => {
                         key={`10-0-${i}`}
                         blur={handleBlur}
                         count={count}
+                        statementId={countAllIndex++}
                         id={`10-0-${i}`}
                         text={statement}
                         radioChange={handleChange}
-                        super={props.super} />
+                        super={props.super}
+                      />
                       )
         })]
       : props.data.subheadings[props.index].map( (subheading, i) =>
@@ -223,10 +249,12 @@ const Form = props => {
                         key={`${props.index}-${i}-${j}`}
                         blur={handleBlur}
                         count={count}
+                        statementId={countAllIndex++}
                         id={`${props.index}-${i}-${j}`}
                         text={statement}
                         radioChange={handleChange}
-                        super={props.super} />
+                        super={props.super}
+                      />
                       )
           })]
           ]
@@ -239,7 +267,9 @@ const Form = props => {
 }
 
 const Subheading = props => (
+  // <div style={{display: props.visibility}}>
   props.text.length > 0 ? <h4>{props.text}</h4> : null
+  // </div>
 )
 
 const SubheadingNotice = props => (
@@ -250,6 +280,7 @@ const Statement = props => {
   const inputs = props.inputTypeStr // "1 bold ny3", "12 ny6", "24 0248a", "48 text"
   const id = props.id
   const checked = props.super.state.sectionResponse[id]
+  const numkeys = Object.keys(props.super.state.sectionResponse).length
   const handleChange = (e) => props.radioChange(e)
   const handleBlur = (e) => props.blur(e)
 
@@ -259,6 +290,25 @@ const Statement = props => {
   const textIn   = inputs.includes('text')
   const radioIn2 = inputs.match(/ny(\d{1,2})?/)
   const radioIn4 = inputs.match(/[0-9]{3}a|[0-9]{4}\+?/)
+
+  const index = props.statementId
+
+  const itemId = (() => {
+    return index
+  })
+
+  const presentStatementIndex = itemId()
+
+  const show = () => {
+    const proximate = [index - 1, index, index + 1].includes(presentStatementIndex)
+    return index === numkeys || numkeys === 0 && index === 0
+  }
+
+  // const [visible, setVisible] = React.useState()
+
+  // DO NOT USE RUNS INFINITE LOOP ON CPU React.useEffect(() => {
+  //   props.inc()
+  // })
 
   if (radioIn4) {
     first  = parseInt(radioIn4[0].slice(0, 1), 16)
@@ -274,7 +324,7 @@ const Statement = props => {
 
   if (textIn) {
     return (
-      <div className='wellness-statement'>
+      <div stid={presentStatementIndex} className='wellness-statement' style={{display: show() ? 'block' : 'none'}}>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span>
           <input name={`${id}-text`} type="text" onBlur={handleBlur} defaultValue={''} />
         </p>
@@ -282,7 +332,7 @@ const Statement = props => {
     )
   } else if (radioIn4) {
     return(
-      <div className='wellness-statement'>
+      <div stid={presentStatementIndex} className='wellness-statement' style={{display: show() ? 'block' : 'none'}}>
         <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
         <div className="">
           <RadioButton name={`${id}-${first}`} extraKey={key1} radioChange={handleChange} checked={checked} index={first} />
@@ -294,13 +344,15 @@ const Statement = props => {
     )
   } else if (radioIn2) {
     return(
-      <div className='wellness-statement'>
-        <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
-        <div className="">
-          <RadioButton name={`${id}-0`} extraKey={false} radioChange={handleChange} checked={checked} index={0} />
-          <RadioButton name={`${id}-${yesValue}`} extraKey={false} radioChange={handleChange} checked={checked} index={yesValue} />
+      // <CSSTransition in={true || checked || window.lookForPrevResponse} timeout={300} classNames="fade">
+        <div stid={presentStatementIndex} className='wellness-statement' style={{display: show() ? 'block' : 'none'}}>
+          <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
+          <div className="">
+            <RadioButton name={`${id}-0`} extraKey={false} radioChange={handleChange} checked={checked} index={0} />
+            <RadioButton name={`${id}-${yesValue}`} extraKey={false} radioChange={handleChange} checked={checked} index={yesValue} />
+          </div>
         </div>
-      </div>
+      // </CSSTransition>
     )
   } else {
     console.log('r2', radioIn2, ' r4', radioIn4, ' text', textIn, ' \ninputs', inputs)
