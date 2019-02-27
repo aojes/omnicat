@@ -1,0 +1,60 @@
+/* (react-transition-group) */
+.fade-enter
+  opacity: 0
+  z-index: 1
+  display: none !important
+
+.fade-enter.fade-enter-active
+  display: inherit
+  transition: display 300ms linear 1250
+
+.fade-exit
+  display: block !important
+
+.fade-exit.fade-exit-active
+  opacity: 0
+  transition: opacity 1250ms ease-out
+
+.fade-exit-done
+  display: none
+
+.results-enter, .message-enter
+  opacity: 0.01
+  transform: scale(0.9) translateY(50%)
+
+.results-enter-active, .message-enter-active
+  opacity: 1
+  transform: scale(1) translateY(0%)
+  transition: all 500ms ease-out
+
+.results-exit, .message-exit
+  opacity: 1
+  transform: scale(1) translateY(0%)
+
+.results-exit-active, .message-exit-active
+  opacity: 0.01
+  transform: scale(0.9) translateY(50%)
+  transition: all 500ms ease-out
+
+.transition-statements
+  display: inline-block
+  margin-left: 0.5rem
+  transform: scale(1)
+
+.transition-statements-enter
+  opacity: 0.01
+  transform: translateY(-0%) scale(1)
+
+.transition-statements-enter-active
+  opacity: 1
+  transform: translateY(-0%) scale(1)
+  transition: all 500ms ease-out
+
+.transition-statements-exit
+  opacity: 1
+  transform: scale(1)
+
+.transition-statements-exit-active
+  opacity: 0
+  transform: scale(1)
+  transition: all 500ms ease-in

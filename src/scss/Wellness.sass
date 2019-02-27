@@ -9,7 +9,13 @@ main .wellness
     @import "checkbox-radio-inputs"
     .wellness-statement
       padding: 1em
-      width: 45%
+      max-width: 48%
+      margin: 1.5em
+      border-radius: 12px
+      &:nth-child(odd)
+        border: 3px solid $oc-pink
+      &:nth-child(even)
+        border: 3px solid $oc-purple
       .radio-group
         display: inline
         margin-right: 1em

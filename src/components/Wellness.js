@@ -324,27 +324,32 @@ const Statement = props => {
 
   if (textIn) {
     return (
-      <div stid={presentStatementIndex} className='wellness-statement' style={{display: show() ? 'block' : 'none'}}>
-        <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span>
-          <input name={`${id}-text`} type="text" onBlur={handleBlur} defaultValue={''} />
-        </p>
-      </div>
+      <CSSTransition in={show()} timeout={300} classNames="fade">
+        <div stid={presentStatementIndex} className='wellness-statement' style={{display: show() ? 'block' : 'none'}}>
+          <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span>
+            <input name={`${id}-text`} type="text" onBlur={handleBlur} defaultValue={''} />
+          </p>
+        </div>
+      </CSSTransition>
     )
   } else if (radioIn4) {
     return(
-      <div stid={presentStatementIndex} className='wellness-statement' style={{display: show() ? 'block' : 'none'}}>
-        <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
-        <div className="">
-          <RadioButton name={`${id}-${first}`} extraKey={key1} radioChange={handleChange} checked={checked} index={first} />
-          <RadioButton name={`${id}-${second}`} extraKey={key2} radioChange={handleChange} checked={checked} index={second} />
-          <RadioButton name={`${id}-${third}`} extraKey={key3} radioChange={handleChange} checked={checked} index={third} />
-          <RadioButton name={`${id}-${fourth}`} extraKey={key4} radioChange={handleChange} checked={checked} index={fourth} />
+      <CSSTransition in={show()} timeout={300} classNames="fade">
+        <div stid={presentStatementIndex} className='wellness-statement' style={{display: show() ? 'block' : 'none'}}>
+          <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
+          <div className="">
+            <RadioButton name={`${id}-${first}`} extraKey={key1} radioChange={handleChange} checked={checked} index={first} />
+            <RadioButton name={`${id}-${second}`} extraKey={key2} radioChange={handleChange} checked={checked} index={second} />
+            <RadioButton name={`${id}-${third}`} extraKey={key3} radioChange={handleChange} checked={checked} index={third} />
+            <RadioButton name={`${id}-${fourth}`} extraKey={key4} radioChange={handleChange} checked={checked} index={fourth} />
+          </div>
         </div>
-      </div>
+      </CSSTransition>
     )
   } else if (radioIn2) {
     return(
       // <CSSTransition in={true || checked || window.lookForPrevResponse} timeout={300} classNames="fade">
+      <CSSTransition in={show()} timeout={300} classNames="fade">
         <div stid={presentStatementIndex} className='wellness-statement' style={{display: show() ? 'block' : 'none'}}>
           <p><span style={{fontWeight: bolden ? 'bold' : 'normal'}}>{props.text}</span></p>
           <div className="">
@@ -352,7 +357,7 @@ const Statement = props => {
             <RadioButton name={`${id}-${yesValue}`} extraKey={false} radioChange={handleChange} checked={checked} index={yesValue} />
           </div>
         </div>
-      // </CSSTransition>
+      </CSSTransition>
     )
   } else {
     console.log('r2', radioIn2, ' r4', radioIn4, ' text', textIn, ' \ninputs', inputs)

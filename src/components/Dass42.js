@@ -103,7 +103,7 @@ const Dass42 = () => {
         how much the statement applied to you <b>over the past week</b>.
         There are no right or wrong answers. Do not spend too much time on any statement.
       </h3>
-      <CSSTransition in={!begin} timeout={300} classNames="message">
+      <CSSTransition in={!begin && !results.scores} timeout={300} classNames="message">
         {() => begin
           || <div className="message">
             <div className="card m-3 p-3 shadow">
