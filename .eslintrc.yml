@@ -7,7 +7,7 @@ env:
   jest: true
 rules:
   react-hooks/rules-of-hooks: 1
-  quotes: [1, single, avoid-escape]
+  quotes: [1, double, avoid-escape]
   prefer-const: 1
   react/jsx-indent: [0, 2]
   no-return-assign: 1
