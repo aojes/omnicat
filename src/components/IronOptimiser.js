@@ -18,7 +18,7 @@ const IronOptimiser = () => {
   const validate = () => (
     // basic, returns true if number type for all fields
     ! [serumIron, transferrinIBC, transferrinSaturation, serumFerritinAssay]
-              .map((val) => typeof(val) === 'number')
+              .map((val) => typeof(val) === 'number' && val > 0)
               .includes(false)
   )
 
@@ -51,7 +51,7 @@ const IronOptimiser = () => {
       tallyResults()
       return true
     } else {
-      alert('Please provide values for all 4')
+      alert('Please provide positive values for each field')
       return false
     }
   }
@@ -109,10 +109,10 @@ const IronOptimiser = () => {
   }
 
   const setColorCodes = text => {
-    return text.match('Optimal') ? 'bg-gradient-info text-white '
-        : text.match('Normal') ? 'bg-gradient-success text-white '
-        : text.match('Suboptimal') ? 'bg-gradient-warning text-dark '
-        : 'bg-gradient-danger text-white '
+    return text.match('Optimal') ? 'bg-info text-white '
+        : text.match('Normal') ? 'bg-success text-white '
+        : text.match('Suboptimal') ? 'bg-warning text-dark '
+        : 'bg-danger text-white '
   }
 
   return (
