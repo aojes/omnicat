@@ -40,6 +40,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-babel": "^8.0.2",
     "eslint-config-prettier": "^4.1.0",
+    "eslint-config-react-app": "^3.0.8",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
@@ -50,8 +51,29 @@
     "openzeppelin-solidity": "^2.1.2",
     "sass": "^1.17.2"
   },
+  "optionalDependencies": {
+    "acorn": "^6.1.1",
+    "eslint-plugin-flowtype": "^3.4.2",
+    "jquery": "^1.12.4",
+    "popper.js": "^1.14.7",
+    "prettier": "^1.16.4"
+  },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "jsx-a11y",
+    "react-hooks"
+  ],
+  "env": {
+    "browser": true
   },
   "eslintIgnore": [
     "test/*",
@@ -64,11 +86,28 @@
     "not ie < 11",
     "not op_mini all"
   ],
-  "optionalDependencies": {
-    "acorn": "^6.1.1",
-    "eslint-plugin-flowtype": "^3.4.2",
-    "jquery": "^1.12.4",
-    "popper.js": "^1.14.7",
-    "prettier": "^1.16.4"
+  "prettier": {
+    "no-semi": true,
+    "tab-width": 2,
+    "use-tabs": false,
+    "arrow-parens": "avoid",
+    "jsx-bracket-same-line": "false",
+    "bracket-spacing": true,
+    "trailing-commas": "es5",
+    "single-quote": true,
+    "jsx-single-quote": true
+  },
+  "rules": {
+    "react-hooks/rules-of-hooks": 1,
+    "prefer-const": 1,
+    "no-return-assign": 1,
+    "no-console": 0,
+    "no-alert": 0,
+    "semi": 0,
+    "comma-dangle": 1,
+    "no-unused-vars": 1,
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "jsx-a11y/accessible-emoji": 0
   }
 }
