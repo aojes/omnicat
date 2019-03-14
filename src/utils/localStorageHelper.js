@@ -13,9 +13,6 @@ const all = () => {
 const clear = () => {
   localStorage.clear();
 };
-const length = () => {
-  localStorage.length;
-};
 const getset = (key, obj) => {
   let val = JSON.parse(localStorage.getItem(key));
   if (!val) {
@@ -43,7 +40,7 @@ const mem = {
 
   clear: clear,
   clearAll: clear,
-  length: length
+  // length: length
 };
 
 export default mem;

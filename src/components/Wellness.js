@@ -1,25 +1,35 @@
 import React from "react";
-import { CSSTransition } from "react-transition-group"
-import questionnaire from "./data/Wellness-questionnaire.json"
+import { CSSTransition } from "react-transition-group";
+import questionnaire from "./data/Wellness-questionnaire.json";
 
-import mem from "../utils/localStorageHelper"
+import mem from "../utils/localStorageHelper";
+
+const convertLocalState = () => {
+  const ls = mem.getset("wellness", [])
+  let appState = {}
+  for (let i = 0; i < ls.length; i += 1) {
+    appState = { ...appState, [ls[i][0]]: ls[i][1] }
+  }
+  console.log(appState)
+  return appState
+}
 
 class Wellness extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      response: mem.getset("wellness", {})
-    }
-    this.state.data = questionnaire
-    this.state.sectionResponse = []
-    this.state.focus = 0 // 0, 1... 11, 'Q', 'results'
-    this.state.sectionTally = [] // array up to 13 elements including 'Q' at index[-1]
-    this.state.complete = [] // [0, 1... 11, 'Q']
-    this.state.visibleStatement = 0
-    this.state.statementIndex = 0
-
-    console.log(mem.get("wellness"));
+      response: convertLocalState()
+    };
+ 
+    this.state.data = questionnaire;
+    this.state.sectionResponse = [];
+    this.state.focus = 0; // 0, 1... 11, 'Q', 'results'
+    this.state.sectionTally = []; // array up to 13 elements including 'Q' at index[-1]
+    this.state.complete = []; // [0, 1... 11, 'Q']
+    this.state.visibleStatement = 0;
+    this.state.statementIndex = 0;
     // const statements = 407 + Q?
+    this.setStorage = this.setStorage.bind(this);
     this.validate = this.validate.bind(this);
     this.validateText = this.validateText.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,6 +48,7 @@ class Wellness extends React.Component {
     const [heading, subheading, statement] = e.target.name.split("-");
     const textValue = e.target.value;
     if (this.validateText(textValue)) {
+      this.setStorage( `${heading}-${subheading}-${statement}`, textValue );
       this.setState({
         sectionResponse: {
           ...this.state.sectionResponse,
@@ -46,6 +57,21 @@ class Wellness extends React.Component {
       });
     }
     console.log(JSON.stringify(this.state.sectionResponse));
+  }
+
+  setStorage(key, value) {
+    let saved = mem.getset("wellness", [])
+    if (saved.length === 0) {
+      mem.set("wellness", [[key, value]])
+    } else {
+      const cell = saved.indexOf(saved.find(statement => statement[0] === key));
+      if (cell > -1) {
+        saved[cell] = [key, value] // ar.indexOf(ar.find(n => n[0] === 8));
+        mem.set("wellness", saved)
+      } else {
+        mem.set("wellness", [...saved, [key, value]])
+      }
+    }
   }
 
   handleChange(e) {
@@ -58,7 +84,8 @@ class Wellness extends React.Component {
       this.setState({ visibleStatement: nextVisibleStatement });
       // this.incrementStatementIndex()
     }
-    mem.set("wellness", { ...this.state.sectionResponse, [statementId]: parseInt(checked, 10) });
+
+    this.setStorage(statementId, parseInt(checked, 10))
     this.setState({
       sectionResponse: {
         ...this.state.sectionResponse,
@@ -71,24 +98,22 @@ class Wellness extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const sectionFocus = this.state.focus
-    const element = document.getElementById("section-statement-count-" + sectionFocus)
-    const sectionStatementIndex = parseInt(element.attributes.allinputs.value)
-    const textInputCount = parseInt(element.attributes.textinputs.value)
-    const valsAry = Object.values(this.state.sectionResponse)
+    const sectionFocus = this.state.focus;
+    const element = document.getElementById(
+      "section-statement-count-" + sectionFocus
+    );
+    const sectionStatementIndex = parseInt(element.attributes.allinputs.value);
+    const textInputCount = parseInt(element.attributes.textinputs.value);
+    const valsAry = Object.values(this.state.sectionResponse);
     const currentSectionTally = Object.values(this.state.sectionResponse)
       .filter(el => typeof el === "number")
       .reduce((accum, val) => accum + val);
-    console.log(
-      " ## statements:",
-      sectionStatementIndex,
-      "\n ## sectionResponses: ",
-      valsAry.length,
-      "\n ## text statements: ",
-      textInputCount,
-      "\n ## tally:",
-      currentSectionTally
-    );
+    // TODO sync local storage
+    console.log(" ## statements:", sectionStatementIndex,
+              "\n ## sectionResponses: ", valsAry.length,
+              "\n ## text statements: ",textInputCount,
+              "\n ## tally:", currentSectionTally);
+
     console.log(" ### ", sectionStatementIndex, valsAry.length);
 
     if (this.validate(sectionStatementIndex, valsAry.length)) {
@@ -127,8 +152,7 @@ class Wellness extends React.Component {
 
   handleQBlur(e) {
     console.info(" ## id ", e.target.id, " ## value ", e.target.value);
-
-    mem.set("wellness", { ...this.state.sectionResponse, [e.target.id]: e.target.value });
+    this.setStorage(`${e.target.id}`, e.target.value)
 
     this.setState({
       sectionResponse: {
@@ -339,7 +363,9 @@ const SubheadingNotice = props =>
 const Statement = props => {
   const inputs = props.inputTypeStr; // "1 bold ny3", "12 ny6", "24 0248a", "48 text"
   const id = props.id;
-  const checked = props.super.state.sectionResponse[id];
+
+  const localChecked = mem.getset("wellness", []).filter(statement => statement[0] === id)[0]
+  const checked = localChecked ? localChecked[1] : props.super.state.sectionResponse[id];
   // let memCheck = false;
   // if (typeof (mem.get("wellness")) !== "undefined") {
   //   if (memCheck = mem.get("wellness")[id]) {
@@ -347,7 +373,7 @@ const Statement = props => {
   //     console.log(memCheck)
   //   }
   // }
-  const numkeys = Object.keys(props.super.state.sectionResponse).length;
+  const numkeys = mem.getset("wellness", []).length; // Object.keys(props.super.state.sectionResponse).length;
   const handleChange = e => props.radioChange(e);
   const handleBlur = e => props.blur(e);
 
@@ -357,7 +383,7 @@ const Statement = props => {
   const textIn = inputs.includes("text");
   const radioIn2 = inputs.match(/ny(\d{1,2})?/);
   const radioIn4 = inputs.match(/[0-9]{3}a|[0-9]{4}\+?/);
-
+  const localText = textIn ? mem.getset("wellness", []).filter(statement => statement[0] === id)[0] : ''
   const index = props.statementId;
 
   const itemId = () => {
@@ -366,18 +392,7 @@ const Statement = props => {
 
   const presentStatementIndex = itemId();
 
-  const show = () => {
-    const proximate = [index - 1, index, index + 1].includes(
-      presentStatementIndex
-    );
-    return index === numkeys || (numkeys === 0 && index === 0);
-  };
-
-  // const [visible, setVisible] = React.useState()
-
-  // DO NOT USE RUNS INFINITE LOOP ON CPU React.useEffect(() => {
-  //   props.inc()
-  // })
+  const show = () => (!localChecked || !!localText) && (index === numkeys || (numkeys === 0 && index === 0))
 
   if (radioIn4) {
     first = parseInt(radioIn4[0].slice(0, 1), 16);
@@ -408,7 +423,7 @@ const Statement = props => {
               name={`${id}-text`}
               type="text"
               onBlur={handleBlur}
-              defaultValue={""}
+              defaultValue={localText}
             />
           </p>
         </div>
@@ -462,7 +477,7 @@ const Statement = props => {
     );
   } else if (radioIn2) {
     return (
-      // <CSSTransition in={true || checked || window.lookForPrevResponse} timeout={300} classNames="fade">
+      // <CSSTransition in={checked || window.lookForPrevResponse} timeout={300} classNames="fade">
       <CSSTransition in={show()} timeout={300} classNames="fade">
         <div
           stid={presentStatementIndex}

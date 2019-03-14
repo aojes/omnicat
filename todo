@@ -3,6 +3,8 @@
 + local storage, protect against partial form abandon & pre-fill
 + may set button to reset storage
 
++ look at why env uses node and whether we need that
+
 + consider to remove the wellness module if it stays clunky
 
 + put iron values in the inputs when you have results
