@@ -1,22 +1,25 @@
-+ https://github.com/Ihatetomatoes/react-router-page-transition-css
-
 + local storage, protect against partial form abandon & pre-fill
-+ may set button to reset storage
++ nicer footer, social medias, look at similar orgs
++ Ai win-win
 
-+ look at why env uses node and whether we need that
++ ipfs/filecoin or Sia, etc
++ crowdsale contract
 
-+ consider to remove the wellness module if it stays clunky
-
-+ put iron values in the inputs when you have results
-
-+ dont rely on submit button...
 + show input feedback
   - dass (work on results show)
   - aes (show in progress), iron (getting there)
   - use percent diff on iron module
 
-+ ipfs or Sia
++ https://github.com/Ihatetomatoes/react-router-page-transition-css
 
-+ crowdsale contract
+
++ look at why env uses node and whether we need that
++ may set button to reset storage
++ dont rely on submit button...
 
 + slow-import for testing loaders npm delay
+
+// TODO note orange
+// ? question blue
+// ! important red
+// comment green

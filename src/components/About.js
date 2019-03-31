@@ -6,7 +6,6 @@ const About = () => (
     <h2 className="text-focus-in">At Home Ai Guided Biometrics Optimization</h2>
     <hr id="neatness" />
     <h3>Overview</h3>
-
     <p>
       OmniCAT is a library of clinical assessment tools and resources intended
       to empower patients to record, monitor and optimize personal health

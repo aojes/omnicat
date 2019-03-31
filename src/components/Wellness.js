@@ -1,3 +1,4 @@
+// TODO rewrite with 1 form
 import React from "react";
 import { CSSTransition } from "react-transition-group";
 import questionnaire from "./data/Wellness-questionnaire.json";
@@ -6,13 +7,17 @@ import mem from "../utils/localStorageHelper";
 
 const convertLocalState = () => {
   const ls = mem.getset("wellness", [])
-  let appState = {}
-  for (let i = 0; i < ls.length; i += 1) {
+  let appState = {}, i
+  for (i = 0; i < ls.length; i += 1) {
     appState = { ...appState, [ls[i][0]]: ls[i][1] }
   }
-  console.log(appState)
+  console.log('hard copy of statment/Q ids: ', i)
+  mem.getset("wellCurrentQId", i)
+  console.log( 'add#: ', ( [].concat(...questionnaire.statements)).length )
   return appState
 }
+
+// const flatCount = () => console.log(true)
 
 class Wellness extends React.Component {
   constructor(props) {
@@ -20,14 +25,14 @@ class Wellness extends React.Component {
     this.state = {
       response: convertLocalState()
     };
- 
+
     this.state.data = questionnaire;
     this.state.sectionResponse = [];
-    this.state.focus = 0; // 0, 1... 11, 'Q', 'results'
-    this.state.sectionTally = []; // array up to 13 elements including 'Q' at index[-1]
-    this.state.complete = []; // [0, 1... 11, 'Q']
-    this.state.visibleStatement = 0;
-    this.state.statementIndex = 0;
+    this.state.focus = mem.getset("wellnessFocus", 0); // convertLocalState('focus'); // 0, 1... 11, 'Q', 'results'
+    this.state.sectionTally = mem.getset("wellnessSectionTally", []); // array up to 13 elements including 'Q' at index[-1]
+    this.state.complete = mem.getset("wellnessComplete", []); // convertLocalState('complete'); // [0, 1... 11, 'Q']
+    this.state.visibleStatement = mem.getset("wellnessVisibleStatement", 0);
+    this.state.statementIndex = mem.getset("wellnessStatementIndex", 0); // Object.keys(convertLocalState()).length;
     // const statements = 407 + Q?
     this.setStorage = this.setStorage.bind(this);
     this.validate = this.validate.bind(this);
@@ -41,6 +46,7 @@ class Wellness extends React.Component {
   }
 
   incrementStatementIndex() {
+    mem.set("wellnessStatementIndex", this.state.statementIndex + 1)
     this.setState({ statementIndex: this.state.statementIndex + 1 });
   }
 
@@ -53,10 +59,15 @@ class Wellness extends React.Component {
         sectionResponse: {
           ...this.state.sectionResponse,
           [`${heading}-${subheading}-${statement}`]: textValue
+        },
+        response: {
+          ...this.state.response,
+          ...this.state.sectionResponse,
+          [`${heading}-${subheading}-${statement}`]: textValue
         }
       });
     }
-    console.log(JSON.stringify(this.state.sectionResponse));
+    // console.log('strigify state.secResp', JSON.stringify(this.state.sectionResponse));
   }
 
   setStorage(key, value) {
@@ -76,24 +87,33 @@ class Wellness extends React.Component {
 
   handleChange(e) {
     const [heading, subheading, statement, checked] = e.target.value.split("-");
-    const statementId = `${heading}-${subheading}-${statement}`;
-    const exists = this.state.sectionResponse[statementId];
-    // const numSectionStatements = this.data.statements[heading].length
+    const statementKey = `${heading}-${subheading}-${statement}`;
+    // TODO
+    // ! update on each statement text/radio and submit section
+    // ? interpolated string is not highlighted
+    // this is a normal comment
+    const exists = this.state.response[statementKey];
+    // could help const numSectionStatements = this.data.statements[heading].length
     if (!exists) {
       const nextVisibleStatement = this.state.visibleStatement + 1;
+      mem.set("wellnessVisibleStatement", nextVisibleStatement)
       this.setState({ visibleStatement: nextVisibleStatement });
       // this.incrementStatementIndex()
     }
-
-    this.setStorage(statementId, parseInt(checked, 10))
+    this.setStorage(statementKey, parseInt(checked, 10))
     this.setState({
       sectionResponse: {
         ...this.state.sectionResponse,
-        [statementId]: parseInt(checked, 10)
+        [statementKey]: parseInt(checked, 10)
+      },
+      response: {
+        ...this.state.response,
+        ...this.state.sectionResponse,
+        [statementKey]: parseInt(checked, 10)
       }
     });
     // this.setState({visibleSection: `${heading}-${subheading}-${statement - 1}`})
-    console.log(JSON.stringify(this.state.sectionResponse));
+    // console.log('change secResp:', JSON.stringify(this.state.sectionResponse));
   }
 
   handleSubmit(e) {
@@ -104,11 +124,20 @@ class Wellness extends React.Component {
     );
     const sectionStatementIndex = parseInt(element.attributes.allinputs.value);
     const textInputCount = parseInt(element.attributes.textinputs.value);
-    const valsAry = Object.values(this.state.sectionResponse);
-    const currentSectionTally = Object.values(this.state.sectionResponse)
+    const keysAry = Object.keys(this.state.response)
+                          .filter(key => +key.split('-')[0] === sectionFocus)
+    console.dir(keysAry);
+
+    let valsAry = []
+    for (let i = 0; i < keysAry.length; i += 1) {
+      valsAry.push(this.state.response[keysAry[i]])
+    }//Object.values({...keysAry});
+    console.dir(valsAry);
+
+    const currentSectionTally = valsAry
       .filter(el => typeof el === "number")
       .reduce((accum, val) => accum + val);
-    // TODO sync local storage
+
     console.log(" ## statements:", sectionStatementIndex,
               "\n ## sectionResponses: ", valsAry.length,
               "\n ## text statements: ",textInputCount,
@@ -123,7 +152,10 @@ class Wellness extends React.Component {
           : sectionFocus < 11
           ? sectionFocus + 1
           : "Q";
-      // mem.set("wellness", { ...this.state.response, ...this.state.sectionResponse });
+      mem.set("wellnessFocus", nextFocus);
+      mem.set("wellnessComplete", this.state.complete.concat(sectionFocus))
+      mem.set("wellnessSectionTally", this.state.sectionTally.concat(currentSectionTally))
+      mem.set("wellnessVisibleStatement", 0);
       this.setState({
         sectionTally: this.state.sectionTally.concat(currentSectionTally),
         complete: this.state.complete.concat(sectionFocus),
@@ -131,7 +163,7 @@ class Wellness extends React.Component {
         response: { ...this.state.response, ...this.state.sectionResponse },
         sectionResponse: []
       });
-      alert("Your tally for the section: ", currentSectionTally);
+      alert("Your tally for the section: " + currentSectionTally);
       return true;
     }
     alert("Please respond for each statement");
@@ -152,10 +184,15 @@ class Wellness extends React.Component {
 
   handleQBlur(e) {
     console.info(" ## id ", e.target.id, " ## value ", e.target.value);
-    this.setStorage(`${e.target.id}`, e.target.value)
 
+    this.setStorage(`${e.target.id}`, e.target.value)
     this.setState({
       sectionResponse: {
+        ...this.state.sectionResponse,
+        [e.target.id]: e.target.value
+      },
+      response: {
+        ...this.state.response,
         ...this.state.sectionResponse,
         [e.target.id]: e.target.value
       }
@@ -177,13 +214,12 @@ class Wellness extends React.Component {
   }
 
   render() {
-    // eslint-disable-next-line
     const {
       headings,
-      subheadings,
-      statements,
-      inputTypes,
-      notices,
+      // subheadings,
+      // statements,
+      // inputTypes,
+      // notices,
       questions
     } = this.state.data;
     return (
@@ -198,13 +234,13 @@ class Wellness extends React.Component {
           </p>
           <p>
             Circle the number which best describes the frequency or severity of
-            your symptoms over the previous <b>month</b>, or answer the{" "}
+            your symptoms over the previous <b>month</b>, or answer the
             <b>yes</b> or <b>no</b> questions by circling the appropriate
             letter.
           </p>
           <p>
             You may note that some questions are repeated throughout the
-            questionnaire. We would appreciate it if you can answer <b>all</b>{" "}
+            questionnaire. We would appreciate it if you can answer <b>all</b>
             questions, as this will ensure the most accurate interpretation of
             your results. You may however leave a question blank if you are
             unsure of the answer.
@@ -220,7 +256,6 @@ class Wellness extends React.Component {
               data={this.state.data}
               submit={this.handleSubmit}
               text={heading}
-              inc={this.incrementStatementIndex}
             />
           ))}
           {
@@ -229,7 +264,6 @@ class Wellness extends React.Component {
               handleSubmit={this.handleQSubmit}
               handleBlur={this.handleQBlur}
               focus={this.state.focus}
-              inc={this.incrementStatementIndex}
             />
           }
         </fieldset>
@@ -268,11 +302,12 @@ const Form = props => {
   const handleSubmit = e => props.super.handleSubmit(e);
   const handleChange = e => props.super.handleChange(e);
   const handleBlur = e => props.super.handleBlur(e);
-  const inc = () => props.inc();
+  // const inc = () => props.inc();
   const focus = props.super.state.focus === props.index;
   const complete = props.super.state.complete.includes(props.index);
   // const showSection = focus && !complete // && current section not done
-
+  // const countAllStatements = props.super.data.statements.flat().length
+  // const countSoFar = Object.keys(props.super.state.response).length
   let count = 0,
     isTextCount = 0,
     countAllIndex = 0,
@@ -289,7 +324,7 @@ const Form = props => {
               </span>,
               props.data.statements[10][0].map((statement, i) => {
                 typeStr = props.data.inputTypes[10][i];
-                count += 1;
+                count++;
                 if (typeStr.includes("text")) {
                   isTextCount += 1;
                 }
@@ -299,11 +334,12 @@ const Form = props => {
                     key={`10-0-${i}`}
                     blur={handleBlur}
                     count={count}
-                    statementId={countAllIndex++}
+                    statementIndex={countAllIndex++}
                     id={`10-0-${i}`}
                     text={statement}
                     radioChange={handleChange}
                     super={props.super}
+                    visibleStatement={mem.get("wellnessVisibleStatement")}
                   />
                 );
               })
@@ -329,11 +365,12 @@ const Form = props => {
                       key={`${props.index}-${i}-${j}`}
                       blur={handleBlur}
                       count={count}
-                      statementId={countAllIndex++}
+                      statementIndex={countAllIndex++}
                       id={`${props.index}-${i}-${j}`}
                       text={statement}
                       radioChange={handleChange}
                       super={props.super}
+                      visibleStatement={mem.get("wellnessVisibleStatement")}
                     />
                   );
                 })
@@ -363,17 +400,14 @@ const SubheadingNotice = props =>
 const Statement = props => {
   const inputs = props.inputTypeStr; // "1 bold ny3", "12 ny6", "24 0248a", "48 text"
   const id = props.id;
+  // console.log('resp[id]', props.super.state.response[id]);
 
-  const localChecked = mem.getset("wellness", []).filter(statement => statement[0] === id)[0]
-  const checked = localChecked ? localChecked[1] : props.super.state.sectionResponse[id];
-  // let memCheck = false;
-  // if (typeof (mem.get("wellness")) !== "undefined") {
-  //   if (memCheck = mem.get("wellness")[id]) {
-  //     memCheck = memCheck[1]
-  //     console.log(memCheck)
-  //   }
-  // }
-  const numkeys = mem.getset("wellness", []).length; // Object.keys(props.super.state.sectionResponse).length;
+  const checked = props.super.state.response[id]
+
+  const numkeys = Object.keys(props.super.state.response).length;
+  // const numSecKeys = props.super.state.data.statements.flat().length
+  // console.log('numSecKeys :', numSecKeys);
+
   const handleChange = e => props.radioChange(e);
   const handleBlur = e => props.blur(e);
 
@@ -381,18 +415,46 @@ const Statement = props => {
 
   const bolden = inputs.includes("bold");
   const textIn = inputs.includes("text");
+  const localText = textIn ? props.super.state.response[id] : ''
+
   const radioIn2 = inputs.match(/ny(\d{1,2})?/);
   const radioIn4 = inputs.match(/[0-9]{3}a|[0-9]{4}\+?/);
-  const localText = textIn ? mem.getset("wellness", []).filter(statement => statement[0] === id)[0] : ''
-  const index = props.statementId;
 
-  const itemId = () => {
-    return index;
-  };
+  // const numSectionStatements =
+  // console.dir(props.super.state.data.headings[0].length)
+  // console.log(numSectionStatements);
 
-  const presentStatementIndex = itemId();
+  // console.log('count : ', props.count, ' checked :', `${checked}`, ' : localText', `${localText}`, 'numkeys : ', numkeys, 'keyIndex : ', props.statementIndex);
+  // const showIt = true
+  // if (numkeys > props.statementIndex) {
 
-  const show = () => (!localChecked || !!localText) && (index === numkeys || (numkeys === 0 && index === 0))
+  // }
+
+  // ! props.count from the Form, match for count response
+  // console.log('props.statementIndex', props.statementIndex, 'mem-wellnessVisibleStatement', mem.get("wellnessVisibleStatement"));
+
+  // const showingStatement = (typeof(checked) === 'undefined' || (textIn && localText.length === 0))
+  //   && props.statementIndex === mem.get("wellnessVisibleStatement")
+  const showingStatement = props.visibleStatement // mem.get("wellnessVisibleStatement");
+    // && (numkeys === props.statementIndex)
+
+  console.log("showingStatement", showingStatement)
+                      // || props.statementIndex + numkeys - 1 === - props.count - 1)) //&& props.count === mem.getset("visible", props.statementIndex) //&& props.count === props.statementIndex
+  // const __show = () => {
+  //   // check the count, and/or numkeys (same as currentQid)
+  //   // props.count (at index)
+  //   // props.count === mem.get("wellCurrentQId") // +1 from index // ! set current on each MEM.SET && SETSTATE
+  //   // ! SEND COUNT BACK TO FORM
+  // }
+
+    // TODO
+    // ! not showing section 2
+    // const hide = () => (checked || hasLocalText) //&&
+    // if (result) {
+
+    // }
+    // (props.statementIndex === numkeys ||
+    //   (numkeys === 0 && props.statementIndex === 0));
 
   if (radioIn4) {
     first = parseInt(radioIn4[0].slice(0, 1), 16);
@@ -409,11 +471,11 @@ const Statement = props => {
 
   if (textIn) {
     return (
-      <CSSTransition in={show()} timeout={300} classNames="fade">
+      <CSSTransition in={showingStatement} timeout={300} classNames="fade">
         <div
-          stid={presentStatementIndex}
+          stid={props.statementIndex}
           className="wellness-statement"
-          style={{ display: show() ? "block" : "none" }}
+          style={{ display: showingStatement ? "block" : "none" }}
         >
           <p>
             <span style={{ fontWeight: bolden ? "bold" : "normal" }}>
@@ -431,11 +493,11 @@ const Statement = props => {
     );
   } else if (radioIn4) {
     return (
-      <CSSTransition in={show()} timeout={300} classNames="fade">
+      <CSSTransition in={showingStatement} timeout={300} classNames="fade">
         <div
-          stid={presentStatementIndex}
+          stid={props.statementIndex}
           className="wellness-statement"
-          style={{ display: show() ? "block" : "none" }}
+          style={{ display: showingStatement ? "block" : "none" }}
         >
           <p>
             <span style={{ fontWeight: bolden ? "bold" : "normal" }}>
@@ -478,11 +540,11 @@ const Statement = props => {
   } else if (radioIn2) {
     return (
       // <CSSTransition in={checked || window.lookForPrevResponse} timeout={300} classNames="fade">
-      <CSSTransition in={show()} timeout={300} classNames="fade">
+      <CSSTransition in={showingStatement} timeout={300} classNames="fade">
         <div
-          stid={presentStatementIndex}
+          stid={props.statementIndex}
           className="wellness-statement"
-          style={{ display: show() ? "block" : "none" }}
+          style={{ display: showingStatement ? "block" : "none" }}
         >
           <p>
             <span style={{ fontWeight: bolden ? "bold" : "normal" }}>
