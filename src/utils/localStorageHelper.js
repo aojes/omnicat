@@ -1,3 +1,5 @@
+export const store = require("store");
+
 const set = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
@@ -22,7 +24,7 @@ const getset = (key, obj) => {
   return val;
 };
 
-const mem = {
+export const mem = {
   getset: getset,
   getOrSet: getset,
 
@@ -39,8 +41,6 @@ const mem = {
   getAll: all,
 
   clear: clear,
-  clearAll: clear,
+  clearAll: clear
   // length: length
 };
-
-export default mem;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import mem from "../utils/localStorageHelper";
+import { mem } from "../utils/localStorageHelper";
 
 const IronOptimiser = () => {
   const initial = mem.getset("ironoptimiser", {
@@ -24,7 +24,9 @@ const IronOptimiser = () => {
 
   const [serumIron, setSerumIron] = useState(initial.si);
   const [transferrinIBC, setTransferrinIBC] = useState(initial.ti);
-  const [transferrinSaturation, setTransferrinSaturation] = useState(initial.ts);
+  const [transferrinSaturation, setTransferrinSaturation] = useState(
+    initial.ts
+  );
   const [serumFerritinAssay, setSerumFerritinAssay] = useState(initial.sfa);
   const [results, setResults] = useState(initial);
 

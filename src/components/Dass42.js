@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import data from "./data/Dass42-statements.json";
-import mem from "../utils/localStorageHelper";
+import { mem } from "../utils/localStorageHelper";
 import dassResultsImg from "../images/dass-score-table.png";
 
 const Dass42 = () => {
@@ -11,6 +11,7 @@ const Dass42 = () => {
     anxiety: 0,
     stress: 0
   });
+
   const [selections, setSelections] = useState([]);
   const [statements] = useState(data);
   const [results, setResults] = useState(initial);
