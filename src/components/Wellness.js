@@ -1,5 +1,7 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
+
+// todo parse data separately from the module
 import questionnaire from "./data/Wellness-questionnaire.json";
 
 import { mem, store } from "../utils/localStorageHelper";

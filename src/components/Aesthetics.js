@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { mem, store } from "../utils/localStorageHelper";
+import { mem } from "../utils/localStorageHelper";
 
 const Aesthetics = () => {
   const initial = mem.getset("aesthetics", {

@@ -1,23 +1,24 @@
-+ local storage, protect against partial form abandon & pre-fill
-+ nicer footer, social medias, look at similar orgs
-+ Ai win-win
++ improve footer
++ look at similar orgs, crowdsales
++ improve nav
 
++ Ai win-win
++ open source benefits, scout & survey
 + ipfs/filecoin or Sia, etc
+
 + crowdsale contract
++ module contracts
 
 + show input feedback
   - dass (work on results show)
-  - aes (show in progress), iron (getting there)
-  - use percent diff on iron module
+  - aest (show in progress)
+  - iron (use percent diff from opt)
 
 + https://github.com/Ihatetomatoes/react-router-page-transition-css
 
-
-+ look at why env uses node and whether we need that
-+ may set button to reset storage
-+ dont rely on submit button...
-
-+ slow-import for testing loaders npm delay
+## Later
++ slow-import for testing loaders npm-delay
++ button to clear local storage per module
 
 // TODO note orange
 // ? question blue
