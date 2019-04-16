@@ -20,7 +20,7 @@ const Home = () => (
       </a>
     </p>
     <div>
-      <h2>Products</h2>
+      {/* <h2>Products</h2> */}
       <h3>
         <span style={{ position: "relative", top: "-0.5rem", left: "-0.6rem" }}>
           <img alt="arrow" src={noodleArrowDownRightAImg} />
