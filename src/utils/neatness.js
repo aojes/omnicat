@@ -2,24 +2,26 @@ const neatness = function neatnav(element) {
   let borderColorOpacity = 1,
     borderColor1 = `rgba(249,32,86, ${borderColorOpacity})`,
     borderColor2 = `rgba(0,222,255, ${borderColorOpacity})`,
-
-  i = 0, iDirection = true, iObj,
-  k = 30, kDirection = false, kObj,
-  l = 60, lDirection = true, lObj
+    i = 0,
+    iDirection = true,
+    iObj,
+    k = 30,
+    kDirection = false,
+    kObj,
+    l = 60,
+    lDirection = true,
+    lObj;
 
   //extra functions
-  function getNextValue(value, flag, min, max, step){
-    if(flag && value < max){
+  function getNextValue(value, flag, min, max, step) {
+    if (flag && value < max) {
       value += step;
-
-    } else if(flag && value >= max){
+    } else if (flag && value >= max) {
       flag = false;
       value -= step;
-
-    } else if(!flag && value > min){
+    } else if (!flag && value > min) {
       value -= step;
-
-    } else if(!flag && value <= min){
+    } else if (!flag && value <= min) {
       flag = true;
       value += step;
     }
@@ -27,26 +29,25 @@ const neatness = function neatnav(element) {
     return {
       value: value,
       flag: flag
-    }
+    };
   }
 
   function shadowToString() {
     getNextShadowPosition(this, this.shadowOffset);
 
-    return this.x + 'px ' + this.y + 'px ' + this.blured + 'px ' + this.color
+    return this.x + "px " + this.y + "px " + this.blured + "px " + this.color;
   }
 
-  function getNextShadowPosition(shadow, offset){
-    shadow.x = -Math.cos((i + offset)/10) * 10 ;
-    shadow.y = -Math.sin((i + offset)/10) * 10;
+  function getNextShadowPosition(shadow, offset) {
+    shadow.x = -Math.cos((i + offset) / 10) * 10;
+    shadow.y = -Math.sin((i + offset) / 10) * 10;
   }
 
   function showAndMove() {
     showAndMove.timer = setTimeout(function f() {
-
       //change border
-      element.style.borderImage = `linear-gradient(${i}deg, ${borderColor1} ${k}%, ${borderColor2} ${l}%)`
-      i++
+      element.style.borderImage = `linear-gradient(${i}deg, ${borderColor1} ${k}%, ${borderColor2} ${l}%)`;
+      i++;
       kObj = getNextValue(k, kDirection, 0, 50, 1);
       k = kObj.value;
       kDirection = kObj.flag;
@@ -55,11 +56,11 @@ const neatness = function neatnav(element) {
       l = lObj.value;
       lDirection = lObj.flag;
       //cycle
-      showAndMove.timer = setTimeout(f, 50)
-    }, 0)
+      showAndMove.timer = setTimeout(f, 50);
+    }, 0);
   }
 
-  return showAndMove()
-}
+  return showAndMove();
+};
 
-export default neatness
+export default neatness;
