@@ -16,7 +16,8 @@ const Home = () => (
           src="https://img.shields.io/badge/open%20source-react%20|%20blockchain-brightgreen.svg?logo=github&logoColor=white"
         />
       </a>
-      &nbsp;
+    </p>
+    {/* &nbsp;
       <a
         href="https://github.com/tidelake/omnicat"
         target="_blank"
@@ -26,8 +27,7 @@ const Home = () => (
           alt="activity"
           src="https://img.shields.io/github/commit-activity/m/tidelake/omnicat.svg?logo=github&style=plastic"
         />
-      </a>
-      {/* &nbsp;
+      &nbsp;
       <a
         href="https://www.codacy.com/app/tidelake/omnicat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tidelake/omnicat&amp;utm_campaign=Badge_Grade"
         rel="noopener noreferrer"
@@ -37,7 +37,7 @@ const Home = () => (
           alt="codacy grade"
           src="https://api.codacy.com/project/badge/Grade/0d5f1e7437034b7f99b3aaea705eceb1"
         />
-      </a> */}
+      </a>
     </p>
     <iframe
       title="sign up for the quarterly email"
@@ -49,7 +49,7 @@ const Home = () => (
       marginWidth="0"
     >
       Loading...
-    </iframe>
+    </iframe> */}
   </div>
 );
 
