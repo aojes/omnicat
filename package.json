@@ -18,7 +18,10 @@
   "scripts": {
     "start": "parcel -p 3000 watch src/index.html",
     "build": "parcel build src/index.html",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "built": "http-server -s -g -p 3000 dist",
+    "hint": "hint http://localhost:3000",
+    "test": "echo 'not working yet' # npm run built && npm-run-all -r -p http-server hint"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -28,7 +31,6 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.9.0",
-    "reactn": "^1.0.0",
     "sass": "^1.18.0",
     "store": "^2.0.12",
     "truffle-contract": "^4.0.11",
