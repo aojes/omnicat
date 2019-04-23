@@ -13,8 +13,14 @@
   background: inherit
   font-family: inherit
 
-.first-border, .cancel-button, .accept, .save-button, .download
-  margin: 20px
+.css-btn,
+.standard,
+.cancel-button,
+.next-button,
+.accept,
+.save-button,
+.download
+  margin: 10px
 
 #css-button
   .flex
@@ -23,17 +29,16 @@
     justify-content: center
     align-items: center
 
-  .first-border
+  .standard
     position: relative
-    margin: 10px
     width: 220px
     height: 70px
     border-radius: 40px
     cursor: pointer
-    transition: 500ms
+    transition: 333ms
 
 
-  .first-border:hover
+  .standard:hover
     transform: scale(1.1)
 
 
@@ -66,13 +71,6 @@
     margin-left: -40px
     border-radius: 40px 0 0 40px
 
-
-  .row
-    // width: 900px
-    // justify-content: space-around
-    // padding-bottom: 50px
-
-
   .download
     cursor: pointer
     width: 220px
@@ -80,16 +78,13 @@
     border-radius: 10px
     position: relative
     color: $oc-white
-    transition: 500ms
-
+    transition: 333ms
 
   .download:hover
     transform: scale(1.1)
 
-
   .download p
     margin-top: -3px
-
 
   .click-me
     width: 120px
@@ -111,7 +106,7 @@
     border-radius: 40px
     position: relative
     color: $oc-white
-    transition: 500ms
+    transition: 333ms
 
   .save-button:hover
     transform: scale(1.1)
@@ -136,7 +131,7 @@
     height: 60px
     border-radius: 40px
     background-color: $oc-white
-    transition: 500ms
+    transition: 333ms
 
 
   .next-button:hover
@@ -164,7 +159,7 @@
     cursor: pointer
     overflow: hidden
     color: $oc-white
-    transition: 500ms
+    transition: 333ms
 
   .cancel-button:hover,
   .accept-button:hover
@@ -186,7 +181,7 @@
     position: absolute
     width: 50px
     height: 50px
-    background-color: $oc-white
+    background-color: lightpink //lighten($oc-brightpink, 17%) //$oc-white
     border: 5px solid $oc-black
     right: -5px
 
@@ -194,6 +189,7 @@
     position: absolute
     width: 50px
     height: 50px
-    background-color: $oc-white
+    background-color: lightgreen //lighten($oc-brightblue, 27%) //$oc-white
+    // background: linear-gradient(to left, $oc-brightblue, $oc-brightpink, $oc-white, $oc-brightblue)
     border: 5px solid $oc-black
     left: -5px
