@@ -1,0 +1,199 @@
+@import "vars"
+.color-1
+  background: linear-gradient(to right, #ff4b1f, #1fddff)
+.color-2
+   background: linear-gradient(to right, #16a085, #f4d03f)
+
+.color-bright
+  background: linear-gradient(to right, $oc-brightblue, $oc-brightpink)
+
+#css-button
+  justify-content: left
+  align-items: left
+  background: inherit
+  font-family: inherit
+
+.first-border, .cancel-button, .accept, .save-button, .download
+  margin: 20px
+
+#css-button
+  .flex
+    // width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .first-border
+    position: relative
+    margin: 10px
+    width: 220px
+    height: 70px
+    border-radius: 40px
+    cursor: pointer
+    transition: 500ms
+
+
+  .first-border:hover
+    transform: scale(1.1)
+
+
+  .button
+    box-sizing: border-box
+    padding: 0 15px
+    justify-content: space-between
+    background: $oc-white
+    width: 200px
+    height: 50px
+    border-radius: 40px
+    border: 5px solid $oc-black
+
+
+  .round
+    position: absolute
+    left: 150px
+    width: 70px
+    height: 70px
+    border-radius: 50%
+    background-color: $oc-white
+    border: 5px solid $oc-black
+
+
+  .up
+    position: absolute
+    border: none
+    width: 150px
+    height: 40px
+    margin-left: -40px
+    border-radius: 40px 0 0 40px
+
+
+  .row
+    // width: 900px
+    // justify-content: space-around
+    // padding-bottom: 50px
+
+
+  .download
+    cursor: pointer
+    width: 220px
+    height: 60px
+    border-radius: 10px
+    position: relative
+    color: $oc-white
+    transition: 500ms
+
+
+  .download:hover
+    transform: scale(1.1)
+
+
+  .download p
+    margin-top: -3px
+
+
+  .click-me
+    width: 120px
+    height: 30px
+    border-radius: 10px
+    background-color: $oc-white
+    border: 5px solid $oc-black
+    position: absolute
+    top: 40px
+    left: 45px
+    color: $oc-black
+
+
+  .save-button
+    cursor: pointer
+    margin-top: 20px
+    width: 220px
+    height: 40px
+    border-radius: 40px
+    position: relative
+    color: $oc-white
+    transition: 500ms
+
+  .save-button:hover
+    transform: scale(1.1)
+
+  .save-button p
+    margin-top: -3px
+
+  .save
+    width: 120px
+    height: 30px
+    border-radius: 10px
+    background-color: $oc-white
+    border: 5px solid $oc-black
+    position: absolute
+    top: -15px
+    left: 45px
+    color: $oc-black
+
+  .next-button
+    cursor: pointer
+    width: 150px
+    height: 60px
+    border-radius: 40px
+    background-color: $oc-white
+    transition: 500ms
+
+
+  .next-button:hover
+    transform: scale(1.1)
+
+  .next
+    width: 130px
+    height: 40px
+    border-radius: 40px
+    border: 5px solid $oc-black
+    color: $oc-white
+
+  .back-svg
+    transform: rotate(180deg)
+    margin-right: 20px
+
+  .next-svg
+    margin-left: 20px
+
+  .cancel-button,
+  .accept-button
+    position: relative
+    width: 220px
+    height: 40px
+    cursor: pointer
+    overflow: hidden
+    color: $oc-white
+    transition: 500ms
+
+  .cancel-button:hover,
+  .accept-button:hover
+    transform: scale(1.1)
+
+  .cancel-button
+    border-radius: 30px 0 30px 0
+
+  .accept-button
+    border-radius: 0 30px 0 30px
+
+  .cancel-button p
+    margin-left: -40px
+
+  .accept-button p
+    margin-right: -40px
+
+  .cancel-button .cancel
+    position: absolute
+    width: 50px
+    height: 50px
+    background-color: $oc-white
+    border: 5px solid $oc-black
+    right: -5px
+
+  .accept-button .cancel
+    position: absolute
+    width: 50px
+    height: 50px
+    background-color: $oc-white
+    border: 5px solid $oc-black
+    left: -5px
