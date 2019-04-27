@@ -1,4 +1,4 @@
-const neatness = function neatnav(element) {
+const neat = function neatnav(element) {
   let borderColorOpacity = 1,
     borderColor1 = `rgba(249,32,86, ${borderColorOpacity})`,
     borderColor2 = `rgba(0,222,255, ${borderColorOpacity})`,
@@ -63,4 +63,4 @@ const neatness = function neatnav(element) {
   return showAndMove();
 };
 
-export default neatness;
+export default neat;

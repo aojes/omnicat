@@ -49,7 +49,7 @@ const Aesthetics = () => {
   return (
     <div id="aesthetics">
       <h1 className="text-focus-in">Aesthetics</h1>
-      <hr id="neatness" />
+      <hr id="neat" />
       <form className="aesthetics xlensCursor" onSubmit={handleSubmit}>
         <div className="row">
           <h3>Skin</h3>

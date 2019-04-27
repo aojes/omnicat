@@ -7,11 +7,34 @@
 .color-bright
   background: linear-gradient(to right, $oc-brightblue, $oc-brightpink)
 
+// from animista.css, faster transition
+.text-focus-in-300ms
+	-webkit-animation: text-focus-in 300ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both
+	        animation: text-focus-in 300ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both
+.text-focus-in-200ms
+	-webkit-animation: text-focus-in 200ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both
+	        animation: text-focus-in 200ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both
+
 #css-button
   justify-content: left
   align-items: left
   background: inherit
   font-family: inherit
+
+a.svg-btn-link,
+span.svg-btn-text
+  outline: none
+  text-decoration: none
+  font-variant: small-caps
+  font-weight: 700
+  letter-spacing: 1px
+  border-bottom: none
+
+// a.svg-btn-link, #css-button
+//   &:hover, &:active
+//     span.svg-btn-text
+//       border-bottom: 3px dotted $oc-brightpink
+//       border-top: 3px dotted $oc-brightpink
 
 .css-btn,
 .standard,
@@ -35,7 +58,7 @@
     height: 70px
     border-radius: 40px
     cursor: pointer
-    transition: 333ms
+    transition: 250ms
 
 
   .standard:hover
@@ -78,7 +101,7 @@
     border-radius: 10px
     position: relative
     color: $oc-white
-    transition: 333ms
+    transition: 250ms
 
   .download:hover
     transform: scale(1.1)
@@ -106,7 +129,7 @@
     border-radius: 40px
     position: relative
     color: $oc-white
-    transition: 333ms
+    transition: 250ms
 
   .save-button:hover
     transform: scale(1.1)
@@ -131,7 +154,7 @@
     height: 60px
     border-radius: 40px
     background-color: $oc-white
-    transition: 333ms
+    transition: 250ms
 
 
   .next-button:hover
@@ -159,7 +182,7 @@
     cursor: pointer
     overflow: hidden
     color: $oc-white
-    transition: 333ms
+    transition: 250ms
 
   .cancel-button:hover,
   .accept-button:hover

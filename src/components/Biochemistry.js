@@ -4,13 +4,13 @@ import StyledButton from "./items/StyledButton";
 const Biochemistry = () => (
   <div>
     <h1 className="text-focus-in">Biochemistry</h1>
-    <hr id="neatness" />
-    <StyledButton type="back" text="BACK" />
-    <StyledButton type="next" text="NEXT" />
-    <StyledButton type="angle" text="angle" />
-    <StyledButton type="anglefill" text="anglefill" />
-    <StyledButton type="plus" text="plus" />{" "}
-    <StyledButton type="email" text="email" />
+    <hr id="neat" />
+    <StyledButton type="back" text="BACK" link="/#" />
+    <StyledButton type="next" text="NEXT" link="/#" />
+    <StyledButton type="angle" text="angle" link="/#" />
+    <StyledButton type="anglefill" text="anglefill" link="/#" />
+    <StyledButton type="plus" text="plus" link="/#" />
+    <StyledButton type="email" text="email" link="/#" />
     <StyledButton type="settings" text="settings" />
     <StyledButton type="search" text="search" />
   </div>

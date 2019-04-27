@@ -6,7 +6,7 @@ const Home = () => (
   <div className="text-focus-in">
     <h1>Welcome to OmniCAT</h1>
     <h2>At Home Ai Guided Biometrics Optimization</h2>
-    <hr id="neatness" className="homepage" />
+    <hr id="neat" className="homepage" />
     <p>
       <a
         href="https://github.com/tidelake/omnicat"

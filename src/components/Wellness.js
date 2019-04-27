@@ -263,7 +263,7 @@ class Wellness extends React.Component {
     return (
       <div className="wellness">
         <h1 className="text-focus-in">Wellness &amp; Health Appraisal</h1>
-        <hr id="neatness" />
+        <hr id="neat" />
         <div className="description">
           <p>
             Your answers to this health appraisal questionnaire will assist your
