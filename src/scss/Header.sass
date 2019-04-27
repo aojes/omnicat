@@ -47,6 +47,31 @@ header
         content: url('../images/noodleArrowDownRightA.png')
         z-index: 2
 
+
+    li ul.menu-order-3 li a.active
+      &:before
+        position: absolute
+        display: inline
+        top: -5px
+        left: -28px
+        width: 0
+        height: 0
+        content: url('../images/noodleArrowDownRightA.png')
+        z-index: 2
+
+      &:after
+        position: absolute
+        display: inline
+        width: 1rem
+        height: 1rem
+        top: -2.2rem
+        right: 100%
+        left: -2.2rem
+        font-size: 1rem
+        text-shadow: 1px 2px $oc-white
+        color: red
+        content: '❤️'
+
     ul.menu-order-3 li:hover a:before
       position: absolute
       display: inline
