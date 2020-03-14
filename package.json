@@ -64,7 +64,7 @@
     "tar": "^4.4.8"
   },
   "optionalDependencies": {
-    "acorn": "^6.1.1",
+    "acorn": "^6.4.1",
     "ajv": "^5.5.2"
   },
   "eslintConfig": {
